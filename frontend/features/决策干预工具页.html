@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智财青春 - 决策干预工具</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Noto Sans SC', sans-serif;
+}
+.chart-container {
+width: 100%;
+height: 300px;
+}
+.custom-range::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: #297CBB;
+cursor: pointer;
+}
+.custom-checkbox:checked + label {
+border-color: #297CBB;
+background-color: rgba(41, 124, 187, 0.1);
+}
+.custom-checkbox:checked + label .checkbox-icon {
+background-color: #297CBB;
+}
+.custom-checkbox:checked + label .checkbox-icon:after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 8px;
+height: 8px;
+background-color: white;
+border-radius: 50%;
+}
+.custom-switch:checked + label {
+background-color: #297CBB;
+}
+.custom-switch:checked + label:after {
+transform: translateX(20px);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- 手机对比模态框将通过JS动态创建 -->
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+<span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+<span class="text-xl font-semibold text-gray-800">智财青春</span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+<a href="#" class="text-gray-600 hover:text-primary">消费评估</a>
+<a href="#" class="text-gray-600 hover:text-primary">教育赋能</a>
+<a href="#" class="text-primary font-medium">决策干预</a>
+<a href="#" class="text-gray-600 hover:text-primary">生态协同</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-search-line ri-lg"></i>
+</button>
+<button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-notification-3-line ri-lg"></i>
+</button>
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/1b82bd4a42973383179f53d2455f8318.jpg" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+</div>
+</div>
+</div>
+</header>
+<main>
+<!-- 实时消费预警区 -->
+<section class="py-8 bg-white">
+<div class="container mx-auto px-4">
+<div class="flex flex-col lg:flex-row gap-8">
+<div class="w-full lg:w-2/3">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">实时消费预警</h2>
+<div class="bg-red-50 border-l-4 border-red-500 p-5 rounded-md mb-6">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-red-100 text-red-500 mr-4 flex-shrink-0">
+<i class="ri-alert-line ri-lg"></i>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-lg font-semibold text-red-700">高风险预警</h3>
+<span class="text-sm text-gray-500">更新于 2分钟前</span>
+</div>
+<p class="text-gray-700 mb-3">您正在浏览的商品「Apple iPhone 15 Pro Max」价格超出您的月度电子产品预算 238%，且与您近期已购买的 iPad Pro 功能重叠度高达 65%。</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full">预算超支</span>
+<span class="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full">功能重叠</span>
+<span class="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full">冲动消费风险</span>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="bg-white text-red-600 border border-red-600 px-4 py-2 rounded-button font-medium hover:bg-red-50 transition whitespace-nowrap">
+启动 24h 冷静期
+</button>
+<button class="bg-white text-primary border border-primary px-4 py-2 rounded-button font-medium hover:bg-blue-50 transition whitespace-nowrap">
+查看平替推荐
+</button>
+<button class="bg-white text-gray-600 border border-gray-300 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+忽略此提醒
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-yellow-50 border-l-4 border-yellow-500 p-5 rounded-md mb-6">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-500 mr-4 flex-shrink-0">
+<i class="ri-error-warning-line ri-lg"></i>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-lg font-semibold text-yellow-700">中度风险提示</h3>
+<span class="text-sm text-gray-500">更新于 15分钟前</span>
+</div>
+<p class="text-gray-700 mb-3">您的月度餐饮支出已达到预算的 85%，而本月还有 8 天。建议调整接下来的餐饮消费频率或单次消费金额。</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">预算预警</span>
+<span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">餐饮类别</span>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="bg-white text-yellow-600 border border-yellow-600 px-4 py-2 rounded-button font-medium hover:bg-yellow-50 transition whitespace-nowrap">
+查看餐饮预算详情
+</button>
+<button class="bg-white text-gray-600 border border-gray-300 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+调整预算设置
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-md">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-500 mr-4 flex-shrink-0">
+<i class="ri-information-line ri-lg"></i>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-lg font-semibold text-blue-700">消费提示</h3>
+<span class="text-sm text-gray-500">更新于 1小时前</span>
+</div>
+<p class="text-gray-700 mb-3">您关注的商品「Nike Air Zoom 跑鞋」已降价 15%，现价 ¥799，低于您设置的 ¥850 提醒阈值。</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">降价提醒</span>
+<span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">符合预算</span>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+查看商品详情
+</button>
+<button class="bg-white text-gray-600 border border-gray-300 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+取消关注
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/3">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">预警设置</h3>
+<div class="space-y-5">
+<div>
+<label class="flex items-center justify-between mb-2">
+<span class="text-gray-700">预算超支阈值</span>
+<span class="text-sm text-primary">当前: 20%</span>
+</label>
+<div class="flex items-center">
+<span class="text-gray-600 text-sm mr-2">10%</span>
+<input type="range" min="10" max="50" value="20" class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer custom-range">
+<span class="text-gray-600 text-sm ml-2">50%</span>
+</div>
+</div>
+<div>
+<label class="flex items-center justify-between mb-2">
+<span class="text-gray-700">单次消费预警</span>
+<span class="text-sm text-primary">当前: ¥1000</span>
+</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">¥</span>
+<input type="number" class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" value="1000">
+</div>
+</div>
+<div class="space-y-3">
+<label class="block text-gray-700 mb-1">启用预警类别</label>
+<div class="flex items-center">
+<input type="checkbox" id="category1" class="hidden custom-checkbox" checked>
+<label for="category1" class="flex items-center border border-gray-300 rounded p-2 cursor-pointer w-full">
+<div class="w-4 h-4 rounded-full border border-gray-400 mr-2 relative checkbox-icon"></div>
+<span class="text-gray-700">电子产品</span>
+</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="category2" class="hidden custom-checkbox" checked>
+<label for="category2" class="flex items-center border border-gray-300 rounded p-2 cursor-pointer w-full">
+<div class="w-4 h-4 rounded-full border border-gray-400 mr-2 relative checkbox-icon"></div>
+<span class="text-gray-700">餐饮外卖</span>
+</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="category3" class="hidden custom-checkbox" checked>
+<label for="category3" class="flex items-center border border-gray-300 rounded p-2 cursor-pointer w-full">
+<div class="w-4 h-4 rounded-full border border-gray-400 mr-2 relative checkbox-icon"></div>
+<span class="text-gray-700">服装鞋包</span>
+</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="category4" class="hidden custom-checkbox">
+<label for="category4" class="flex items-center border border-gray-300 rounded p-2 cursor-pointer w-full">
+<div class="w-4 h-4 rounded-full border border-gray-400 mr-2 relative checkbox-icon"></div>
+<span class="text-gray-700">日用百货</span>
+</label>
+</div>
+</div>
+<div>
+<label class="flex items-center mb-3">
+<div class="relative inline-block w-10 h-6 mr-2">
+<input type="checkbox" class="hidden custom-switch" id="autoIntervention" checked>
+<label for="autoIntervention" class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+<span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+</label>
+</div>
+<span class="text-gray-700">启用自动干预</span>
+</label>
+<p class="text-xs text-gray-500">当检测到高风险消费行为时，自动触发冷静期或推送平替商品</p>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap w-full">
+保存设置
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 智能平替推荐区 -->
+<section class="py-8 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">智能平替推荐</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-900">iPhone 15 Pro Max 的平替方案</h3>
+<span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">节省 ¥4,200</span>
+</div>
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-1/2 border border-gray-200 rounded-lg p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-500">原商品</span>
+<span class="text-sm font-medium text-red-600">¥9,999</span>
+</div>
+<div class="flex flex-col items-center">
+<img src="https://public.readdy.ai/ai/img_res/2d4b1a3c9e8f7d6a5b2c1e9f8d7a6b5c.jpg" class="w-32 h-32 object-contain mb-3" alt="iPhone 15 Pro Max">
+<h4 class="text-gray-900 font-medium mb-1">iPhone 15 Pro Max</h4>
+<p class="text-sm text-gray-600 mb-3">A17 Pro, 8GB+256GB, 6.7英寸</p>
+<div class="w-full space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">性能评分</span>
+<span class="text-gray-900 font-medium">98</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">拍照评分</span>
+<span class="text-gray-900 font-medium">96</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">续航评分</span>
+<span class="text-gray-900 font-medium">92</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 border border-gray-200 rounded-lg p-4 bg-green-50">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-500">推荐平替</span>
+<span class="text-sm font-medium text-green-600">¥5,799</span>
+</div>
+<div class="flex flex-col items-center">
+<img src="https://public.readdy.ai/ai/img_res/3e5c2a9b8d7f6e4a1b3c2d9e8f7a6b5c.jpg" class="w-32 h-32 object-contain mb-3" alt="小米14 Pro">
+<h4 class="text-gray-900 font-medium mb-1">小米14 Pro</h4>
+<p class="text-sm text-gray-600 mb-3">骁龙8 Gen3, 12GB+512GB, 6.7英寸</p>
+<div class="w-full space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">性能评分</span>
+<span class="text-gray-900 font-medium">95</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">拍照评分</span>
+<span class="text-gray-900 font-medium">93</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">续航评分</span>
+<span class="text-gray-900 font-medium">94</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 p-4 bg-blue-50 rounded-lg">
+<h4 class="font-medium text-gray-900 mb-2">平替分析</h4>
+<p class="text-sm text-gray-700 mb-3">小米14 Pro 在核心性能和拍照能力上与 iPhone 15 Pro Max 相差不到 5%，但价格仅为后者的 58%。特别是在续航方面，小米14 Pro 甚至略有优势。</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">性价比高 +72%</span>
+<span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">国产品牌</span>
+<span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">同级别配置</span>
+</div>
+</div>
+<div class="mt-4 flex justify-end">
+<button class="bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap" id="viewDetailedComparison">
+查看详细对比
+</button>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-900">Dyson 吸尘器的平替方案</h3>
+<span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">节省 ¥2,300</span>
+</div>
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-1/2 border border-gray-200 rounded-lg p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-500">原商品</span>
+<span class="text-sm font-medium text-red-600">¥4,990</span>
+</div>
+<div class="flex flex-col items-center">
+<img src="https://public.readdy.ai/ai/img_res/4f6d3b2a9c8e7f5d4a3b2c1d9e8f7a6b.jpg" class="w-32 h-32 object-contain mb-3" alt="Dyson V12">
+<h4 class="text-gray-900 font-medium mb-1">Dyson V12 Detect</h4>
+<p class="text-sm text-gray-600 mb-3">无线手持, 60分钟续航</p>
+<div class="w-full space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">吸力评分</span>
+<span class="text-gray-900 font-medium">95</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">续航评分</span>
+<span class="text-gray-900 font-medium">90</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">噪音评分</span>
+<span class="text-gray-900 font-medium">85</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 border border-gray-200 rounded-lg p-4 bg-green-50">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-500">推荐平替</span>
+<span class="text-sm font-medium text-green-600">¥2,690</span>
+</div>
+<div class="flex flex-col items-center">
+<img src="https://public.readdy.ai/ai/img_res/5g7e4c3b2a1d9f8e7d6c5b4a3f2e1d9c.jpg" class="w-32 h-32 object-contain mb-3" alt="追觅S20 Pro">
+<h4 class="text-gray-900 font-medium mb-1">追觅 S20 Pro</h4>
+<p class="text-sm text-gray-600 mb-3">无线手持, 70分钟续航</p>
+<div class="w-full space-y-2">
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">吸力评分</span>
+<span class="text-gray-900 font-medium">93</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">续航评分</span>
+<span class="text-gray-900 font-medium">94</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">噪音评分</span>
+<span class="text-gray-900 font-medium">88</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 p-4 bg-blue-50 rounded-lg">
+<h4 class="font-medium text-gray-900 mb-2">平替分析</h4>
+<p class="text-sm text-gray-700 mb-3">追觅 S20 Pro 在吸力方面与 Dyson V12 相差仅 2%，但续航和噪音控制表现更佳。价格仅为 Dyson 的 54%，节省 2300 元的同时获得更长续航。</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">性价比高 +85%</span>
+<span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">续航更长</span>
+<span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">噪音更低</span>
+</div>
+</div>
+<div class="mt-4 flex justify-end">
+<button class="bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap" id="viewDetailedComparison">
+查看详细对比
+</button>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="bg-white text-primary border border-primary px-6 py-3 rounded-button font-medium hover:bg-blue-50 transition whitespace-nowrap">
+查看更多平替推荐
+</button>
+</div>
+</div>
+</section>
+<!-- 分期付款评估区 -->
+<section class="py-8 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">分期付款评估</h2>
+<div class="flex flex-col lg:flex-row gap-8">
+<div class="w-full lg:w-1/2">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">分期方案计算器</h3>
+<div class="space-y-5">
+<div>
+<label class="block text-gray-700 mb-2">商品总价</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">¥</span>
+<input type="number" class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" value="6000">
+</div>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">分期期数</label>
+<div class="grid grid-cols-4 gap-3">
+<div class="relative">
+<input type="radio" id="period3" name="period" class="hidden custom-checkbox">
+<label for="period3" class="flex items-center justify-center border border-gray-300 rounded p-2 cursor-pointer w-full">
+<span class="text-gray-700">3期</span>
+</label>
+</div>
+<div class="relative">
+<input type="radio" id="period6" name="period" class="hidden custom-checkbox" checked>
+<label for="period6" class="flex items-center justify-center border border-gray-300 rounded p-2 cursor-pointer w-full">
+<span class="text-gray-700">6期</span>
+</label>
+</div>
+<div class="relative">
+<input type="radio" id="period12" name="period" class="hidden custom-checkbox">
+<label for="period12" class="flex items-center justify-center border border-gray-300 rounded p-2 cursor-pointer w-full">
+<span class="text-gray-700">12期</span>
+</label>
+</div>
+<div class="relative">
+<input type="radio" id="period24" name="period" class="hidden custom-checkbox">
+<label for="period24" class="flex items-center justify-center border border-gray-300 rounded p-2 cursor-pointer w-full">
+<span class="text-gray-700">24期</span>
+</label>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">分期类型</label>
+<div class="grid grid-cols-2 gap-3">
+<div class="relative">
+<input type="radio" id="type1" name="type" class="hidden custom-checkbox" checked>
+<label for="type1" class="flex items-center justify-center border border-gray-300 rounded p-2 cursor-pointer w-full">
+<span class="text-gray-700">免息分期</span>
+</label>
+</div>
+<div class="relative">
+<input type="radio" id="type2" name="type" class="hidden custom-checkbox">
+<label for="type2" class="flex items-center justify-center border border-gray-300 rounded p-2 cursor-pointer w-full">
+<span class="text-gray-700">有息分期</span>
+</label>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">年化利率</label>
+<div class="flex items-center">
+<span class="text-gray-600 text-sm mr-2">3%</span>
+<input type="range" min="3" max="18" value="7" class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer custom-range">
+<span class="text-gray-600 text-sm ml-2">18%</span>
+</div>
+<div class="text-center mt-1 text-sm text-gray-500">
+当前选择: 7%
+</div>
+</div>
+<div>
+<label class="block text-gray-700 mb-2">首付比例</label>
+<div class="flex items-center">
+<span class="text-gray-600 text-sm mr-2">0%</span>
+<input type="range" min="0" max="50" value="10" class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer custom-range">
+<span class="text-gray-600 text-sm ml-2">50%</span>
+</div>
+<div class="text-center mt-1 text-sm text-gray-500">
+当前选择: 10% (¥600)
+</div>
+</div>
+<button class="bg-primary text-white px-4 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap w-full">
+计算分期方案
+</button>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-900">分期方案分析</h3>
+<span class="text-sm text-gray-500">商品: iPhone 15 (¥6,000)</span>
+</div>
+<div class="chart-container" id="installmentChart"></div>
+<div class="mt-4 grid grid-cols-2 gap-4">
+<div class="bg-gray-50 p-3 rounded">
+<div class="text-sm text-gray-600 mb-1">每期还款</div>
+<div class="text-xl font-semibold text-gray-900">¥900</div>
+</div>
+<div class="bg-gray-50 p-3 rounded">
+<div class="text-sm text-gray-600 mb-1">总支付</div>
+<div class="text-xl font-semibold text-gray-900">¥6,000</div>
+</div>
+<div class="bg-gray-50 p-3 rounded">
+<div class="text-sm text-gray-600 mb-1">首付金额</div>
+<div class="text-xl font-semibold text-gray-900">¥600</div>
+</div>
+<div class="bg-gray-50 p-3 rounded">
+<div class="text-sm text-gray-600 mb-1">利息总额</div>
+<div class="text-xl font-semibold text-green-600">¥0</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">分期决策建议</h3>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-green-100 text-green-600 mr-3 flex-shrink-0 mt-0.5">
+<i class="ri-check-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">适合分期</h4>
+<p class="text-sm text-gray-600">您选择的是免息分期，不会产生额外费用，对您的财务状况无负面影响。</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 mr-3 flex-shrink-0 mt-0.5">
+<i class="ri-information-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">收入评估</h4>
+<p class="text-sm text-gray-600">每期还款额占您月收入的 11.3%，处于合理范围内（建议不超过 15%）。</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600 mr-3 flex-shrink-0 mt-0.5">
+<i class="ri-error-warning-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">注意事项</h4>
+<p class="text-sm text-gray-600">您当前已有 2 笔分期贷款，本次分期将占用部分信用额度，建议合理规划后续大额消费。</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-red-100 text-red-600 mr-3 flex-shrink-0 mt-0.5">
+<i class="ri-close-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">风险提示</h4>
+<p class="text-sm text-gray-600">如选择有息分期，年化利率 7% 将产生额外 ¥210 的利息支出，建议选择免息方案。</p>
+</div>
+</div>
+</div>
+<div class="mt-5 p-4 bg-gray-50 rounded-lg">
+<div class="flex items-center mb-2">
+<i class="ri-lightbulb-line text-yellow-500 mr-2"></i>
+<span class="font-medium text-gray-900">专家建议</span>
+</div>
+<p class="text-sm text-gray-700">考虑到商品类型和您的财务状况，建议您选择 6 期免息分期，并设置自动还款以避免逾期。如有闲置资金，可以考虑一次性付清以简化财务管理。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 消费行为分析区 -->
+<section class="py-8 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">消费行为分析</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-gray-900">近期消费趋势</h3>
+<div class="flex items-center">
+<button class="text-gray-500 hover:text-primary px-3 py-1 rounded">周</button>
+<button class="text-primary font-medium border-b-2 border-primary px-3 py-1">月</button>
+<button class="text-gray-500 hover:text-primary px-3 py-1 rounded">年</button>
+</div>
+</div>
+<div class="chart-container" id="consumptionTrendChart"></div>
+<div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="p-3 bg-gray-50 rounded">
+<div class="text-sm text-gray-600 mb-1">总消费</div>
+<div class="text-lg font-semibold text-gray-900">¥7,850</div>
+<div class="text-xs text-green-600">较上月 -5.2%</div>
+</div>
+<div class="p-3 bg-gray-50 rounded">
+<div class="text-sm text-gray-600 mb-1">冲动消费</div>
+<div class="text-lg font-semibold text-gray-900">¥1,230</div>
+<div class="text-xs text-red-600">较上月 +12.8%</div>
+</div>
+<div class="p-3 bg-gray-50 rounded">
+<div class="text-sm text-gray-600 mb-1">平均单价</div>
+<div class="text-lg font-semibold text-gray-900">¥235</div>
+<div class="text-xs text-green-600">较上月 -3.1%</div>
+</div>
+<div class="p-3 bg-gray-50 rounded">
+<div class="text-sm text-gray-600 mb-1">消费次数</div>
+<div class="text-lg font-semibold text-gray-900">33次</div>
+<div class="text-xs text-gray-500">较上月 -2次</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-1">
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">冲动消费预警</h3>
+<div class="space-y-4">
+<div class="flex items-start p-3 bg-red-50 rounded">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-red-100 text-red-600 mr-3 flex-shrink-0">
+<i class="ri-shopping-cart-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">深夜购物风险</h4>
+<p class="text-xs text-gray-600">您在22:00后的购物支出比例高达25%，且平均单价高于日间消费48%。</p>
+</div>
+</div>
+<div class="flex items-start p-3 bg-yellow-50 rounded">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600 mr-3 flex-shrink-0">
+<i class="ri-coupon-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">促销诱导消费</h4>
+<p class="text-xs text-gray-600">您在大促期间购买的商品中，有32%在30天内未使用，可能存在盲目囤货情况。</p>
+</div>
+</div>
+<div class="flex items-start p-3 bg-blue-50 rounded">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 mr-3 flex-shrink-0">
+<i class="ri-live-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">直播间消费</h4>
+<p class="text-xs text-gray-600">您在直播间的平均停留时间为42分钟，每次观看有68%概率产生消费，建议控制观看频率。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">消费习惯改进建议</h3>
+<div class="space-y-4">
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary mr-3 flex-shrink-0">
+<i class="ri-timer-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">设置购物冷静期</h4>
+<p class="text-xs text-gray-600">对于超过¥500的非必需品，建议设置24小时冷静期，减少冲动消费。</p>
+<button class="mt-2 text-xs text-primary font-medium">立即开启</button>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 text-secondary mr-3 flex-shrink-0">
+<i class="ri-calendar-check-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">制定购物清单</h4>
+<p class="text-xs text-gray-600">每月初制定必需品清单，减少临时决策导致的额外支出。</p>
+<button class="mt-2 text-xs text-primary font-medium">创建清单模板</button>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-primary bg-opacity-10 text-primary mr-3 flex-shrink-0">
+<i class="ri-notification-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">限制促销通知</h4>
+<p class="text-xs text-gray-600">建议关闭非必需品类的促销推送，减少营销信息干扰。</p>
+<button class="mt-2 text-xs text-primary font-medium">管理通知设置</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AI情感陪伴式消费助手 -->
+<section class="py-8 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">AI情感陪伴式消费助手</h2>
+<div class="flex flex-col lg:flex-row gap-8">
+<div class="w-full lg:w-1/2">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-semibold text-gray-900">智能情感助手</h3>
+<span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">在线</span>
+</div>
+<div class="flex items-center mb-6">
+<div class="relative mr-4">
+<img src="https://public.readdy.ai/ai/img_res/5acf79adf9d42b67be3aaca37878253d.jpg" class="w-24 h-24 rounded-full object-cover border-4 border-primary" alt="AI助手头像">
+<div class="absolute bottom-0 right-0 w-5 h-5 bg-green-500 rounded-full border-2 border-white"></div>
+</div>
+<div>
+<h4 class="text-xl font-semibold text-gray-900 mb-1">小智</h4>
+<p class="text-gray-600">您的专属消费情感顾问</p>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-4 mb-6 h-80 overflow-y-auto" id="chatContainer">
+<div class="flex items-start mb-4">
+<div class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white mr-2">
+<i class="ri-robot-line"></i>
+</div>
+<div class="bg-primary bg-opacity-10 rounded-lg p-3 max-w-[80%]">
+<p class="text-gray-800">您好！我是您的消费情感助手小智。我注意到您最近在浏览高价电子产品，有什么我可以帮您分析的吗？</p>
+<span class="text-xs text-gray-500 mt-1 block">10:30</span>
+</div>
+</div>
+<div class="flex items-start mb-4 justify-end">
+<div class="bg-gray-200 rounded-lg p-3 max-w-[80%]">
+<p class="text-gray-800">我在考虑买一部新手机，但感觉有点犹豫，价格有点高。</p>
+<span class="text-xs text-gray-500 mt-1 block">10:31</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-gray-300 flex-shrink-0 flex items-center justify-center ml-2">
+<i class="ri-user-line"></i>
+</div>
+</div>
+<div class="flex items-start mb-4">
+<div class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white mr-2">
+<i class="ri-robot-line"></i>
+</div>
+<div class="bg-primary bg-opacity-10 rounded-lg p-3 max-w-[80%]">
+<p class="text-gray-800">我理解您的犹豫。根据您的浏览历史，我发现您已经连续三天查看同一款手机，这可能表明您对它很感兴趣，但价格确实是个考虑因素。</p>
+<p class="text-gray-800 mt-2">我注意到您的情绪模式显示在浏览这类产品时有轻微的焦虑。您是否担心这笔支出会影响您的其他预算？</p>
+<span class="text-xs text-gray-500 mt-1 block">10:32</span>
+</div>
+</div>
+<div class="flex items-start mb-4 justify-end">
+<div class="bg-gray-200 rounded-lg p-3 max-w-[80%]">
+<p class="text-gray-800">是的，我下个月还有一笔学费要交，担心买了手机后会有点紧张。但这款手机真的很吸引我。</p>
+<span class="text-xs text-gray-500 mt-1 block">10:33</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-gray-300 flex-shrink-0 flex items-center justify-center ml-2">
+<i class="ri-user-line"></i>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white mr-2">
+<i class="ri-robot-line"></i>
+</div>
+<div class="bg-primary bg-opacity-10 rounded-lg p-3 max-w-[80%]">
+<p class="text-gray-800">感谢您的坦诚分享。我能理解这种矛盾的感受。从情感角度看，新产品带来的满足感是短暂的，而财务压力可能会持续更长时间。</p>
+<p class="text-gray-800 mt-2">建议您可以：</p>
+<ol class="list-decimal pl-5 mt-1 text-gray-800">
+<li>先为学费设置专项储蓄，确保教育支出有保障</li>
+<li>考虑我们推荐的性价比更高的平替方案</li>
+<li>启动24小时冷静期，让决策更理性</li>
+</ol>
+<p class="text-gray-800 mt-2">您想了解更多哪方面的信息呢？</p>
+<span class="text-xs text-gray-500 mt-1 block">10:34</span>
+</div>
+</div>
+</div>
+<div class="relative">
+<input type="text" id="messageInput" placeholder="输入您的问题或感受..." class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+<button id="sendButton" class="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white">
+<i class="ri-send-plane-fill"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">情感消费分析</h3>
+<div class="chart-container" id="emotionChart"></div>
+<div class="mt-4 grid grid-cols-2 gap-4">
+<div class="bg-gray-50 p-3 rounded">
+<div class="text-sm text-gray-600 mb-1">主导情绪</div>
+<div class="text-lg font-semibold text-gray-900">期待 + 焦虑</div>
+</div>
+<div class="bg-gray-50 p-3 rounded">
+<div class="text-sm text-gray-600 mb-1">冲动指数</div>
+<div class="text-lg font-semibold text-red-600">72% <span class="text-xs text-gray-500">(较高)</span></div>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">情绪缓解策略</h3>
+<div class="space-y-4">
+<div class="flex items-start p-3 bg-blue-50 rounded">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 mr-3 flex-shrink-0">
+<i class="ri-mental-health-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">消费冥想</h4>
+<p class="text-sm text-gray-600">3分钟引导式冥想，帮助您平静消费冲动，清晰思考需求与欲望的区别。</p>
+<button class="mt-2 text-sm text-primary font-medium">开始冥想</button>
+</div>
+</div>
+<div class="flex items-start p-3 bg-purple-50 rounded">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-purple-100 text-purple-600 mr-3 flex-shrink-0">
+<i class="ri-question-answer-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">决策反思问答</h4>
+<p class="text-sm text-gray-600">回答5个关键问题，帮助您评估这次购买的真实必要性和长期价值。</p>
+<button class="mt-2 text-sm text-primary font-medium">开始问答</button>
+</div>
+</div>
+<div class="flex items-start p-3 bg-green-50 rounded">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-green-100 text-green-600 mr-3 flex-shrink-0">
+<i class="ri-focus-3-line"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900 mb-1">价值观对齐</h4>
+<p class="text-sm text-gray-600">检视这次消费是否与您设定的长期财务目标和核心价值观一致。</p>
+<button class="mt-2 text-sm text-primary font-medium">查看分析</button>
+</div>
+</div>
+</div>
+<div class="mt-5 p-4 bg-gray-50 rounded-lg">
+<div class="flex items-center mb-2">
+<i class="ri-emotion-line text-yellow-500 mr-2"></i>
+<span class="font-medium text-gray-900">情绪洞察</span>
+</div>
+<p class="text-sm text-gray-700">我们检测到您在浏览高价电子产品时情绪波动较大，特别是在查看价格时焦虑感上升。这种模式与冲动消费风险相关。建议在做决定前先使用冥想工具，帮助您回归理性思考。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<div class="flex items-center mb-4">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-1.5 rounded-lg mr-2">
+<span class="text-2xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+<span class="text-lg font-semibold">智财青春</span>
+</div>
+<p class="text-gray-400 mb-4">数据驱动的青年消费智慧平台</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-weibo-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-wechat-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-douban-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">产品服务</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">消费评估</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">VR 体验课程</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">AR 购物助手</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">预算规划工具</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">关于我们</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">平台介绍</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">团队成员</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">帮助中心</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">用户手册</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">隐私政策</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">服务条款</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 智财青春. 保留所有权利.</p>
+<div class="flex items-center space-x-4">
+<div class="flex items-center text-gray-400">
+<i class="ri-visa-fill ri-lg mr-2"></i>
+<i class="ri-mastercard-fill ri-lg mr-2"></i>
+<i class="ri-paypal-fill ri-lg mr-2"></i>
+<i class="ri-alipay-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+// 分期付款图表
+const installmentChart = echarts.init(document.getElementById('installmentChart'));
+const installmentOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+top: 10,
+right: 10,
+bottom: 30,
+left: 50
+},
+xAxis: {
+type: 'category',
+data: ['首付', '1期', '2期', '3期', '4期', '5期', '6期'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+name: '金额 (¥)',
+nameTextStyle: {
+color: '#1f2937'
+},
+min: 0,
+max: 1000,
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#eee'
+}
+}
+},
+series: [
+{
+name: '还款金额',
+type: 'bar',
+data: [600, 900, 900, 900, 900, 900, 900],
+itemStyle: {
+color: '#57B5E7',
+borderRadius: 4
+},
+barWidth: '40%'
+}
+]
+};
+installmentChart.setOption(installmentOption);
+// 消费趋势图表
+const consumptionTrendChart = echarts.init(document.getElementById('consumptionTrendChart'));
+const consumptionTrendOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+data: ['总消费', '冲动消费'],
+bottom: 0,
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+top: 10,
+right: 10,
+bottom: 50,
+left: 50
+},
+xAxis: {
+type: 'category',
+data: ['1月', '2月', '3月', '4月', '5月', '6月'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+name: '金额 (¥)',
+nameTextStyle: {
+color: '#1f2937'
+},
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#eee'
+}
+}
+},
+series: [
+{
+name: '总消费',
+type: 'line',
+data: [6500, 7200, 8100, 8500, 8300, 7850],
+symbol: 'none',
+smooth: true,
+lineStyle: {
+width: 3,
+color: '#57B5E7'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+}, {
+offset: 1, color: 'rgba(87, 181, 231, 0.05)'
+}]
+}
+}
+},
+{
+name: '冲动消费',
+type: 'line',
+data: [1100, 950, 1050, 1200, 1090, 1230],
+symbol: 'none',
+smooth: true,
+lineStyle: {
+width: 3,
+color: '#FC8D62'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(252, 141, 98, 0.2)'
+}, {
+offset: 1, color: 'rgba(252, 141, 98, 0.05)'
+}]
+}
+}
+}
+]
+};
+consumptionTrendChart.setOption(consumptionTrendOption);
+// 情感分析图表
+const emotionChart = echarts.init(document.getElementById('emotionChart'));
+const emotionOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+orient: 'vertical',
+right: 10,
+top: 'center',
+textStyle: {
+color: '#1f2937'
+}
+},
+series: [
+{
+name: '情绪分布',
+type: 'pie',
+radius: ['40%', '70%'],
+avoidLabelOverlap: false,
+itemStyle: {
+borderRadius: 8,
+borderColor: '#fff',
+borderWidth: 2
+},
+label: {
+show: false,
+position: 'center'
+},
+emphasis: {
+label: {
+show: true,
+fontSize: 14,
+fontWeight: 'bold'
+}
+},
+labelLine: {
+show: false
+},
+data: [
+{value: 38, name: '期待', itemStyle: {color: '#57B5E7'}},
+{value: 34, name: '焦虑', itemStyle: {color: '#FC8D62'}},
+{value: 15, name: '犹豫', itemStyle: {color: '#8DD3C7'}},
+{value: 13, name: '满足', itemStyle: {color: '#FBBC72'}}
+]
+}
+]
+};
+emotionChart.setOption(emotionOption);
+
+// 手机对比雷达图
+function initComparisonRadarChart() {
+  const comparisonRadarChart = echarts.init(document.getElementById('comparisonRadarChart'));
+  const comparisonRadarOption = {
+    animation: false,
+    tooltip: {
+      trigger: 'item',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderColor: '#eee',
+      borderWidth: 1,
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    legend: {
+      data: ['iPhone 15 Pro Max', '小米14 Pro'],
+      bottom: 0,
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    radar: {
+      indicator: [
+        { name: '处理器性能', max: 100 },
+        { name: '相机系统', max: 100 },
+        { name: '屏幕素质', max: 100 },
+        { name: '电池续航', max: 100 },
+        { name: '充电速度', max: 100 },
+        { name: '系统体验', max: 100 }
+      ],
+      radius: '65%',
+      axisName: {
+        color: '#1f2937'
+      }
+    },
+    series: [
+      {
+        name: '手机性能对比',
+        type: 'radar',
+        data: [
+          {
+            value: [98, 96, 95, 92, 85, 97],
+            name: 'iPhone 15 Pro Max',
+            itemStyle: {
+              color: '#57B5E7'
+            },
+            areaStyle: {
+              color: 'rgba(87, 181, 231, 0.2)'
+            }
+          },
+          {
+            value: [95, 93, 92, 94, 96, 90],
+            name: '小米14 Pro',
+            itemStyle: {
+              color: '#8DD3C7'
+            },
+            areaStyle: {
+              color: 'rgba(141, 211, 199, 0.2)'
+            }
+          }
+        ]
+      }
+    ]
+  };
+  comparisonRadarChart.setOption(comparisonRadarOption);
+  return comparisonRadarChart;
+}
+
+// 性价比对比图
+function initValueComparisonChart() {
+  const valueComparisonChart = echarts.init(document.getElementById('valueComparisonChart'));
+  const valueComparisonOption = {
+    animation: false,
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderColor: '#eee',
+      borderWidth: 1,
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    legend: {
+      data: ['性能得分', '价格 (千元)'],
+      right: 10,
+      top: 0,
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    grid: {
+      top: 40,
+      right: 20,
+      bottom: 30,
+      left: 60
+    },
+    xAxis: {
+      type: 'category',
+      data: ['iPhone 15 Pro Max', '小米14 Pro'],
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937',
+        interval: 0,
+        rotate: 0
+      }
+    },
+    yAxis: [
+      {
+        type: 'value',
+        name: '性能得分',
+        nameTextStyle: {
+          color: '#1f2937'
+        },
+        min: 0,
+        max: 100,
+        axisLine: {
+          lineStyle: {
+            color: '#ddd'
+          }
+        },
+        axisLabel: {
+          color: '#1f2937'
+        },
+        splitLine: {
+          lineStyle: {
+            color: '#eee'
+          }
+        }
+      },
+      {
+        type: 'value',
+        name: '价格 (千元)',
+        nameTextStyle: {
+          color: '#1f2937'
+        },
+        min: 0,
+        max: 12,
+        axisLine: {
+          lineStyle: {
+            color: '#ddd'
+          }
+        },
+        axisLabel: {
+          color: '#1f2937'
+        },
+        splitLine: {
+          show: false
+        }
+      }
+    ],
+    series: [
+      {
+        name: '性能得分',
+        type: 'bar',
+        data: [96, 93],
+        itemStyle: {
+          color: '#57B5E7',
+          borderRadius: 4
+        },
+        barWidth: '30%'
+      },
+      {
+        name: '价格 (千元)',
+        type: 'bar',
+        yAxisIndex: 1,
+        data: [9.999, 5.799],
+        itemStyle: {
+          color: '#FBBC72',
+          borderRadius: 4
+        },
+        barWidth: '30%'
+      }
+    ]
+  };
+  valueComparisonChart.setOption(valueComparisonOption);
+  return valueComparisonChart;
+}
+
+// 自定义复选框交互
+document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+  checkbox.addEventListener('change', function() {
+    const label = this.nextElementSibling;
+    if (this.checked) {
+      label.classList.add('border-primary', 'bg-primary-100');
+    } else {
+      label.classList.remove('border-primary', 'bg-primary-100');
+    }
+  });
+});
+
+// AI助手聊天功能
+const messageInput = document.getElementById('messageInput');
+const sendButton = document.getElementById('sendButton');
+const chatContainer = document.getElementById('chatContainer');
+function addMessage(message, isUser = false) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `flex items-start mb-4 ${isUser ? 'justify-end' : ''}`;
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const timeString = `${hours}:${minutes}`;
+  if (isUser) {
+    messageDiv.innerHTML = `
+    <div class="bg-gray-200 rounded-lg p-3 max-w-[80%]">
+    <p class="text-gray-800">${message}</p>
+    <span class="text-xs text-gray-500 mt-1 block">${timeString}</span>
+    </div>
+    <div class="w-8 h-8 rounded-full bg-gray-300 flex-shrink-0 flex items-center justify-center ml-2">
+    <i class="ri-user-line"></i>
+    </div>
+    `;
+  } else {
+    messageDiv.innerHTML = `
+    <div class="w-8 h-8 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-white mr-2">
+    <i class="ri-robot-line"></i>
+    </div>
+    <div class="bg-primary bg-opacity-10 rounded-lg p-3 max-w-[80%]">
+    <p class="text-gray-800">${message}</p>
+    <span class="text-xs text-gray-500 mt-1 block">${timeString}</span>
+    </div>
+    `;
+  }
+  chatContainer.appendChild(messageDiv);
+  chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+function getAIResponse(userMessage) {
+  // 简单的回复逻辑，实际应用中可以接入更复杂的AI模型
+  const responses = [
+    "我理解您的想法。从情感角度看，新产品确实能带来短暂的满足感，但请考虑一下长期的财务健康。您认为这个购买对您的生活质量有多大提升？",
+    "您的犹豫是合理的。我们的数据显示，72%的用户在冷静期后改变了购买决定。您愿意先尝试24小时冷静期吗？",
+    "我注意到您的情绪波动。购物时的兴奋感是暂时的，而财务压力可能持续更久。您可以尝试我们的消费冥想，帮助您更清晰地思考。",
+    "从您的消费模式看，这可能是一次情绪化决策。您是否考虑过我们推荐的性价比更高的替代方案？",
+    "您的担忧很有洞察力。我们可以一起分析一下这笔支出对您下个月预算的影响，看看是否有更平衡的解决方案。"
+  ];
+  return responses[Math.floor(Math.random() * responses.length)];
+}
+sendButton.addEventListener('click', function() {
+  const message = messageInput.value.trim();
+  if (message) {
+    addMessage(message, true);
+    messageInput.value = '';
+    // 模拟AI思考时间
+    setTimeout(() => {
+      const aiResponse = getAIResponse(message);
+      addMessage(aiResponse, false);
+    }, 1000);
+  }
+});
+messageInput.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    sendButton.click();
+  }
+});
+
+// 手机详细对比模态框
+function createComparisonModal() {
+  // 创建模态框容器
+  const modalContainer = document.createElement('div');
+  modalContainer.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+  modalContainer.id = 'phoneComparisonModal';
+  
+  // 创建模态框内容
+  modalContainer.innerHTML = `
+    <div class="bg-white rounded-lg w-11/12 max-w-5xl max-h-[90vh] overflow-y-auto">
+      <div class="p-6 border-b border-gray-200">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold text-gray-900">iPhone 15 Pro Max vs 小米14 Pro 详细对比</h3>
+          <button id="closeComparisonModal" class="text-gray-500 hover:text-gray-700 w-8 h-8 flex items-center justify-center">
+            <i class="ri-close-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="p-6">
+        <!-- 雷达图对比 -->
+        <div class="mb-8">
+          <h4 class="text-lg font-semibold text-gray-900 mb-4">综合性能对比</h4>
+          <div class="chart-container" id="comparisonRadarChart" style="height: 400px;"></div>
+        </div>
+        
+        <!-- 性价比对比 -->
+        <div class="mb-8">
+          <h4 class="text-lg font-semibold text-gray-900 mb-4">性价比分析</h4>
+          <div class="chart-container" id="valueComparisonChart" style="height: 300px;"></div>
+        </div>
+        
+        <!-- 详细参数对比表格 -->
+        <div class="mb-8">
+          <h4 class="text-lg font-semibold text-gray-900 mb-4">详细参数对比</h4>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">参数</th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">iPhone 15 Pro Max</th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">小米14 Pro</th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">对比结果</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">处理器</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">A17 Pro (3nm)</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">骁龙8 Gen3 (4nm)</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">iPhone领先3%</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">内存</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">8GB RAM</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12GB RAM</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">小米领先50%</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">存储</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">256GB</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">512GB</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">小米领先100%</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">主摄像头</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">48MP, f/1.8</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">50MP, f/1.7</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">基本相当</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">屏幕</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">6.7英寸 OLED 120Hz</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">6.7英寸 AMOLED 120Hz</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">iPhone色彩更准确</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">电池</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">4422mAh</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5000mAh</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">小米领先13%</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">充电速度</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">27W有线, 15W无线</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">120W有线, 50W无线</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">小米领先344%</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">系统</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">iOS 17</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">MIUI 15 (Android 14)</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">各有优势</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">价格</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">¥9,999</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">¥5,799</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">小米便宜42%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- 用户评价摘要 -->
+        <div class="mb-8">
+          <h4 class="text-lg font-semibold text-gray-900 mb-4">用户评价摘要</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <h5 class="font-medium text-gray-900 mb-2">iPhone 15 Pro Max 用户评价</h5>
+              <div class="space-y-3">
+                <div>
+                  <div class="flex items-center mb-1">
+                    <span class="text-sm text-gray-700 mr-2">拍照体验</span>
+                    <div class="flex text-yellow-400">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-600">"夜景模式下的表现令人惊艳，细节保留非常出色。"</p>
+                </div>
+                <div>
+                  <div class="flex items-center mb-1">
+                    <span class="text-sm text-gray-700 mr-2">系统流畅度</span>
+                    <div class="flex text-yellow-400">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-600">"iOS系统流畅度无可挑剔，应用切换无卡顿。"</p>
+                </div>
+                <div>
+                  <div class="flex items-center mb-1">
+                    <span class="text-sm text-gray-700 mr-2">电池续航</span>
+                    <div class="flex text-yellow-400">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-line"></i>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-600">"重度使用可以撑一天，但充电速度确实有点慢。"</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <h5 class="font-medium text-gray-900 mb-2">小米14 Pro 用户评价</h5>
+              <div class="space-y-3">
+                <div>
+                  <div class="flex items-center mb-1">
+                    <span class="text-sm text-gray-700 mr-2">拍照体验</span>
+                    <div class="flex text-yellow-400">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-line"></i>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-600">"徕卡调教的色彩很有特点，人像模式表现优秀。"</p>
+                </div>
+                <div>
+                  <div class="flex items-center mb-1">
+                    <span class="text-sm text-gray-700 mr-2">系统流畅度</span>
+                    <div class="flex text-yellow-400">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-line"></i>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-600">"MIUI优化不错，但偶尔会有小卡顿，整体表现良好。"</p>
+                </div>
+                <div>
+                  <div class="flex items-center mb-1">
+                    <span class="text-sm text-gray-700 mr-2">充电速度</span>
+                    <div class="flex text-yellow-400">
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                      <i class="ri-star-fill"></i>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-600">"120W快充太惊艳了，19分钟就能充到80%，非常实用。"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 按钮区域 -->
+        <div class="flex flex-wrap justify-end gap-4 mt-6">
+          <button id="viewUserReviews" class="bg-white text-primary border border-primary px-6 py-2 rounded-button font-medium hover:bg-blue-50 transition whitespace-nowrap">
+            查看用户评价对比
+          </button>
+          <button id="chooseMi14Pro" class="bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+            立即选择小米14 Pro
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(modalContainer);
+  
+  // 初始化图表
+  const radarChart = initComparisonRadarChart();
+  const valueChart = initValueComparisonChart();
+  
+  // 添加关闭模态框事件
+  document.getElementById('closeComparisonModal').addEventListener('click', function() {
+    document.body.removeChild(modalContainer);
+  });
+  
+  // 点击模态框外部关闭
+  modalContainer.addEventListener('click', function(e) {
+    if (e.target === modalContainer) {
+      document.body.removeChild(modalContainer);
+    }
+  });
+  
+  // 查看用户评价按钮
+  document.getElementById('viewUserReviews').addEventListener('click', function() {
+    // 这里可以实现跳转到用户评价页面或展示更多评价的逻辑
+    const notification = document.createElement('div');
+    notification.className = 'fixed bottom-4 right-4 bg-primary text-white px-4 py-3 rounded-lg shadow-lg z-50';
+    notification.innerHTML = '正在加载更多用户评价...';
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      document.body.removeChild(notification);
+    }, 2000);
+  });
+  
+  // 选择小米14 Pro按钮
+  document.getElementById('chooseMi14Pro').addEventListener('click', function() {
+    document.body.removeChild(modalContainer);
+    
+    const successNotification = document.createElement('div');
+    successNotification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg z-50 flex items-center';
+    successNotification.innerHTML = `
+      <i class="ri-check-line ri-lg mr-2"></i>
+      <div>
+        <p class="font-medium">已添加到购物车</p>
+        <p class="text-sm">小米14 Pro 已成功添加到您的购物车</p>
+      </div>
+    `;
+    document.body.appendChild(successNotification);
+    
+    setTimeout(() => {
+      document.body.removeChild(successNotification);
+    }, 3000);
+  });
+  
+  // 响应式调整
+  window.addEventListener('resize', function() {
+    radarChart.resize();
+    valueChart.resize();
+  });
+}
+
+// 响应式调整
+window.addEventListener('resize', function() {
+  installmentChart.resize();
+  consumptionTrendChart.resize();
+  emotionChart.resize();
+});
+
+// 添加详细对比按钮点击事件
+document.addEventListener('DOMContentLoaded', function() {
+  const detailComparisonButtons = document.querySelectorAll('.bg-primary.text-white.px-6.py-2.rounded-button');
+  detailComparisonButtons.forEach(button => {
+    if (button.textContent.trim() === '查看详细对比') {
+      button.addEventListener('click', function() {
+        createComparisonModal();
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>

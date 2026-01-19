@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智财青春 - 团队成员</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.team-member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.team-tab.active {
+  color: #297CBB;
+  border-color: #297CBB;
+}
+.team-tab:not(.active):hover {
+  color: #4a90c9;
+}
+.social-icon:hover {
+  background-color: #f3f4f6;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+<span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+</a>
+<span class="text-xl font-semibold text-gray-800">智财青春</span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/1bf56809-0585-433a-9d09-56e1f1d68390" data-readdy="true" class="text-gray-600 hover:text-primary">消费评估</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="text-gray-600 hover:text-primary">教育赋能</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/51b07ac8-c2aa-4dfb-aca5-a7fa8e4300b7" data-readdy="true" class="text-gray-600 hover:text-primary">决策干预</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/36f9142a-46e6-4714-8059-22720b6c1be4" data-readdy="true" class="text-gray-600 hover:text-primary">生态协同</a>
+<a href="#" class="text-primary font-medium">团队成员</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-search-line ri-lg"></i>
+</button>
+<button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-notification-3-line ri-lg"></i>
+</button>
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/1b82bd4a42973383179f53d2455f8318.jpg" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+</div>
+</div>
+</div>
+</header>
+
+<section class="relative overflow-hidden" style="min-height: 300px;">
+<div style="background-image: url('https://public.readdy.ai/ai/img_res/9a7d1f6c3e8b2a5d4c1f0e7b9a2d5f8e.jpg'); background-size: cover; background-position: center right;" class="absolute inset-0"></div>
+<div class="relative z-10 container mx-auto px-4 py-16">
+<div class="hero-gradient max-w-2xl p-10 rounded-xl">
+<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">核心团队</h1>
+<p class="text-lg text-gray-700">我们汇聚了消费金融、数据科学和行为经济学领域的专业人才，致力于为青年群体打造更智慧的消费决策平台。</p>
+</div>
+</div>
+</section>
+
+<section class="py-12 bg-white">
+<div class="container mx-auto px-4">
+<div class="flex justify-center mb-8">
+<div class="inline-flex p-1 bg-gray-100 rounded-full">
+<button class="team-tab active px-6 py-2 rounded-full text-sm font-medium transition-all duration-200" data-team="all">全部团队</button>
+<button class="team-tab px-6 py-2 rounded-full text-sm font-medium text-gray-600 transition-all duration-200" data-team="leadership">领导团队</button>
+<button class="team-tab px-6 py-2 rounded-full text-sm font-medium text-gray-600 transition-all duration-200" data-team="tech">技术团队</button>
+<button class="team-tab px-6 py-2 rounded-full text-sm font-medium text-gray-600 transition-all duration-200" data-team="research">研究团队</button>
+<button class="team-tab px-6 py-2 rounded-full text-sm font-medium text-gray-600 transition-all duration-200" data-team="product">产品团队</button>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300" data-team="leadership">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f.jpg" class="w-full h-56 object-cover object-top" alt="陈志远">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+<span class="bg-primary text-white text-xs font-medium px-2 py-1 rounded">领导团队</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">陈志远</h3>
+<p class="text-gray-600 mb-3">创始人 & CEO</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">金融科技</span>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">战略规划</span>
+<span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">创业管理</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">前蚂蚁金服高级产品总监，清华大学金融学博士，拥有15年金融科技领域经验。曾主导多个金融普惠项目，致力于通过科技创新解决青年群体消费决策难题。</p>
+<div class="flex space-x-2">
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-linkedin-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-twitter-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-mail-fill text-gray-500"></i>
+</a>
+</div>
+</div>
+</div>
+
+<div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300" data-team="leadership">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a.jpg" class="w-full h-56 object-cover object-top" alt="林雨晴">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+<span class="bg-primary text-white text-xs font-medium px-2 py-1 rounded">领导团队</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">林雨晴</h3>
+<p class="text-gray-600 mb-3">联合创始人 & COO</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">运营管理</span>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">用户增长</span>
+<span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">商业合作</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">前腾讯用户增长负责人，北京大学工商管理硕士。擅长产品运营与商业合作，主导平台与高校、金融机构及政府部门的战略合作，推动平台生态建设。</p>
+<div class="flex space-x-2">
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-linkedin-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-twitter-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-mail-fill text-gray-500"></i>
+</a>
+</div>
+</div>
+</div>
+
+<div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300" data-team="tech">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b.jpg" class="w-full h-56 object-cover object-top" alt="张明宇">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+<span class="bg-secondary text-white text-xs font-medium px-2 py-1 rounded">技术团队</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">张明宇</h3>
+<p class="text-gray-600 mb-3">CTO & 技术负责人</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">人工智能</span>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">大数据</span>
+<span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">系统架构</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">前百度AI技术专家，上海交通大学计算机博士。专注于机器学习和大数据分析，主导开发了平台核心算法模型，包括CHI指数计算和消费行为预测系统。</p>
+<div class="flex space-x-2">
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-linkedin-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-github-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-mail-fill text-gray-500"></i>
+</a>
+</div>
+</div>
+</div>
+
+<div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300" data-team="research">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c.jpg" class="w-full h-56 object-cover object-top" alt="王佳怡">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+<span class="bg-indigo-500 text-white text-xs font-medium px-2 py-1 rounded">研究团队</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">王佳怡</h3>
+<p class="text-gray-600 mb-3">研究总监</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">行为经济学</span>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">消费心理学</span>
+<span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">数据分析</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">北京大学经济学教授，哈佛大学行为经济学博士。主导平台的理论研究工作，设计了MBTI式四维消费人格分析系统，发表多篇消费决策领域学术论文。</p>
+<div class="flex space-x-2">
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-linkedin-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-google-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-mail-fill text-gray-500"></i>
+</a>
+</div>
+</div>
+</div>
+
+<div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300" data-team="product">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d.jpg" class="w-full h-56 object-cover object-top" alt="刘天宇">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+<span class="bg-rose-500 text-white text-xs font-medium px-2 py-1 rounded">产品团队</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">刘天宇</h3>
+<p class="text-gray-600 mb-3">产品总监</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">产品设计</span>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">用户体验</span>
+<span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">AR/VR技术</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">前字节跳动产品经理，清华大学人机交互硕士。负责平台产品规划与用户体验设计，主导开发了AR购物助手和VR消费模拟体验等创新功能模块。</p>
+<div class="flex space-x-2">
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-linkedin-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-dribbble-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-mail-fill text-gray-500"></i>
+</a>
+</div>
+</div>
+</div>
+
+<div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300" data-team="tech">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e.jpg" class="w-full h-56 object-cover object-top" alt="赵小雨">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+<span class="bg-secondary text-white text-xs font-medium px-2 py-1 rounded">技术团队</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">赵小雨</h3>
+<p class="text-gray-600 mb-3">AI算法工程师</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">机器学习</span>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">自然语言处理</span>
+<span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">推荐系统</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">前华为AI研究员，中国科学院计算机硕士。专注于消费行为预测算法和个性化推荐系统，开发了平台核心的消费偏好分析引擎和智能平替推荐系统。</p>
+<div class="flex space-x-2">
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-linkedin-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-github-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-mail-fill text-gray-500"></i>
+</a>
+</div>
+</div>
+</div>
+
+<div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300" data-team="research">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f.jpg" class="w-full h-56 object-cover object-top" alt="李俊杰">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+<span class="bg-indigo-500 text-white text-xs font-medium px-2 py-1 rounded">研究团队</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">李俊杰</h3>
+<p class="text-gray-600 mb-3">数据科学家</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">统计分析</span>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">金融建模</span>
+<span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">风险评估</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">前国家金融与发展实验室研究员，复旦大学统计学博士。负责平台的数据分析与金融模型构建，设计了CHI指数的计算方法和消费风险评估体系。</p>
+<div class="flex space-x-2">
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-linkedin-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-google-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-mail-fill text-gray-500"></i>
+</a>
+</div>
+</div>
+</div>
+
+<div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300" data-team="product">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3g.jpg" class="w-full h-56 object-cover object-top" alt="陈美玲">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+<span class="bg-rose-500 text-white text-xs font-medium px-2 py-1 rounded">产品团队</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">陈美玲</h3>
+<p class="text-gray-600 mb-3">用户体验设计师</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">交互设计</span>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">视觉设计</span>
+<span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">用户研究</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">前阿里巴巴UX设计师，中央美术学院设计学硕士。负责平台的用户体验设计与优化，打造了简洁直观的数据可视化界面和沉浸式VR教育模块。</p>
+<div class="flex space-x-2">
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-linkedin-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-behance-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-mail-fill text-gray-500"></i>
+</a>
+</div>
+</div>
+</div>
+
+<div class="team-member-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300" data-team="tech">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/9e0f1a2b3c4d5e6f7a8b9c0d1e2f3g4h.jpg" class="w-full h-56 object-cover object-top" alt="郑阳">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+<span class="bg-secondary text-white text-xs font-medium px-2 py-1 rounded">技术团队</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-1">郑阳</h3>
+<p class="text-gray-600 mb-3">AR/VR开发工程师</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">增强现实</span>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">虚拟现实</span>
+<span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded">3D建模</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">前网易游戏AR技术专家，浙江大学计算机图形学硕士。负责平台AR购物助手和VR消费模拟课程的技术实现，打造沉浸式消费教育体验。</p>
+<div class="flex space-x-2">
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-linkedin-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-github-fill text-gray-500"></i>
+</a>
+<a href="#" class="social-icon w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-200">
+<i class="ri-mail-fill text-gray-500"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">专业顾问团队</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">我们与行业专家和学术顾问紧密合作，确保平台建立在坚实的理论基础和前沿实践之上</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex flex-col items-center text-center">
+<img src="https://public.readdy.ai/ai/img_res/0f1a2b3c4d5e6f7a8b9c0d1e2f3g4h5i.jpg" class="w-24 h-24 rounded-full object-cover object-top mb-4" alt="吴教授">
+<h3 class="text-lg font-bold text-gray-900 mb-1">吴建国 教授</h3>
+<p class="text-gray-600 mb-3">清华大学金融学院</p>
+<p class="text-gray-600 text-sm">中国消费金融研究中心主任，为平台提供金融理论指导和政策建议</p>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex flex-col items-center text-center">
+<img src="https://public.readdy.ai/ai/img_res/1a2b3c4d5e6f7a8b9c0d1e2f3g4h5i6j.jpg" class="w-24 h-24 rounded-full object-cover object-top mb-4" alt="张教授">
+<h3 class="text-lg font-bold text-gray-900 mb-1">张丽华 教授</h3>
+<p class="text-gray-600 mb-3">北京大学心理学系</p>
+<p class="text-gray-600 text-sm">消费心理学专家，指导平台的消费行为分析和干预机制设计</p>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex flex-col items-center text-center">
+<img src="https://public.readdy.ai/ai/img_res/2b3c4d5e6f7a8b9c0d1e2f3g4h5i6j7k.jpg" class="w-24 h-24 rounded-full object-cover object-top mb-4" alt="李总监">
+<h3 class="text-lg font-bold text-gray-900 mb-1">李明远 总监</h3>
+<p class="text-gray-600 mb-3">中国人民银行金融科技委员会</p>
+<p class="text-gray-600 text-sm">提供金融监管和政策指导，确保平台合规发展</p>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex flex-col items-center text-center">
+<img src="https://public.readdy.ai/ai/img_res/3c4d5e6f7a8b9c0d1e2f3g4h5i6j7k8l.jpg" class="w-24 h-24 rounded-full object-cover object-top mb-4" alt="陈总监">
+<h3 class="text-lg font-bold text-gray-900 mb-1">陈思思 总监</h3>
+<p class="text-gray-600 mb-3">阿里巴巴数据科学实验室</p>
+<p class="text-gray-600 text-sm">为平台提供大数据分析和AI技术支持，优化算法模型</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="flex flex-col lg:flex-row items-center gap-12">
+<div class="w-full lg:w-1/2">
+<h2 class="text-3xl font-bold text-gray-900 mb-6">加入我们</h2>
+<p class="text-lg text-gray-600 mb-8">我们正在寻找对消费金融、数据科学和产品设计充满热情的人才，一起打造更智慧的青年消费决策平台。</p>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-user-heart-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">我们的文化</h3>
+<p class="text-gray-600">开放、创新、协作、以用户为中心。我们相信科技的力量可以帮助青年群体做出更明智的消费决策，实现财务自由。</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-award-line ri-lg text-secondary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">我们的福利</h3>
+<p class="text-gray-600">有竞争力的薪资、灵活的工作时间、持续的学习发展机会、股权激励计划，以及温馨舒适的工作环境。</p>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+查看职位空缺
+</button>
+</div>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="bg-gray-50 p-8 rounded-lg">
+<h3 class="text-xl font-semibold text-gray-900 mb-6">热招职位</h3>
+<div class="space-y-4">
+<div class="bg-white p-4 rounded shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-medium text-gray-900">高级机器学习工程师</h4>
+<p class="text-sm text-gray-500 mt-1">技术团队 · 全职 · 北京/上海</p>
+</div>
+<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">热门</span>
+</div>
+</div>
+<div class="bg-white p-4 rounded shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-medium text-gray-900">消费金融数据分析师</h4>
+<p class="text-sm text-gray-500 mt-1">研究团队 · 全职 · 北京</p>
+</div>
+<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded">新增</span>
+</div>
+</div>
+<div class="bg-white p-4 rounded shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-medium text-gray-900">用户增长运营专员</h4>
+<p class="text-sm text-gray-500 mt-1">产品团队 · 全职 · 北京/远程</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-4 rounded shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-medium text-gray-900">AR/VR内容设计师</h4>
+<p class="text-sm text-gray-500 mt-1">产品团队 · 全职 · 上海</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 text-center">
+<a href="#" class="text-primary font-medium flex items-center justify-center">
+查看全部职位
+<i class="ri-arrow-right-line ri-lg ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<div class="flex items-center mb-4">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-1.5 rounded-lg mr-2">
+<span class="text-2xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+<span class="text-lg font-semibold">智财青春</span>
+</div>
+<p class="text-gray-400 mb-4">数据驱动的青年消费智慧平台</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-weibo-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-wechat-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-douban-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">产品服务</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">消费评估</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">VR 体验课程</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">AR 购物助手</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">预算规划工具</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">关于我们</h4>
+<ul class="space-y-2">
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/e1eee5aa-23bc-469b-9e69-41396fd6c750" data-readdy="true" class="text-gray-400 hover:text-white">平台介绍</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-primary hover:text-white">团队成员</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">帮助中心</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/f0fad234-5aa7-4809-baf0-0f5b445478a9" data-readdy="true" class="text-gray-400 hover:text-white">用户手册</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">隐私政策</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">服务条款</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 智财青春. 保留所有权利.</p>
+<div class="flex items-center space-x-4">
+<div class="flex items-center text-gray-400">
+<i class="ri-visa-fill ri-lg mr-2"></i>
+<i class="ri-mastercard-fill ri-lg mr-2"></i>
+<i class="ri-paypal-fill ri-lg mr-2"></i>
+<i class="ri-alipay-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+// 团队分类切换
+const teamTabs = document.querySelectorAll('.team-tab');
+const teamMembers = document.querySelectorAll('.team-member-card');
+
+teamTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    // 移除所有tab的active状态
+    teamTabs.forEach(t => t.classList.remove('active'));
+    
+    // 添加当前tab的active状态
+    tab.classList.add('active');
+    
+    const teamType = tab.getAttribute('data-team');
+    
+    // 显示或隐藏团队成员
+    teamMembers.forEach(member => {
+      if (teamType === 'all' || member.getAttribute('data-team') === teamType) {
+        member.style.display = 'block';
+      } else {
+        member.style.display = 'none';
+      }
+    });
+  });
+});
+
+// 团队成员卡片悬停效果
+const cards = document.querySelectorAll('.team-member-card');
+cards.forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.classList.add('shadow-lg');
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.classList.remove('shadow-lg');
+  });
+});
+</script>
+</body>
+</html>

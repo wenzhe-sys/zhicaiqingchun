@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智财青春 - 金融服务</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#10b981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #3b82f6;
+cursor: pointer;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+border-radius: 4px;
+border: 2px solid #d1d5db;
+background-color: white;
+transition: all 0.2s ease;
+}
+.custom-checkbox.checked {
+background-color: #3b82f6;
+border-color: #3b82f6;
+}
+.custom-checkbox.checked::after {
+content: "";
+position: absolute;
+top: 2px;
+left: 6px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 48px;
+height: 24px;
+}
+.custom-switch-track {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #e5e7eb;
+border-radius: 24px;
+transition: 0.4s;
+}
+.custom-switch-thumb {
+position: absolute;
+height: 20px;
+width: 20px;
+left: 2px;
+bottom: 2px;
+background-color: white;
+border-radius: 50%;
+transition: 0.4s;
+}
+.custom-switch.active .custom-switch-track {
+background-color: #3b82f6;
+}
+.custom-switch.active .custom-switch-thumb {
+transform: translateX(24px);
+}
+.custom-radio {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+border: 2px solid #d1d5db;
+background-color: white;
+transition: all 0.2s ease;
+}
+.custom-radio.checked {
+border-color: #3b82f6;
+}
+.custom-radio.checked::after {
+content: "";
+position: absolute;
+top: 4px;
+left: 4px;
+width: 8px;
+height: 8px;
+border-radius: 50%;
+background-color: #3b82f6;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- 导航栏 -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+<div class="container mx-auto px-4 flex items-center justify-between h-16">
+<div class="flex items-center">
+<a href="#" class="text-2xl font-['Pacifico'] text-primary mr-8">logo</a>
+<nav class="hidden md:flex space-x-6">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="text-gray-600 hover:text-primary">教育赋能</a>
+<a href="#" class="text-primary font-medium border-b-2 border-primary pb-1">金融服务</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/4281f937-ed72-45c2-988e-271aff319dc6" data-readdy="true" class="text-gray-600 hover:text-primary">社区互动</a>
+<a href="#" class="text-gray-600 hover:text-primary">关于我们</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<input type="text" placeholder="搜索产品、服务" class="pl-10 pr-4 py-2 w-48 rounded-full text-sm bg-gray-100 border-none focus:ring-2 focus:ring-primary focus:outline-none">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600">
+<i class="ri-notification-3-line"></i>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="text-sm">林</span>
+</div>
+<span class="text-sm font-medium">林晓明</span>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Banner区域 -->
+<section class="relative h-80 overflow-hidden" style="background-image: url('https://public.readdy.ai/ai/img_res/28d9b131730fe644644e45e15e69071d.jpg'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent"></div>
+<div class="container mx-auto px-4 h-full flex items-center relative z-10">
+<div class="max-w-2xl text-white">
+<h1 class="text-4xl font-bold mb-4">青少年金融服务</h1>
+<p class="text-xl mb-6">为青少年提供安全、专业的金融产品和服务，培养健康的财务习惯和理财能力</p>
+<div class="flex space-x-4">
+<button class="bg-white text-primary px-6 py-3 rounded-button font-medium shadow-lg hover:bg-gray-100 transition whitespace-nowrap">
+开设账户
+</button>
+<button class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-button font-medium hover:bg-white/10 transition whitespace-nowrap">
+了解更多
+</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 主体内容区 -->
+<main class="container mx-auto px-4 py-12">
+<!-- 青少年专属账户 -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold">青少年专属账户</h2>
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:bg-gray-100">
+<i class="ri-arrow-left-s-line"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:bg-gray-100">
+<i class="ri-arrow-right-s-line"></i>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/1825943c5692e27a8b09a7f578219a2c.jpg" alt="青少年储蓄账户" class="w-full h-full object-cover object-top">
+<div class="absolute top-3 left-3 bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded">12-18岁</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">青少年成长储蓄账户</h3>
+<div class="flex items-center mb-4">
+<div class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-100 text-primary mr-2">
+<i class="ri-bank-line ri-lg"></i>
+</div>
+<span class="text-gray-600">零门槛开户 · 零管理费</span>
+</div>
+<p class="text-gray-600 mb-4">专为青少年设计的储蓄账户，提供高于普通储蓄的利率，培养良好的储蓄习惯，支持设定储蓄目标和自动转账功能</p>
+<div class="space-y-3 mb-5">
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">年利率 2.75%，高于普通储蓄</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">零手续费取款，每月8次免费ATM取款</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">家长共管功能，交易提醒与限额设置</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">立即开户</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/78231fc07f4395319485c21074636eaa.jpg" alt="青少年投资账户" class="w-full h-full object-cover object-top">
+<div class="absolute top-3 left-3 bg-green-500 text-white text-xs font-medium px-2 py-1 rounded">15-22岁</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">青少年启航投资账户</h3>
+<div class="flex items-center mb-4">
+<div class="w-8 h-8 flex items-center justify-center rounded-lg bg-green-100 text-green-600 mr-2">
+<i class="ri-funds-line ri-lg"></i>
+</div>
+<span class="text-gray-600">低起投 · 教育优先</span>
+</div>
+<p class="text-gray-600 mb-4">为青少年打造的入门级投资账户，低风险投资组合，内置投资教育内容，家长监督审批机制确保安全</p>
+<div class="space-y-3 mb-5">
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">100元起投，定投金额灵活可调</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">精选低风险ETF和指数基金</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">每笔交易需家长授权确认</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">立即开户</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 理财产品推荐 -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-2xl font-bold">理财产品推荐</h2>
+<div class="bg-white rounded-full px-1 py-1 shadow-sm border border-gray-100">
+<button id="tab-conservative" class="px-5 py-2 rounded-full bg-primary text-white text-sm font-medium whitespace-nowrap">保守型</button>
+<button id="tab-balanced" class="px-5 py-2 rounded-full text-gray-600 text-sm font-medium hover:bg-gray-100 whitespace-nowrap">平衡型</button>
+<button id="tab-growth" class="px-5 py-2 rounded-full text-gray-600 text-sm font-medium hover:bg-gray-100 whitespace-nowrap">成长型</button>
+</div>
+</div>
+
+<!-- 保守型产品 -->
+<div id="products-conservative" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-primary mr-3">
+<i class="ri-safe-2-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold">稳健成长储蓄计划</h3>
+</div>
+<span class="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full">低风险</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">专为青少年设计的储蓄计划，固定收益，安全稳健，培养基础储蓄习惯</p>
+<div class="flex items-center justify-between mb-4">
+<div>
+<span class="text-2xl font-bold text-primary">2.75%</span>
+<span class="text-gray-500 text-sm ml-1">年化收益</span>
+</div>
+<div class="text-right">
+<span class="text-sm text-gray-500">期限</span>
+<span class="text-sm font-medium ml-1">1年</span>
+</div>
+</div>
+<div class="bg-gray-50 rounded p-3 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-600">起投金额</span>
+<span class="text-sm font-medium">50元</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">适合年龄</span>
+<span class="text-sm font-medium">12-16岁</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">立即购买</button>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-green-100 text-green-600 mr-3">
+<i class="ri-money-cny-box-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold">教育金储备宝</h3>
+</div>
+<span class="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full">低风险</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">为未来教育储备资金，固定收益，可灵活提取，专款专用</p>
+<div class="flex items-center justify-between mb-4">
+<div>
+<span class="text-2xl font-bold text-primary">3.20%</span>
+<span class="text-gray-500 text-sm ml-1">年化收益</span>
+</div>
+<div class="text-right">
+<span class="text-sm text-gray-500">期限</span>
+<span class="text-sm font-medium ml-1">3年</span>
+</div>
+</div>
+<div class="bg-gray-50 rounded p-3 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-600">起投金额</span>
+<span class="text-sm font-medium">100元</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">适合年龄</span>
+<span class="text-sm font-medium">12-18岁</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">立即购买</button>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-yellow-100 text-yellow-600 mr-3">
+<i class="ri-government-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold">国债青年版</h3>
+</div>
+<span class="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full">低风险</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">国家信用背书的青少年专属国债，安全系数高，收益稳定</p>
+<div class="flex items-center justify-between mb-4">
+<div>
+<span class="text-2xl font-bold text-primary">3.00%</span>
+<span class="text-gray-500 text-sm ml-1">年化收益</span>
+</div>
+<div class="text-right">
+<span class="text-sm text-gray-500">期限</span>
+<span class="text-sm font-medium ml-1">2年</span>
+</div>
+</div>
+<div class="bg-gray-50 rounded p-3 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-600">起投金额</span>
+<span class="text-sm font-medium">100元</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">适合年龄</span>
+<span class="text-sm font-medium">14-22岁</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">立即购买</button>
+</div>
+</div>
+
+<!-- 平衡型产品 -->
+<div id="products-balanced" class="grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
+<div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 mr-3">
+<i class="ri-funds-box-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold">稳健平衡基金</h3>
+</div>
+<span class="text-xs px-2 py-1 bg-yellow-50 text-yellow-600 rounded-full">中风险</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">债券与股票混合配置，兼顾稳健收益与资本增值，风险适中</p>
+<div class="flex items-center justify-between mb-4">
+<div>
+<span class="text-2xl font-bold text-primary">5.20%</span>
+<span class="text-gray-500 text-sm ml-1">年化收益</span>
+</div>
+<div class="text-right">
+<span class="text-sm text-gray-500">近一年涨幅</span>
+<span class="text-sm font-medium ml-1">+8.5%</span>
+</div>
+</div>
+<div class="bg-gray-50 rounded p-3 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-600">起投金额</span>
+<span class="text-sm font-medium">200元</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">适合年龄</span>
+<span class="text-sm font-medium">16-22岁</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">立即购买</button>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600 mr-3">
+<i class="ri-stock-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold">指数增强型基金</h3>
+</div>
+<span class="text-xs px-2 py-1 bg-yellow-50 text-yellow-600 rounded-full">中风险</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">跟踪主要市场指数，适度增强策略，长期稳健增长</p>
+<div class="flex items-center justify-between mb-4">
+<div>
+<span class="text-2xl font-bold text-primary">6.50%</span>
+<span class="text-gray-500 text-sm ml-1">年化收益</span>
+</div>
+<div class="text-right">
+<span class="text-sm text-gray-500">近一年涨幅</span>
+<span class="text-sm font-medium ml-1">+12.3%</span>
+</div>
+</div>
+<div class="bg-gray-50 rounded p-3 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-600">起投金额</span>
+<span class="text-sm font-medium">300元</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">适合年龄</span>
+<span class="text-sm font-medium">16-22岁</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">立即购买</button>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600 mr-3">
+<i class="ri-building-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold">REITs房地产基金</h3>
+</div>
+<span class="text-xs px-2 py-1 bg-yellow-50 text-yellow-600 rounded-full">中风险</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">投资房地产信托基金，获取租金收益和资产增值，分散投资风险</p>
+<div class="flex items-center justify-between mb-4">
+<div>
+<span class="text-2xl font-bold text-primary">5.80%</span>
+<span class="text-gray-500 text-sm ml-1">年化收益</span>
+</div>
+<div class="text-right">
+<span class="text-sm text-gray-500">近一年涨幅</span>
+<span class="text-sm font-medium ml-1">+7.2%</span>
+</div>
+</div>
+<div class="bg-gray-50 rounded p-3 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-600">起投金额</span>
+<span class="text-sm font-medium">500元</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">适合年龄</span>
+<span class="text-sm font-medium">18-22岁</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">立即购买</button>
+</div>
+</div>
+
+<!-- 成长型产品 -->
+<div id="products-growth" class="grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
+<div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-red-100 text-red-600 mr-3">
+<i class="ri-stock-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold">科技创新基金</h3>
+</div>
+<span class="text-xs px-2 py-1 bg-red-50 text-red-600 rounded-full">高风险</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">投资科技创新领域，高成长潜力，适合长期投资和风险承受能力较强的青少年</p>
+<div class="flex items-center justify-between mb-4">
+<div>
+<span class="text-2xl font-bold text-primary">12.50%</span>
+<span class="text-gray-500 text-sm ml-1">年化收益</span>
+</div>
+<div class="text-right">
+<span class="text-sm text-gray-500">近一年涨幅</span>
+<span class="text-sm font-medium ml-1">+28.5%</span>
+</div>
+</div>
+<div class="bg-gray-50 rounded p-3 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-600">起投金额</span>
+<span class="text-sm font-medium">500元</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">适合年龄</span>
+<span class="text-sm font-medium">18-22岁</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">立即购买</button>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-green-100 text-green-600 mr-3">
+<i class="ri-recycle-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold">ESG可持续发展基金</h3>
+</div>
+<span class="text-xs px-2 py-1 bg-red-50 text-red-600 rounded-full">高风险</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">关注环境、社会责任和公司治理的企业，兼顾社会价值和投资回报</p>
+<div class="flex items-center justify-between mb-4">
+<div>
+<span class="text-2xl font-bold text-primary">10.20%</span>
+<span class="text-gray-500 text-sm ml-1">年化收益</span>
+</div>
+<div class="text-right">
+<span class="text-sm text-gray-500">近一年涨幅</span>
+<span class="text-sm font-medium ml-1">+18.7%</span>
+</div>
+</div>
+<div class="bg-gray-50 rounded p-3 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-600">起投金额</span>
+<span class="text-sm font-medium">300元</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">适合年龄</span>
+<span class="text-sm font-medium">16-22岁</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">立即购买</button>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600 mr-3">
+<i class="ri-global-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold">全球新兴市场基金</h3>
+</div>
+<span class="text-xs px-2 py-1 bg-red-50 text-red-600 rounded-full">高风险</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">投资全球新兴市场，高增长潜力，分散地域风险，长期投资价值</p>
+<div class="flex items-center justify-between mb-4">
+<div>
+<span class="text-2xl font-bold text-primary">11.80%</span>
+<span class="text-gray-500 text-sm ml-1">年化收益</span>
+</div>
+<div class="text-right">
+<span class="text-sm text-gray-500">近一年涨幅</span>
+<span class="text-sm font-medium ml-1">+22.3%</span>
+</div>
+</div>
+<div class="bg-gray-50 rounded p-3 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-600">起投金额</span>
+<span class="text-sm font-medium">1000元</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-600">适合年龄</span>
+<span class="text-sm font-medium">18-22岁</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">立即购买</button>
+</div>
+</div>
+
+<div class="flex justify-center mt-8">
+<button class="flex items-center text-primary font-medium hover:text-primary/80 transition whitespace-nowrap">
+查看更多产品 <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</section>
+
+<!-- 金融知识咨询服务 -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold">金融知识咨询服务</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 bg-white rounded-lg shadow-sm p-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+<h3 class="text-xl font-semibold mb-2 md:mb-0">在线咨询</h3>
+<div class="flex space-x-3">
+<button class="px-4 py-2 rounded-button bg-primary text-white text-sm font-medium hover:bg-primary/90 transition whitespace-nowrap">立即咨询</button>
+<button class="px-4 py-2 rounded-button border border-gray-200 text-gray-600 text-sm font-medium hover:bg-gray-50 transition whitespace-nowrap">预约专家</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+<div class="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-primary mr-3">
+<i class="ri-chat-1-line ri-lg"></i>
+</div>
+<h4 class="font-medium">在线即时咨询</h4>
+</div>
+<p class="text-gray-600 text-sm mb-3">随时随地通过在线聊天获取专业金融顾问的建议和解答</p>
+<div class="flex items-center text-sm text-gray-500">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>服务时间: 09:00-21:00</span>
+</div>
+</div>
+<div class="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-green-100 text-green-600 mr-3">
+<i class="ri-vidicon-line ri-lg"></i>
+</div>
+<h4 class="font-medium">视频咨询服务</h4>
+</div>
+<p class="text-gray-600 text-sm mb-3">通过视频会议与金融专家面对面交流，获取个性化建议</p>
+<div class="flex items-center text-sm text-gray-500">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>需提前24小时预约</span>
+</div>
+</div>
+<div class="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600 mr-3">
+<i class="ri-group-line ri-lg"></i>
+</div>
+<h4 class="font-medium">小组咨询课堂</h4>
+</div>
+<p class="text-gray-600 text-sm mb-3">参与小组讨论课，与同龄人一起学习金融知识，解决共同问题</p>
+<div class="flex items-center text-sm text-gray-500">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>每周三、六 19:00-20:30</span>
+</div>
+</div>
+<div class="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition">
+<div class="flex items-center mb-3">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-orange-100 text-orange-600 mr-3">
+<i class="ri-parent-line ri-lg"></i>
+</div>
+<h4 class="font-medium">亲子理财咨询</h4>
+</div>
+<p class="text-gray-600 text-sm mb-3">专为家长和青少年共同参与设计的咨询服务，促进家庭财商教育</p>
+<div class="flex items-center text-sm text-gray-500">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>需提前48小时预约</span>
+</div>
+</div>
+</div>
+
+<div class="border-t border-gray-100 pt-6">
+<h3 class="text-lg font-semibold mb-4">预约专家咨询</h3>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">咨询类型</label>
+<div class="relative">
+<select class="w-full bg-gray-50 border-none rounded p-3 text-gray-700 appearance-none pr-8">
+<option>请选择咨询类型</option>
+<option>个人理财规划</option>
+<option>投资产品咨询</option>
+<option>教育金规划</option>
+<option>消费与储蓄建议</option>
+<option>其他问题</option>
+</select>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-500">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">预约日期</label>
+<input type="date" class="w-full bg-gray-50 border-none rounded p-3 text-gray-700">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">预约时间段</label>
+<div class="relative">
+<select class="w-full bg-gray-50 border-none rounded p-3 text-gray-700 appearance-none pr-8">
+<option>请选择时间段</option>
+<option>09:00-10:00</option>
+<option>10:00-11:00</option>
+<option>14:00-15:00</option>
+<option>15:00-16:00</option>
+<option>16:00-17:00</option>
+<option>19:00-20:00</option>
+</select>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-500">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">咨询方式</label>
+<div class="flex space-x-4">
+<label class="flex items-center">
+<div class="custom-radio" data-name="consult-method"></div>
+<span class="ml-2 text-sm text-gray-700">在线聊天</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio" data-name="consult-method"></div>
+<span class="ml-2 text-sm text-gray-700">视频通话</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio checked" data-name="consult-method"></div>
+<span class="ml-2 text-sm text-gray-700">电话咨询</span>
+</label>
+</div>
+</div>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">咨询问题简述</label>
+<textarea class="w-full bg-gray-50 border-none rounded p-3 text-gray-700 h-24" placeholder="请简要描述您想咨询的问题..."></textarea>
+</div>
+<button class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">提交预约</button>
+</form>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-lg font-semibold mb-4">金融顾问团队</h3>
+<div class="space-y-4 mb-6">
+<div class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/93227bf0a53fea58d36859da8469be05.jpg" alt="张教授" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">张教授</h4>
+<span class="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full">首席顾问</span>
+</div>
+<p class="text-gray-600 text-sm">青少年理财规划专家</p>
+</div>
+</div>
+<div class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/3016c0b9c6e96bc3fff3ceba25bb5943.jpg" alt="李顾问" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">李顾问</h4>
+<span class="text-xs px-2 py-1 bg-green-50 text-green-600 rounded-full">投资顾问</span>
+</div>
+<p class="text-gray-600 text-sm">青少年投资教育专家</p>
+</div>
+</div>
+<div class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/2c16ace202ef8d0d6b2b358aeadbc3e4.jpg" alt="王老师" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">王老师</h4>
+<span class="text-xs px-2 py-1 bg-purple-50 text-purple-600 rounded-full">教育顾问</span>
+</div>
+<p class="text-gray-600 text-sm">财商教育课程设计师</p>
+</div>
+</div>
+<div class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/602197da83961460c636011d5b85f03f.jpg" alt="陈顾问" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">陈顾问</h4>
+<span class="text-xs px-2 py-1 bg-orange-50 text-orange-600 rounded-full">科技顾问</span>
+</div>
+<p class="text-gray-600 text-sm">金融科技与数字货币专家</p>
+</div>
+</div>
+</div>
+
+<div class="bg-gray-50 rounded-lg p-4 mb-6">
+<h4 class="font-medium mb-2">常见问题解答</h4>
+<div class="space-y-3">
+<div>
+<button class="flex items-center justify-between w-full text-left text-sm font-medium text-gray-700 py-2">
+<span>青少年如何开始投资理财？</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+</div>
+<div>
+<button class="flex items-center justify-between w-full text-left text-sm font-medium text-gray-700 py-2">
+<span>如何为孩子选择合适的金融产品？</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+</div>
+<div>
+<button class="flex items-center justify-between w-full text-left text-sm font-medium text-gray-700 py-2">
+<span>青少年账户的安全保障措施有哪些？</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+</div>
+</div>
+</div>
+
+<button class="w-full py-3 border border-gray-200 rounded-button text-gray-600 font-medium hover:bg-gray-50 transition whitespace-nowrap">
+查看更多问题
+</button>
+</div>
+</div>
+</section>
+
+<!-- 金融工具区 -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold">金融工具</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- 预算计算器 -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-primary mr-3">
+<i class="ri-calculator-line ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold">预算计算器</h3>
+</div>
+<p class="text-gray-600 mb-5">根据你的收入和支出情况，制定合理的预算计划，培养良好的财务习惯</p>
+<form>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">月收入（元）</label>
+<input type="number" class="w-full bg-gray-50 border-none rounded p-3 text-gray-700" value="2000">
+</div>
+<div class="space-y-3 mb-4">
+<label class="block text-sm font-medium text-gray-700">支出分配</label>
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm text-gray-600">必要支出（40%）</span>
+<span class="text-sm font-medium">800元</span>
+</div>
+<div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-blue-500 rounded-full" style="width: 40%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm text-gray-600">储蓄（30%）</span>
+<span class="text-sm font-medium">600元</span>
+</div>
+<div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 rounded-full" style="width: 30%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm text-gray-600">娱乐支出（20%）</span>
+<span class="text-sm font-medium">400元</span>
+</div>
+<div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-purple-500 rounded-full" style="width: 20%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm text-gray-600">其他（10%）</span>
+<span class="text-sm font-medium">200元</span>
+</div>
+<div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-yellow-500 rounded-full" style="width: 10%;"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center mb-4">
+<div class="custom-checkbox mr-2"></div>
+<label class="text-sm text-gray-700">自定义支出比例</label>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">生成预算计划</button>
+</form>
+</div>
+
+<!-- 投资收益模拟器 -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-green-100 text-green-600 mr-3">
+<i class="ri-line-chart-line ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold">投资收益模拟器</h3>
+</div>
+<p class="text-gray-600 mb-5">模拟不同投资策略的长期收益，了解复利的力量，规划未来投资</p>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">初始投资金额（元）</label>
+<input type="number" class="w-full bg-gray-50 border-none rounded p-3 text-gray-700" value="5000">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">每月定投金额（元）</label>
+<input type="number" class="w-full bg-gray-50 border-none rounded p-3 text-gray-700" value="300">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">年化收益率（%）</label>
+<input type="number" class="w-full bg-gray-50 border-none rounded p-3 text-gray-700" value="8">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">投资年限</label>
+<input type="number" class="w-full bg-gray-50 border-none rounded p-3 text-gray-700" value="10">
+</div>
+</div>
+<div class="mb-5">
+<label class="block text-sm font-medium text-gray-700 mb-1">风险承受能力</label>
+<div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden mb-1">
+<div class="h-full bg-yellow-500 rounded-full" style="width: 60%;"></div>
+</div>
+<div class="flex justify-between text-xs text-gray-500">
+<span>保守</span>
+<span>平衡</span>
+<span>积极</span>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-4 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium">预计投资总额</span>
+<span class="text-lg font-bold text-gray-800">41,000元</span>
+</div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium">预计收益</span>
+<span class="text-lg font-bold text-primary">31,863元</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">投资终值</span>
+<span class="text-lg font-bold text-green-600">72,863元</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">重新计算</button>
+</form>
+</div>
+
+<!-- 理财目标规划 -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600 mr-3">
+<i class="ri-flag-line ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold">理财目标规划</h3>
+</div>
+<p class="text-gray-600 mb-5">设定你的理财目标，我们将帮你规划如何实现，让梦想变为现实</p>
+<form>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">目标类型</label>
+<div class="grid grid-cols-3 gap-2">
+<button type="button" class="py-2 px-3 bg-blue-50 text-blue-600 rounded-lg text-sm font-medium hover:bg-blue-100 transition whitespace-nowrap">教育金</button>
+<button type="button" class="py-2 px-3 bg-gray-50 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-100 transition whitespace-nowrap">数码产品</button>
+<button type="button" class="py-2 px-3 bg-gray-50 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-100 transition whitespace-nowrap">旅行</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">目标金额（元）</label>
+<input type="number" class="w-full bg-gray-50 border-none rounded p-3 text-gray-700" value="50000">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">目标日期</label>
+<input type="date" class="w-full bg-gray-50 border-none rounded p-3 text-gray-700" value="2030-09-01">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">当前已有资金（元）</label>
+<input type="number" class="w-full bg-gray-50 border-none rounded p-3 text-gray-700" value="10000">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">预计年化收益率（%）</label>
+<input type="number" class="w-full bg-gray-50 border-none rounded p-3 text-gray-700" value="5">
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-4 mb-4">
+<div class="flex items-center justify-between mb-3">
+<span class="text-sm font-medium">距离目标</span>
+<span class="text-sm font-medium">5年3个月</span>
+</div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-sm font-medium">目标完成度</span>
+<div class="flex items-center">
+<div class="w-full max-w-[120px] h-2 bg-gray-200 rounded-full overflow-hidden mr-2">
+<div class="h-full bg-primary rounded-full" style="width: 20%;"></div>
+</div>
+<span class="text-sm">20%</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">建议每月存入</span>
+<span class="text-lg font-bold text-primary">580元</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">生成详细计划</button>
+</form>
+</div>
+
+<!-- 风险评估工具 -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-red-100 text-red-600 mr-3">
+<i class="ri-shield-check-line ri-lg"></i>
+</div>
+<h3 class="text-xl font-semibold">风险评估工具</h3>
+</div>
+<p class="text-gray-600 mb-5">评估你的风险承受能力，获取适合你的投资建议和产品推荐</p>
+<form>
+<div class="space-y-4 mb-5">
+<div>
+<p class="text-sm font-medium text-gray-700 mb-2">1. 你的年龄段是？</p>
+<div class="space-y-2">
+<label class="flex items-center">
+<div class="custom-radio checked" data-name="age"></div>
+<span class="ml-2 text-sm text-gray-700">12-15岁</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio" data-name="age"></div>
+<span class="ml-2 text-sm text-gray-700">16-18岁</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio" data-name="age"></div>
+<span class="ml-2 text-sm text-gray-700">19-22岁</span>
+</label>
+</div>
+</div>
+<div>
+<p class="text-sm font-medium text-gray-700 mb-2">2. 你有多少投资经验？</p>
+<div class="space-y-2">
+<label class="flex items-center">
+<div class="custom-radio checked" data-name="experience"></div>
+<span class="ml-2 text-sm text-gray-700">没有经验</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio" data-name="experience"></div>
+<span class="ml-2 text-sm text-gray-700">少于1年</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio" data-name="experience"></div>
+<span class="ml-2 text-sm text-gray-700">1-3年</span>
+</label>
+</div>
+</div>
+<div>
+<p class="text-sm font-medium text-gray-700 mb-2">3. 如果你的投资在短期内下跌15%，你会？</p>
+<div class="space-y-2">
+<label class="flex items-center">
+<div class="custom-radio" data-name="reaction"></div>
+<span class="ml-2 text-sm text-gray-700">立即全部卖出</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio checked" data-name="reaction"></div>
+<span class="ml-2 text-sm text-gray-700">卖出一部分</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio" data-name="reaction"></div>
+<span class="ml-2 text-sm text-gray-700">继续持有</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio" data-name="reaction"></div>
+<span class="ml-2 text-sm text-gray-700">买入更多</span>
+</label>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-4 mb-4">
+<div class="flex items-center justify-between mb-3">
+<span class="text-sm font-medium">风险承受能力评估</span>
+<span class="text-sm font-medium text-blue-600">保守型</span>
+</div>
+<div class="mb-3">
+<div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden mb-1">
+<div class="h-full bg-blue-500 rounded-full" style="width: 30%;"></div>
+</div>
+<div class="flex justify-between text-xs text-gray-500">
+<span>保守型</span>
+<span>平衡型</span>
+<span>成长型</span>
+</div>
+</div>
+<p class="text-sm text-gray-600">根据你的评估结果，建议选择低风险的投资产品，如稳健成长储蓄计划、教育金储备宝等。</p>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">查看详细报告</button>
+</form>
+</div>
+</div>
+</section>
+
+<!-- 金融安全教育专区 -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold">金融安全教育专区</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/eb30f825e7a034cb900ed4a3babae5ab.jpg" alt="网络金融安全" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-5">
+<h3 class="text-lg font-semibold mb-2">网络金融安全防护指南</h3>
+<p class="text-gray-600 text-sm mb-4">学习如何保护个人金融信息，识别网络诈骗，安全使用网上银行和支付工具</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-500">
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-sm">4.9</span>
+<span class="text-gray-500 text-sm">(328)</span>
+</div>
+<button class="text-primary text-sm font-medium flex items-center whitespace-nowrap">
+查看详情 <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/b659391ff38570007429bdd2a12a9e4b.jpg" alt="信用卡安全" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-5">
+<h3 class="text-lg font-semibold mb-2">信用卡安全使用与管理</h3>
+<p class="text-gray-600 text-sm mb-4">了解信用卡安全使用原则，避免信用陷阱，保护个人信用记录</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-500">
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-sm">4.8</span>
+<span class="text-gray-500 text-sm">(246)</span>
+</div>
+<button class="text-primary text-sm font-medium flex items-center whitespace-nowrap">
+查看详情 <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/96ad5a1c8ff1afc3e201942a9f16757d.jpg" alt="投资陷阱" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-5">
+<h3 class="text-lg font-semibold mb-2">投资陷阱识别与防范</h3>
+<p class="text-gray-600 text-sm mb-4">学习识别常见投资骗局和陷阱，掌握安全投资原则，保护个人财产安全</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-500">
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-sm">4.9</span>
+<span class="text-gray-500 text-sm">(189)</span>
+</div>
+<button class="text-primary text-sm font-medium flex items-center whitespace-nowrap">
+查看详情 <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/c1db6f11912dff7f3907a0c95cc797b9.jpg" alt="个人信息保护" class="w-full h-full object-cover object-top">
+</div>
+<div class="p-5">
+<h3 class="text-lg font-semibold mb-2">个人信息保护与隐私安全</h3>
+<p class="text-gray-600 text-sm mb-4">了解如何保护个人身份信息，防范身份盗用，安全管理个人数据</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-500">
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-sm">4.7</span>
+<span class="text-gray-500 text-sm">(215)</span>
+</div>
+<button class="text-primary text-sm font-medium flex items-center whitespace-nowrap">
+查看详情 <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-lg font-semibold mb-4">金融安全自测</h3>
+<p class="text-gray-600 mb-5">测试你的金融安全意识，发现潜在风险，提升防护能力</p>
+<div class="space-y-4 mb-6">
+<div class="border border-gray-100 rounded-lg p-4">
+<p class="text-sm font-medium text-gray-700 mb-3">1. 收到一封声称来自你所用银行的邮件，要求你点击链接并输入账号密码进行验证，你会：</p>
+<div class="space-y-2">
+<label class="flex items-center">
+<div class="custom-radio" data-name="q1"></div>
+<span class="ml-2 text-sm text-gray-700">立即点击链接并按要求操作</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio" data-name="q1"></div>
+<span class="ml-2 text-sm text-gray-700">先查看发件人邮箱是否官方</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio checked" data-name="q1"></div>
+<span class="ml-2 text-sm text-gray-700">不点击链接，直接联系银行客服确认</span>
+</label>
+</div>
+</div>
+<div class="border border-gray-100 rounded-lg p-4">
+<p class="text-sm font-medium text-gray-700 mb-3">2. 关于密码设置，以下哪种做法最安全？</p>
+<div class="space-y-2">
+<label class="flex items-center">
+<div class="custom-radio" data-name="q2"></div>
+<span class="ml-2 text-sm text-gray-700">使用生日、手机号等容易记住的信息</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio" data-name="q2"></div>
+<span class="ml-2 text-sm text-gray-700">所有账户使用相同密码</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio checked" data-name="q2"></div>
+<span class="ml-2 text-sm text-gray-700">使用字母、数字、符号组合且定期更换</span>
+</label>
+</div>
+</div>
+<div class="border border-gray-100 rounded-lg p-4">
+<p class="text-sm font-medium text-gray-700 mb-3">3. 使用公共Wi-Fi时，以下哪种行为最危险？</p>
+<div class="space-y-2">
+<label class="flex items-center">
+<div class="custom-radio" data-name="q3"></div>
+<span class="ml-2 text-sm text-gray-700">浏览新闻网站</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio checked" data-name="q3"></div>
+<span class="ml-2 text-sm text-gray-700">登录网上银行或支付平台</span>
+</label>
+<label class="flex items-center">
+<div class="custom-radio" data-name="q3"></div>
+<span class="ml-2 text-sm text-gray-700">观看在线视频</span>
+</label>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-4 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm font-medium">安全意识评分</span>
+<span class="text-lg font-bold text-primary">90分</span>
+</div>
+<p class="text-sm text-gray-600">你的金融安全意识较高，但仍有提升空间。建议进一步学习网络安全知识，定期更新安全措施。</p>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">完成全部测试</button>
+</div>
+</div>
+</section>
+</main>
+
+<!-- 页脚 -->
+<footer class="bg-gray-800 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<h3 class="text-xl font-['Pacifico'] mb-4">logo</h3>
+<p class="text-gray-400 mb-4">智财青春平台致力于为青少年提供专业、安全的金融服务，培养健康的金钱观和理财能力</p>
+<div class="flex space-x-4">
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+<i class="ri-wechat-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+<i class="ri-weibo-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+<i class="ri-qq-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+<i class="ri-douyin-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">快速链接</h4>
+<ul class="space-y-2 text-gray-400">
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="hover:text-white transition">首页</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="hover:text-white transition">教育赋能</a></li>
+<li><a href="#" class="hover:text-white transition">金融服务</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/4281f937-ed72-45c2-988e-271aff319dc6" data-readdy="true" class="hover:text-white transition">社区互动</a></li>
+<li><a href="#" class="hover:text-white transition">关于我们</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">联系我们</h4>
+<ul class="space-y-2 text-gray-400">
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>北京市海淀区中关村大街1号</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<span>contact@zhicaiqingchun.com</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<span>400-888-7777</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">订阅更新</h4>
+<p class="text-gray-400 mb-4">订阅我们的新闻通讯，获取最新的金融服务和产品更新</p>
+<div class="flex">
+<input type="email" placeholder="您的邮箱地址" class="px-4 py-2 w-full bg-gray-700 border-none rounded-l text-white focus:outline-none focus:ring-2 focus:ring-primary">
+<button class="bg-primary px-4 py-2 rounded-r text-white font-medium hover:bg-primary/90 transition whitespace-nowrap">订阅</button>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-700 text-center text-gray-500 text-sm">
+<p>© 2025 智财青春平台 版权所有 | 京ICP备12345678号</p>
+</div>
+</div>
+</footer>
+
+<script>
+// Tab切换功能
+document.getElementById('tab-conservative').addEventListener('click', function() {
+  document.getElementById('tab-conservative').classList.add('bg-primary', 'text-white');
+  document.getElementById('tab-conservative').classList.remove('text-gray-600', 'hover:bg-gray-100');
+  
+  document.getElementById('tab-balanced').classList.remove('bg-primary', 'text-white');
+  document.getElementById('tab-balanced').classList.add('text-gray-600', 'hover:bg-gray-100');
+  
+  document.getElementById('tab-growth').classList.remove('bg-primary', 'text-white');
+  document.getElementById('tab-growth').classList.add('text-gray-600', 'hover:bg-gray-100');
+  
+  document.getElementById('products-conservative').classList.remove('hidden');
+  document.getElementById('products-balanced').classList.add('hidden');
+  document.getElementById('products-growth').classList.add('hidden');
+});
+
+document.getElementById('tab-balanced').addEventListener('click', function() {
+  document.getElementById('tab-balanced').classList.add('bg-primary', 'text-white');
+  document.getElementById('tab-balanced').classList.remove('text-gray-600', 'hover:bg-gray-100');
+  
+  document.getElementById('tab-conservative').classList.remove('bg-primary', 'text-white');
+  document.getElementById('tab-conservative').classList.add('text-gray-600', 'hover:bg-gray-100');
+  
+  document.getElementById('tab-growth').classList.remove('bg-primary', 'text-white');
+  document.getElementById('tab-growth').classList.add('text-gray-600', 'hover:bg-gray-100');
+  
+  document.getElementById('products-balanced').classList.remove('hidden');
+  document.getElementById('products-conservative').classList.add('hidden');
+  document.getElementById('products-growth').classList.add('hidden');
+});
+
+document.getElementById('tab-growth').addEventListener('click', function() {
+  document.getElementById('tab-growth').classList.add('bg-primary', 'text-white');
+  document.getElementById('tab-growth').classList.remove('text-gray-600', 'hover:bg-gray-100');
+  
+  document.getElementById('tab-conservative').classList.remove('bg-primary', 'text-white');
+  document.getElementById('tab-conservative').classList.add('text-gray-600', 'hover:bg-gray-100');
+  
+  document.getElementById('tab-balanced').classList.remove('bg-primary', 'text-white');
+  document.getElementById('tab-balanced').classList.add('text-gray-600', 'hover:bg-gray-100');
+  
+  document.getElementById('products-growth').classList.remove('hidden');
+  document.getElementById('products-conservative').classList.add('hidden');
+  document.getElementById('products-balanced').classList.add('hidden');
+});
+
+// 自定义复选框交互
+document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+  checkbox.addEventListener('click', function() {
+    this.classList.toggle('checked');
+  });
+});
+
+// 自定义开关交互
+document.querySelectorAll('.custom-switch').forEach(switchEl => {
+  switchEl.addEventListener('click', function() {
+    this.classList.toggle('active');
+  });
+});
+
+// 自定义单选框交互
+document.querySelectorAll('.custom-radio').forEach(radio => {
+  radio.addEventListener('click', function() {
+    const name = this.getAttribute('data-name');
+    if (name) {
+      document.querySelectorAll(`.custom-radio[data-name="${name}"]`).forEach(r => {
+        r.classList.remove('checked');
+      });
+    }
+    this.classList.add('checked');
+  });
+});
+</script>
+</body>
+</html>

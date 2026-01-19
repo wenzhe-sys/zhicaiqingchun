@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>消费评估系统 - 智财青春</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.hero-gradient {
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0) 100%);
+}
+.feature-card:hover .feature-icon {
+  transform: translateY(-5px);
+}
+.feature-icon {
+  transition: transform 0.3s ease;
+}
+.step-card.active {
+  border-color: #297CBB;
+  box-shadow: 0 0 0 2px rgba(41, 124, 187, 0.1);
+}
+.step-card.active .step-number {
+  background-color: #297CBB;
+  color: white;
+}
+.custom-checkbox:checked + label:before {
+  background-color: #297CBB;
+  border-color: #297CBB;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center">
+      <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center">
+        <div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+          <span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+        </div>
+        <span class="text-xl font-semibold text-gray-800">智财青春</span>
+      </a>
+    </div>
+    <nav class="hidden md:flex space-x-8">
+      <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+      <a href="#" class="text-primary font-medium">消费评估</a>
+      <a href="#" class="text-gray-600 hover:text-primary">教育赋能</a>
+      <a href="#" class="text-gray-600 hover:text-primary">决策干预</a>
+      <a href="#" class="text-gray-600 hover:text-primary">生态协同</a>
+    </nav>
+    <div class="flex items-center space-x-4">
+      <button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+        <i class="ri-search-line ri-lg"></i>
+      </button>
+      <button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+        <i class="ri-notification-3-line ri-lg"></i>
+      </button>
+      <div class="relative">
+        <img src="https://public.readdy.ai/ai/img_res/1b82bd4a42973383179f53d2455f8318.jpg" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="relative overflow-hidden" style="min-height: 500px;">
+  <div style="background-image: url('https://public.readdy.ai/ai/img_res/810c0b90cc66662c986642775a7e99eb.jpg'); background-size: cover; background-position: center right;" class="absolute inset-0"></div>
+  <div class="relative z-10 container mx-auto px-4 py-20">
+    <div class="hero-gradient max-w-2xl p-12 rounded-xl">
+      <div class="flex items-center space-x-2 mb-2">
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-primary flex items-center">
+          <i class="ri-arrow-left-line ri-lg mr-1"></i>
+          <span>返回首页</span>
+        </a>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">消费评估系统</h1>
+      <p class="text-lg text-gray-700 mb-8">基于 AI 算法生成 CHI 指数，精准评估消费健康度，识别双标行为，提供个性化改进建议，帮助您做出更明智的消费决策。</p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+          立即体验
+        </button>
+        <button class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+          了解更多
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">核心特点</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">全方位评估您的消费行为，提供科学、客观的消费画像</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition feature-card">
+        <div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-4 feature-icon">
+          <i class="ri-line-chart-line ri-2x text-primary"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">CHI 指数量化</h3>
+        <p class="text-gray-600">采用多源数据融合与 SEM 模型量化，通过随机森林与 GBDT 双模型架构，精准评估您的消费健康状况。</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition feature-card">
+        <div class="w-16 h-16 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mb-4 feature-icon">
+          <i class="ri-radar-line ri-2x text-secondary"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">多维度评估</h3>
+        <p class="text-gray-600">从预算管理、消费决策理性、财务规划意识、风险识别能力等多个维度进行全面评估。</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition feature-card">
+        <div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-4 feature-icon">
+          <i class="ri-user-search-line ri-2x text-primary"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">消费行为识别</h3>
+        <p class="text-gray-600">智能识别冲动消费、攀比消费、双标行为等不健康消费模式，提供针对性改进建议。</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition feature-card">
+        <div class="w-16 h-16 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mb-4 feature-icon">
+          <i class="ri-lightbulb-line ri-2x text-secondary"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">个性化建议</h3>
+        <p class="text-gray-600">根据您的消费画像和财务目标，提供个性化的消费优化建议和行动计划。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">如何使用</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">简单四步，获取您的专属消费健康评估</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow-md step-card active">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white font-bold mr-3 step-number">1</div>
+          <h3 class="text-xl font-semibold text-gray-900">授权数据</h3>
+        </div>
+        <p class="text-gray-600 mb-4">安全授权您的消费数据，我们支持支付宝、微信支付、银行卡等多种数据源接入。</p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <div class="flex items-center justify-center bg-gray-100 rounded-lg p-2 w-12 h-12">
+            <i class="ri-alipay-fill ri-2x text-blue-500"></i>
+          </div>
+          <div class="flex items-center justify-center bg-gray-100 rounded-lg p-2 w-12 h-12">
+            <i class="ri-wechat-pay-fill ri-2x text-green-500"></i>
+          </div>
+          <div class="flex items-center justify-center bg-gray-100 rounded-lg p-2 w-12 h-12">
+            <i class="ri-bank-card-fill ri-2x text-gray-600"></i>
+          </div>
+          <div class="flex items-center justify-center bg-gray-100 rounded-lg p-2 w-12 h-12">
+            <i class="ri-jd-fill ri-2x text-red-500"></i>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md step-card">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 text-gray-700 font-bold mr-3 step-number">2</div>
+          <h3 class="text-xl font-semibold text-gray-900">完善信息</h3>
+        </div>
+        <p class="text-gray-600 mb-4">填写您的基本信息和消费偏好，帮助我们更准确地分析您的消费行为。</p>
+        <div class="bg-gray-50 p-3 rounded-lg mt-4">
+          <div class="flex items-center mb-2">
+            <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 mr-2">
+              <i class="ri-user-line text-gray-500"></i>
+            </div>
+            <div class="flex-1">
+              <div class="h-2 bg-gray-200 rounded-full w-3/4"></div>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 mr-2">
+              <i class="ri-shopping-bag-line text-gray-500"></i>
+            </div>
+            <div class="flex-1">
+              <div class="h-2 bg-gray-200 rounded-full w-1/2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md step-card">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 text-gray-700 font-bold mr-3 step-number">3</div>
+          <h3 class="text-xl font-semibold text-gray-900">AI 分析</h3>
+        </div>
+        <p class="text-gray-600 mb-4">我们的 AI 算法将对您的消费数据进行多维度分析，生成 CHI 指数和消费画像。</p>
+        <div class="bg-gray-50 p-3 rounded-lg mt-4">
+          <div class="flex justify-center">
+            <div class="relative w-20 h-20">
+              <div class="absolute inset-0 border-4 border-gray-200 rounded-full"></div>
+              <div class="absolute inset-0 border-4 border-primary rounded-full" style="clip: rect(0, 20px, 40px, 0)"></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <i class="ri-cpu-line ri-lg text-primary"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md step-card">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 text-gray-700 font-bold mr-3 step-number">4</div>
+          <h3 class="text-xl font-semibold text-gray-900">获取报告</h3>
+        </div>
+        <p class="text-gray-600 mb-4">查看您的消费健康评估报告，包括 CHI 指数、消费画像和个性化改进建议。</p>
+        <div class="bg-gray-50 p-3 rounded-lg mt-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs text-gray-500">您的 CHI 指数</span>
+            <span class="text-sm font-bold text-primary">87</span>
+          </div>
+          <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 87%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-12">
+      <div class="w-full lg:w-1/2">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">CHI 指数：科学量化您的消费健康度</h2>
+        <p class="text-lg text-gray-600 mb-8">消费健康指数（CHI）是我们独创的评估体系，通过多源数据融合与 SEM 模型量化，精准评估您的消费健康状况，为您提供科学、客观的消费画像。</p>
+        <div class="space-y-6">
+          <div class="flex items-start">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+              <i class="ri-database-2-line ri-lg text-primary"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">多源数据融合</h3>
+              <p class="text-gray-600">整合支付宝、微信支付、银行卡、电商平台等多源消费数据，构建全面的消费行为画像。</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mr-4 flex-shrink-0">
+              <i class="ri-flow-chart ri-lg text-secondary"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">SEM 模型量化</h3>
+              <p class="text-gray-600">采用结构方程模型（SEM）对消费行为进行量化分析，确保评估结果的科学性和准确性。</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+              <i class="ri-ai-generate ri-lg text-primary"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">双模型架构</h3>
+              <p class="text-gray-600">结合随机森林与梯度提升决策树（GBDT）双模型架构，提高评估的精准度和鲁棒性。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-semibold text-gray-900">CHI 指数评估维度</h3>
+            <span class="text-sm text-gray-500">更新于: 2025-04-04</span>
+          </div>
+          <div id="radarChart" class="w-full h-80"></div>
+          <div class="grid grid-cols-2 gap-4 mt-8">
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-gray-700">预算管理能力</span>
+                <span class="text-primary font-medium">87/100</span>
+              </div>
+              <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 87%"></div>
+              </div>
+              <p class="text-xs text-gray-500 mt-2">您的预算执行率高达92%，优于90%的同龄人</p>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-gray-700">消费决策理性</span>
+                <span class="text-primary font-medium">82/100</span>
+              </div>
+              <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 82%"></div>
+              </div>
+              <p class="text-xs text-gray-500 mt-2">您的冲动消费指数仅为18%，远低于同龄人均值</p>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-gray-700">财务规划意识</span>
+                <span class="text-primary font-medium">65/100</span>
+              </div>
+              <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 65%"></div>
+              </div>
+              <p class="text-xs text-gray-500 mt-2">建议增强长期财务目标规划，提高投资意识</p>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-gray-700">风险识别能力</span>
+                <span class="text-primary font-medium">90/100</span>
+              </div>
+              <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 90%"></div>
+              </div>
+              <p class="text-xs text-gray-500 mt-2">您能有效识别消费陷阱，避免不必要的损失</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">消费行为识别</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">智能识别不健康消费模式，提供针对性改进建议</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="w-16 h-16 flex items-center justify-center rounded-full bg-red-100 mb-4">
+          <i class="ri-shopping-cart-2-line ri-2x text-red-500"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">冲动消费识别</h3>
+        <p class="text-gray-600 mb-4">通过分析消费时间、频率和场景，智能识别冲动消费行为，并提供冷静期提醒。</p>
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h4 class="font-medium text-gray-900 mb-2">识别标准</h4>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li class="flex items-start">
+              <i class="ri-checkbox-circle-line text-primary mr-2 mt-0.5"></i>
+              <span>短时间内多次重复购买同类商品</span>
+            </li>
+            <li class="flex items-start">
+              <i class="ri-checkbox-circle-line text-primary mr-2 mt-0.5"></i>
+              <span>深夜时段（23:00-3:00）的非必要消费</span>
+            </li>
+            <li class="flex items-start">
+              <i class="ri-checkbox-circle-line text-primary mr-2 mt-0.5"></i>
+              <span>超出月度预算类别的大额支出</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="w-16 h-16 flex items-center justify-center rounded-full bg-yellow-100 mb-4">
+          <i class="ri-group-line ri-2x text-yellow-500"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">攀比消费识别</h3>
+        <p class="text-gray-600 mb-4">分析社交场景下的消费行为，识别因社交压力导致的攀比消费，提供理性消费建议。</p>
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h4 class="font-medium text-gray-900 mb-2">识别标准</h4>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li class="flex items-start">
+              <i class="ri-checkbox-circle-line text-primary mr-2 mt-0.5"></i>
+              <span>社交场合中明显高于平时的消费水平</span>
+            </li>
+            <li class="flex items-start">
+              <i class="ri-checkbox-circle-line text-primary mr-2 mt-0.5"></i>
+              <span>与收入不匹配的高端品牌消费</span>
+            </li>
+            <li class="flex items-start">
+              <i class="ri-checkbox-circle-line text-primary mr-2 mt-0.5"></i>
+              <span>频繁购买社交媒体热门商品</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="w-16 h-16 flex items-center justify-center rounded-full bg-purple-100 mb-4">
+          <i class="ri-scales-3-line ri-2x text-purple-500"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">双标行为识别</h3>
+        <p class="text-gray-600 mb-4">识别消费观念与实际行为不一致的双标现象，帮助您建立一致的消费价值观。</p>
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <h4 class="font-medium text-gray-900 mb-2">识别标准</h4>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li class="flex items-start">
+              <i class="ri-checkbox-circle-line text-primary mr-2 mt-0.5"></i>
+              <span>声称注重环保但频繁购买一次性产品</span>
+            </li>
+            <li class="flex items-start">
+              <i class="ri-checkbox-circle-line text-primary mr-2 mt-0.5"></i>
+              <span>批评奢侈消费但自己购买高端品牌</span>
+            </li>
+            <li class="flex items-start">
+              <i class="ri-checkbox-circle-line text-primary mr-2 mt-0.5"></i>
+              <span>表示重视储蓄但频繁使用消费贷款</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">使用流程展示</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">简单直观的操作流程，轻松获取消费健康评估</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="relative h-60">
+          <img src="https://public.readdy.ai/ai/img_res/2d781ff96fc5ddba11fc15e72c549888.jpg" class="w-full h-full object-cover object-top" alt="数据授权界面">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">第一步：安全授权</h3>
+          <p class="text-gray-600 mb-4">选择您希望授权的数据源，我们采用银行级加密技术，确保您的数据安全。</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <i class="ri-shield-check-line ri-lg mr-2 text-primary"></i>
+            <span>银行级数据加密，安全无忧</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="relative h-60">
+          <img src="https://public.readdy.ai/ai/img_res/b2e80a16301fcb584c6ddbbe48731c1d.jpg" class="w-full h-full object-cover object-top" alt="信息填写界面">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">第二步：完善信息</h3>
+          <p class="text-gray-600 mb-4">填写您的基本信息和消费偏好，帮助我们更准确地分析您的消费行为。</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <i class="ri-time-line ri-lg mr-2 text-primary"></i>
+            <span>仅需 3 分钟，提高评估准确度</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="relative h-60">
+          <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="评估报告界面">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">第三步：查看报告</h3>
+          <p class="text-gray-600 mb-4">获取您的消费健康评估报告，包括 CHI 指数、消费画像和个性化改进建议。</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <i class="ri-file-chart-line ri-lg mr-2 text-primary"></i>
+            <span>详尽分析，一目了然</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-12">
+      <div class="w-full lg:w-1/2">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-semibold text-gray-900">消费趋势分析</h3>
+            <div class="flex items-center">
+              <span class="text-sm text-gray-500 mr-2">时间范围:</span>
+              <select class="text-sm border-none bg-gray-100 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary">
+                <option>近 6 个月</option>
+                <option>近 1 年</option>
+                <option>近 3 年</option>
+              </select>
+            </div>
+          </div>
+          <div id="trendChart" class="w-full h-80"></div>
+          <div class="grid grid-cols-3 gap-4 mt-6">
+            <div class="bg-gray-50 p-3 rounded-lg text-center">
+              <span class="text-sm text-gray-500">CHI 指数提升</span>
+              <div class="text-xl font-bold text-primary mt-1">+19</div>
+              <span class="text-xs text-gray-500">过去 6 个月</span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg text-center">
+              <span class="text-sm text-gray-500">冲动消费减少</span>
+              <div class="text-xl font-bold text-green-500 mt-1">-32%</div>
+              <span class="text-xs text-gray-500">过去 6 个月</span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg text-center">
+              <span class="text-sm text-gray-500">储蓄率提升</span>
+              <div class="text-xl font-bold text-primary mt-1">+15%</div>
+              <span class="text-xs text-gray-500">过去 6 个月</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">个性化改进建议</h2>
+        <p class="text-lg text-gray-600 mb-8">基于您的消费健康评估结果，我们为您提供以下个性化改进建议：</p>
+        <div class="space-y-6">
+          <div class="bg-white p-5 rounded-lg shadow-md">
+            <div class="flex items-center mb-3">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+                <i class="ri-calendar-check-line ri-lg text-primary"></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900">优化预算分配</h3>
+            </div>
+            <p class="text-gray-600 mb-3">您的餐饮消费占比略高（28%），建议将餐饮预算控制在收入的 20% 以内，将节省的资金转入储蓄或投资。</p>
+            <div class="flex items-center text-sm text-primary">
+              <i class="ri-arrow-right-line mr-1"></i>
+              <span>查看详细预算优化方案</span>
+            </div>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow-md">
+            <div class="flex items-center mb-3">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mr-3">
+                <i class="ri-shopping-bag-3-line ri-lg text-secondary"></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900">减少冲动消费</h3>
+            </div>
+            <p class="text-gray-600 mb-3">建议开启购物冷静期功能，对于超过 ¥500 的非必要消费，系统将自动设置 24 小时冷静期，帮助您避免冲动消费。</p>
+            <div class="flex items-center text-sm text-primary">
+              <i class="ri-arrow-right-line mr-1"></i>
+              <span>立即开启冷静期功能</span>
+            </div>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow-md">
+            <div class="flex items-center mb-3">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+                <i class="ri-funds-line ri-lg text-primary"></i>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900">提升财务规划意识</h3>
+            </div>
+            <p class="text-gray-600 mb-3">建议参加我们的"财务规划入门"课程，学习如何制定长期财务目标，并通过合理的资产配置实现财务自由。</p>
+            <div class="flex items-center text-sm text-primary">
+              <i class="ri-arrow-right-line mr-1"></i>
+              <span>查看推荐课程</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">用户案例分享</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">看看其他用户如何通过消费评估系统改善消费习惯</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center mb-4">
+          <img src="https://public.readdy.ai/ai/img_res/c77a9344a92466f68317f6acd3366f51.jpg" class="w-14 h-14 rounded-full object-cover mr-4" alt="用户头像">
+          <div>
+            <h4 class="text-lg font-semibold text-gray-900">陈思颖</h4>
+            <p class="text-sm text-gray-500">大学生 | 上海</p>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4">"通过消费评估系统，我发现自己在社交场合的消费远高于平时，这让我意识到了自己的攀比消费倾向。在系统的建议下，我设置了社交预算上限，现在每月能多存 1000 元。"</p>
+        <div class="flex items-center justify-between">
+          <div class="flex text-yellow-400">
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+          </div>
+          <div class="flex items-center text-sm text-gray-500">
+            <i class="ri-time-line mr-1"></i>
+            <span>使用 3 个月</span>
+          </div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-gray-100">
+          <div class="flex items-center justify-between text-sm">
+            <div class="flex items-center">
+              <span class="text-gray-500 mr-2">CHI 提升:</span>
+              <span class="font-medium text-primary">62 → 85</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-gray-500 mr-2">月储蓄:</span>
+              <span class="font-medium text-green-500">+¥1,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center mb-4">
+          <img src="https://public.readdy.ai/ai/img_res/e8dc98e22bb7c16b20791c9cb9683bff.jpg" class="w-14 h-14 rounded-full object-cover mr-4" alt="用户头像">
+          <div>
+            <h4 class="text-lg font-semibold text-gray-900">李俊杰</h4>
+            <p class="text-sm text-gray-500">程序员 | 北京</p>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4">"系统识别出我有严重的深夜冲动消费习惯，尤其是在加班后。开启了购物冷静期功能后，我避免了很多不必要的消费，三个月就为我节省了近 8000 元，这些钱我都投入了指数基金。"</p>
+        <div class="flex items-center justify-between">
+          <div class="flex text-yellow-400">
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-half-fill"></i>
+          </div>
+          <div class="flex items-center text-sm text-gray-500">
+            <i class="ri-time-line mr-1"></i>
+            <span>使用 6 个月</span>
+          </div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-gray-100">
+          <div class="flex items-center justify-between text-sm">
+            <div class="flex items-center">
+              <span class="text-gray-500 mr-2">CHI 提升:</span>
+              <span class="font-medium text-primary">58 → 89</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-gray-500 mr-2">节省金额:</span>
+              <span class="font-medium text-green-500">+¥8,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex items-center mb-4">
+          <img src="https://public.readdy.ai/ai/img_res/550f010b1d1a524b73943e1f880fe2fe.jpg" class="w-14 h-14 rounded-full object-cover mr-4" alt="用户头像">
+          <div>
+            <h4 class="text-lg font-semibold text-gray-900">张雨晴</h4>
+            <p class="text-sm text-gray-500">市场专员 | 广州</p>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4">"消费评估系统帮我发现了自己的双标行为——我一直认为自己很注重环保，但实际上经常购买快时尚和一次性产品。这让我重新审视了自己的消费观念，现在我的消费更加符合自己的价值观了。"</p>
+        <div class="flex items-center justify-between">
+          <div class="flex text-yellow-400">
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+          </div>
+          <div class="flex items-center text-sm text-gray-500">
+            <i class="ri-time-line mr-1"></i>
+            <span>使用 4 个月</span>
+          </div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-gray-100">
+          <div class="flex items-center justify-between text-sm">
+            <div class="flex items-center">
+              <span class="text-gray-500 mr-2">CHI 提升:</span>
+              <span class="font-medium text-primary">71 → 88</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-gray-500 mr-2">环保指数:</span>
+              <span class="font-medium text-green-500">+45%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-primary bg-opacity-5">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center justify-between">
+      <div class="mb-8 md:mb-0 md:mr-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">开始您的消费健康评估</h2>
+        <p class="text-lg text-gray-600 mb-6">立即体验消费评估系统，获取您的专属 CHI 指数和改进建议</p>
+        <button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+          立即体验
+        </button>
+      </div>
+      <div class="w-full md:w-1/2 max-w-md">
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">常见问题</h3>
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-medium text-gray-900 mb-1">数据安全如何保障？</h4>
+              <p class="text-sm text-gray-600">我们采用银行级加密技术保护您的数据安全，所有数据仅用于分析，绝不会泄露给第三方。</p>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-900 mb-1">评估需要多长时间？</h4>
+              <p class="text-sm text-gray-600">从授权数据到获取报告，整个过程通常只需 5-10 分钟，具体时间取决于您的数据量。</p>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-900 mb-1">如何提高我的 CHI 指数？</h4>
+              <p class="text-sm text-gray-600">系统会根据您的评估结果提供个性化改进建议，按照建议执行并定期复评，CHI 指数将逐步提高。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-gray-900 text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <div class="flex items-center mb-4">
+          <div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-1.5 rounded-lg mr-2">
+            <span class="text-2xl font-['Pacifico'] text-white">ZCQ</span>
+          </div>
+          <span class="text-lg font-semibold">智财青春</span>
+        </div>
+        <p class="text-gray-400 mb-4">数据驱动的青年消费智慧平台</p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-douban-fill"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">产品服务</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">消费评估</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">VR 体验课程</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">AR 购物助手</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">预算规划工具</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">关于我们</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">平台介绍</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">团队成员</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">帮助中心</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">用户手册</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">隐私政策</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 智财青春. 保留所有权利.</p>
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center text-gray-400">
+          <i class="ri-visa-fill ri-lg mr-2"></i>
+          <i class="ri-mastercard-fill ri-lg mr-2"></i>
+          <i class="ri-paypal-fill ri-lg mr-2"></i>
+          <i class="ri-alipay-fill ri-lg"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+// 雷达图
+const radarChart = echarts.init(document.getElementById('radarChart'));
+const radarOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'item',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    borderWidth: 1,
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  radar: {
+    indicator: [
+      { name: '预算管理能力', max: 100 },
+      { name: '消费决策理性', max: 100 },
+      { name: '财务规划意识', max: 100 },
+      { name: '风险识别能力', max: 100 },
+      { name: '价格敏感度', max: 100 },
+      { name: '消费多样性', max: 100 }
+    ],
+    splitArea: {
+      areaStyle: {
+        color: ['#fff']
+      }
+    },
+    axisLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    splitLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    name: {
+      textStyle: {
+        color: '#1f2937'
+      }
+    }
+  },
+  series: [{
+    name: 'SEM模型评估',
+    type: 'radar',
+    data: [
+      {
+        value: [87, 82, 65, 90, 78, 72],
+        name: '您的得分',
+        symbol: 'none',
+        lineStyle: {
+          width: 2,
+          color: '#57B5E7'
+        },
+        areaStyle: {
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [{
+              offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+            }, {
+              offset: 1, color: 'rgba(87, 181, 231, 0.1)'
+            }]
+          }
+        }
+      },
+      {
+        value: [70, 70, 70, 70, 70, 70],
+        name: '同龄群体平均',
+        symbol: 'none',
+        lineStyle: {
+          width: 2,
+          color: '#8DD3C7'
+        },
+        areaStyle: {
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [{
+              offset: 0, color: 'rgba(141, 211, 199, 0.2)'
+            }, {
+              offset: 1, color: 'rgba(141, 211, 199, 0.1)'
+            }]
+          }
+        }
+      }
+    ]
+  }]
+};
+radarChart.setOption(radarOption);
+
+// 趋势图
+const trendChart = echarts.init(document.getElementById('trendChart'));
+const trendOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'axis',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    borderWidth: 1,
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  legend: {
+    data: ['CHI 指数', '干预事件'],
+    bottom: 0,
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  grid: {
+    top: 30,
+    right: 10,
+    bottom: 50,
+    left: 40
+  },
+  xAxis: {
+    type: 'category',
+    data: ['11月', '12月', '1月', '2月', '3月', '4月'],
+    axisLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    axisLabel: {
+      color: '#1f2937'
+    }
+  },
+  yAxis: [
+    {
+      type: 'value',
+      name: 'CHI 指数',
+      nameTextStyle: {
+        color: '#1f2937'
+      },
+      min: 60,
+      max: 100,
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937'
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#eee'
+        }
+      }
+    },
+    {
+      type: 'value',
+      name: '干预次数',
+      nameTextStyle: {
+        color: '#1f2937'
+      },
+      min: 0,
+      max: 10,
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937'
+      },
+      splitLine: {
+        show: false
+      }
+    }
+  ],
+  series: [
+    {
+      name: 'CHI 指数',
+      type: 'line',
+      data: [68, 72, 75, 80, 83, 87],
+      symbol: 'none',
+      smooth: true,
+      lineStyle: {
+        width: 3,
+        color: '#57B5E7'
+      },
+      areaStyle: {
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [{
+            offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+          }, {
+            offset: 1, color: 'rgba(87, 181, 231, 0.05)'
+          }]
+        }
+      }
+    },
+    {
+      name: '干预事件',
+      type: 'bar',
+      yAxisIndex: 1,
+      data: [8, 6, 5, 3, 2, 1],
+      barWidth: 10,
+      itemStyle: {
+        color: '#FBBF72'
+      }
+    }
+  ]
+};
+trendChart.setOption(trendOption);
+
+// 步骤卡片交互
+document.querySelectorAll('.step-card').forEach((card, index) => {
+  card.addEventListener('click', function() {
+    document.querySelectorAll('.step-card').forEach(c => {
+      c.classList.remove('active');
+      c.querySelector('.step-number').classList.remove('bg-primary', 'text-white');
+      c.querySelector('.step-number').classList.add('bg-gray-200', 'text-gray-700');
+    });
+    
+    this.classList.add('active');
+    this.querySelector('.step-number').classList.remove('bg-gray-200', 'text-gray-700');
+    this.querySelector('.step-number').classList.add('bg-primary', 'text-white');
+  });
+});
+
+// 响应式调整
+window.addEventListener('resize', function() {
+  radarChart.resize();
+  trendChart.resize();
+});
+</script>
+</body>
+</html>

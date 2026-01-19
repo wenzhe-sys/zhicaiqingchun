@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智财青春 - 完整团队</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#64748b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+.team-card {
+  transition: all 0.3s ease;
+}
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+.team-card .team-bio {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.team-card.expanded .team-bio {
+  max-height: 500px;
+}
+.team-card .expand-icon {
+  transition: transform 0.3s ease;
+}
+.team-card.expanded .expand-icon {
+  transform: rotate(180deg);
+}
+.category-tab {
+  transition: all 0.3s ease;
+}
+.category-tab.active {
+  background-color: #3b82f6;
+  color: white;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- 导航栏 -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center">
+      <a href="#" class="font-['Pacifico'] text-2xl text-primary mr-10">logo</a>
+      <nav class="hidden md:flex space-x-8">
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="text-gray-600 hover:text-primary">教育赋能</a>
+        <a href="#" class="text-gray-600 hover:text-primary">金融服务</a>
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/4281f937-ed72-45c2-988e-271aff319dc6" data-readdy="true" class="text-gray-600 hover:text-primary">社区互动</a>
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/aab6e1fb-dd56-4a1e-8cd2-e1dbfca2306f" data-readdy="true" class="text-primary font-medium">关于我们</a>
+      </nav>
+    </div>
+    <div class="flex items-center space-x-4">
+      <div class="relative">
+        <input type="text" placeholder="搜索内容" class="pl-10 pr-4 py-2 w-64 rounded border-none bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20">
+        <div class="absolute left-3 top-2.5 w-4 h-4 flex items-center justify-center text-gray-400">
+          <i class="ri-search-line"></i>
+        </div>
+      </div>
+      <div class="flex items-center space-x-1">
+        <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+          <i class="ri-user-3-line text-gray-600"></i>
+        </div>
+        <span class="text-sm font-medium">陈明宇</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 页面标题 -->
+<section class="py-8 bg-white shadow-sm">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center">
+      <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/aab6e1fb-dd56-4a1e-8cd2-e1dbfca2306f" data-readdy="true" class="flex items-center text-gray-600 hover:text-primary mr-4">
+        <div class="w-5 h-5 flex items-center justify-center">
+          <i class="ri-arrow-left-line"></i>
+        </div>
+        <span class="ml-1">返回关于我们</span>
+      </a>
+      <h1 class="text-2xl font-bold text-gray-800">完整团队</h1>
+    </div>
+  </div>
+</section>
+
+<!-- 团队分类选项卡 -->
+<section class="py-6 bg-white border-b">
+  <div class="container mx-auto px-4">
+    <div class="overflow-x-auto pb-2">
+      <div class="flex space-x-2 min-w-max">
+        <button class="category-tab active px-4 py-2 rounded-full text-sm font-medium" data-category="all">全部团队</button>
+        <button class="category-tab px-4 py-2 rounded-full text-sm font-medium text-gray-600" data-category="management">管理团队</button>
+        <button class="category-tab px-4 py-2 rounded-full text-sm font-medium text-gray-600" data-category="education">教育团队</button>
+        <button class="category-tab px-4 py-2 rounded-full text-sm font-medium text-gray-600" data-category="tech">技术团队</button>
+        <button class="category-tab px-4 py-2 rounded-full text-sm font-medium text-gray-600" data-category="psychology">心理咨询团队</button>
+        <button class="category-tab px-4 py-2 rounded-full text-sm font-medium text-gray-600" data-category="operation">运营团队</button>
+        <button class="category-tab px-4 py-2 rounded-full text-sm font-medium text-gray-600" data-category="marketing">市场团队</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 团队成员展示 -->
+<section class="py-12">
+  <div class="container mx-auto px-4">
+    <!-- 管理团队 -->
+    <div class="team-section mb-12" data-category="management">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">管理团队</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 成员1 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/a7c5a8b4b0f50a8d4db49b9473b8bd90.jpg" alt="张志远" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">张志远</h3>
+            <p class="text-primary font-medium">创始人兼CEO</p>
+            <p class="text-gray-600 mt-2">金融学博士，前国际金融教育协会中国区主席</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有20年金融教育经验，曾任多家知名教育机构高管，对青少年财商教育有深入研究和丰富实践。</p>
+              <p class="mb-2">主导开发了"青少年财商素养评估体系"，获得国家级教育创新奖项。曾在哈佛大学、北京大学等多所知名高校担任客座教授。</p>
+              <p>致力于推动中国青少年财商教育的普及和发展，是该领域的开拓者和引领者。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员2 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/d9e8f2a1c7b6d5e4f3a2b1c0d9e8f7a6.jpg" alt="林雅芳" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">林雅芳</h3>
+            <p class="text-primary font-medium">首席运营官</p>
+            <p class="text-gray-600 mt-2">MBA，前国际教育集团中国区运营总监</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有15年教育行业运营管理经验，曾成功管理超过50家教育分支机构，擅长教育产品的市场推广和运营优化。</p>
+              <p class="mb-2">主导智财青春平台的全国业务拓展，建立了与200多所学校的合作关系，推动平台用户规模快速增长。</p>
+              <p>注重数据驱动的运营策略，建立了完善的用户体验评估和优化体系，大幅提升了平台的用户留存率。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员3 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/f1e2d3c4b5a6f7e8d9c0b1a2d3e4f5c6.jpg" alt="郑博文" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">郑博文</h3>
+            <p class="text-primary font-medium">首席财务官</p>
+            <p class="text-gray-600 mt-2">金融学硕士，注册会计师，前投资银行高管</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有20年金融和投资管理经验，曾在多家知名投资银行和教育集团担任高管职务，对教育行业的财务管理和投融资有深入研究。</p>
+              <p class="mb-2">成功主导智财青春平台的A轮和B轮融资，累计融资超过2亿元，为平台的快速发展提供了强有力的资金支持。</p>
+              <p>建立了完善的财务管理体系，确保平台资金的高效利用和风险控制，为平台的可持续发展奠定了坚实的财务基础。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员4 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6.jpg" alt="刘慧敏" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">刘慧敏</h3>
+            <p class="text-primary font-medium">人力资源总监</p>
+            <p class="text-gray-600 mt-2">人力资源管理硕士，前跨国企业HR总监</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有15年人力资源管理经验，曾在多家知名企业和教育机构担任HR管理职务，擅长人才招聘、培养和团队建设。</p>
+              <p class="mb-2">建立了智财青春平台的人才培养体系，打造了一支专业、高效、创新的团队，团队规模从创立初期的10人发展到现在的150人。</p>
+              <p>注重企业文化建设，营造了开放、创新、协作的工作环境，大幅提升了团队的凝聚力和创造力。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 教育团队 -->
+    <div class="team-section mb-12" data-category="education">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">教育团队</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 成员1 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/5037250346e0c66f34968726aede4b17.jpg" alt="李梦华" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">李梦华</h3>
+            <p class="text-primary font-medium">教育总监</p>
+            <p class="text-gray-600 mt-2">教育学博士，前国家级教育项目负责人</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">教育学博士，曾主导多个国家级教育项目，专注于创新教育方法研究，推动财商教育融入学校课程体系。</p>
+              <p class="mb-2">主持开发了智财青春平台的核心课程体系，涵盖理财基础、消费心理、投资理念等多个模块，受到广泛好评。</p>
+              <p>积极推动财商教育的标准化和普及化，参与制定了多项青少年财商教育标准，在国内外多个教育论坛发表演讲。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员2 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/e5d4c3b2a1e6d7c8b9a0e1d2c3b4a5.jpg" alt="赵建国" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">赵建国</h3>
+            <p class="text-primary font-medium">财商课程主管</p>
+            <p class="text-gray-600 mt-2">金融学硕士，注册理财规划师</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有15年金融教育经验，曾在多家金融机构和教育机构任职，擅长将复杂的金融知识转化为易于理解的教育内容。</p>
+              <p class="mb-2">主导开发了"青少年理财启蒙课程"和"家庭财务管理课程"，累计服务学生超过10万人，获得了学生和家长的高度评价。</p>
+              <p>注重理论与实践相结合，开发了多个财商实践活动，如"模拟投资大赛"、"家庭理财挑战赛"等，让学生在实践中学习财商知识。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员3 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/f6e5d4c3b2a1f7e6d5c4b3a2f8e7d6c5.jpg" alt="王丽娜" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">王丽娜</h3>
+            <p class="text-primary font-medium">课程研发主管</p>
+            <p class="text-gray-600 mt-2">教育学硕士，前知名出版社教育编辑</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有10年教育内容开发经验，曾参与多部国家级教材的编写工作，擅长教育内容的设计和开发。</p>
+              <p class="mb-2">主导开发了智财青春平台的"财商教育系列教材"，包括小学、初中、高中三个阶段的教材，已在全国100多所学校使用。</p>
+              <p>注重多媒体教学资源的开发，推出了包括视频课程、互动练习、案例库等在内的丰富教学资源，大大提升了教学效果。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员4 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/a7b6c5d4e3f2a8b7c6d5e4f3a9b8c7d6.jpg" alt="张明辉" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">张明辉</h3>
+            <p class="text-primary font-medium">教师培训主管</p>
+            <p class="text-gray-600 mt-2">教育学博士，高级教师，教育培训专家</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有20年教育培训经验，曾在多家教育机构担任培训总监，擅长教师专业发展和培训体系建设。</p>
+              <p class="mb-2">建立了智财青春平台的"财商教育教师培训体系"，已培训全国各地教师超过5000人，大大提升了财商教育的教学质量。</p>
+              <p>开发了"线上+线下"结合的混合式培训模式，通过案例教学、模拟课堂、经验分享等多种方式，提升教师的专业能力和教学水平。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员5 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/b8a7c6d5e4f3b9a8c7d6e5f4b0a9c8d7.jpg" alt="陈思琪" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">陈思琪</h3>
+            <p class="text-primary font-medium">教育研究员</p>
+            <p class="text-gray-600 mt-2">教育学博士，前教育研究所研究员</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">专注于青少年财商教育研究，发表多篇学术论文，参与多项国家级教育研究项目，是国内财商教育领域的知名专家。</p>
+              <p class="mb-2">主持开发了"青少年财商素养评估体系"，为智财青春平台的课程设计和教学评估提供了科学依据。</p>
+              <p>积极参与国际财商教育交流，与多个国际教育组织建立合作关系，引入国际先进的财商教育理念和方法。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 技术团队 -->
+    <div class="team-section mb-12" data-category="tech">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">技术团队</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 成员1 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/27b8a1de4b8c8954b125e4dcf9f4745f.jpg" alt="王天明" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">王天明</h3>
+            <p class="text-primary font-medium">技术负责人</p>
+            <p class="text-gray-600 mt-2">计算机科学博士，前国际科技公司技术主管</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">计算机科学博士，曾在国际知名科技公司担任技术主管，领导开发了多个教育科技创新产品，推动VR、AI技术在教育领域的应用。</p>
+              <p class="mb-2">主导开发了智财青春平台的核心技术架构，包括VR模拟消费体验系统、AI个性化学习系统等创新产品，大大提升了学习体验和效果。</p>
+              <p>注重技术与教育的深度融合，通过技术手段解决教育痛点，创造了多项技术专利，获得多个科技创新奖项。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员2 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/c9b8a7d6e5f4c0b9a8d7e6f5c1b0a9d8.jpg" alt="林小雨" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">林小雨</h3>
+            <p class="text-primary font-medium">前端开发主管</p>
+            <p class="text-gray-600 mt-2">计算机科学硕士，全栈工程师</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有8年前端开发经验，曾在多家知名互联网公司担任前端开发工程师，擅长用户界面设计和交互体验优化。</p>
+              <p class="mb-2">主导开发了智财青春平台的用户界面和交互系统，打造了简洁、直观、易用的学习平台，大大提升了用户体验。</p>
+              <p>注重前端性能优化和跨平台适配，确保平台在各种设备上都能流畅运行，获得了用户的高度评价。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员3 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/d0c9b8a7e6f5d1c0b9a8e7f6d2c1b0a9.jpg" alt="张宇航" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">张宇航</h3>
+            <p class="text-primary font-medium">后端开发主管</p>
+            <p class="text-gray-600 mt-2">计算机科学硕士，系统架构师</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有10年后端开发经验，曾在多家知名互联网公司担任技术主管，擅长系统架构设计和高并发处理。</p>
+              <p class="mb-2">主导设计了智财青春平台的后端架构，构建了高性能、高可用、易扩展的技术体系，支持平台快速发展。</p>
+              <p>注重数据安全和隐私保护，建立了完善的数据加密和权限控制机制，确保用户数据的安全性。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员4 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/e1d0c9b8f7e2d1c0b9f8e3d2c1b0f9.jpg" alt="刘思思" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">刘思思</h3>
+            <p class="text-primary font-medium">数据科学主管</p>
+            <p class="text-gray-600 mt-2">统计学博士，机器学习专家</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有8年数据科学和人工智能研究经验，曾在多家知名科技公司担任数据科学家，擅长机器学习和数据挖掘。</p>
+              <p class="mb-2">主导开发了智财青春平台的AI个性化学习系统，通过分析学习行为和学习效果，为学生提供个性化的学习路径和内容推荐。</p>
+              <p>注重数据驱动的产品优化，通过用户行为分析和学习效果评估，不断优化平台的功能和内容，提升学习效果。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员5 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/f2e1d0c9g8f3e2d1c0g9f4e3d2c1g0.jpg" alt="陈志强" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">陈志强</h3>
+            <p class="text-primary font-medium">VR开发主管</p>
+            <p class="text-gray-600 mt-2">计算机科学硕士，VR技术专家</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有7年VR/AR开发经验，曾在多家知名科技公司担任技术主管，擅长虚拟现实和增强现实技术的教育应用。</p>
+              <p class="mb-2">主导开发了智财青春平台的VR模拟消费体验系统，通过虚拟现实技术模拟各种消费场景，让学生在沉浸式环境中学习消费决策。</p>
+              <p>注重技术与教育的结合，不断探索VR/AR技术在财商教育中的创新应用，推动教育方式的变革。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 心理咨询团队 -->
+    <div class="team-section mb-12" data-category="psychology">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">心理咨询团队</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 成员1 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/2190ded3eebfa820564603a66f8e6fe4.jpg" alt="陈静怡" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">陈静怡</h3>
+            <p class="text-primary font-medium">心理顾问</p>
+            <p class="text-gray-600 mt-2">心理学博士，注册心理咨询师</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">心理学博士，注册心理咨询师，专注于青少年心理健康研究，开发了"消费心理疗愈系统"，帮助青少年建立健康的消费心理。</p>
+              <p class="mb-2">主导开发了智财青春平台的心理咨询服务体系，通过心理测评、个人咨询、团体辅导等多种方式，帮助青少年建立健康的金钱观念。</p>
+              <p>积极推动心理健康教育与财商教育的融合，发表多篇相关研究论文，在国内外心理学会议上进行专题演讲。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员2 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/g3f2e1d0h9g4f3e2d1h0g5f4e3d2h1.jpg" alt="李明哲" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">李明哲</h3>
+            <p class="text-primary font-medium">高级心理咨询师</p>
+            <p class="text-gray-600 mt-2">心理学硕士，国家二级心理咨询师</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有15年心理咨询经验，专注于青少年心理健康和行为干预，擅长认知行为疗法和家庭系统治疗。</p>
+              <p class="mb-2">主导开发了"青少年消费心理评估量表"，为智财青春平台的心理服务提供了科学工具，帮助精准识别青少年的消费心理问题。</p>
+              <p>开展了大量的家庭财商教育工作坊，帮助家长了解青少年的消费心理，改善亲子沟通，共同培养健康的财商观念。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员3 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/h4g3f2e1i0h5g4f3e2i1h6g5f4e3i2.jpg" alt="张雨晴" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">张雨晴</h3>
+            <p class="text-primary font-medium">青少年心理专家</p>
+            <p class="text-gray-600 mt-2">发展心理学博士，青少年心理研究员</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">专注于青少年发展心理学研究，对青少年的认知发展、情感发展和社会化过程有深入研究，发表多篇相关学术论文。</p>
+              <p class="mb-2">主导开发了"青少年财商心理发展阶段理论"，为智财青春平台的课程设计提供了科学依据，确保课程内容符合青少年的心理发展特点。</p>
+              <p>开展了大量的青少年心理健康教育活动，通过讲座、工作坊、团体辅导等形式，帮助青少年建立健康的自我认知和价值观。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员4 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/i5h4g3f2j1i6h5g4f3j2i7h6g5f4j3.jpg" alt="王建华" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">王建华</h3>
+            <p class="text-primary font-medium">家庭教育顾问</p>
+            <p class="text-gray-600 mt-2">家庭教育学博士，家庭治疗师</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">专注于家庭教育和家庭治疗研究，对家庭系统对青少年发展的影响有深入研究，是国内知名的家庭教育专家。</p>
+              <p class="mb-2">主导开发了"家庭财商教育指南"，为家长提供科学的家庭财商教育方法，帮助家长在日常生活中培养孩子的财商素养。</p>
+              <p>开展了大量的家长培训和家庭咨询服务，帮助家长了解青少年的心理特点，改善亲子关系，共同营造良好的家庭教育环境。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 运营团队 -->
+    <div class="team-section mb-12" data-category="operation">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">运营团队</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 成员1 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/j6i5h4g3k2j7i6h5g4k3j8i7h6g5k4.jpg" alt="赵敏" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">赵敏</h3>
+            <p class="text-primary font-medium">运营总监</p>
+            <p class="text-gray-600 mt-2">MBA，前互联网公司运营总监</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有12年互联网产品运营经验，曾在多家知名互联网公司担任运营管理职务，擅长用户运营和内容运营。</p>
+              <p class="mb-2">主导智财青春平台的整体运营策略，构建了完整的运营体系，包括用户运营、内容运营、活动运营等多个方面，推动平台用户规模和活跃度的快速增长。</p>
+              <p>注重数据驱动的运营决策，建立了完善的数据分析体系，通过用户行为分析和运营效果评估，不断优化运营策略。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员2 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/k7j6i5h4l3k8j7i6h5l4k9j8i7h6l5.jpg" alt="李文博" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">李文博</h3>
+            <p class="text-primary font-medium">内容运营主管</p>
+            <p class="text-gray-600 mt-2">新闻传播学硕士，前媒体编辑</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有8年内容创作和编辑经验，曾在多家知名媒体和教育机构担任内容主管，擅长教育内容的策划和制作。</p>
+              <p class="mb-2">主导智财青春平台的内容策略，打造了丰富多样的财商教育内容，包括文章、视频、播客等多种形式，受到用户的广泛好评。</p>
+              <p>注重内容的专业性和趣味性相结合，通过生动有趣的方式传递财商知识，提升用户的学习兴趣和效果。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员3 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/l8k7j6i5m4l9k8j7i6m5l0k9j8i7m6.jpg" alt="王小燕" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">王小燕</h3>
+            <p class="text-primary font-medium">社区运营主管</p>
+            <p class="text-gray-600 mt-2">社会学硕士，社区运营专家</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有7年社区运营经验，曾在多家知名互联网公司担任社区运营主管，擅长用户社区建设和用户活动策划。</p>
+              <p class="mb-2">主导智财青春平台的社区建设，打造了活跃、健康、有价值的用户社区，通过各种社区活动和互动机制，提升用户粘性和参与度。</p>
+              <p>注重用户反馈和需求收集，建立了完善的用户反馈机制，将用户声音转化为产品和服务的改进方向。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员4 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/m9l8k7j6n5m0l9k8j7n6m1l0k9j8n7.jpg" alt="陈阳" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">陈阳</h3>
+            <p class="text-primary font-medium">活动运营主管</p>
+            <p class="text-gray-600 mt-2">市场营销硕士，活动策划专家</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有8年活动策划和执行经验，曾在多家知名企业和教育机构担任活动总监，擅长大型活动的策划和组织。</p>
+              <p class="mb-2">主导智财青春平台的线上线下活动策划，组织了包括"全国青少年财商挑战赛"、"财商夏令营"等多个大型活动，受到广泛关注和好评。</p>
+              <p>注重活动的教育价值和趣味性相结合，通过寓教于乐的方式，让参与者在活动中学习财商知识，提升财商素养。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 市场团队 -->
+    <div class="team-section mb-12" data-category="marketing">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">市场团队</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 成员1 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/n0m9l8k7o6n1m0l9k8o7n2m1l0k9o8.jpg" alt="孙志强" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">孙志强</h3>
+            <p class="text-primary font-medium">市场总监</p>
+            <p class="text-gray-600 mt-2">市场营销硕士，前跨国公司市场总监</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有15年市场营销经验，曾在多家知名企业和教育机构担任市场管理职务，擅长品牌建设和市场策略制定。</p>
+              <p class="mb-2">主导智财青春平台的整体市场策略，打造了"让财商教育融入每个青少年的成长"的品牌理念，提升了平台的品牌影响力和市场份额。</p>
+              <p>注重市场数据分析和用户洞察，通过深入了解目标用户的需求和行为特点，制定精准的市场策略，提升市场推广效果。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员2 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/o1n0m9l8p7o2n1m0l9p8o3n2m1l0p9.jpg" alt="林婷婷" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">林婷婷</h3>
+            <p class="text-primary font-medium">品牌主管</p>
+            <p class="text-gray-600 mt-2">传播学硕士，品牌策划专家</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有8年品牌管理经验，曾在多家知名企业和广告公司担任品牌经理，擅长品牌定位和品牌传播。</p>
+              <p class="mb-2">主导智财青春平台的品牌建设，打造了专业、创新、关爱的品牌形象，通过一系列品牌活动和传播，提升了品牌的知名度和美誉度。</p>
+              <p>注重品牌与用户的情感连接，通过讲述品牌故事和价值主张，与用户建立深层次的情感共鸣，增强品牌忠诚度。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员3 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/p2o1n0m9q8p3o2n1m0q9p4o3n2m1q0.jpg" alt="张伟" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">张伟</h3>
+            <p class="text-primary font-medium">公关主管</p>
+            <p class="text-gray-600 mt-2">新闻学硕士，前媒体记者</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有10年媒体和公关经验，曾在知名媒体和公关公司任职，擅长媒体关系管理和危机公关。</p>
+              <p class="mb-2">主导智财青春平台的公关策略，建立了良好的媒体关系网络，通过各种媒体渠道传播平台的理念和价值，提升社会影响力。</p>
+              <p>注重社会责任传播，策划了多个公益项目，如"乡村财商教育计划"、"留守儿童财商关爱行动"等，展现企业的社会责任感。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        
+        <!-- 成员4 -->
+        <div class="team-card bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="https://public.readdy.ai/ai/img_res/q3p2o1n0r9q4p3o2n1r0q5p4o3n2r1.jpg" alt="刘欣怡" class="w-full h-64 object-cover object-top">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-800">刘欣怡</h3>
+            <p class="text-primary font-medium">数字营销主管</p>
+            <p class="text-gray-600 mt-2">数字营销硕士，前互联网公司营销总监</p>
+            <div class="team-bio mt-4 text-gray-600">
+              <p class="mb-2">拥有8年数字营销经验，曾在多家知名互联网公司担任数字营销主管，擅长社交媒体营销和内容营销。</p>
+              <p class="mb-2">主导智财青春平台的数字营销策略，通过微信、微博、抖音等多个社交媒体平台，打造了多元化的内容矩阵，吸引了大量目标用户。</p>
+              <p>注重数据驱动的营销决策，通过精准的用户画像和行为分析，制定针对性的营销策略，提升营销效果和投资回报率。</p>
+            </div>
+            <button class="expand-btn flex items-center justify-center w-full mt-4 text-primary">
+              <span class="mr-1">查看更多</span>
+              <div class="w-4 h-4 flex items-center justify-center expand-icon">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="bg-gray-800 text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <a href="#" class="font-['Pacifico'] text-2xl text-white mb-4 inline-block">logo</a>
+        <p class="text-gray-400 text-sm mb-4">智财青春平台致力于为青少年提供财商教育和金融素养培养，助力青少年成长为具备健康财务观念的社会人才。</p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-weibo-fill"></i>
+            </div>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-wechat-fill"></i>
+            </div>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-qq-fill"></i>
+            </div>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-douyin-fill"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+        <ul class="space-y-2">
+          <li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-400 hover:text-white">首页</a></li>
+          <li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="text-gray-400 hover:text-white">教育赋能</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">金融服务</a></li>
+          <li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/4281f937-ed72-45c2-988e-271aff319dc6" data-readdy="true" class="text-gray-400 hover:text-white">社区互动</a></li>
+          <li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/aab6e1fb-dd56-4a1e-8cd2-e1dbfca2306f" data-readdy="true" class="text-gray-400 hover:text-white">关于我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">社区资源</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">经验分享</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">问答解惑</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">学习心得</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">活动讨论</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">社区规则</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+        <ul class="space-y-2">
+          <li class="flex items-start">
+            <div class="w-5 h-5 mt-0.5 flex items-center justify-center text-gray-400 mr-2">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span class="text-gray-400">北京市海淀区中关村科技园区</span>
+          </li>
+          <li class="flex items-center">
+            <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
+              <i class="ri-mail-line"></i>
+            </div>
+            <span class="text-gray-400">contact@zhicaiqingchun.com</span>
+          </li>
+          <li class="flex items-center">
+            <div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
+              <i class="ri-phone-line"></i>
+            </div>
+            <span class="text-gray-400">400-888-7777</span>
+          </li>
+        </ul>
+        <div class="mt-4">
+          <div class="flex items-center">
+            <input type="email" placeholder="输入邮箱订阅资讯" class="px-4 py-2 rounded-l bg-gray-700 text-white border-none focus:outline-none text-sm w-full">
+            <button class="px-4 py-2 bg-primary text-white rounded-r hover:bg-primary/90 !rounded-button whitespace-nowrap">订阅</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400 text-sm">© 2025 智财青春平台. 保留所有权利.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="#" class="text-gray-400 hover:text-white text-sm">隐私政策</a>
+        <a href="#" class="text-gray-400 hover:text-white text-sm">服务条款</a>
+        <a href="#" class="text-gray-400 hover:text-white text-sm">帮助中心</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 团队卡片展开收起
+document.querySelectorAll('.expand-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const card = this.closest('.team-card');
+    card.classList.toggle('expanded');
+    
+    const text = this.querySelector('span');
+    const icon = this.querySelector('.expand-icon');
+    
+    if (card.classList.contains('expanded')) {
+      text.textContent = '收起';
+      icon.style.transform = 'rotate(180deg)';
+    } else {
+      text.textContent = '查看更多';
+      icon.style.transform = 'rotate(0)';
+    }
+  });
+});
+
+// 分类标签筛选
+document.querySelectorAll('.category-tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    // 更新标签状态
+    document.querySelectorAll('.category-tab').forEach(t => {
+      t.classList.remove('active');
+      t.classList.add('text-gray-600');
+    });
+    this.classList.add('active');
+    this.classList.remove('text-gray-600');
+    
+    const category = this.getAttribute('data-category');
+    
+    // 筛选团队
+    document.querySelectorAll('.team-section').forEach(section => {
+      if (category === 'all' || section.getAttribute('data-category') === category) {
+        section.style.display = 'block';
+      } else {
+        section.style.display = 'none';
+      }
+    });
+    
+    // 滚动到顶部
+    window.scrollTo({
+      top: document.querySelector('.team-section').offsetTop - 150,
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+</body>
+</html>

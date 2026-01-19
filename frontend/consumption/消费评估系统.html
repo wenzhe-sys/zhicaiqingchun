@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智财青春 - 消费评估</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #297CBB;
+  cursor: pointer;
+}
+.custom-checkbox:checked + label:before {
+  background-color: #297CBB;
+  border-color: #297CBB;
+}
+.custom-switch:checked + label {
+  background-color: #297CBB;
+}
+.custom-switch:checked + label:after {
+  transform: translateX(20px);
+}
+.chart-container {
+  width: 100%;
+  height: 300px;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+<span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+<span class="text-xl font-semibold text-gray-800">智财青春</span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+<a href="#" class="text-primary font-medium">消费评估</a>
+<a href="#" class="text-gray-600 hover:text-primary">教育赋能</a>
+<a href="#" class="text-gray-600 hover:text-primary">决策干预</a>
+<a href="#" class="text-gray-600 hover:text-primary">生态协同</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-search-line ri-lg"></i>
+</button>
+<button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-notification-3-line ri-lg"></i>
+</button>
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/1b82bd4a42973383179f53d2455f8318.jpg" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+</div>
+</div>
+</div>
+</header>
+
+<div class="container mx-auto px-4 py-8">
+  <div class="flex items-center mb-8">
+    <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center text-primary hover:text-primary/80">
+      <i class="ri-arrow-left-line ri-lg mr-2"></i>
+      <span>返回首页</span>
+    </a>
+  </div>
+  
+  <div class="mb-10">
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">消费健康评估</h1>
+    <p class="text-lg text-gray-600">通过填写您的消费数据，获取个性化的消费健康指数(CHI)和改进建议</p>
+  </div>
+  
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- 左侧表单区域 -->
+    <div class="lg:col-span-2">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">个人消费数据录入</h2>
+        
+        <div class="space-y-6">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">月收入范围</label>
+            <div class="relative">
+              <select class="w-full pl-4 pr-10 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none bg-white">
+                <option>3,000 - 5,000 元</option>
+                <option>5,000 - 8,000 元</option>
+                <option selected>8,000 - 12,000 元</option>
+                <option>12,000 - 20,000 元</option>
+                <option>20,000 元以上</option>
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <i class="ri-arrow-down-s-line text-gray-400"></i>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">固定支出（房租、水电、通讯等）</label>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">¥</span>
+              <input type="text" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入固定支出金额" value="3200">
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">可支配收入（自动计算）</label>
+            <div class="relative bg-gray-50 py-3 px-4 rounded border border-gray-200">
+              <span class="text-gray-700 font-medium">¥ 6,800</span>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">消费类别分布</label>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-gray-600 text-sm">餐饮外卖</span>
+                  <span class="text-gray-600 text-sm">35%</span>
+                </div>
+                <div class="relative">
+                  <input type="range" min="0" max="100" value="35" class="w-full h-2 bg-gray-200 rounded-full appearance-none">
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-gray-600 text-sm">服饰美妆</span>
+                  <span class="text-gray-600 text-sm">20%</span>
+                </div>
+                <div class="relative">
+                  <input type="range" min="0" max="100" value="20" class="w-full h-2 bg-gray-200 rounded-full appearance-none">
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-gray-600 text-sm">娱乐社交</span>
+                  <span class="text-gray-600 text-sm">15%</span>
+                </div>
+                <div class="relative">
+                  <input type="range" min="0" max="100" value="15" class="w-full h-2 bg-gray-200 rounded-full appearance-none">
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-gray-600 text-sm">学习提升</span>
+                  <span class="text-gray-600 text-sm">10%</span>
+                </div>
+                <div class="relative">
+                  <input type="range" min="0" max="100" value="10" class="w-full h-2 bg-gray-200 rounded-full appearance-none">
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-gray-600 text-sm">储蓄投资</span>
+                  <span class="text-gray-600 text-sm">20%</span>
+                </div>
+                <div class="relative">
+                  <input type="range" min="0" max="100" value="20" class="w-full h-2 bg-gray-200 rounded-full appearance-none">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">消费习惯问卷</h2>
+        
+        <div class="space-y-6">
+          <div>
+            <p class="text-gray-700 mb-3">1. 您是否经常在没有计划的情况下进行购物？</p>
+            <div class="flex space-x-4">
+              <label class="flex items-center">
+                <input type="radio" name="q1" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">从不</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q1" class="hidden" checked>
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-100 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">偶尔</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q1" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">经常</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q1" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">总是</span>
+              </label>
+            </div>
+          </div>
+          
+          <div>
+            <p class="text-gray-700 mb-3">2. 您购物时是否会比较不同商家的价格？</p>
+            <div class="flex space-x-4">
+              <label class="flex items-center">
+                <input type="radio" name="q2" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">从不</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q2" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">偶尔</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q2" class="hidden" checked>
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-100 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">经常</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q2" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">总是</span>
+              </label>
+            </div>
+          </div>
+          
+          <div>
+            <p class="text-gray-700 mb-3">3. 您是否会为了追求品牌而接受更高的价格？</p>
+            <div class="flex space-x-4">
+              <label class="flex items-center">
+                <input type="radio" name="q3" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">从不</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q3" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">偶尔</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q3" class="hidden" checked>
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-100 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">经常</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q3" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">总是</span>
+              </label>
+            </div>
+          </div>
+          
+          <div>
+            <p class="text-gray-700 mb-3">4. 您是否会因为社交媒体推荐而购买商品？</p>
+            <div class="flex space-x-4">
+              <label class="flex items-center">
+                <input type="radio" name="q4" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">从不</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q4" class="hidden" checked>
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-100 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">偶尔</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q4" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">经常</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q4" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">总是</span>
+              </label>
+            </div>
+          </div>
+          
+          <div>
+            <p class="text-gray-700 mb-3">5. 您是否会为环保商品支付更高价格？</p>
+            <div class="flex space-x-4">
+              <label class="flex items-center">
+                <input type="radio" name="q5" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">从不</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q5" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">偶尔</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q5" class="hidden">
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-0 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">经常</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="q5" class="hidden" checked>
+                <span class="w-5 h-5 inline-block border border-gray-300 rounded-full mr-2 flex-shrink-0 relative">
+                  <span class="absolute inset-0 m-1 rounded-full bg-primary transform scale-100 transition-transform duration-200"></span>
+                </span>
+                <span class="text-gray-700">总是</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="pt-4">
+            <button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap w-full">
+              计算我的消费健康指数
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 右侧结果展示区域 -->
+    <div class="lg:col-span-1">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">消费健康指数 (CHI)</h2>
+        
+        <div class="flex flex-col items-center mb-6">
+          <div class="relative w-48 h-48 mb-4">
+            <div class="w-full h-full rounded-full bg-gray-100 flex items-center justify-center">
+              <div class="w-40 h-40 rounded-full bg-white flex items-center justify-center flex-col shadow-inner">
+                <span class="text-4xl font-bold text-primary">87</span>
+                <span class="text-gray-500 text-sm">优秀</span>
+              </div>
+            </div>
+            <svg class="absolute top-0 left-0" width="192" height="192" viewBox="0 0 192 192">
+              <circle cx="96" cy="96" r="88" fill="none" stroke="#e5e7eb" stroke-width="12" />
+              <circle cx="96" cy="96" r="88" fill="none" stroke="#297CBB" stroke-width="12" stroke-dasharray="552" stroke-dashoffset="71.76" transform="rotate(-90 96 96)" />
+            </svg>
+          </div>
+          
+          <div class="text-center mb-4">
+            <p class="text-gray-600">您的消费健康状况优于 <span class="text-primary font-medium">85%</span> 的同龄人</p>
+          </div>
+          
+          <div class="w-full bg-gray-100 h-1 mb-4">
+            <div class="bg-red-400 h-1" style="width: 25%"></div>
+            <div class="bg-yellow-400 h-1 -mt-1" style="width: 25%; margin-left: 25%"></div>
+            <div class="bg-blue-400 h-1 -mt-1" style="width: 25%; margin-left: 50%"></div>
+            <div class="bg-green-400 h-1 -mt-1" style="width: 25%; margin-left: 75%"></div>
+          </div>
+          
+          <div class="flex justify-between w-full text-xs text-gray-500">
+            <span>需改进<br/>(0-60)</span>
+            <span>一般<br/>(61-75)</span>
+            <span>良好<br/>(76-85)</span>
+            <span>优秀<br/>(86-100)</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">消费行为分析</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-gray-700">预算执行率</span>
+              <span class="text-primary font-medium">92%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-primary rounded-full h-2" style="width: 92%"></div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-gray-700">冲动消费指数</span>
+              <span class="text-primary font-medium">18%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-primary rounded-full h-2" style="width: 18%"></div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-gray-700">消费多样性</span>
+              <span class="text-primary font-medium">75%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-primary rounded-full h-2" style="width: 75%"></div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-gray-700">储蓄投资比例</span>
+              <span class="text-primary font-medium">20%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-primary rounded-full h-2" style="width: 20%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4">个性化改进建议</h2>
+        
+        <div class="space-y-4">
+          <div class="flex items-start">
+            <div class="w-8 h-8 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3 flex-shrink-0 mt-0.5">
+              <i class="ri-restaurant-line text-primary"></i>
+            </div>
+            <div>
+              <h3 class="text-gray-800 font-medium mb-1">优化餐饮支出</h3>
+              <p class="text-gray-600 text-sm">您的餐饮外卖支出占比较高，建议每周减少 1-2 次外卖，每月可节省约 ¥400。</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="w-8 h-8 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mr-3 flex-shrink-0 mt-0.5">
+              <i class="ri-bank-line text-secondary"></i>
+            </div>
+            <div>
+              <h3 class="text-gray-800 font-medium mb-1">增加储蓄比例</h3>
+              <p class="text-gray-600 text-sm">建议将储蓄投资比例从 20% 提高到 25%，长期将显著提升财务安全性。</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="w-8 h-8 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3 flex-shrink-0 mt-0.5">
+              <i class="ri-shopping-bag-line text-primary"></i>
+            </div>
+            <div>
+              <h3 class="text-gray-800 font-medium mb-1">控制服饰支出</h3>
+              <p class="text-gray-600 text-sm">尝试使用胶囊衣橱理念，减少非必要服饰购买，每季度精选 2-3 件高品质单品。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-6 pt-6 border-t border-gray-100">
+          <button class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap w-full">
+            下载详细评估报告
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-12">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-6">消费趋势分析</h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-lg font-medium text-gray-800 mb-4">消费类别占比</h3>
+          <div class="chart-container" id="categoryChart"></div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-medium text-gray-800 mb-4">月度消费趋势</h3>
+          <div class="chart-container" id="trendChart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-12">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-6">同龄人群对比</h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="col-span-1">
+          <h3 class="text-lg font-medium text-gray-800 mb-4">您的消费人格类型</h3>
+          
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+                <i class="ri-leaf-line ri-lg text-primary"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-900">理性环保型</h4>
+                <p class="text-sm text-gray-600">延迟满足、功能导向、自主决策、环保意识强</p>
+              </div>
+            </div>
+            
+            <div class="space-y-4">
+              <div>
+                <h4 class="font-medium text-gray-800 mb-2">核心特征</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+                    <span>长期财务健康度高，储蓄投资意识强</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+                    <span>不易受营销噱头和社交压力影响</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+                    <span>消费决策对环境友好，碳足迹较低</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 class="font-medium text-gray-800 mb-2">人群占比</h4>
+                <div class="flex items-center">
+                  <div class="w-full bg-gray-200 rounded-full h-2 mr-3">
+                    <div class="bg-primary rounded-full h-2" style="width: 18.5%"></div>
+                  </div>
+                  <span class="text-gray-700 whitespace-nowrap">18.5%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-span-2">
+          <h3 class="text-lg font-medium text-gray-800 mb-4">与同龄人群对比</h3>
+          <div class="chart-container" id="comparisonChart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-gray-900 text-white py-12 mt-16">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<div class="flex items-center mb-4">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-1.5 rounded-lg mr-2">
+<span class="text-2xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+<span class="text-lg font-semibold">智财青春</span>
+</div>
+<p class="text-gray-400 mb-4">数据驱动的青年消费智慧平台</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-weibo-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-wechat-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-douban-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">产品服务</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">消费评估</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">VR 体验课程</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">AR 购物助手</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">预算规划工具</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">关于我们</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">平台介绍</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">团队成员</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">帮助中心</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">用户手册</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">隐私政策</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">服务条款</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 智财青春. 保留所有权利.</p>
+<div class="flex items-center space-x-4">
+<div class="flex items-center text-gray-400">
+<i class="ri-visa-fill ri-lg mr-2"></i>
+<i class="ri-mastercard-fill ri-lg mr-2"></i>
+<i class="ri-paypal-fill ri-lg mr-2"></i>
+<i class="ri-alipay-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+// 消费类别占比图
+const categoryChart = echarts.init(document.getElementById('categoryChart'));
+const categoryOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b}: {c}% ({d}%)',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    borderWidth: 1,
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  legend: {
+    orient: 'vertical',
+    right: 10,
+    top: 'center',
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  series: [{
+    name: '消费类别占比',
+    type: 'pie',
+    radius: ['40%', '70%'],
+    avoidLabelOverlap: false,
+    itemStyle: {
+      borderRadius: 8,
+      borderColor: '#fff',
+      borderWidth: 2
+    },
+    label: {
+      show: false
+    },
+    emphasis: {
+      label: {
+        show: false
+      }
+    },
+    labelLine: {
+      show: false
+    },
+    data: [
+      { value: 35, name: '餐饮外卖', itemStyle: { color: '#57B5E7' } },
+      { value: 20, name: '服饰美妆', itemStyle: { color: '#8DD3C7' } },
+      { value: 15, name: '娱乐社交', itemStyle: { color: '#FBBF72' } },
+      { value: 10, name: '学习提升', itemStyle: { color: '#FC8D62' } },
+      { value: 20, name: '储蓄投资', itemStyle: { color: '#66C2A5' } }
+    ]
+  }]
+};
+categoryChart.setOption(categoryOption);
+
+// 月度消费趋势图
+const trendChart = echarts.init(document.getElementById('trendChart'));
+const trendOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'axis',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    borderWidth: 1,
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  legend: {
+    data: ['实际支出', '预算计划'],
+    bottom: 0,
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  grid: {
+    top: 10,
+    right: 10,
+    bottom: 30,
+    left: 40
+  },
+  xAxis: {
+    type: 'category',
+    data: ['11月', '12月', '1月', '2月', '3月', '4月'],
+    axisLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    axisLabel: {
+      color: '#1f2937'
+    }
+  },
+  yAxis: {
+    type: 'value',
+    name: '金额 (元)',
+    nameTextStyle: {
+      color: '#1f2937'
+    },
+    axisLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    axisLabel: {
+      color: '#1f2937'
+    },
+    splitLine: {
+      lineStyle: {
+        color: '#eee'
+      }
+    }
+  },
+  series: [
+    {
+      name: '实际支出',
+      type: 'line',
+      data: [6800, 7200, 6500, 6300, 6700, 6800],
+      symbol: 'none',
+      smooth: true,
+      lineStyle: {
+        width: 3,
+        color: '#57B5E7'
+      },
+      areaStyle: {
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [{
+            offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+          }, {
+            offset: 1, color: 'rgba(87, 181, 231, 0.05)'
+          }]
+        }
+      }
+    },
+    {
+      name: '预算计划',
+      type: 'line',
+      data: [7000, 7000, 7000, 7000, 7000, 7000],
+      symbol: 'none',
+      smooth: true,
+      lineStyle: {
+        width: 3,
+        color: '#8DD3C7',
+        type: 'dashed'
+      }
+    }
+  ]
+};
+trendChart.setOption(trendOption);
+
+// 同龄人群对比雷达图
+const comparisonChart = echarts.init(document.getElementById('comparisonChart'));
+const comparisonOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'item',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    borderWidth: 1,
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  radar: {
+    indicator: [
+      { name: '预算执行率', max: 100 },
+      { name: '消费多样性', max: 100 },
+      { name: '储蓄投资比例', max: 100 },
+      { name: '冲动消费指数', max: 100 },
+      { name: '环保消费占比', max: 100 },
+      { name: '品牌溢价接受度', max: 100 }
+    ],
+    splitArea: {
+      areaStyle: {
+        color: ['#fff']
+      }
+    },
+    axisLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    splitLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    name: {
+      textStyle: {
+        color: '#1f2937'
+      }
+    }
+  },
+  legend: {
+    data: ['您的得分', '同龄群体平均', '理性环保型平均'],
+    bottom: 0,
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  series: [{
+    type: 'radar',
+    data: [
+      {
+        value: [92, 75, 20, 18, 78, 65],
+        name: '您的得分',
+        symbol: 'none',
+        lineStyle: {
+          width: 2,
+          color: '#57B5E7'
+        },
+        areaStyle: {
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [{
+              offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+            }, {
+              offset: 1, color: 'rgba(87, 181, 231, 0.1)'
+            }]
+          }
+        }
+      },
+      {
+        value: [70, 60, 15, 45, 35, 75],
+        name: '同龄群体平均',
+        symbol: 'none',
+        lineStyle: {
+          width: 2,
+          color: '#FBBF72'
+        },
+        areaStyle: {
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [{
+              offset: 0, color: 'rgba(251, 191, 114, 0.2)'
+            }, {
+              offset: 1, color: 'rgba(251, 191, 114, 0.1)'
+            }]
+          }
+        }
+      },
+      {
+        value: [88, 65, 25, 20, 82, 60],
+        name: '理性环保型平均',
+        symbol: 'none',
+        lineStyle: {
+          width: 2,
+          color: '#8DD3C7',
+          type: 'dashed'
+        },
+        areaStyle: {
+          opacity: 0
+        }
+      }
+    ]
+  }]
+};
+comparisonChart.setOption(comparisonOption);
+
+// 响应式调整
+window.addEventListener('resize', function() {
+  categoryChart.resize();
+  trendChart.resize();
+  comparisonChart.resize();
+});
+
+// 表单交互
+document.querySelectorAll('input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', function() {
+    if (this.checked) {
+      const labels = document.querySelectorAll(`label input[name="${this.name}"]`);
+      labels.forEach(label => {
+        const span = label.nextElementSibling.querySelector('span');
+        if (span) {
+          span.classList.remove('scale-100');
+          span.classList.add('scale-0');
+        }
+      });
+      
+      const span = this.nextElementSibling.querySelector('span');
+      if (span) {
+        span.classList.remove('scale-0');
+        span.classList.add('scale-100');
+      }
+    }
+  });
+});
+
+// 滑块交互
+document.querySelectorAll('input[type="range"]').forEach(range => {
+  range.addEventListener('input', function() {
+    const valueDisplay = this.parentElement.previousElementSibling.querySelector('span:last-child');
+    if (valueDisplay) {
+      valueDisplay.textContent = this.value + '%';
+    }
+  });
+});
+</script>
+</body>
+</html>

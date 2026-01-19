@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>选择学习路径 - 智财青春</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#10b981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.custom-radio {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+.custom-radio.checked {
+  border-color: #3b82f6;
+}
+.custom-radio.checked::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+}
+.path-card {
+  transition: all 0.3s ease;
+}
+.path-card:hover {
+  transform: translateY(-5px);
+}
+.progress-step {
+  position: relative;
+}
+.progress-step::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  height: 2px;
+  width: 100%;
+  background-color: #e5e7eb;
+  transform: translateY(-50%);
+}
+.progress-step:last-child::after {
+  display: none;
+}
+.progress-step.active::after {
+  background-color: #3b82f6;
+}
+.progress-step.completed .step-number {
+  background-color: #3b82f6;
+  color: white;
+}
+.progress-step.active .step-number {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- 导航栏 -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+  <div class="container mx-auto px-4 flex items-center justify-between h-16">
+    <div class="flex items-center">
+      <a href="#" class="text-2xl font-['Pacifico'] text-primary mr-8">logo</a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="text-primary font-medium border-b-2 border-primary pb-1">教育赋能</a>
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3ece40b0-f507-43a5-9787-62983e9c8bb1" data-readdy="true" class="text-gray-600 hover:text-primary">金融服务</a>
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/4281f937-ed72-45c2-988e-271aff319dc6" data-readdy="true" class="text-gray-600 hover:text-primary">社区互动</a>
+        <a href="#" class="text-gray-600 hover:text-primary">关于我们</a>
+      </nav>
+    </div>
+    <div class="flex items-center space-x-4">
+      <div class="relative">
+        <input type="text" placeholder="搜索课程、内容" class="pl-10 pr-4 py-2 w-48 rounded-full text-sm bg-gray-100 border-none focus:ring-2 focus:ring-primary focus:outline-none">
+        <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-500">
+          <i class="ri-search-line"></i>
+        </div>
+      </div>
+      <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600">
+        <i class="ri-notification-3-line"></i>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
+          <span class="text-sm">林</span>
+        </div>
+        <span class="text-sm font-medium">林晓明</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 主体内容区 -->
+<main class="container mx-auto px-4 py-8">
+  <!-- 返回按钮和标题 -->
+  <div class="flex items-center mb-8">
+    <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="flex items-center text-gray-600 hover:text-primary mr-4">
+      <div class="w-8 h-8 flex items-center justify-center">
+        <i class="ri-arrow-left-line"></i>
+      </div>
+      <span>返回</span>
+    </a>
+    <h1 class="text-2xl font-bold">选择学习路径</h1>
+  </div>
+
+  <!-- 进度指示器 -->
+  <div class="mb-12">
+    <div class="flex justify-between max-w-3xl mx-auto">
+      <div class="progress-step completed flex flex-col items-center w-1/4">
+        <div class="step-number w-10 h-10 rounded-full border-2 border-primary bg-primary flex items-center justify-center mb-2">
+          <i class="ri-check-line text-white"></i>
+        </div>
+        <span class="text-sm text-gray-700">注册账号</span>
+      </div>
+      <div class="progress-step active flex flex-col items-center w-1/4">
+        <div class="step-number w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center mb-2">
+          <span class="text-primary font-medium">2</span>
+        </div>
+        <span class="text-sm text-gray-700 font-medium">选择学习路径</span>
+      </div>
+      <div class="progress-step flex flex-col items-center w-1/4">
+        <div class="step-number w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center mb-2">
+          <span class="text-gray-500">3</span>
+        </div>
+        <span class="text-sm text-gray-500">完成测试</span>
+      </div>
+      <div class="progress-step flex flex-col items-center w-1/4">
+        <div class="step-number w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center mb-2">
+          <span class="text-gray-500">4</span>
+        </div>
+        <span class="text-sm text-gray-500">开始学习</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 学习路径选择区 -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold mb-8">选择适合你的学习路径</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- 入门探索路径 -->
+      <div class="path-card bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 hover:shadow-md">
+        <div class="h-3 bg-blue-500"></div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-100 text-blue-500">
+              <i class="ri-vip-crown-line ri-lg"></i>
+            </div>
+            <span class="px-3 py-1 bg-blue-100 text-blue-500 rounded-full text-xs font-medium">适合初学者</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">入门探索</h3>
+          <p class="text-gray-600 mb-4">适合财商零基础的学员，通过趣味互动了解基础金融概念，建立正确的金钱观和消费意识。</p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center text-blue-500 mr-2">
+                <i class="ri-time-line"></i>
+              </div>
+              <span class="text-sm text-gray-600">预计学习时长：8-10 小时</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center text-blue-500 mr-2">
+                <i class="ri-book-open-line"></i>
+              </div>
+              <span class="text-sm text-gray-600">包含 5 门核心课程</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center text-blue-500 mr-2">
+                <i class="ri-user-star-line"></i>
+              </div>
+              <span class="text-sm text-gray-600">2,580 名学员选择</span>
+            </div>
+          </div>
+          <div class="mb-6">
+            <h4 class="font-medium mb-2">你将学习到：</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-blue-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">基础财务概念和术语</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-blue-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">个人预算制定方法</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-blue-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">消费决策与明智购物</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-blue-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">储蓄习惯培养</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-blue-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">基础风险意识</span>
+              </li>
+            </ul>
+          </div>
+          <button class="w-full bg-blue-500 text-white py-3 rounded-button font-medium hover:bg-blue-600 transition whitespace-nowrap">
+            选择此路径
+          </button>
+        </div>
+      </div>
+      
+      <!-- 进阶实践路径 -->
+      <div class="path-card bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 hover:shadow-md">
+        <div class="h-3 bg-green-500"></div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 text-green-500">
+              <i class="ri-line-chart-line ri-lg"></i>
+            </div>
+            <span class="px-3 py-1 bg-green-100 text-green-500 rounded-full text-xs font-medium">适合有基础者</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">进阶实践</h3>
+          <p class="text-gray-600 mb-4">适合有基础财商知识的学员，深入理解消费决策、预算规划和基础投资知识，提升财务管理能力。</p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center text-green-500 mr-2">
+                <i class="ri-time-line"></i>
+              </div>
+              <span class="text-sm text-gray-600">预计学习时长：15-18 小时</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center text-green-500 mr-2">
+                <i class="ri-book-open-line"></i>
+              </div>
+              <span class="text-sm text-gray-600">包含 8 门核心课程</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center text-green-500 mr-2">
+                <i class="ri-user-star-line"></i>
+              </div>
+              <span class="text-sm text-gray-600">1,850 名学员选择</span>
+            </div>
+          </div>
+          <div class="mb-6">
+            <h4 class="font-medium mb-2">你将学习到：</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-green-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">高级预算管理技巧</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-green-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">债务管理与信用建设</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-green-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">基础投资概念与工具</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-green-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">税收规划基础</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-green-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">保险与风险管理</span>
+              </li>
+            </ul>
+          </div>
+          <button class="w-full bg-green-500 text-white py-3 rounded-button font-medium hover:bg-green-600 transition whitespace-nowrap">
+            选择此路径
+          </button>
+        </div>
+      </div>
+      
+      <!-- 高阶挑战路径 -->
+      <div class="path-card bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 hover:shadow-md">
+        <div class="h-3 bg-purple-500"></div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-purple-100 text-purple-500">
+              <i class="ri-funds-box-line ri-lg"></i>
+            </div>
+            <span class="px-3 py-1 bg-purple-100 text-purple-500 rounded-full text-xs font-medium">适合进阶学习者</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">高阶挑战</h3>
+          <p class="text-gray-600 mb-4">适合财商基础扎实的学员，掌握复杂金融规划、投资组合和风险管理策略，实现财务自由。</p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center text-purple-500 mr-2">
+                <i class="ri-time-line"></i>
+              </div>
+              <span class="text-sm text-gray-600">预计学习时长：12-15 小时</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center text-purple-500 mr-2">
+                <i class="ri-book-open-line"></i>
+              </div>
+              <span class="text-sm text-gray-600">包含 6 门核心课程</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center text-purple-500 mr-2">
+                <i class="ri-user-star-line"></i>
+              </div>
+              <span class="text-sm text-gray-600">950 名学员选择</span>
+            </div>
+          </div>
+          <div class="mb-6">
+            <h4 class="font-medium mb-2">你将学习到：</h4>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-purple-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">高级投资策略与组合管理</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-purple-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">财富积累与保值增值</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-purple-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">房产投资与贷款策略</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-purple-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">退休规划与财务自由</span>
+              </li>
+              <li class="flex items-start">
+                <div class="w-5 h-5 flex items-center justify-center text-purple-500 mr-2 mt-0.5">
+                  <i class="ri-check-line"></i>
+                </div>
+                <span class="text-sm text-gray-600">高级风险管理与资产配置</span>
+              </li>
+            </ul>
+          </div>
+          <button class="w-full bg-purple-500 text-white py-3 rounded-button font-medium hover:bg-purple-600 transition whitespace-nowrap">
+            选择此路径
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 财商水平测试问卷 -->
+  <section class="mb-16">
+    <div class="bg-white rounded-lg shadow-sm p-8 max-w-3xl mx-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold">财商水平测试</h2>
+        <div class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">预计用时：3-5 分钟</div>
+      </div>
+      <p class="text-gray-600 mb-8">不确定哪条路径适合你？完成这个简短的测试，我们将根据你的回答推荐最适合的学习路径。</p>
+      
+      <!-- 测试问题 -->
+      <div class="space-y-8">
+        <!-- 问题1 -->
+        <div class="border-b border-gray-100 pb-6">
+          <h3 class="font-medium mb-4">1. 你目前对个人理财和财务管理的了解程度如何？</h3>
+          <div class="space-y-3">
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q1"></div>
+              <span>完全没有接触过，对基本概念都不熟悉</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q1"></div>
+              <span>了解一些基础概念，但没有实践经验</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q1"></div>
+              <span>有一定的理财知识，并尝试过简单的理财方式</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q1"></div>
+              <span>有较丰富的理财知识和实践经验</span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- 问题2 -->
+        <div class="border-b border-gray-100 pb-6">
+          <h3 class="font-medium mb-4">2. 你是否有制定并遵循个人或家庭预算的习惯？</h3>
+          <div class="space-y-3">
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q2"></div>
+              <span>从不制定预算，想买就买</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q2"></div>
+              <span>偶尔会考虑收支情况，但没有正式的预算</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q2"></div>
+              <span>有制定预算的习惯，但执行不够严格</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q2"></div>
+              <span>严格制定并遵循预算，定期审查和调整</span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- 问题3 -->
+        <div class="border-b border-gray-100 pb-6">
+          <h3 class="font-medium mb-4">3. 面对一笔意外收入（如3000元奖金），你最可能怎么处理？</h3>
+          <div class="space-y-3">
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q3"></div>
+              <span>立即用于购物或娱乐消费</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q3"></div>
+              <span>存入银行储蓄账户</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q3"></div>
+              <span>部分存储，部分用于消费</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q3"></div>
+              <span>投资到收益较高的金融产品中</span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- 问题4 -->
+        <div class="border-b border-gray-100 pb-6">
+          <h3 class="font-medium mb-4">4. 你对投资的态度是？</h3>
+          <div class="space-y-3">
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q4"></div>
+              <span>完全不了解，也不感兴趣</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q4"></div>
+              <span>有兴趣但缺乏知识，担心风险</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q4"></div>
+              <span>已经进行过一些低风险投资</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q4"></div>
+              <span>经常投资，了解不同风险等级的投资产品</span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- 问题5 -->
+        <div class="border-b border-gray-100 pb-6">
+          <h3 class="font-medium mb-4">5. 你如何看待信用卡的使用？</h3>
+          <div class="space-y-3">
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q5"></div>
+              <span>不使用信用卡，只用现金或借记卡</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q5"></div>
+              <span>有信用卡但很少使用</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q5"></div>
+              <span>经常使用信用卡，但每月按时全额还款</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q5"></div>
+              <span>战略性使用信用卡积分和优惠，并严格管理还款</span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- 问题6 -->
+        <div class="border-b border-gray-100 pb-6">
+          <h3 class="font-medium mb-4">6. 你对以下哪个财务目标最感兴趣？</h3>
+          <div class="space-y-3">
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q6"></div>
+              <span>学习基本的消费决策和预算管理</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q6"></div>
+              <span>建立应急资金和短期储蓄目标</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q6"></div>
+              <span>开始投资并建立多元化的投资组合</span>
+            </label>
+            <label class="flex items-center p-3 rounded-lg border border-gray-200 hover:border-primary cursor-pointer transition">
+              <div class="custom-radio mr-3" data-name="q6"></div>
+              <span>实现财务独立和提前退休规划</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex justify-between mt-8">
+        <button class="px-6 py-3 border border-gray-200 rounded-button text-gray-600 font-medium hover:bg-gray-50 transition whitespace-nowrap">
+          跳过测试
+        </button>
+        <button class="px-8 py-3 bg-primary text-white rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">
+          提交测试
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 学习路径课程详情 -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold mb-8">各路径课程详情</h2>
+    
+    <!-- 入门探索课程列表 -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+      <div class="flex items-center mb-6">
+        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-blue-500 mr-3">
+          <i class="ri-vip-crown-line"></i>
+        </div>
+        <h3 class="text-xl font-bold">入门探索路径课程</h3>
+      </div>
+      <div class="space-y-4">
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-blue-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">财商基础概念与重要性</h4>
+            <span class="text-sm text-gray-500">90 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">了解财商的基本概念、组成要素和对个人发展的重要性，建立正确的金钱观</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>8 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>5 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>1 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-blue-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">个人预算制定与管理</h4>
+            <span class="text-sm text-gray-500">120 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">学习如何分析收入来源和支出类型，制定适合自己的预算计划，培养记账习惯</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>10 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>6 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>2 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-blue-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">明智消费决策</h4>
+            <span class="text-sm text-gray-500">100 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">学习区分需求与欲望，避免冲动消费，掌握比价和评估产品价值的技巧</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>9 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>4 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>1 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-blue-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">储蓄基础与目标设定</h4>
+            <span class="text-sm text-gray-500">80 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">了解储蓄的重要性，学习设定SMART储蓄目标，认识不同类型的储蓄账户</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>7 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>3 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>1 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-blue-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">基础风险意识与保护</h4>
+            <span class="text-sm text-gray-500">90 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">认识常见金融风险，学习保护个人信息安全，了解基本的保险概念</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>8 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>4 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>1 个测验</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 进阶实践课程列表 -->
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+      <div class="flex items-center mb-6">
+        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-green-100 text-green-500 mr-3">
+          <i class="ri-line-chart-line"></i>
+        </div>
+        <h3 class="text-xl font-bold">进阶实践路径课程</h3>
+      </div>
+      <div class="space-y-4">
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-green-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">高级预算与现金流管理</h4>
+            <span class="text-sm text-gray-500">120 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">掌握零基预算法、50/30/20法则等高级预算技巧，学习优化现金流和应对财务波动</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>10 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>5 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>2 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-green-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">信用管理与债务规划</h4>
+            <span class="text-sm text-gray-500">110 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">了解信用评分构成，学习如何建立良好信用记录，掌握债务管理策略和还款优先级</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>9 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>6 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>1 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-green-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">投资基础与金融市场</h4>
+            <span class="text-sm text-gray-500">130 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">认识不同投资工具（股票、债券、基金等），了解金融市场运作原理，学习基本投资策略</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>12 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>7 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>2 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-green-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">税收规划基础</h4>
+            <span class="text-sm text-gray-500">90 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">了解个人所得税基本知识，掌握合法节税策略，学习利用税收优惠政策</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>8 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>4 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>1 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-green-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">保险与风险管理</h4>
+            <span class="text-sm text-gray-500">100 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">了解不同类型保险产品及其作用，学习如何评估个人风险并选择合适的保险方案</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>9 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>5 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>1 个测验</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 高阶挑战课程列表 -->
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <div class="flex items-center mb-6">
+        <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-purple-100 text-purple-500 mr-3">
+          <i class="ri-funds-box-line"></i>
+        </div>
+        <h3 class="text-xl font-bold">高阶挑战路径课程</h3>
+      </div>
+      <div class="space-y-4">
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-purple-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">高级投资策略与组合管理</h4>
+            <span class="text-sm text-gray-500">150 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">学习现代投资组合理论，掌握资产配置策略，了解不同市场周期的投资调整方法</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>14 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>8 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>2 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-purple-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">财富积累与保值增值</h4>
+            <span class="text-sm text-gray-500">120 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">学习长期财富积累策略，了解通胀对资产的影响，掌握资产保值增值的方法</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>11 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>6 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>2 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-purple-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">房产投资与贷款策略</h4>
+            <span class="text-sm text-gray-500">130 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">了解房地产投资基本原则，学习评估房产价值，掌握房贷选择和优化策略</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>12 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>7 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>2 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-purple-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">退休规划与财务自由</h4>
+            <span class="text-sm text-gray-500">110 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">学习制定长期退休计划，了解不同退休账户类型，掌握财务自由的实现路径</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>10 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>5 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>1 个测验</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="border border-gray-100 rounded-lg p-4 hover:border-purple-200 transition">
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-medium">高级风险管理与资产配置</h4>
+            <span class="text-sm text-gray-500">140 分钟</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-3">学习系统性和非系统性风险管理，掌握不同经济周期的资产配置策略，了解对冲工具</p>
+          <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-video-line"></i>
+              </div>
+              <span>13 个视频</span>
+            </div>
+            <div class="flex items-center mr-4">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-file-list-line"></i>
+              </div>
+              <span>7 个练习</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-4 h-4 flex items-center justify-center mr-1">
+                <i class="ri-trophy-line"></i>
+              </div>
+              <span>2 个测验</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 常见问题 -->
+  <section class="mb-16">
+    <div class="bg-white rounded-lg shadow-sm p-8 max-w-3xl mx-auto">
+      <h2 class="text-2xl font-bold mb-6">常见问题</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-medium mb-2">如何选择最适合我的学习路径？</h3>
+          <p class="text-gray-600">我们建议您完成财商水平测试，系统会根据您的回答推荐最适合的路径。您也可以根据自己的财务知识水平和学习目标自行选择。如果不确定，建议从入门探索路径开始。</p>
+        </div>
+        <div>
+          <h3 class="font-medium mb-2">我可以同时学习多个路径吗？</h3>
+          <p class="text-gray-600">可以，但我们建议您先专注完成一个路径，打好基础后再进入下一个路径。这样可以确保学习效果并避免信息过载。</p>
+        </div>
+        <div>
+          <h3 class="font-medium mb-2">学习过程中遇到问题怎么办？</h3>
+          <p class="text-gray-600">每个课程都有讨论区，您可以在那里提问。我们的财商导师会定期回答问题。您也可以加入学习社群，与其他学员交流经验。</p>
+        </div>
+        <div>
+          <h3 class="font-medium mb-2">完成学习路径后会获得证书吗？</h3>
+          <p class="text-gray-600">是的，完成任何学习路径的所有课程和测验后，您将获得相应的完成证书，可以添加到您的个人档案中。</p>
+        </div>
+        <div>
+          <h3 class="font-medium mb-2">课程内容会定期更新吗？</h3>
+          <p class="text-gray-600">是的，我们会根据金融市场变化和用户反馈定期更新课程内容，确保您学习到最新、最实用的财商知识。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 页脚 -->
+<footer class="bg-gray-800 text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <h3 class="text-xl font-['Pacifico'] mb-4">logo</h3>
+        <p class="text-gray-400 mb-4">智财青春平台致力于为青少年提供专业、有趣的财商教育，培养健康的金钱观和消费习惯</p>
+        <div class="flex space-x-4">
+          <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+            <i class="ri-douyin-fill"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="hover:text-white transition">首页</a></li>
+          <li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="hover:text-white transition">教育赋能</a></li>
+          <li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3ece40b0-f507-43a5-9787-62983e9c8bb1" data-readdy="true" class="hover:text-white transition">金融服务</a></li>
+          <li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/4281f937-ed72-45c2-988e-271aff319dc6" data-readdy="true" class="hover:text-white transition">社区互动</a></li>
+          <li><a href="#" class="hover:text-white transition">关于我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li class="flex items-center">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span>北京市海淀区中关村大街1号</span>
+          </li>
+          <li class="flex items-center">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+              <i class="ri-mail-line"></i>
+            </div>
+            <span>contact@zhicaiqingchun.com</span>
+          </li>
+          <li class="flex items-center">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+              <i class="ri-phone-line"></i>
+            </div>
+            <span>400-888-7777</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">订阅更新</h4>
+        <p class="text-gray-400 mb-4">订阅我们的新闻通讯，获取最新的财商教育资讯和课程更新</p>
+        <div class="flex">
+          <input type="email" placeholder="您的邮箱地址" class="px-4 py-2 w-full bg-gray-700 border-none rounded-l text-white focus:outline-none focus:ring-2 focus:ring-primary">
+          <button class="bg-primary px-4 py-2 rounded-r text-white font-medium hover:bg-primary/90 transition whitespace-nowrap">订阅</button>
+        </div>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-gray-700 text-center text-gray-500 text-sm">
+      <p>© 2025 智财青春平台 版权所有 | 京ICP备12345678号</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 自定义单选框交互
+  document.querySelectorAll('.custom-radio').forEach(radio => {
+    radio.addEventListener('click', function() {
+      const name = this.getAttribute('data-name');
+      if (name) {
+        document.querySelectorAll(`.custom-radio[data-name="${name}"]`).forEach(r => {
+          r.classList.remove('checked');
+        });
+      }
+      this.classList.add('checked');
+    });
+  });
+  
+  // 路径卡片点击展开课程详情（模拟行为）
+  document.querySelectorAll('.path-card button').forEach(button => {
+    button.addEventListener('click', function() {
+      // 这里可以添加选择路径的逻辑
+      alert('您已选择此学习路径！即将开始学习之旅。');
+    });
+  });
+  
+  // 提交测试按钮点击事件
+  document.querySelector('button:contains("提交测试")').addEventListener('click', function() {
+    // 这里可以添加提交测试的逻辑
+    alert('测试已提交！根据您的回答，我们推荐您选择"入门探索"学习路径。');
+  });
+});
+</script>
+</body>
+</html>

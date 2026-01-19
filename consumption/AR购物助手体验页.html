@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR 购物助手 - 智财青春</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.scan-animation {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(41,124,187,0) 0%, rgba(41,124,187,1) 50%, rgba(41,124,187,0) 100%);
+  animation: scanMove 2s linear infinite;
+}
+@keyframes scanMove {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+.scan-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: white;
+}
+.top-left {
+  top: -2px;
+  left: -2px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+.top-right {
+  top: -2px;
+  right: -2px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+.bottom-left {
+  bottom: -2px;
+  left: -2px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+}
+.bottom-right {
+  bottom: -2px;
+  right: -2px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+.info-card {
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+.info-card.show {
+  transform: translateY(0);
+}
+.camera-container {
+  background-color: #000;
+}
+.tutorial-overlay {
+  animation: fadeIn 0.5s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.custom-switch:checked + label {
+  background-color: #297CBB;
+}
+.custom-switch:checked + label:after {
+  transform: translateX(20px);
+}
+</style>
+</head>
+<body class="bg-gray-50 h-screen flex flex-col">
+  <!-- 顶部导航栏 -->
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center">
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center justify-center mr-4 text-gray-600 hover:text-primary">
+          <i class="ri-arrow-left-line ri-lg"></i>
+        </a>
+        <span class="text-xl font-semibold text-gray-800">AR 购物助手</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button id="historyBtn" class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+          <i class="ri-history-line ri-lg"></i>
+        </button>
+        <button id="settingsBtn" class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+          <i class="ri-settings-3-line ri-lg"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主体扫描区域 -->
+  <main class="flex-1 flex flex-col relative overflow-hidden">
+    <div class="camera-container flex-1 relative flex items-center justify-center">
+      <!-- 相机预览区域 -->
+      <div class="absolute inset-0 bg-black">
+        <video id="cameraPreview" class="h-full w-full object-cover opacity-80" autoplay playsinline></video>
+      </div>
+      
+      <!-- 扫描框 -->
+      <div class="relative z-10 w-4/5 max-w-md aspect-square">
+        <div class="absolute inset-0 border-2 border-white border-opacity-60 rounded-lg"></div>
+        <div class="scan-animation"></div>
+        <div class="scan-corner top-left"></div>
+        <div class="scan-corner top-right"></div>
+        <div class="scan-corner bottom-left"></div>
+        <div class="scan-corner bottom-right"></div>
+      </div>
+      
+      <!-- 扫描提示 -->
+      <div class="absolute top-10 left-0 right-0 text-center">
+        <p class="text-white text-lg font-medium">将商品对准框内</p>
+        <p class="text-white text-sm opacity-80 mt-1">自动识别商品信息</p>
+      </div>
+      
+      <!-- 闪光灯和对焦控制 -->
+      <div class="absolute bottom-32 right-6 flex flex-col items-center space-y-6">
+        <button id="flashBtn" class="w-12 h-12 rounded-full bg-black bg-opacity-50 flex items-center justify-center text-white">
+          <i class="ri-flashlight-line ri-lg"></i>
+        </button>
+        <button id="focusBtn" class="w-12 h-12 rounded-full bg-black bg-opacity-50 flex items-center justify-center text-white">
+          <i class="ri-focus-3-line ri-lg"></i>
+        </button>
+      </div>
+    </div>
+    
+    <!-- 底部功能区 -->
+    <div class="bg-white py-4 px-6 flex items-center justify-between">
+      <button id="tutorialBtn" class="w-12 h-12 flex items-center justify-center text-gray-600">
+        <i class="ri-question-line ri-lg"></i>
+      </button>
+      
+      <button id="scanBtn" class="w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-lg">
+        <i class="ri-camera-line ri-2x text-white"></i>
+      </button>
+      
+      <button id="galleryBtn" class="w-12 h-12 flex items-center justify-center text-gray-600">
+        <i class="ri-image-line ri-lg"></i>
+      </button>
+    </div>
+    
+    <!-- 商品信息卡片（默认隐藏） -->
+    <div id="infoCard" class="info-card absolute bottom-0 left-0 right-0 bg-white rounded-t-xl shadow-lg z-20 max-h-[80%] overflow-y-auto">
+      <div class="p-4 border-b border-gray-100">
+        <div class="w-16 h-1 bg-gray-300 rounded-full mx-auto mb-4"></div>
+        <div class="flex items-start">
+          <div class="w-24 h-24 rounded-lg bg-gray-100 overflow-hidden flex-shrink-0 mr-4">
+            <img src="https://public.readdy.ai/ai/img_res/3a0b1c2d4e5f6g7h8i9j0k.jpg" class="w-full h-full object-cover" alt="商品图片">
+          </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-semibold text-gray-900">无线蓝牙耳机 Pro</h3>
+            <p class="text-sm text-gray-500 mt-1">型号：WH-1000XM5</p>
+            <div class="flex items-center mt-2">
+              <div class="px-2 py-1 bg-primary bg-opacity-10 rounded-full flex items-center">
+                <i class="ri-price-tag-3-line text-primary mr-1"></i>
+                <span class="text-xs text-primary font-medium">电子产品</span>
+              </div>
+              <div class="px-2 py-1 bg-secondary bg-opacity-10 rounded-full flex items-center ml-2">
+                <i class="ri-recycle-line text-secondary mr-1"></i>
+                <span class="text-xs text-secondary font-medium">可持续评分：85</span>
+              </div>
+            </div>
+          </div>
+          <button class="w-8 h-8 flex items-center justify-center text-gray-400" id="closeInfoBtn">
+            <i class="ri-close-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 价格比对 -->
+      <div class="p-4 border-b border-gray-100">
+        <h4 class="font-medium text-gray-900 mb-3 flex items-center">
+          <i class="ri-price-tag-3-line text-primary mr-2"></i>
+          价格比对
+        </h4>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-6 h-6 flex items-center justify-center mr-2">
+                <i class="ri-shopping-bag-line text-gray-600"></i>
+              </div>
+              <span class="text-gray-800">京东自营</span>
+            </div>
+            <span class="font-medium text-gray-900">¥899</span>
+          </div>
+          <div class="flex items-center justify-between bg-green-50 p-2 rounded">
+            <div class="flex items-center">
+              <div class="w-6 h-6 flex items-center justify-center mr-2">
+                <i class="ri-shopping-cart-line text-gray-600"></i>
+              </div>
+              <span class="text-gray-800">天猫旗舰店</span>
+            </div>
+            <span class="font-medium text-green-600">¥849 <span class="text-xs">(最低价)</span></span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-6 h-6 flex items-center justify-center mr-2">
+                <i class="ri-store-2-line text-gray-600"></i>
+              </div>
+              <span class="text-gray-800">线下专卖店</span>
+            </div>
+            <span class="font-medium text-gray-900">¥999</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-6 h-6 flex items-center justify-center mr-2">
+                <i class="ri-global-line text-gray-600"></i>
+              </div>
+              <span class="text-gray-800">官网直销</span>
+            </div>
+            <span class="font-medium text-gray-900">¥899</span>
+          </div>
+        </div>
+        <div class="mt-3 p-2 bg-primary bg-opacity-5 rounded-lg">
+          <p class="text-sm text-gray-600">
+            <i class="ri-information-line text-primary mr-1"></i>
+            当前商品在天猫旗舰店最便宜，比线下专卖店便宜 <span class="text-primary font-medium">¥150</span>
+          </p>
+        </div>
+      </div>
+      
+      <!-- 可持续发展评分 -->
+      <div class="p-4 border-b border-gray-100">
+        <h4 class="font-medium text-gray-900 mb-3 flex items-center">
+          <i class="ri-recycle-line text-secondary mr-2"></i>
+          可持续发展评分
+        </h4>
+        <div class="flex items-center mb-3">
+          <div class="w-12 h-12 rounded-full bg-secondary bg-opacity-10 flex items-center justify-center mr-3">
+            <span class="text-xl font-bold text-secondary">85</span>
+          </div>
+          <div class="flex-1">
+            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="h-full bg-secondary rounded-full" style="width: 85%"></div>
+            </div>
+            <div class="flex justify-between mt-1 text-xs text-gray-500">
+              <span>0</span>
+              <span>50</span>
+              <span>100</span>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <div class="flex items-start">
+            <div class="w-5 h-5 flex items-center justify-center mt-0.5 mr-2">
+              <i class="ri-check-line text-secondary"></i>
+            </div>
+            <div>
+              <p class="text-sm text-gray-800">环保材料</p>
+              <p class="text-xs text-gray-500">使用可回收材料制造，减少塑料使用</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="w-5 h-5 flex items-center justify-center mt-0.5 mr-2">
+              <i class="ri-check-line text-secondary"></i>
+            </div>
+            <div>
+              <p class="text-sm text-gray-800">节能设计</p>
+              <p class="text-xs text-gray-500">低功耗设计，电池寿命长，减少充电频率</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="w-5 h-5 flex items-center justify-center mt-0.5 mr-2">
+              <i class="ri-close-line text-red-500"></i>
+            </div>
+            <div>
+              <p class="text-sm text-gray-800">电池可更换性</p>
+              <p class="text-xs text-gray-500">内置电池不可自行更换，可能导致整机报废</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 平替商品推荐 -->
+      <div class="p-4">
+        <h4 class="font-medium text-gray-900 mb-3 flex items-center">
+          <i class="ri-swap-line text-primary mr-2"></i>
+          平替商品推荐
+        </h4>
+        <div class="space-y-4">
+          <div class="flex items-start p-3 border border-gray-100 rounded-lg">
+            <div class="w-16 h-16 rounded bg-gray-100 overflow-hidden flex-shrink-0 mr-3">
+              <img src="https://public.readdy.ai/ai/img_res/3a0b1c2d4e5f6g7h8i9j0k.jpg" class="w-full h-full object-cover" alt="平替商品">
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between">
+                <h5 class="font-medium text-gray-900">音质派 X20 无线耳机</h5>
+                <span class="text-primary font-medium">¥399</span>
+              </div>
+              <p class="text-xs text-gray-500 mt-1">性价比之选，音质接近，续航更长</p>
+              <div class="flex items-center mt-2">
+                <div class="flex items-center mr-3">
+                  <i class="ri-star-fill text-yellow-400 text-xs"></i>
+                  <span class="text-xs text-gray-600 ml-1">4.7 (2,341)</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="ri-recycle-line text-secondary text-xs"></i>
+                  <span class="text-xs text-gray-600 ml-1">可持续评分: 80</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex items-start p-3 border border-gray-100 rounded-lg">
+            <div class="w-16 h-16 rounded bg-gray-100 overflow-hidden flex-shrink-0 mr-3">
+              <img src="https://public.readdy.ai/ai/img_res/3a0b1c2d4e5f6g7h8i9j0k.jpg" class="w-full h-full object-cover" alt="平替商品">
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between">
+                <h5 class="font-medium text-gray-900">声悦 ANC200 主动降噪</h5>
+                <span class="text-primary font-medium">¥599</span>
+              </div>
+              <p class="text-xs text-gray-500 mt-1">降噪效果更好，音质相当，价格更实惠</p>
+              <div class="flex items-center mt-2">
+                <div class="flex items-center mr-3">
+                  <i class="ri-star-fill text-yellow-400 text-xs"></i>
+                  <span class="text-xs text-gray-600 ml-1">4.8 (1,876)</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="ri-recycle-line text-secondary text-xs"></i>
+                  <span class="text-xs text-gray-600 ml-1">可持续评分: 90</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button class="w-full mt-4 py-3 bg-primary text-white rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+          查看更多平替推荐
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 教程遮罩层（默认隐藏） -->
+  <div id="tutorialOverlay" class="tutorial-overlay fixed inset-0 bg-black bg-opacity-80 z-50 hidden">
+    <div class="h-full flex flex-col">
+      <div class="flex-1 relative">
+        <!-- 教程内容 -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6">
+          <h3 class="text-2xl font-bold mb-6">AR 购物助手使用教程</h3>
+          
+          <div class="space-y-6 max-w-md">
+            <div class="flex items-start">
+              <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-20 mr-4 flex-shrink-0">
+                <i class="ri-camera-line ri-lg text-primary"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-medium mb-1">扫描商品</h4>
+                <p class="text-sm text-gray-300">将商品对准扫描框，保持稳定，系统会自动识别商品信息</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-20 mr-4 flex-shrink-0">
+                <i class="ri-price-tag-3-line ri-lg text-primary"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-medium mb-1">价格比对</h4>
+                <p class="text-sm text-gray-300">系统会自动比对多平台价格，帮您找到最优惠的购买渠道</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 flex items-center justify-center rounded-full bg-secondary bg-opacity-20 mr-4 flex-shrink-0">
+                <i class="ri-recycle-line ri-lg text-secondary"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-medium mb-1">可持续评分</h4>
+                <p class="text-sm text-gray-300">了解商品的环保指数，做出对地球更友好的消费选择</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-20 mr-4 flex-shrink-0">
+                <i class="ri-swap-line ri-lg text-primary"></i>
+              </div>
+              <div>
+                <h4 class="text-lg font-medium mb-1">平替推荐</h4>
+                <p class="text-sm text-gray-300">发现性价比更高的替代商品，在不降低品质的前提下节省开支</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="p-6">
+        <button id="closeTutorialBtn" class="w-full py-3 bg-primary text-white rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+          我知道了
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 历史记录弹窗（默认隐藏） -->
+  <div id="historyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+    <div class="absolute inset-x-0 bottom-0 bg-white rounded-t-xl max-h-[80%] overflow-y-auto">
+      <div class="p-4 border-b border-gray-100 sticky top-0 bg-white z-10">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-gray-900">历史扫描记录</h3>
+          <button id="closeHistoryBtn" class="w-8 h-8 flex items-center justify-center text-gray-400">
+            <i class="ri-close-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="p-4">
+        <div class="space-y-4">
+          <!-- 今天 -->
+          <div>
+            <h4 class="text-sm font-medium text-gray-500 mb-2">今天</h4>
+            <div class="space-y-3">
+              <div class="flex items-start p-3 bg-gray-50 rounded-lg">
+                <div class="w-16 h-16 rounded bg-gray-100 overflow-hidden flex-shrink-0 mr-3">
+                  <img src="https://public.readdy.ai/ai/img_res/3a0b1c2d4e5f6g7h8i9j0k.jpg" class="w-full h-full object-cover" alt="商品图片">
+                </div>
+                <div class="flex-1">
+                  <div class="flex justify-between">
+                    <h5 class="font-medium text-gray-900">无线蓝牙耳机 Pro</h5>
+                    <span class="text-xs text-gray-500">14:25</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-1">最低价: ¥849 (天猫旗舰店)</p>
+                  <div class="flex items-center mt-2">
+                    <div class="px-2 py-0.5 bg-secondary bg-opacity-10 rounded-full">
+                      <span class="text-xs text-secondary">可持续评分: 85</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="flex items-start p-3 bg-gray-50 rounded-lg">
+                <div class="w-16 h-16 rounded bg-gray-100 overflow-hidden flex-shrink-0 mr-3">
+                  <img src="https://public.readdy.ai/ai/img_res/3a0b1c2d4e5f6g7h8i9j0k.jpg" class="w-full h-full object-cover" alt="商品图片">
+                </div>
+                <div class="flex-1">
+                  <div class="flex justify-between">
+                    <h5 class="font-medium text-gray-900">智能手机 X50 Pro</h5>
+                    <span class="text-xs text-gray-500">10:12</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-1">最低价: ¥4,299 (京东自营)</p>
+                  <div class="flex items-center mt-2">
+                    <div class="px-2 py-0.5 bg-secondary bg-opacity-10 rounded-full">
+                      <span class="text-xs text-secondary">可持续评分: 72</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 昨天 -->
+          <div>
+            <h4 class="text-sm font-medium text-gray-500 mb-2">昨天</h4>
+            <div class="space-y-3">
+              <div class="flex items-start p-3 bg-gray-50 rounded-lg">
+                <div class="w-16 h-16 rounded bg-gray-100 overflow-hidden flex-shrink-0 mr-3">
+                  <img src="https://public.readdy.ai/ai/img_res/3a0b1c2d4e5f6g7h8i9j0k.jpg" class="w-full h-full object-cover" alt="商品图片">
+                </div>
+                <div class="flex-1">
+                  <div class="flex justify-between">
+                    <h5 class="font-medium text-gray-900">运动休闲鞋 Air Max</h5>
+                    <span class="text-xs text-gray-500">18:40</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-1">最低价: ¥699 (官方旗舰店)</p>
+                  <div class="flex items-center mt-2">
+                    <div class="px-2 py-0.5 bg-secondary bg-opacity-10 rounded-full">
+                      <span class="text-xs text-secondary">可持续评分: 65</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="flex items-start p-3 bg-gray-50 rounded-lg">
+                <div class="w-16 h-16 rounded bg-gray-100 overflow-hidden flex-shrink-0 mr-3">
+                  <img src="https://public.readdy.ai/ai/img_res/3a0b1c2d4e5f6g7h8i9j0k.jpg" class="w-full h-full object-cover" alt="商品图片">
+                </div>
+                <div class="flex-1">
+                  <div class="flex justify-between">
+                    <h5 class="font-medium text-gray-900">全自动咖啡机 CM800</h5>
+                    <span class="text-xs text-gray-500">15:23</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-1">最低价: ¥2,199 (天猫超市)</p>
+                  <div class="flex items-center mt-2">
+                    <div class="px-2 py-0.5 bg-secondary bg-opacity-10 rounded-full">
+                      <span class="text-xs text-secondary">可持续评分: 78</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 更早 -->
+          <div>
+            <h4 class="text-sm font-medium text-gray-500 mb-2">更早</h4>
+            <div class="space-y-3">
+              <div class="flex items-start p-3 bg-gray-50 rounded-lg">
+                <div class="w-16 h-16 rounded bg-gray-100 overflow-hidden flex-shrink-0 mr-3">
+                  <img src="https://public.readdy.ai/ai/img_res/3a0b1c2d4e5f6g7h8i9j0k.jpg" class="w-full h-full object-cover" alt="商品图片">
+                </div>
+                <div class="flex-1">
+                  <div class="flex justify-between">
+                    <h5 class="font-medium text-gray-900">时尚双肩包 Urban</h5>
+                    <span class="text-xs text-gray-500">04-03</span>
+                  </div>
+                  <p class="text-xs text-gray-500 mt-1">最低价: ¥299 (京东自营)</p>
+                  <div class="flex items-center mt-2">
+                    <div class="px-2 py-0.5 bg-secondary bg-opacity-10 rounded-full">
+                      <span class="text-xs text-secondary">可持续评分: 92</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button class="w-full mt-6 py-3 border border-gray-300 text-gray-700 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+          查看更多记录
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 设置弹窗（默认隐藏） -->
+  <div id="settingsModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+    <div class="absolute inset-x-0 bottom-0 bg-white rounded-t-xl max-h-[80%] overflow-y-auto">
+      <div class="p-4 border-b border-gray-100 sticky top-0 bg-white z-10">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-semibold text-gray-900">设置</h3>
+          <button id="closeSettingsBtn" class="w-8 h-8 flex items-center justify-center text-gray-400">
+            <i class="ri-close-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="p-4">
+        <div class="space-y-6">
+          <!-- 权限设置 -->
+          <div>
+            <h4 class="text-lg font-medium text-gray-900 mb-3">权限设置</h4>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+                    <i class="ri-camera-line text-primary"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-800 font-medium">相机权限</p>
+                    <p class="text-xs text-gray-500">允许应用使用相机扫描商品</p>
+                  </div>
+                </div>
+                <label class="relative inline-block w-12 h-6">
+                  <input type="checkbox" class="hidden custom-switch" id="cameraPermission" checked>
+                  <span class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                    <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                  </span>
+                </label>
+              </div>
+              
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+                    <i class="ri-map-pin-line text-primary"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-800 font-medium">位置权限</p>
+                    <p class="text-xs text-gray-500">获取附近商店价格信息</p>
+                  </div>
+                </div>
+                <label class="relative inline-block w-12 h-6">
+                  <input type="checkbox" class="hidden custom-switch" id="locationPermission" checked>
+                  <span class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                    <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                  </span>
+                </label>
+              </div>
+              
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+                    <i class="ri-notification-3-line text-primary"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-800 font-medium">通知权限</p>
+                    <p class="text-xs text-gray-500">接收价格变动和优惠提醒</p>
+                  </div>
+                </div>
+                <label class="relative inline-block w-12 h-6">
+                  <input type="checkbox" class="hidden custom-switch" id="notificationPermission">
+                  <span class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                    <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 扫描设置 -->
+          <div>
+            <h4 class="text-lg font-medium text-gray-900 mb-3">扫描设置</h4>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+                    <i class="ri-vibrate-line text-primary"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-800 font-medium">扫描震动</p>
+                    <p class="text-xs text-gray-500">扫描成功时震动提示</p>
+                  </div>
+                </div>
+                <label class="relative inline-block w-12 h-6">
+                  <input type="checkbox" class="hidden custom-switch" id="vibrationSetting" checked>
+                  <span class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                    <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                  </span>
+                </label>
+              </div>
+              
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+                    <i class="ri-volume-up-line text-primary"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-800 font-medium">扫描声音</p>
+                    <p class="text-xs text-gray-500">扫描成功时声音提示</p>
+                  </div>
+                </div>
+                <label class="relative inline-block w-12 h-6">
+                  <input type="checkbox" class="hidden custom-switch" id="soundSetting" checked>
+                  <span class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                    <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                  </span>
+                </label>
+              </div>
+              
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+                    <i class="ri-history-line text-primary"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-800 font-medium">自动保存历史</p>
+                    <p class="text-xs text-gray-500">自动保存扫描记录</p>
+                  </div>
+                </div>
+                <label class="relative inline-block w-12 h-6">
+                  <input type="checkbox" class="hidden custom-switch" id="historySetting" checked>
+                  <span class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                    <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 数据与隐私 -->
+          <div>
+            <h4 class="text-lg font-medium text-gray-900 mb-3">数据与隐私</h4>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+                    <i class="ri-cloud-line text-primary"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-800 font-medium">云端同步</p>
+                    <p class="text-xs text-gray-500">同步扫描记录到云端</p>
+                  </div>
+                </div>
+                <label class="relative inline-block w-12 h-6">
+                  <input type="checkbox" class="hidden custom-switch" id="cloudSyncSetting" checked>
+                  <span class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                    <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                  </span>
+                </label>
+              </div>
+              
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+                    <i class="ri-pie-chart-line text-primary"></i>
+                  </div>
+                  <div>
+                    <p class="text-gray-800 font-medium">使用分析</p>
+                    <p class="text-xs text-gray-500">分享匿名使用数据以改进服务</p>
+                  </div>
+                </div>
+                <label class="relative inline-block w-12 h-6">
+                  <input type="checkbox" class="hidden custom-switch" id="analyticsSetting" checked>
+                  <span class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                    <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pt-4 border-t border-gray-100">
+            <button class="w-full py-3 text-gray-700 border border-gray-300 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap mb-3">
+              清除历史记录
+            </button>
+            <button class="w-full py-3 text-red-600 border border-red-200 rounded-button font-medium hover:bg-red-50 transition whitespace-nowrap">
+              重置所有设置
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 模拟相机预览
+    const cameraPreview = document.getElementById('cameraPreview');
+    // 使用静态图片模拟相机预览
+    cameraPreview.poster = "https://public.readdy.ai/ai/img_res/3a0b1c2d4e5f6g7h8i9j0k.jpg";
+    
+    // 信息卡片控制
+    const infoCard = document.getElementById('infoCard');
+    const scanBtn = document.getElementById('scanBtn');
+    const closeInfoBtn = document.getElementById('closeInfoBtn');
+    
+    scanBtn.addEventListener('click', function() {
+      // 模拟扫描动作
+      setTimeout(() => {
+        infoCard.classList.add('show');
+      }, 1000);
+    });
+    
+    closeInfoBtn.addEventListener('click', function() {
+      infoCard.classList.remove('show');
+    });
+    
+    // 教程遮罩层控制
+    const tutorialOverlay = document.getElementById('tutorialOverlay');
+    const tutorialBtn = document.getElementById('tutorialBtn');
+    const closeTutorialBtn = document.getElementById('closeTutorialBtn');
+    
+    tutorialBtn.addEventListener('click', function() {
+      tutorialOverlay.classList.remove('hidden');
+    });
+    
+    closeTutorialBtn.addEventListener('click', function() {
+      tutorialOverlay.classList.add('hidden');
+    });
+    
+    // 历史记录弹窗控制
+    const historyModal = document.getElementById('historyModal');
+    const historyBtn = document.getElementById('historyBtn');
+    const closeHistoryBtn = document.getElementById('closeHistoryBtn');
+    
+    historyBtn.addEventListener('click', function() {
+      historyModal.classList.remove('hidden');
+    });
+    
+    closeHistoryBtn.addEventListener('click', function() {
+      historyModal.classList.add('hidden');
+    });
+    
+    // 设置弹窗控制
+    const settingsModal = document.getElementById('settingsModal');
+    const settingsBtn = document.getElementById('settingsBtn');
+    const closeSettingsBtn = document.getElementById('closeSettingsBtn');
+    
+    settingsBtn.addEventListener('click', function() {
+      settingsModal.classList.remove('hidden');
+    });
+    
+    closeSettingsBtn.addEventListener('click', function() {
+      settingsModal.classList.add('hidden');
+    });
+    
+    // 闪光灯和对焦按钮
+    const flashBtn = document.getElementById('flashBtn');
+    const focusBtn = document.getElementById('focusBtn');
+    
+    flashBtn.addEventListener('click', function() {
+      this.classList.toggle('bg-primary');
+      const icon = this.querySelector('i');
+      if (icon.classList.contains('ri-flashlight-line')) {
+        icon.classList.remove('ri-flashlight-line');
+        icon.classList.add('ri-flashlight-fill');
+      } else {
+        icon.classList.remove('ri-flashlight-fill');
+        icon.classList.add('ri-flashlight-line');
+      }
+    });
+    
+    focusBtn.addEventListener('click', function() {
+      this.classList.add('bg-primary');
+      setTimeout(() => {
+        this.classList.remove('bg-primary');
+      }, 300);
+    });
+    
+    // 开关控制
+    const switches = document.querySelectorAll('.custom-switch');
+    switches.forEach(switchEl => {
+      switchEl.addEventListener('change', function() {
+        const label = this.nextElementSibling;
+        if (this.checked) {
+          label.classList.add('bg-primary');
+          label.querySelector('span').classList.add('translate-x-6');
+        } else {
+          label.classList.remove('bg-primary');
+          label.querySelector('span').classList.remove('translate-x-6');
+        }
+      });
+      
+      // 初始化开关状态
+      if (switchEl.checked) {
+        const label = switchEl.nextElementSibling;
+        label.classList.add('bg-primary');
+        label.querySelector('span').classList.add('translate-x-6');
+      }
+    });
+    
+    // 模拟首次使用时显示教程
+    window.addEventListener('DOMContentLoaded', function() {
+      // 检查是否是首次访问
+      const isFirstVisit = !localStorage.getItem('arShoppingAssistantVisited');
+      
+      if (isFirstVisit) {
+        // 首次访问，显示教程
+        setTimeout(() => {
+          tutorialOverlay.classList.remove('hidden');
+        }, 1000);
+        
+        // 标记已访问
+        localStorage.setItem('arShoppingAssistantVisited', 'true');
+      }
+    });
+  </script>
+</body>
+</html>

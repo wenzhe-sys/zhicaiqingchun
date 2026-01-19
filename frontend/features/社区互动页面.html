@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智财青春 - 社区互动</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#64748b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+.custom-shadow {
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+.custom-checkbox {
+position: absolute;
+opacity: 0;
+width: 0;
+height: 0;
+}
+.custom-checkbox + label {
+position: relative;
+padding-left: 28px;
+cursor: pointer;
+display: inline-block;
+color: #4b5563;
+}
+.custom-checkbox + label:before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+width: 18px;
+height: 18px;
+border: 1px solid #d1d5db;
+background: #fff;
+border-radius: 4px;
+transition: all 0.3s ease;
+}
+.custom-checkbox:checked + label:before {
+background-color: #3b82f6;
+border-color: #3b82f6;
+}
+.custom-checkbox:checked + label:after {
+content: '';
+position: absolute;
+left: 6px;
+top: 3px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: absolute;
+opacity: 0;
+width: 0;
+height: 0;
+}
+.custom-switch + label {
+position: relative;
+padding-left: 50px;
+cursor: pointer;
+display: inline-block;
+color: #4b5563;
+}
+.custom-switch + label:before {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+width: 40px;
+height: 20px;
+background-color: #d1d5db;
+border-radius: 10px;
+transition: all 0.3s ease;
+}
+.custom-switch + label:after {
+content: '';
+position: absolute;
+left: 2px;
+top: 2px;
+width: 16px;
+height: 16px;
+background-color: white;
+border-radius: 50%;
+transition: all 0.3s ease;
+}
+.custom-switch:checked + label:before {
+background-color: #3b82f6;
+}
+.custom-switch:checked + label:after {
+transform: translateX(20px);
+}
+.topic-tag {
+transition: all 0.2s ease;
+}
+.topic-tag:hover {
+transform: translateY(-2px);
+}
+.post-card {
+transition: all 0.2s ease;
+}
+.post-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+.like-button.active {
+color: #ef4444;
+}
+.bookmark-button.active {
+color: #3b82f6;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- 导航栏 -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center">
+<a href="#" class="font-['Pacifico'] text-2xl text-primary mr-10">logo</a>
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="text-gray-600 hover:text-primary">教育赋能</a>
+<a href="#" class="text-gray-600 hover:text-primary">金融服务</a>
+<a href="#" class="text-primary font-medium border-b-2 border-primary pb-1">社区互动</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/aab6e1fb-dd56-4a1e-8cd2-e1dbfca2306f" data-readdy="true" class="text-gray-600 hover:text-primary">关于我们</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<input type="text" placeholder="搜索帖子、话题或用户" class="pl-10 pr-4 py-2 w-64 rounded border-none bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20">
+<div class="absolute left-3 top-2.5 w-4 h-4 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<div class="flex items-center space-x-1">
+<div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+<i class="ri-user-3-line text-gray-600"></i>
+</div>
+<span class="text-sm font-medium">陈明宇</span>
+</div>
+</div>
+</div>
+</header>
+<!-- 社区互动主区域 -->
+<main class="container mx-auto px-4 py-8">
+<!-- 社区头部信息 -->
+<section class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between">
+<div>
+<h1 class="text-2xl font-bold text-gray-800 mb-2">社区互动</h1>
+<p class="text-gray-600">与志同道合的伙伴交流经验、分享心得、解答疑惑</p>
+</div>
+<button class="mt-4 md:mt-0 px-5 py-2.5 bg-primary text-white rounded-button flex items-center hover:bg-primary/90 !rounded-button whitespace-nowrap">
+<div class="w-5 h-5 mr-2 flex items-center justify-center">
+<i class="ri-add-line"></i>
+</div>
+发布新讨论
+</button>
+</div>
+<div class="mt-6 flex flex-wrap gap-3">
+<div class="px-4 py-1 bg-primary text-white rounded-full text-sm font-medium whitespace-nowrap">全部</div>
+<div class="px-4 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer">经验分享</div>
+<div class="px-4 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer">问答解惑</div>
+<div class="px-4 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer">学习心得</div>
+<div class="px-4 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer">活动讨论</div>
+<div class="px-4 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer">资源分享</div>
+<div class="px-4 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer">创业讨论</div>
+<div class="px-4 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer">理财技巧</div>
+<div class="px-4 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer">消费心理</div>
+<div class="px-4 py-1 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer">月光坦白局</div>
+</div>
+</section>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- 左侧主内容区 -->
+<div class="w-full lg:w-8/12">
+<!-- 帖子筛选 -->
+<div class="bg-white rounded-lg shadow-sm p-4 mb-6 flex items-center justify-between">
+<div class="flex space-x-4">
+<button class="px-3 py-1.5 bg-primary text-white rounded-button text-sm !rounded-button whitespace-nowrap">最新发布</button>
+<button class="px-3 py-1.5 bg-white text-gray-600 hover:bg-gray-50 rounded-button text-sm !rounded-button whitespace-nowrap">热门讨论</button>
+<button class="px-3 py-1.5 bg-white text-gray-600 hover:bg-gray-50 rounded-button text-sm !rounded-button whitespace-nowrap">精华内容</button>
+</div>
+<div class="flex items-center space-x-3">
+<span class="text-sm text-gray-500">排序:</span>
+<select class="appearance-none bg-gray-50 rounded px-3 py-1.5 pr-8 text-sm text-gray-700 focus:outline-none">
+<option>最新回复</option>
+<option>发布时间</option>
+<option>点赞最多</option>
+<option>评论最多</option>
+</select>
+</div>
+</div>
+<!-- 帖子列表 -->
+<div class="space-y-6">
+<!-- 帖子1 -->
+<div class="bg-white rounded-lg shadow-sm p-6 post-card">
+<div class="flex items-start">
+<div class="mr-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/5d456dc1c853d26cace745689a26b20e.jpg" alt="张雨晴" class="w-full h-full object-cover">
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-2">
+<div>
+<h3 class="font-medium text-gray-800">张雨晴</h3>
+<div class="flex items-center mt-1">
+<span class="text-xs bg-yellow-100 text-yellow-600 px-1.5 py-0.5 rounded mr-2">Lv.5</span>
+<span class="text-xs text-gray-500">2 小时前</span>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full mr-2">经验分享</span>
+</div>
+</div>
+<h2 class="text-xl font-semibold text-gray-800 mb-2">30天储蓄挑战完成心得分享</h2>
+<p class="text-gray-600 mb-4">刚刚完成了30天储蓄挑战，想和大家分享一下我的心得体会。这个挑战真的改变了我的消费习惯，让我意识到平时有很多不必要的开支。通过记录每天的支出，我发现自己在外卖和奶茶上花了太多钱。现在我已经养成了自己做饭和带水的习惯，每个月能省下不少钱。推荐大家也试试这个挑战！</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#储蓄挑战</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#理财习惯</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#消费决策</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-6">
+<button class="flex items-center text-gray-500 hover:text-primary like-button">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>56</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-message-2-line"></i>
+</div>
+<span>32</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary bookmark-button">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-bookmark-line"></i>
+</div>
+<span>收藏</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-share-line"></i>
+</div>
+<span>分享</span>
+</button>
+</div>
+<button class="text-primary text-sm hover:underline">查看详情</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 帖子2 -->
+<div class="bg-white rounded-lg shadow-sm p-6 post-card">
+<div class="flex items-start">
+<div class="mr-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/deaee1c5fb2d7de3e522f7d8e5388c89.jpg" alt="李明" class="w-full h-full object-cover">
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-2">
+<div>
+<h3 class="font-medium text-gray-800">李明</h3>
+<div class="flex items-center mt-1">
+<span class="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded mr-2">Lv.3</span>
+<span class="text-xs text-gray-500">昨天 15:30</span>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full mr-2">问答解惑</span>
+</div>
+</div>
+<h2 class="text-xl font-semibold text-gray-800 mb-2">关于投资风险评估测试的疑问</h2>
+<p class="text-gray-600 mb-4">刚完成了投资风险评估测试，结果显示我是保守型投资者，但我自己感觉我对风险的接受度还可以。想请教一下大家，这个测试结果准确吗？作为一个大学生，我应该如何平衡风险和收益？有没有适合我这个阶段的投资产品推荐？谢谢各位！</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#投资入门</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#风险评估</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#大学生理财</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-6">
+<button class="flex items-center text-gray-500 hover:text-primary like-button">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>24</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-message-2-line"></i>
+</div>
+<span>26</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary bookmark-button">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-bookmark-line"></i>
+</div>
+<span>收藏</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-share-line"></i>
+</div>
+<span>分享</span>
+</button>
+</div>
+<button class="text-primary text-sm hover:underline">查看详情</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 帖子3 - 带图片 -->
+<div class="bg-white rounded-lg shadow-sm p-6 post-card">
+<div class="flex items-start">
+<div class="mr-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/94296f4325c4819d287cc4d476f1851a.jpg" alt="王小雨" class="w-full h-full object-cover">
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-2">
+<div>
+<h3 class="font-medium text-gray-800">王小雨</h3>
+<div class="flex items-center mt-1">
+<span class="text-xs bg-purple-100 text-purple-600 px-1.5 py-0.5 rounded mr-2">Lv.4</span>
+<span class="text-xs text-gray-500">2 小时前</span>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full mr-2">学习心得</span>
+</div>
+</div>
+<h2 class="text-xl font-semibold text-gray-800 mb-2">分享我的 VR 超市购物体验心得</h2>
+<p class="text-gray-600 mb-4">今天完成了 VR 超市购物模拟课程，感觉收获很大！通过这个课程，我学会了如何在有限预算内做出更明智的消费决策，特别是对比不同品牌产品的性价比。课程中的预算规划环节也很实用，让我明白了如何区分必需品和非必需品。</p>
+<div class="mb-4 grid grid-cols-2 gap-2">
+<img src="https://public.readdy.ai/ai/img_res/667486d7fa480ef0e34cdb5644581f7c.jpg" alt="VR超市购物体验" class="w-full h-40 object-cover rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/d5d6e2d8f5e9d3c9b6a3c0d9e2f5a8b7.jpg" alt="VR购物界面" class="w-full h-40 object-cover rounded-lg">
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#VR体验</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#消费决策</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#预算规划</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-6">
+<button class="flex items-center text-gray-500 hover:text-primary like-button active">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-thumb-up-fill"></i>
+</div>
+<span>33</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-message-2-line"></i>
+</div>
+<span>18</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary bookmark-button active">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-bookmark-fill"></i>
+</div>
+<span>已收藏</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-share-line"></i>
+</div>
+<span>分享</span>
+</button>
+</div>
+<button class="text-primary text-sm hover:underline">查看详情</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 帖子4 - 专家回答 -->
+<div class="bg-white rounded-lg shadow-sm p-6 post-card">
+<div class="flex items-start">
+<div class="mr-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/9dace000800d988d45a0cbd3c4271ec4.jpg" alt="李教授" class="w-full h-full object-cover">
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-2">
+<div>
+<h3 class="font-medium text-gray-800">李教授</h3>
+<div class="flex items-center mt-1">
+<span class="text-xs bg-red-100 text-red-600 px-1.5 py-0.5 rounded mr-2">专家</span>
+<span class="text-xs text-gray-500">昨天 09:15</span>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full mr-2">专家分享</span>
+</div>
+</div>
+<h2 class="text-xl font-semibold text-gray-800 mb-2">青少年如何培养正确的财商观念</h2>
+<p class="text-gray-600 mb-4">作为一名经济学教授，我认为青少年财商教育应该从日常生活中的小事开始。首先，建立记账习惯，了解自己的收支情况；其次，学会区分需要和想要，培养理性消费观念；第三，了解基本的金融知识，如储蓄、利息、通货膨胀等概念；最后，培养长期规划意识，理解复利的力量。我们学校已经开始将财商教育融入课程，效果非常显著。</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#财商教育</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#青少年理财</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#专家观点</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-6">
+<button class="flex items-center text-gray-500 hover:text-primary like-button">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>87</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-message-2-line"></i>
+</div>
+<span>42</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary bookmark-button">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-bookmark-line"></i>
+</div>
+<span>收藏</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-share-line"></i>
+</div>
+<span>分享</span>
+</button>
+</div>
+<button class="text-primary text-sm hover:underline">查看详情</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 帖子5 - 视频分享 -->
+<div class="bg-white rounded-lg shadow-sm p-6 post-card">
+<div class="flex items-start">
+<div class="mr-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/eb8181f0047c5c26bd6c9121ca5f5cfd.jpg" alt="王天明" class="w-full h-full object-cover">
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-2">
+<div>
+<h3 class="font-medium text-gray-800">王天明</h3>
+<div class="flex items-center mt-1">
+<span class="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded mr-2">数字金融专家</span>
+<span class="text-xs text-gray-500">3 天前</span>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-xs bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded-full mr-2">资源分享</span>
+</div>
+</div>
+<h2 class="text-xl font-semibold text-gray-800 mb-2">数字支付与加密货币：未来金融趋势解析</h2>
+<p class="text-gray-600 mb-4">分享一下我最近录制的视频，主要讲解了数字支付的发展趋势以及加密货币的基本知识。适合对新兴金融技术感兴趣的同学观看，内容通俗易懂，没有专业背景也能理解。</p>
+<div class="mb-4 relative">
+<img src="https://public.readdy.ai/ai/img_res/ba27dd152af183bca7684ba77ea904a7.jpg" alt="数字支付与加密货币" class="w-full h-64 object-cover rounded-lg">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-black/30 flex items-center justify-center cursor-pointer hover:bg-black/40 transition-all">
+<div class="w-10 h-10 flex items-center justify-center text-white">
+<i class="ri-play-fill ri-2x"></i>
+</div>
+</div>
+</div>
+<div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">15:56</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#数字支付</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#加密货币</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#金融科技</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-6">
+<button class="flex items-center text-gray-500 hover:text-primary like-button">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>63</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-message-2-line"></i>
+</div>
+<span>29</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary bookmark-button">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-bookmark-line"></i>
+</div>
+<span>收藏</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-share-line"></i>
+</div>
+<span>分享</span>
+</button>
+</div>
+<button class="text-primary text-sm hover:underline">查看详情</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 帖子6 - 月光坦白局 -->
+<div class="bg-white rounded-lg shadow-sm p-6 post-card">
+<div class="flex items-start">
+<div class="mr-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
+<div class="w-6 h-6 flex items-center justify-center text-gray-500">
+<i class="ri-user-line"></i>
+</div>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-2">
+<div>
+<h3 class="font-medium text-gray-800">匿名用户</h3>
+<div class="flex items-center mt-1">
+<span class="text-xs bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded mr-2">匿名发布</span>
+<span class="text-xs text-gray-500">1 天前</span>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-xs bg-pink-100 text-pink-600 px-2 py-0.5 rounded-full mr-2">月光坦白局</span>
+</div>
+</div>
+<h2 class="text-xl font-semibold text-gray-800 mb-2">我的冲动消费愧疚故事：如何走出消费焦虑？</h2>
+<p class="text-gray-600 mb-4">上个月我花了整整一个月的生活费买了一双限量版球鞋，当时觉得很酷，但现在每次看到它都感到愧疚和焦虑。我知道这不是理性消费，但总是控制不住自己追求潮流的冲动。有没有同学也有类似经历？你们是如何平衡消费欲望和理性决策的？希望能得到一些建议和共鸣。</p>
+<div class="p-4 bg-blue-50 rounded-lg mb-4">
+<div class="flex items-start">
+<div class="w-5 h-5 mt-0.5 flex items-center justify-center text-blue-500 mr-2">
+<i class="ri-robot-fill"></i>
+</div>
+<div>
+<p class="text-sm text-gray-700 mb-2"><span class="font-medium text-blue-600">AI心理助手：</span>你的感受很正常，这是消费后认知失调的表现。建议你：</p>
+<ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+<li>将这次经历视为学习机会，记录下来作为未来决策参考</li>
+<li>制定"24小时冷静期"规则，大额消费前先等待一天</li>
+<li>尝试将消费欲望转化为成长动力，如学习相关知识</li>
+</ul>
+<p class="text-sm text-gray-700 mt-2">记住，适度的自我宽容也很重要，不必过分苛责自己。</p>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#消费心理</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#冲动消费</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#心理疗愈</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">#消费焦虑</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-6">
+<button class="flex items-center text-gray-500 hover:text-primary like-button">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>78</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-message-2-line"></i>
+</div>
+<span>45</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary bookmark-button">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-bookmark-line"></i>
+</div>
+<span>收藏</span>
+</button>
+<button class="flex items-center text-gray-500 hover:text-primary">
+<div class="w-5 h-5 mr-1 flex items-center justify-center">
+<i class="ri-share-line"></i>
+</div>
+<span>分享</span>
+</button>
+</div>
+<button class="text-primary text-sm hover:underline">查看详情</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 分页 -->
+<div class="flex justify-center mt-8">
+<div class="flex space-x-1">
+<button class="w-10 h-10 rounded flex items-center justify-center bg-gray-100 text-gray-500 hover:bg-gray-200">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-left-s-line"></i>
+</div>
+</button>
+<button class="w-10 h-10 rounded flex items-center justify-center bg-primary text-white">1</button>
+<button class="w-10 h-10 rounded flex items-center justify-center bg-gray-100 text-gray-700 hover:bg-gray-200">2</button>
+<button class="w-10 h-10 rounded flex items-center justify-center bg-gray-100 text-gray-700 hover:bg-gray-200">3</button>
+<button class="w-10 h-10 rounded flex items-center justify-center bg-gray-100 text-gray-700 hover:bg-gray-200">4</button>
+<button class="w-10 h-10 rounded flex items-center justify-center bg-gray-100 text-gray-700 hover:bg-gray-200">5</button>
+<button class="w-10 h-10 rounded flex items-center justify-center bg-gray-100 text-gray-500 hover:bg-gray-200">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-right-s-line"></i>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 右侧边栏 -->
+<div class="w-full lg:w-4/12 space-y-6">
+<!-- 个人信息卡片 -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<div class="flex items-center mb-4">
+<div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+<img src="https://public.readdy.ai/ai/img_res/f3f33b29efd2a1c04e54ff8ebb0e45e7.jpg" alt="陈明宇" class="w-full h-full object-cover">
+</div>
+<div>
+<h3 class="font-semibold text-gray-800">陈明宇</h3>
+<div class="flex items-center mt-1">
+<span class="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded mr-2">Lv.3</span>
+<span class="text-xs text-gray-500">投资新手</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 mb-4">
+<div class="text-center">
+<div class="text-lg font-bold text-gray-800">12</div>
+<div class="text-xs text-gray-500">发布</div>
+</div>
+<div class="text-center">
+<div class="text-lg font-bold text-gray-800">36</div>
+<div class="text-xs text-gray-500">评论</div>
+</div>
+<div class="text-center">
+<div class="text-lg font-bold text-gray-800">850</div>
+<div class="text-xs text-gray-500">积分</div>
+</div>
+</div>
+<div class="mb-4">
+<div class="flex justify-between text-sm mb-1">
+<span class="text-gray-500">等级进度</span>
+<span class="text-gray-700">850/1000</span>
+</div>
+<div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div class="flex space-x-2">
+<button class="flex-1 py-2 bg-primary text-white rounded-button hover:bg-primary/90 !rounded-button whitespace-nowrap">我的主页</button>
+<button class="flex-1 py-2 bg-gray-100 text-gray-700 rounded-button hover:bg-gray-200 !rounded-button whitespace-nowrap">我的收藏</button>
+</div>
+</div>
+<!-- 活跃用户排行 -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">活跃用户排行</h3>
+<div class="space-y-4">
+<!-- 用户1 -->
+<div class="flex items-center">
+<div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white font-medium text-sm mr-3">1</div>
+<div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/419fa203f73b6f64a7e4f9c64bf0ccfc.jpg" alt="张雨晴" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium text-gray-800">张雨晴</h4>
+<span class="text-xs bg-yellow-100 text-yellow-600 px-1.5 py-0.5 rounded">Lv.5</span>
+</div>
+<p class="text-xs text-gray-500 mt-0.5">本周活跃度: 2150</p>
+</div>
+</div>
+<!-- 用户2 -->
+<div class="flex items-center">
+<div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-white font-medium text-sm mr-3">2</div>
+<div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/50a105774731d5ba1aaf62bcfcdfd117.jpg" alt="陈教授" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium text-gray-800">陈教授</h4>
+<span class="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">专家</span>
+</div>
+<p class="text-xs text-gray-500 mt-0.5">本周活跃度: 1980</p>
+</div>
+</div>
+<!-- 用户3 -->
+<div class="flex items-center">
+<div class="w-8 h-8 bg-orange-400 rounded-full flex items-center justify-center text-white font-medium text-sm mr-3">3</div>
+<div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/f3f33b29efd2a1c04e54ff8ebb0e45e7.jpg" alt="王浩" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium text-gray-800">王浩</h4>
+<span class="text-xs bg-purple-100 text-purple-600 px-1.5 py-0.5 rounded">Lv.4</span>
+</div>
+<p class="text-xs text-gray-500 mt-0.5">本周活跃度: 1765</p>
+</div>
+</div>
+<!-- 用户4 -->
+<div class="flex items-center">
+<div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 font-medium text-sm mr-3">4</div>
+<div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/4e1dc74647bda0fa360e078b6c2e0aea.jpg" alt="刘佳" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium text-gray-800">刘佳</h4>
+<span class="text-xs bg-green-100 text-green-600 px-1.5 py-0.5 rounded">Lv.4</span>
+</div>
+<p class="text-xs text-gray-500 mt-0.5">本周活跃度: 1620</p>
+</div>
+</div>
+<!-- 用户5 -->
+<div class="flex items-center">
+<div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 font-medium text-sm mr-3">5</div>
+<div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/13ab8561bf5eeadf548fa3a84609e01d.jpg" alt="张伟" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium text-gray-800">张伟</h4>
+<span class="text-xs bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">Lv.3</span>
+</div>
+<p class="text-xs text-gray-500 mt-0.5">本周活跃度: 1540</p>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-gray-100 text-center">
+<button class="text-primary text-sm hover:underline">查看完整排行榜</button>
+</div>
+</div>
+<!-- 热门话题 -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">热门话题</h3>
+<div class="flex flex-wrap gap-3">
+<div class="px-3 py-2 bg-blue-50 text-blue-600 rounded-lg text-sm topic-tag cursor-pointer flex items-center">
+<div class="w-4 h-4 mr-1.5 flex items-center justify-center">
+<i class="ri-fire-fill"></i>
+</div>
+<span>储蓄挑战 (256)</span>
+</div>
+<div class="px-3 py-2 bg-pink-50 text-pink-600 rounded-lg text-sm topic-tag cursor-pointer flex items-center">
+<div class="w-4 h-4 mr-1.5 flex items-center justify-center">
+<i class="ri-psychotherapy-fill"></i>
+</div>
+<span>消费心理疗愈 (243)</span>
+</div>
+<div class="px-3 py-2 bg-green-50 text-green-600 rounded-lg text-sm topic-tag cursor-pointer flex items-center">
+<div class="w-4 h-4 mr-1.5 flex items-center justify-center">
+<i class="ri-vr-fill"></i>
+</div>
+<span>VR体验 (189)</span>
+</div>
+<div class="px-3 py-2 bg-purple-50 text-purple-600 rounded-lg text-sm topic-tag cursor-pointer flex items-center">
+<div class="w-4 h-4 mr-1.5 flex items-center justify-center">
+<i class="ri-money-cny-circle-fill"></i>
+</div>
+<span>投资入门 (175)</span>
+</div>
+<div class="px-3 py-2 bg-yellow-50 text-yellow-600 rounded-lg text-sm topic-tag cursor-pointer flex items-center">
+<div class="w-4 h-4 mr-1.5 flex items-center justify-center">
+<i class="ri-shopping-cart-fill"></i>
+</div>
+<span>消费决策 (162)</span>
+</div>
+<div class="px-3 py-2 bg-red-50 text-red-600 rounded-lg text-sm topic-tag cursor-pointer flex items-center">
+<div class="w-4 h-4 mr-1.5 flex items-center justify-center">
+<i class="ri-building-2-fill"></i>
+</div>
+<span>创业模拟 (143)</span>
+</div>
+<div class="px-3 py-2 bg-indigo-50 text-indigo-600 rounded-lg text-sm topic-tag cursor-pointer flex items-center">
+<div class="w-4 h-4 mr-1.5 flex items-center justify-center">
+<i class="ri-bank-card-fill"></i>
+</div>
+<span>理财规划 (137)</span>
+</div>
+<div class="px-3 py-2 bg-orange-50 text-orange-600 rounded-lg text-sm topic-tag cursor-pointer flex items-center">
+<div class="w-4 h-4 mr-1.5 flex items-center justify-center">
+<i class="ri-shield-check-fill"></i>
+</div>
+<span>风险管理 (124)</span>
+</div>
+<div class="px-3 py-2 bg-teal-50 text-teal-600 rounded-lg text-sm topic-tag cursor-pointer flex items-center">
+<div class="w-4 h-4 mr-1.5 flex items-center justify-center">
+<i class="ri-book-fill"></i>
+</div>
+<span>学习心得 (118)</span>
+</div>
+<div class="px-3 py-2 bg-rose-50 text-rose-600 rounded-lg text-sm topic-tag cursor-pointer flex items-center">
+<div class="w-4 h-4 mr-1.5 flex items-center justify-center">
+<i class="ri-moon-fill"></i>
+</div>
+<span>月光坦白局 (112)</span>
+</div>
+</div>
+</div>
+<!-- 社区公告 -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">社区公告</h3>
+<div class="space-y-4">
+<div class="border-l-4 border-pink-500 pl-3 py-1">
+<h4 class="font-medium text-gray-800">消费心理疗愈系统正式上线</h4>
+<p class="text-sm text-gray-600 mt-1">全新的消费心理疗愈系统已上线，帮助你解决消费焦虑和愧疚问题。</p>
+<p class="text-xs text-gray-500 mt-1">2025-04-06</p>
+</div>
+<div class="border-l-4 border-blue-500 pl-3 py-1">
+<h4 class="font-medium text-gray-800">社区规则更新通知</h4>
+<p class="text-sm text-gray-600 mt-1">为了维护良好的社区氛围，我们更新了社区规则，请大家遵守。</p>
+<p class="text-xs text-gray-500 mt-1">2025-04-01</p>
+</div>
+<div class="border-l-4 border-green-500 pl-3 py-1">
+<h4 class="font-medium text-gray-800">4月财商挑战赛开始报名</h4>
+<p class="text-sm text-gray-600 mt-1">参与挑战赛，赢取丰厚奖品和积分奖励！</p>
+<p class="text-xs text-gray-500 mt-1">2025-04-02</p>
+</div>
+<div class="border-l-4 border-yellow-500 pl-3 py-1">
+<h4 class="font-medium text-gray-800">新增专家在线答疑时间</h4>
+<p class="text-sm text-gray-600 mt-1">每周三晚8点，金融专家在线解答你的问题。</p>
+<p class="text-xs text-gray-500 mt-1">2025-04-03</p>
+</div>
+</div>
+</div>
+<!-- 最近活动 -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-lg font-semibold text-gray-800 mb-4">近期活动</h3>
+<div class="space-y-4">
+<div class="flex">
+<div class="w-16 h-16 bg-pink-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+<div class="text-center">
+<div class="text-pink-600 font-bold">10</div>
+<div class="text-pink-600 text-xs">4月</div>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-800">消费心理疗愈工作坊</h4>
+<p class="text-sm text-gray-600 mt-1">专业心理咨询师带你走出消费焦虑，建立健康消费观</p>
+<div class="flex items-center mt-2">
+<div class="w-4 h-4 mr-1 flex items-center justify-center text-gray-500">
+<i class="ri-computer-line"></i>
+</div>
+<span class="text-xs text-gray-500">线上活动</span>
+</div>
+</div>
+</div>
+<div class="flex">
+<div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+<div class="text-center">
+<div class="text-blue-600 font-bold">12</div>
+<div class="text-blue-600 text-xs">4月</div>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-800">青少年创业计划大赛</h4>
+<p class="text-sm text-gray-600 mt-1">展示你的创业点子，获得导师指导和启动资金</p>
+<div class="flex items-center mt-2">
+<div class="w-4 h-4 mr-1 flex items-center justify-center text-gray-500">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-xs text-gray-500">线上 + 北京创新中心</span>
+</div>
+</div>
+</div>
+<div class="flex">
+<div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+<div class="text-center">
+<div class="text-green-600 font-bold">18</div>
+<div class="text-green-600 text-xs">4月</div>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-800">投资模拟大赛</h4>
+<p class="text-sm text-gray-600 mt-1">使用虚拟资金进行投资实践，体验真实市场</p>
+<div class="flex items-center mt-2">
+<div class="w-4 h-4 mr-1 flex items-center justify-center text-gray-500">
+<i class="ri-computer-line"></i>
+</div>
+<span class="text-xs text-gray-500">线上活动</span>
+</div>
+</div>
+</div>
+<div class="flex">
+<div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mr-3 flex-shrink-0">
+<div class="text-center">
+<div class="text-purple-600 font-bold">25</div>
+<div class="text-purple-600 text-xs">4月</div>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-800">财商知识竞赛</h4>
+<p class="text-sm text-gray-600 mt-1">测试你的财商知识，与其他用户一较高下</p>
+<div class="flex items-center mt-2">
+<div class="w-4 h-4 mr-1 flex items-center justify-center text-gray-500">
+<i class="ri-computer-line"></i>
+</div>
+<span class="text-xs text-gray-500">线上活动</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-gray-100 text-center">
+<button class="text-primary text-sm hover:underline">查看更多活动</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 消费心理疗愈系统介绍 -->
+<section class="bg-white rounded-lg shadow-sm p-6 mt-8">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold text-gray-800">消费心理疗愈系统</h2>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/a344597f-6339-410f-b092-367f2444dafc" data-readdy="true" class="px-4 py-2 bg-primary text-white rounded-button hover:bg-primary/90 !rounded-button whitespace-nowrap inline-block">
+立即体验
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- 三级消费许可制度 -->
+<div class="bg-gray-50 rounded-lg p-5">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center text-green-600">
+<i class="ri-shield-check-fill"></i>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">三级消费许可制度</h3>
+</div>
+<div class="space-y-3">
+<div class="flex items-center p-3 bg-white rounded-lg">
+<div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+<div class="w-4 h-4 flex items-center justify-center text-green-600">
+<i class="ri-check-line"></i>
+</div>
+</div>
+<div>
+<p class="font-medium text-gray-800">生存型消费</p>
+<p class="text-xs text-gray-500">绿色✅+成就值</p>
+</div>
+</div>
+<div class="flex items-center p-3 bg-white rounded-lg">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+<div class="w-4 h-4 flex items-center justify-center text-blue-600">
+<i class="ri-arrow-up-circle-line"></i>
+</div>
+</div>
+<div>
+<p class="font-medium text-gray-800">发展型消费</p>
+<p class="text-xs text-gray-500">蓝色🔵+技能树</p>
+</div>
+</div>
+<div class="flex items-center p-3 bg-white rounded-lg">
+<div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mr-3">
+<div class="w-4 h-4 flex items-center justify-center text-orange-600">
+<i class="ri-alert-line"></i>
+</div>
+</div>
+<div>
+<p class="font-medium text-gray-800">享乐型消费</p>
+<p class="text-xs text-gray-500">橙色⚠️+平衡建议</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 同龄人共鸣社区 -->
+<div class="bg-gray-50 rounded-lg p-5">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center text-purple-600">
+<i class="ri-group-fill"></i>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">同龄人共鸣社区</h3>
+</div>
+<div class="space-y-3">
+<div class="p-3 bg-white rounded-lg">
+<p class="font-medium text-gray-800">《月光坦白局》匿名树洞</p>
+<p class="text-sm text-gray-600 mt-1">消费愧疚故事可兑换"心灵代金券"</p>
+<div class="mt-2 flex">
+<span class="text-xs bg-pink-100 text-pink-600 px-2 py-0.5 rounded-full mr-2">已有 156 个故事</span>
+</div>
+</div>
+<div class="p-3 bg-white rounded-lg">
+<p class="font-medium text-gray-800">反向消费榜样专区</p>
+<p class="text-sm text-gray-600 mt-1">军大衣选购攻略/二手书交换地图</p>
+<div class="mt-2 flex">
+<span class="text-xs bg-green-100 text-green-600 px-2 py-0.5 rounded-full mr-2">节省达人分享</span>
+</div>
+</div>
+</div>
+</div>
+<!-- AI心理陪伴系统 -->
+<div class="bg-gray-50 rounded-lg p-5">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center text-blue-600">
+<i class="ri-robot-fill"></i>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">AI心理陪伴系统</h3>
+</div>
+<div class="space-y-3">
+<div class="p-3 bg-white rounded-lg">
+<p class="font-medium text-gray-800">消费焦虑识别</p>
+<p class="text-sm text-gray-600 mt-1">专属语言模型识别消费焦虑信号</p>
+</div>
+<div class="p-3 bg-white rounded-lg">
+<p class="font-medium text-gray-800">消费价值可视化</p>
+<p class="text-sm text-gray-600 mt-1">《消费能量转化报告》将开支映射为能力成长曲线</p>
+<div class="mt-2">
+<div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 rounded-full" style="width: 75%"></div>
+</div>
+<div class="flex justify-between text-xs text-gray-500 mt-1">
+<span>生存消费</span>
+<span>发展消费</span>
+<span>享乐消费</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 text-center">
+<p class="text-gray-600 mb-4">基于大学生群体普遍存在的消费心理困扰，我们构建了「消费心理疗愈系统」，从认知重构到行为引导实现闭环干预</p>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/55946bba-59f8-4364-940e-6fafeee98722" data-readdy="true" class="inline-block px-6 py-2.5 bg-primary text-white rounded-button hover:bg-primary/90 !rounded-button whitespace-nowrap">
+了解更多详情
+</a>
+</div>
+</section>
+</main>
+<!-- 页脚 -->
+<footer class="bg-gray-800 text-white py-12 mt-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<a href="#" class="font-['Pacifico'] text-2xl text-white mb-4 inline-block">logo</a>
+<p class="text-gray-400 text-sm mb-4">智财青春平台致力于为青少年提供财商教育和金融素养培养，助力青少年成长为具备健康财务观念的社会人才。</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-weibo-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-wechat-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-qq-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-douyin-fill"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">快速链接</h3>
+<ul class="space-y-2">
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-400 hover:text-white">首页</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="text-gray-400 hover:text-white">教育赋能</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">金融服务</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">社区互动</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">关于我们</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">社区资源</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">经验分享</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">问答解惑</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">学习心得</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">活动讨论</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">社区规则</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">联系我们</h3>
+<ul class="space-y-2">
+<li class="flex items-start">
+<div class="w-5 h-5 mt-0.5 flex items-center justify-center text-gray-400 mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-400">北京市海淀区中关村科技园区</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-400">contact@zhicaiqingchun.com</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-400">400-888-7777</span>
+</li>
+</ul>
+<div class="mt-4">
+<div class="flex items-center">
+<input type="email" placeholder="输入邮箱订阅资讯" class="px-4 py-2 rounded-l bg-gray-700 text-white border-none focus:outline-none text-sm w-full">
+<button class="px-4 py-2 bg-primary text-white rounded-r hover:bg-primary/90 !rounded-button whitespace-nowrap">订阅</button>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">© 2025 智财青春平台. 保留所有权利.</p>
+<div class="flex space-x-4 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-white text-sm">隐私政策</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm">服务条款</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm">帮助中心</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+// 点赞按钮交互
+document.querySelectorAll('.like-button').forEach(button => {
+button.addEventListener('click', function() {
+this.classList.toggle('active');
+const icon = this.querySelector('i');
+if (this.classList.contains('active')) {
+icon.className = 'ri-thumb-up-fill';
+const count = this.querySelector('span');
+count.textContent = parseInt(count.textContent) + 1;
+} else {
+icon.className = 'ri-thumb-up-line';
+const count = this.querySelector('span');
+count.textContent = parseInt(count.textContent) - 1;
+}
+});
+});
+// 收藏按钮交互
+document.querySelectorAll('.bookmark-button').forEach(button => {
+button.addEventListener('click', function() {
+this.classList.toggle('active');
+const icon = this.querySelector('i');
+const text = this.querySelector('span');
+if (this.classList.contains('active')) {
+icon.className = 'ri-bookmark-fill';
+text.textContent = '已收藏';
+} else {
+icon.className = 'ri-bookmark-line';
+text.textContent = '收藏';
+}
+});
+});
+// 消费心理疗愈系统交互
+document.querySelectorAll('.topic-tag').forEach(tag => {
+tag.addEventListener('click', function() {
+// 模拟点击话题标签的效果
+this.classList.add('scale-105');
+setTimeout(() => {
+this.classList.remove('scale-105');
+}, 200);
+});
+});
+// 消费类型示例弹窗
+const consumptionExamples = {
+'生存型消费': {
+title: '生存型消费示例',
+content: '食堂餐费计入"健康守护者"勋章，基础生活用品获得成就值加成。',
+icon: 'ri-check-line',
+color: 'green'
+},
+'发展型消费': {
+title: '发展型消费示例',
+content: '书籍购买激活"认知突破"进度，学习课程解锁技能树节点。',
+icon: 'ri-arrow-up-circle-line',
+color: 'blue'
+},
+'享乐型消费': {
+title: '享乐型消费示例',
+content: '奶茶消费触发"快乐性价比"计算器，提供情感支持和平衡建议。',
+icon: 'ri-alert-line',
+color: 'orange'
+}
+};
+// 创建弹窗函数
+function createConsumptionPopup(type) {
+const data = consumptionExamples[type];
+// 创建弹窗元素
+const popup = document.createElement('div');
+popup.className = 'fixed inset-0 flex items-center justify-center z-50 bg-black/50';
+popup.innerHTML = `
+<div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 rounded-full bg-${data.color}-100 flex items-center justify-center mr-3">
+<div class="w-5 h-5 flex items-center justify-center text-${data.color}-600">
+<i class="${data.icon}"></i>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-800">${data.title}</h3>
+<button class="ml-auto close-popup">
+<div class="w-6 h-6 flex items-center justify-center text-gray-500 hover:text-gray-700">
+<i class="ri-close-line"></i>
+</div>
+</button>
+</div>
+<p class="text-gray-600 mb-4">${data.content}</p>
+<div class="flex justify-end">
+<button class="px-4 py-2 bg-${data.color}-500 text-white rounded-button hover:bg-${data.color}-600 !rounded-button whitespace-nowrap close-popup">
+了解了
+</button>
+</div>
+</div>
+`;
+// 添加到页面
+document.body.appendChild(popup);
+// 关闭弹窗事件
+popup.querySelectorAll('.close-popup').forEach(button => {
+button.addEventListener('click', () => {
+document.body.removeChild(popup);
+});
+});
+}
+// 为消费类型添加点击事件
+document.querySelectorAll('.bg-gray-50 .flex.items-center.p-3').forEach(item => {
+item.addEventListener('click', function() {
+const type = this.querySelector('p.font-medium').textContent;
+createConsumptionPopup(type);
+});
+});
+</script>
+</body>
+</html>

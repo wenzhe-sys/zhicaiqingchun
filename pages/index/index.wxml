@@ -1,0 +1,43 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <view class="welcome-section">
+    <image src="/images/logo.png" class="logo" mode="aspectFit"></image>
+    <text class="welcome-text">欢迎使用智财青春</text>
+    <text class="subtitle">数据驱动的青年消费智慧平台</text>
+  </view>
+
+  <view class="menu-section">
+        <view class="menu-item" bindtap="goToConsumption">
+          <view class="menu-icon">
+            <text class="icon">💰</text>
+          </view>
+          <view class="menu-text">消费分析</view>
+        </view>
+
+        <view class="menu-item" bindtap="goToAddConsumption">
+          <view class="menu-icon">
+            <text class="icon">�</text>
+          </view>
+          <view class="menu-text">添加消费</view>
+        </view>
+
+        <view class="menu-item" bindtap="goToFinance">
+          <view class="menu-icon">
+            <text class="icon">📊</text>
+          </view>
+          <view class="menu-text">理财规划</view>
+        </view>
+
+        <view class="menu-item" bindtap="goToEducation">
+          <view class="menu-icon">
+            <text class="icon">🎓</text>
+          </view>
+          <view class="menu-text">教育赋能</view>
+        </view>
+      </view>
+
+  <view class="user-section">
+    <button class="btn-primary" bindtap="goToLogin">登录</button>
+    <button class="btn-secondary" bindtap="goToRegister">注册</button>
+  </view>
+</view>

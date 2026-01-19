@@ -1,0 +1,218 @@
+/* pages/consumption/add/add.wxss */
+.container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 20rpx;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* 页面头部 */
+.header {
+  background-color: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  text-align: center;
+}
+
+/* 表单容器 */
+form {
+  background-color: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 表单区块 */
+.form-section {
+  margin-bottom: 40rpx;
+}
+
+.section-label {
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+/* 金额输入 */
+.amount-input-container {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s;
+}
+
+.amount-input-container:focus-within {
+  border-color: #1890ff;
+  background-color: white;
+}
+
+.currency-symbol {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1890ff;
+  margin-right: 16rpx;
+}
+
+.amount-input {
+  flex: 1;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+/* 类别选择 */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-radius: 16rpx;
+  padding: 30rpx 0;
+  transition: all 0.3s;
+  border: 2rpx solid transparent;
+}
+
+.category-item.active {
+  background-color: #1890ff;
+  color: white;
+  border-color: #1890ff;
+}
+
+.category-icon {
+  font-size: 60rpx;
+  margin-bottom: 12rpx;
+}
+
+.category-name {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+/* 输入框 */
+.form-input {
+  width: 100%;
+  background-color: #f5f5f5;
+  border: 2rpx solid transparent;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  color: #333;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.form-input:focus {
+  border-color: #1890ff;
+  background-color: white;
+}
+
+/* 日期选择器 */
+.date-picker {
+  background-color: #f5f5f5;
+  border: 2rpx solid transparent;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  transition: all 0.3s;
+}
+
+.date-picker:active {
+  border-color: #1890ff;
+  background-color: white;
+}
+
+.picker-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 文本域 */
+.form-textarea {
+  width: 100%;
+  background-color: #f5f5f5;
+  border: 2rpx solid transparent;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  color: #333;
+  outline: none;
+  transition: all 0.3s;
+  min-height: 120rpx;
+}
+
+.form-textarea:focus {
+  border-color: #1890ff;
+  background-color: white;
+}
+
+/* 表单按钮 */
+.form-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 60rpx;
+}
+
+.btn-primary {
+  flex: 1;
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #40a9ff;
+}
+
+.btn-primary:active {
+  background-color: #096dd9;
+}
+
+.btn-secondary {
+  flex: 1;
+  background-color: #f5f5f5;
+  color: #666;
+  border: 2rpx solid #d9d9d9;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #e8e8e8;
+  border-color: #1890ff;
+  color: #1890ff;
+}
+
+.btn-secondary:active {
+  background-color: #d9d9d9;
+}

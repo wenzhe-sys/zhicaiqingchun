@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消费健康评估 - 智财青春</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #297CBB;
+            cursor: pointer;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .custom-radio:checked + label {
+            border-color: #297CBB;
+            background-color: rgba(41, 124, 187, 0.1);
+        }
+        .custom-radio:checked + label .radio-circle {
+            border-color: #297CBB;
+        }
+        .custom-radio:checked + label .radio-circle::after {
+            transform: scale(1);
+        }
+        .custom-checkbox:checked + label {
+            border-color: #297CBB;
+            background-color: rgba(41, 124, 187, 0.1);
+        }
+        .custom-checkbox:checked + label .checkbox-square {
+            border-color: #297CBB;
+            background-color: #297CBB;
+        }
+        .custom-checkbox:checked + label .checkbox-square::after {
+            opacity: 1;
+        }
+        .progress-step.active {
+            background-color: #297CBB;
+            color: white;
+        }
+        .progress-step.completed {
+            background-color: #6DAF4E;
+            color: white;
+        }
+        .progress-line {
+            height: 2px;
+            background-color: #e5e7eb;
+        }
+        .progress-line.active {
+            background-color: #297CBB;
+        }
+        .progress-line.completed {
+            background-color: #6DAF4E;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center">
+                    <span class="text-3xl font-['Pacifico'] text-primary mr-2">logo</span>
+                    <span class="text-xl font-semibold text-gray-800">智财青春</span>
+                </a>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+                <a href="#" class="text-primary font-medium">消费评估</a>
+                <a href="#" class="text-gray-600 hover:text-primary">教育赋能</a>
+                <a href="#" class="text-gray-600 hover:text-primary">决策干预</a>
+                <a href="#" class="text-gray-600 hover:text-primary">生态协同</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+                    <i class="ri-search-line ri-lg"></i>
+                </button>
+                <button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+                    <i class="ri-notification-3-line ri-lg"></i>
+                </button>
+                <div class="relative">
+                    <img src="https://public.readdy.ai/ai/img_res/1b82bd4a42973383179f53d2455f8318.jpg" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center mb-8">
+                <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center text-gray-600 hover:text-primary">
+                    <i class="ri-arrow-left-line ri-lg mr-2"></i>
+                    <span>返回首页</span>
+                </a>
+            </div>
+            
+            <div class="text-center mb-10">
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">消费健康评估</h1>
+                <p class="text-lg text-gray-600">完成以下信息，获取您的消费健康指数 (CHI) 和个性化分析报告</p>
+            </div>
+            
+            <div class="flex items-center justify-between mb-12 relative">
+                <div class="absolute left-0 right-0 top-1/2 transform -translate-y-1/2">
+                    <div class="flex">
+                        <div class="progress-line active flex-1"></div>
+                        <div class="progress-line flex-1"></div>
+                        <div class="progress-line flex-1"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-step active w-10 h-10 rounded-full flex items-center justify-center text-white font-medium z-10 bg-primary">1</div>
+                
+                <div class="progress-step w-10 h-10 rounded-full flex items-center justify-center text-gray-500 font-medium z-10 bg-white border border-gray-300">2</div>
+                
+                <div class="progress-step w-10 h-10 rounded-full flex items-center justify-center text-gray-500 font-medium z-10 bg-white border border-gray-300">3</div>
+                
+                <div class="progress-step w-10 h-10 rounded-full flex items-center justify-center text-gray-500 font-medium z-10 bg-white border border-gray-300">4</div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <h2 class="text-xl font-semibold text-gray-900 mb-6">基本信息</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">您的年龄</label>
+                        <div class="relative">
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white pr-10">
+                                <option value="">请选择您的年龄段</option>
+                                <option value="18-22">18-22 岁（在校大学生）</option>
+                                <option value="23-25">23-25 岁（应届毕业生）</option>
+                                <option value="26-30">26-30 岁（职场新人）</option>
+                                <option value="31-35">31-35 岁（职场进阶期）</option>
+                                <option value="36-40">36-40 岁</option>
+                                <option value="41+">41 岁以上</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <i class="ri-arrow-down-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">您的职业</label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <input type="radio" id="job1" name="job" class="hidden custom-radio">
+                                <label for="job1" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>在校学生</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="job2" name="job" class="hidden custom-radio">
+                                <label for="job2" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>企业员工</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="job3" name="job" class="hidden custom-radio">
+                                <label for="job3" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>公务员/事业单位</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="job4" name="job" class="hidden custom-radio">
+                                <label for="job4" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>自由职业</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="job5" name="job" class="hidden custom-radio">
+                                <label for="job5" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>创业者</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="job6" name="job" class="hidden custom-radio">
+                                <label for="job6" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>其他</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">月收入范围（元）</label>
+                        <div class="relative">
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white pr-10">
+                                <option value="">请选择您的月收入范围</option>
+                                <option value="<3000">3000 以下</option>
+                                <option value="3000-5000">3000-5000</option>
+                                <option value="5001-8000">5001-8000</option>
+                                <option value="8001-12000">8001-12000</option>
+                                <option value="12001-20000">12001-20000</option>
+                                <option value="20001-30000">20001-30000</option>
+                                <option value=">30000">30000 以上</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <i class="ri-arrow-down-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">教育程度</label>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div>
+                                <input type="radio" id="edu1" name="education" class="hidden custom-radio">
+                                <label for="edu1" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>高中及以下</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="edu2" name="education" class="hidden custom-radio">
+                                <label for="edu2" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>专科</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="edu3" name="education" class="hidden custom-radio">
+                                <label for="edu3" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>本科</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="edu4" name="education" class="hidden custom-radio">
+                                <label for="edu4" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>硕士及以上</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-200 my-8"></div>
+                
+                <h2 class="text-xl font-semibold text-gray-900 mb-6">消费习惯调查</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">主要消费类型（可多选）</label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <input type="checkbox" id="type1" name="consumeType" class="hidden custom-checkbox">
+                                <label for="type1" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="checkbox-square w-5 h-5 border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 text-white">
+                                            <i class="ri-check-line ri-sm"></i>
+                                        </div>
+                                    </div>
+                                    <span>餐饮美食</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="type2" name="consumeType" class="hidden custom-checkbox">
+                                <label for="type2" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="checkbox-square w-5 h-5 border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 text-white">
+                                            <i class="ri-check-line ri-sm"></i>
+                                        </div>
+                                    </div>
+                                    <span>服饰鞋包</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="type3" name="consumeType" class="hidden custom-checkbox">
+                                <label for="type3" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="checkbox-square w-5 h-5 border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 text-white">
+                                            <i class="ri-check-line ri-sm"></i>
+                                        </div>
+                                    </div>
+                                    <span>数码电子</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="type4" name="consumeType" class="hidden custom-checkbox">
+                                <label for="type4" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="checkbox-square w-5 h-5 border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 text-white">
+                                            <i class="ri-check-line ri-sm"></i>
+                                        </div>
+                                    </div>
+                                    <span>娱乐社交</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="type5" name="consumeType" class="hidden custom-checkbox">
+                                <label for="type5" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="checkbox-square w-5 h-5 border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 text-white">
+                                            <i class="ri-check-line ri-sm"></i>
+                                        </div>
+                                    </div>
+                                    <span>旅游出行</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="type6" name="consumeType" class="hidden custom-checkbox">
+                                <label for="type6" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="checkbox-square w-5 h-5 border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 text-white">
+                                            <i class="ri-check-line ri-sm"></i>
+                                        </div>
+                                    </div>
+                                    <span>学习进修</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="type7" name="consumeType" class="hidden custom-checkbox">
+                                <label for="type7" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="checkbox-square w-5 h-5 border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 text-white">
+                                            <i class="ri-check-line ri-sm"></i>
+                                        </div>
+                                    </div>
+                                    <span>健康医疗</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="type8" name="consumeType" class="hidden custom-checkbox">
+                                <label for="type8" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="checkbox-square w-5 h-5 border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 text-white">
+                                            <i class="ri-check-line ri-sm"></i>
+                                        </div>
+                                    </div>
+                                    <span>美容护理</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="type9" name="consumeType" class="hidden custom-checkbox">
+                                <label for="type9" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="checkbox-square w-5 h-5 border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-0 text-white">
+                                            <i class="ri-check-line ri-sm"></i>
+                                        </div>
+                                    </div>
+                                    <span>其他</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">月均消费金额（元）</label>
+                        <div class="mb-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-gray-500">0</span>
+                                <span class="text-sm text-gray-500">20000+</span>
+                            </div>
+                            <input type="range" min="0" max="20000" step="500" value="5000" class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer" id="consumeAmount">
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-gray-700 mr-2">当前选择：</span>
+                            <div class="relative">
+                                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">¥</span>
+                                <input type="number" id="amountInput" value="5000" class="w-32 pl-8 pr-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-right">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">消费频率</label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <input type="radio" id="freq1" name="frequency" class="hidden custom-radio">
+                                <label for="freq1" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>每天多次</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="freq2" name="frequency" class="hidden custom-radio">
+                                <label for="freq2" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>每天一次</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="freq3" name="frequency" class="hidden custom-radio">
+                                <label for="freq3" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>每周几次</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="freq4" name="frequency" class="hidden custom-radio">
+                                <label for="freq4" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>每月几次</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="freq5" name="frequency" class="hidden custom-radio">
+                                <label for="freq5" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>不确定</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">消费决策方式</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <input type="radio" id="decision1" name="decision" class="hidden custom-radio">
+                                <label for="decision1" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>计划型（提前规划，按计划消费）</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="decision2" name="decision" class="hidden custom-radio">
+                                <label for="decision2" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>冲动型（看到喜欢的就买）</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="decision3" name="decision" class="hidden custom-radio">
+                                <label for="decision3" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>比较型（货比三家后购买）</span>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="decision4" name="decision" class="hidden custom-radio">
+                                <label for="decision4" class="flex items-center p-3 border border-gray-300 rounded cursor-pointer transition-all">
+                                    <div class="radio-circle w-5 h-5 rounded-full border-2 border-gray-400 mr-3 relative flex-shrink-0">
+                                        <div class="absolute inset-0.5 rounded-full bg-primary transform scale-0 transition-transform"></div>
+                                    </div>
+                                    <span>从众型（跟随他人推荐购买）</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-200 my-8"></div>
+                
+                <h2 class="text-xl font-semibold text-gray-900 mb-6">消费数据导入</h2>
+                
+                <div class="space-y-6">
+                    <p class="text-gray-600">为了获得更准确的评估结果，您可以选择导入近 3 个月的消费数据。我们支持以下导入方式：</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
+                            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mx-auto mb-4">
+                                <i class="ri-file-upload-line ri-xl text-primary"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">手动输入</h3>
+                            <p class="text-sm text-gray-600 mb-4">手动填写您的主要消费项目和金额</p>
+                            <button class="w-full bg-white text-primary border border-primary px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+                                开始填写
+                            </button>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
+                            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mx-auto mb-4">
+                                <i class="ri-alipay-fill ri-xl text-primary"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">支付宝账单</h3>
+                            <p class="text-sm text-gray-600 mb-4">授权导入支付宝消费账单数据</p>
+                            <button class="w-full bg-white text-primary border border-primary px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+                                授权导入
+                            </button>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
+                            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mx-auto mb-4">
+                                <i class="ri-wechat-pay-fill ri-xl text-primary"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">微信支付账单</h3>
+                            <p class="text-sm text-gray-600 mb-4">授权导入微信支付消费账单数据</p>
+                            <button class="w-full bg-white text-primary border border-primary px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+                                授权导入
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                        <div class="flex items-start">
+                            <div class="w-5 h-5 flex-shrink-0 text-yellow-500 mt-0.5">
+                                <i class="ri-information-line"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="text-sm font-medium text-yellow-800">数据安全说明</h3>
+                                <div class="mt-2 text-sm text-yellow-700">
+                                    <p>我们严格遵守数据安全规范，您的消费数据仅用于生成评估报告，不会用于其他用途。您也可以选择跳过此步骤，直接提交前面的信息进行评估。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-10 flex justify-between">
+                    <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-gray-900 flex items-center">
+                        <i class="ri-arrow-left-line ri-lg mr-2"></i>
+                        <span>返回首页</span>
+                    </a>
+                    <button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                        继续下一步
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12 mt-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <span class="text-2xl font-['Pacifico'] text-white mr-2">logo</span>
+                        <span class="text-lg font-semibold">智财青春</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">数据驱动的青年消费智慧平台</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+                            <i class="ri-weibo-fill"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+                            <i class="ri-wechat-fill"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+                            <i class="ri-douban-fill"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品服务</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">消费评估</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">VR 体验课程</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">AR 购物助手</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">预算规划工具</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">关于我们</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">平台介绍</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">团队成员</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">帮助中心</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">用户手册</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">隐私政策</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">服务条款</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 智财青春. 保留所有权利.</p>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center text-gray-400">
+                        <i class="ri-visa-fill ri-lg mr-2"></i>
+                        <i class="ri-mastercard-fill ri-lg mr-2"></i>
+                        <i class="ri-paypal-fill ri-lg mr-2"></i>
+                        <i class="ri-alipay-fill ri-lg"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 处理滑块和输入框同步
+        const rangeInput = document.getElementById('consumeAmount');
+        const numberInput = document.getElementById('amountInput');
+        
+        rangeInput.addEventListener('input', function() {
+            numberInput.value = this.value;
+        });
+        
+        numberInput.addEventListener('input', function() {
+            rangeInput.value = this.value;
+        });
+        
+        // 单选按钮和复选框的交互
+        document.querySelectorAll('.custom-radio').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const name = this.name;
+                document.querySelectorAll(`input[name="${name}"] + label`).forEach(label => {
+                    label.classList.remove('border-primary', 'bg-primary-50');
+                });
+                if (this.checked) {
+                    this.nextElementSibling.classList.add('border-primary', 'bg-primary-50');
+                }
+            });
+        });
+        
+        document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    this.nextElementSibling.classList.add('border-primary', 'bg-primary-50');
+                } else {
+                    this.nextElementSibling.classList.remove('border-primary', 'bg-primary-50');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

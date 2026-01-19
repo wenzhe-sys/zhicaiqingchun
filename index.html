@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智财青春 - 数据驱动的青年消费智慧平台</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Noto Sans SC', sans-serif;
+}
+.hero-gradient {
+background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0) 100%);
+}
+.chart-container {
+width: 100%;
+height: 300px;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: #297CBB;
+cursor: pointer;
+}
+.custom-checkbox:checked + label:before {
+background-color: #297CBB;
+border-color: #297CBB;
+}
+.custom-switch:checked + label {
+background-color: #297CBB;
+}
+.custom-switch:checked + label:after {
+transform: translateX(20px);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+<span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+<span class="text-xl font-semibold text-gray-800">智财青春</span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a href="#" class="text-primary font-medium">首页</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/1bf56809-0585-433a-9d09-56e1f1d68390" data-readdy="true" class="text-gray-600 hover:text-primary">消费评估</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="text-gray-600 hover:text-primary">教育赋能</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/51b07ac8-c2aa-4dfb-aca5-a7fa8e4300b7" data-readdy="true" class="text-gray-600 hover:text-primary">决策干预</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/36f9142a-46e6-4714-8059-22720b6c1be4" data-readdy="true" class="text-gray-600 hover:text-primary">生态协同</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button id="searchButton" class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-search-line ri-lg"></i>
+</button>
+<button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-notification-3-line ri-lg"></i>
+</button>
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/1b82bd4a42973383179f53d2455f8318.jpg" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+</div>
+</div>
+</div>
+</header>
+<section class="relative overflow-hidden" style="min-height: 600px;">
+<div style="background-image: url('https://public.readdy.ai/ai/img_res/810c0b90cc66662c986642775a7e99eb.jpg'); background-size: cover; background-position: center right;" class="absolute inset-0"></div>
+<div class="relative z-10 container mx-auto px-4 py-24">
+<div class="hero-gradient max-w-2xl p-12 rounded-xl">
+<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">智慧消费，青春无忧</h1>
+<p class="text-lg text-gray-700 mb-8">构建数据驱动的青年消费智慧平台，整合政府、企业、高校和用户资源，实现消费行为干预闭环。让每一次消费决策更明智，让每一分钱都花得更有价值。</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/ccc9cf4a-8ed2-4a91-a4cb-b17d799d6db6" data-readdy="true">
+<button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+开始评估
+</button>
+</a>
+<button class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+了解更多
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">五大核心功能</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">全方位赋能青年消费决策，打造健康消费生态</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-4">
+<i class="ri-line-chart-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">消费评估系统</h3>
+<p class="text-gray-600 mb-4">基于 AI 算法生成 CHI 指数，精准评估消费健康度，识别双标行为，提供个性化改进建议。</p>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/58e58b55-b7de-4a1f-a53f-a539d796378c" data-readdy="true" class="text-primary font-medium flex items-center">
+了解详情
+<i class="ri-arrow-right-line ri-lg ml-1"></i>
+</a>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mb-4">
+<i class="ri-vip-crown-line ri-2x text-secondary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">教育赋能模块</h3>
+<p class="text-gray-600 mb-4">沉浸式 VR 消费模拟体验，KOL 短剧课程，培养健康消费观念，提升财商素养。</p>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/58e58b55-b7de-4a1f-a53f-a539d796378c" data-readdy="true" class="text-primary font-medium flex items-center">
+了解详情
+<i class="ri-arrow-right-line ri-lg ml-1"></i>
+</a>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-4">
+<i class="ri-alert-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">决策干预工具</h3>
+<p class="text-gray-600 mb-4">实时预警机制，智能平替推荐，分期付款评估，帮助用户在关键时刻做出明智决策。</p>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/58e58b55-b7de-4a1f-a53f-a539d796378c" data-readdy="true" class="text-primary font-medium flex items-center">
+了解详情
+<i class="ri-arrow-right-line ri-lg ml-1"></i>
+</a>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mb-4">
+<i class="ri-global-line ri-2x text-secondary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">生态协同网络</h3>
+<p class="text-gray-600 mb-4">区块链商家信用榜单，政策补贴接口，打造透明、可信的消费生态，促进多方共赢。</p>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/58e58b55-b7de-4a1f-a53f-a539d796378c" data-readdy="true" class="text-primary font-medium flex items-center">
+了解详情
+<i class="ri-arrow-right-line ri-lg ml-1"></i>
+</a>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-purple-500 bg-opacity-10 mb-4">
+<i class="ri-mental-health-line ri-2x text-purple-500"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">消费心理疗愈系统</h3>
+<p class="text-gray-600 mb-4">AI心理陪伴系统，消费焦虑识别，同龄人共鸣社区，帮助用户建立健康消费心态。</p>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/7bdb5825-971a-4b9d-9925-7cf7ed2bab81" data-readdy="true" class="text-primary font-medium flex items-center">
+立即体验
+<i class="ri-arrow-right-line ri-lg ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="flex flex-col lg:flex-row items-center gap-12">
+<div class="w-full lg:w-1/2">
+<h2 class="text-3xl font-bold text-gray-900 mb-6">消费健康指数 (CHI)</h2>
+<p class="text-lg text-gray-600 mb-8">我们独创的 CHI 指数采用多源数据融合与 SEM 模型量化，通过随机森林与 GBDT 双模型架构，精准评估您的消费健康状况，提供科学、客观的消费画像。</p>
+<div class="bg-white p-6 rounded-lg shadow-sm mb-6">
+<div class="flex items-center justify-between mb-4">
+<span class="text-gray-700 font-medium">您的 CHI 指数</span>
+<span class="text-2xl font-bold text-primary">87</span>
+</div>
+<div class="relative h-4 bg-gray-200 rounded-full overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 87%"></div>
+</div>
+<div class="flex justify-between mt-2 text-sm text-gray-500">
+<span>0</span>
+<span>50</span>
+<span>100</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="bg-white p-4 rounded-lg shadow-sm">
+<div class="flex items-center justify-between">
+<span class="text-gray-700">冲动消费指数</span>
+<span class="text-primary font-medium">较低 (18%)</span>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-sm">
+<div class="flex items-center justify-between">
+<span class="text-gray-700">预算执行率</span>
+<span class="text-primary font-medium">92%</span>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-sm">
+<div class="flex items-center justify-between">
+<span class="text-gray-700">消费人格聚类</span>
+<span class="text-primary font-medium">平衡型</span>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-sm">
+<div class="flex items-center justify-between">
+<span class="text-gray-700">溢价敏感度</span>
+<span class="text-primary font-medium">较高</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-sm mb-6">
+<div class="flex items-center mb-2">
+<i class="ri-alert-line ri-lg text-secondary mr-2"></i>
+<span class="text-gray-900 font-medium">智能干预建议</span>
+</div>
+<p class="text-gray-600 text-sm">您的餐饮消费占比略高，建议开启餐饮预算提醒。近期检测到3次高额购物行为，已自动触发24小时冷静期，为您节省约¥1,280。</p>
+</div>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/7e59aeb7-5d65-4d9d-be9b-b4223935a886" data-readdy="true">
+<button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+获取完整评估报告
+</button>
+</a>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="chart-container" id="radarChart"></div>
+<div class="chart-container" id="trendChart"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">MBTI式四维消费人格分析</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">基于大数据分析，精准刻画您的消费决策模式</p>
+</div>
+<div class="flex flex-col lg:flex-row items-center gap-12">
+<div class="w-full lg:w-1/2">
+<div class="chart-container" id="personalityChart"></div>
+<div class="grid grid-cols-2 gap-4 mt-6">
+<div class="bg-white p-4 rounded-lg shadow-md">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#57B5E7] mr-2"></div>
+<span class="text-gray-900 font-medium">即时满足指数</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-600 text-sm">延迟满足型</span>
+<div class="relative w-24 h-2 bg-gray-200 rounded-full mx-2">
+<div class="absolute top-0 left-0 h-full bg-[#57B5E7] rounded-full" style="width: 35%"></div>
+</div>
+<span class="text-gray-600 text-sm">即时满足型</span>
+</div>
+<p class="text-xs text-gray-500 mt-2">您倾向于为长期目标延迟满足感，消费决策更为理性</p>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-md">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#8DD3C7] mr-2"></div>
+<span class="text-gray-900 font-medium">品牌导向系数</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-600 text-sm">功能导向</span>
+<div class="relative w-24 h-2 bg-gray-200 rounded-full mx-2">
+<div class="absolute top-0 left-0 h-full bg-[#8DD3C7] rounded-full" style="width: 65%"></div>
+</div>
+<span class="text-gray-600 text-sm">品牌导向</span>
+</div>
+<p class="text-xs text-gray-500 mt-2">您在选择商品时会适度关注品牌，但更注重性价比</p>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-md">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#FBBF72] mr-2"></div>
+<span class="text-gray-900 font-medium">社交驱动强度</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-600 text-sm">自主决策</span>
+<div class="relative w-24 h-2 bg-gray-200 rounded-full mx-2">
+<div class="absolute top-0 left-0 h-full bg-[#FBBF72] rounded-full" style="width: 42%"></div>
+</div>
+<span class="text-gray-600 text-sm">社交驱动</span>
+</div>
+<p class="text-xs text-gray-500 mt-2">您的消费决策较少受社交影响，更倾向于独立判断</p>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-md">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#FC8D62] mr-2"></div>
+<span class="text-gray-900 font-medium">环保意识评分</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-600 text-sm">传统消费</span>
+<div class="relative w-24 h-2 bg-gray-200 rounded-full mx-2">
+<div class="absolute top-0 left-0 h-full bg-[#FC8D62] rounded-full" style="width: 78%"></div>
+</div>
+<span class="text-gray-600 text-sm">环保消费</span>
+</div>
+<p class="text-xs text-gray-500 mt-2">您在消费决策中高度重视环保因素，积极选择可持续产品</p>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">您的消费人格类型：理性环保型</h3>
+<p class="text-gray-600 mb-6">在6种主要消费人格类型中，您属于"理性环保型"消费者。这类消费者注重长期价值，消费决策理性且独立，同时对环保和可持续发展有较高关注。</p>
+<div class="flex items-center mb-4">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-leaf-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-medium text-gray-900">核心特征</h4>
+<p class="text-sm text-gray-600">延迟满足、功能导向、自主决策、环保意识强</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-gray-50 p-4 rounded">
+<h4 class="font-medium text-gray-900 mb-2">优势</h4>
+<ul class="text-sm text-gray-600 space-y-1">
+<li class="flex items-start">
+<i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+<span>长期财务健康度高，储蓄投资意识强</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+<span>不易受营销噱头和社交压力影响</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+<span>消费决策对环境友好，碳足迹较低</span>
+</li>
+</ul>
+</div>
+<div class="bg-gray-50 p-4 rounded">
+<h4 class="font-medium text-gray-900 mb-2">发展建议</h4>
+<ul class="text-sm text-gray-600 space-y-1">
+<li class="flex items-start">
+<i class="ri-arrow-right-line text-primary mr-2 mt-0.5"></i>
+<span>适当提高品质消费比例，平衡生活品质</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-line text-primary mr-2 mt-0.5"></i>
+<span>探索更多环保品牌，扩展可持续消费范围</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-line text-primary mr-2 mt-0.5"></i>
+<span>参与环保社区，获取更多消费决策参考</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<button id="getPersonalityReport" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap w-full">
+获取详细人格分析报告
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">VR 消费模拟体验</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">通过沉浸式场景，体验不同消费决策的长期影响</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/2d781ff96fc5ddba11fc15e72c549888.jpg" class="w-full h-full object-cover object-top" alt="VR 消费模拟">
+<div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+<button class="w-16 h-16 flex items-center justify-center rounded-full bg-white bg-opacity-80 hover:bg-opacity-100 transition">
+<i class="ri-play-fill ri-2x text-primary"></i>
+</button>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">理财小白成长记</h3>
+<p class="text-gray-600 mb-4">体验从月光族到投资达人的转变过程，学习科学理财方法，感受复利的魔力。</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">难度: 初级</span>
+<span class="text-sm text-gray-500">时长: 30 分钟</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/b2e80a16301fcb584c6ddbbe48731c1d.jpg" class="w-full h-full object-cover object-top" alt="VR 购物体验">
+<div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+<button class="w-16 h-16 flex items-center justify-center rounded-full bg-white bg-opacity-80 hover:bg-opacity-100 transition">
+<i class="ri-play-fill ri-2x text-primary"></i>
+</button>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">消费陷阱大揭秘</h3>
+<p class="text-gray-600 mb-4">识别商家营销套路，学会理性分析商品价值，避免冲动消费和过度消费。</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">难度: 中级</span>
+<span class="text-sm text-gray-500">时长: 45 分钟</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="AR 财务规划">
+<div class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center">
+<button class="w-16 h-16 flex items-center justify-center rounded-full bg-white bg-opacity-80 hover:bg-opacity-100 transition">
+<i class="ri-play-fill ri-2x text-primary"></i>
+</button>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold text-gray-900 mb-2">人生规划模拟器</h3>
+<p class="text-gray-600 mb-4">体验不同消费习惯对未来 10 年财务状况的影响，制定长期财务目标。</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">难度: 高级</span>
+<span class="text-sm text-gray-500">时长: 60 分钟</span>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-10">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/adc27bdb-3ab4-4ab8-9508-631653334db1" data-readdy="true">
+<button class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+查看更多课程
+</button>
+</a>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="flex flex-col lg:flex-row items-center gap-12">
+<div class="w-full lg:w-1/2">
+<div class="relative rounded-lg overflow-hidden shadow-lg" style="height: 500px;">
+<img src="https://public.readdy.ai/ai/img_res/d4be1c3a897a9f175e2a65c9d6d02a32.jpg" class="w-full h-full object-cover object-top" alt="AI 心理陪伴系统">
+</div>
+</div>
+<div class="w-full lg:w-1/2">
+<h2 class="text-3xl font-bold text-gray-900 mb-6">AI 心理陪伴系统</h2>
+<p class="text-lg text-gray-600 mb-8">专属语言模型识别消费焦虑信号，将开支映射为能力成长曲线，帮助您建立健康的消费心态和行为模式。</p>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-purple-500 bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-mental-health-line ri-lg text-purple-500"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">消费焦虑识别</h3>
+<p class="text-gray-600">专属语言模型分析您的消费记录和情绪日志，识别潜在的消费焦虑信号，提供及时干预。</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-green-500 bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-bar-chart-grouped-line ri-lg text-green-500"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">消费价值可视化</h3>
+<p class="text-gray-600">《消费能量转化报告》将您的开支映射为能力成长曲线，让您直观感受消费如何转化为个人价值。</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-500 bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-group-line ri-lg text-blue-500"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">反向消费榜样专区</h3>
+<p class="text-gray-600">军大衣选购攻略、二手书交换地图等节省达人分享，帮助您发现高性价比的替代消费方式。</p>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/d7f30914-2b70-4add-9f93-7f13b01e32e5" data-readdy="true">
+<button class="bg-purple-500 text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+开始心理陪伴
+</button>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">同龄人共鸣社区</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">《月光坦白局》匿名树洞，消费愧疚故事可兑换"心灵代金券"</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<img src="https://public.readdy.ai/ai/img_res/c77a9344a92466f68317f6acd3366f51.jpg" class="w-12 h-12 rounded-full object-cover mr-4" alt="用户头像">
+<div>
+<h4 class="text-lg font-semibold text-gray-900">林小雨</h4>
+<p class="text-sm text-gray-500">大学生 | 上海</p>
+</div>
+</div>
+<p class="text-gray-600 mb-4">"以前每个月都是月光族，用了智财青春平台后，我开始有意识地记录和分析自己的消费行为。现在不仅每月有结余，还开始尝试基础投资理财。"</p>
+<div class="flex items-center justify-between">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-sm text-green-600">+15 心灵代金券</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<img src="https://public.readdy.ai/ai/img_res/e8dc98e22bb7c16b20791c9cb9683bff.jpg" class="w-12 h-12 rounded-full object-cover mr-4" alt="用户头像">
+<div>
+<h4 class="text-lg font-semibold text-gray-900">张明宇</h4>
+<p class="text-sm text-gray-500">职场新人 | 北京</p>
+</div>
+</div>
+<p class="text-gray-600 mb-4">"消费心理疗愈系统帮我克服了'买前兴奋买后焦虑'的循环。AI心理陪伴系统识别出我的冲动消费模式，现在我能更理性地看待每一笔支出。"</p>
+<div class="flex items-center justify-between">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+<span class="text-sm text-green-600">+12 心灵代金券</span>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-center mb-4">
+<img src="https://public.readdy.ai/ai/img_res/550f010b1d1a524b73943e1f880fe2fe.jpg" class="w-12 h-12 rounded-full object-cover mr-4" alt="用户头像">
+<div>
+<h4 class="text-lg font-semibold text-gray-900">王佳怡</h4>
+<p class="text-sm text-gray-500">研究生 | 广州</p>
+</div>
+</div>
+<p class="text-gray-600 mb-4">"反向消费榜样专区的军大衣选购攻略和二手书交换地图太实用了！节省达人的分享让我重新定义了'价值消费'，不再盲目追求品牌和新品。"</p>
+<div class="flex items-center justify-between">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+<span class="text-sm text-green-600">+20 心灵代金券</span>
+</div>
+</div>
+</div>
+<div class="text-center mt-8">
+<div class="inline-block bg-gray-100 px-4 py-2 rounded-full text-gray-700">
+已有 <span class="font-semibold text-primary">156</span> 个消费愧疚故事
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="flex flex-col lg:flex-row items-center gap-12">
+<div class="w-full lg:w-1/2">
+<h2 class="text-3xl font-bold text-gray-900 mb-6">三级消费许可制度</h2>
+<p class="text-lg text-gray-600 mb-8">基于您的收入、生活方式和财务目标，我们的 AI 算法将为您生成科学合理的预算方案，并提供智能调整建议。</p>
+<div class="space-y-6">
+<div>
+<label class="block text-gray-700 font-medium mb-2">月收入</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">¥</span>
+<input type="text" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的月收入" value="8000">
+</div>
+</div>
+<div>
+<label class="block text-gray-700 font-medium mb-2">消费类型分配</label>
+<div class="space-y-4">
+<div class="bg-green-50 p-4 rounded-lg border border-green-100">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center rounded-full bg-green-500 text-white mr-2">
+<i class="ri-check-line"></i>
+</div>
+<span class="font-medium text-gray-800">生存型消费</span>
+</div>
+<span class="text-sm text-green-600">+15 成就值</span>
+</div>
+<div class="flex items-center">
+<div class="relative flex-1 mr-4">
+<input type="range" min="30" max="60" value="40" class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer" id="survivalRange">
+</div>
+<span class="text-gray-700 w-16 text-right" id="survivalValue">40%</span>
+</div>
+</div>
+<div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center rounded-full bg-blue-500 text-white mr-2">
+<i class="ri-arrow-up-line"></i>
+</div>
+<span class="font-medium text-gray-800">发展型消费</span>
+</div>
+<span class="text-sm text-blue-600">+技能树</span>
+</div>
+<div class="flex items-center">
+<div class="relative flex-1 mr-4">
+<input type="range" min="20" max="50" value="35" class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer" id="developmentRange">
+</div>
+<span class="text-gray-700 w-16 text-right" id="developmentValue">35%</span>
+</div>
+</div>
+<div class="bg-orange-50 p-4 rounded-lg border border-orange-100">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center rounded-full bg-orange-500 text-white mr-2">
+<i class="ri-emotion-happy-line"></i>
+</div>
+<span class="font-medium text-gray-800">享乐型消费</span>
+</div>
+<span class="text-sm text-orange-600">+平衡建议</span>
+</div>
+<div class="flex items-center">
+<div class="relative flex-1 mr-4">
+<input type="range" min="10" max="40" value="25" class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer" id="pleasureRange">
+</div>
+<span class="text-gray-700 w-16 text-right" id="pleasureValue">25%</span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<label class="flex items-center">
+<div class="relative inline-block w-10 h-6 mr-2">
+<input type="checkbox" class="hidden custom-switch" id="autoAdjust" checked>
+<label for="autoAdjust" class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+<span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+</label>
+</div>
+<span class="text-gray-700">启用消费价值可视化</span>
+</label>
+</div>
+</div>
+<div class="mt-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/d1158551-2f25-484e-9abd-14fe4fbe5192" data-readdy="true">
+<button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+生成《消费能量转化报告》
+</button>
+</a>
+</div>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<h3 class="text-xl font-semibold text-gray-900 mb-4">消费能量转化报告</h3>
+<div class="chart-container" id="budgetChart"></div>
+<div class="mt-6 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
+<span class="text-gray-700">生存型消费 (40%)</span>
+</div>
+<span class="font-medium">¥3,200</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-4 h-4 rounded-full bg-blue-500 mr-2"></div>
+<span class="text-gray-700">发展型消费 (35%)</span>
+</div>
+<span class="font-medium">¥2,800</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-4 h-4 rounded-full bg-orange-500 mr-2"></div>
+<span class="text-gray-700">享乐型消费 (25%)</span>
+</div>
+<span class="font-medium">¥2,000</span>
+</div>
+</div>
+<div class="mt-6 p-4 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-gray-900 mb-2">消费价值可视化</h4>
+<p class="text-gray-600 text-sm">您的发展型消费占比较高，这将转化为职业技能提升和长期成长。建议将享乐型消费控制在25%以内，每增加5%的发展型消费，预计一年后收入可提升8%。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">合作伙伴</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">携手各方力量，共建健康消费生态</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center text-gray-500 mb-2">
+<i class="ri-government-line ri-3x"></i>
+</div>
+<span class="text-gray-700 font-medium">教育部</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center text-gray-500 mb-2">
+<i class="ri-bank-line ri-3x"></i>
+</div>
+<span class="text-gray-700 font-medium">中国人民银行</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center text-gray-500 mb-2">
+<i class="ri-building-4-line ri-3x"></i>
+</div>
+<span class="text-gray-700 font-medium">北京大学</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center text-gray-500 mb-2">
+<i class="ri-building-line ri-3x"></i>
+</div>
+<span class="text-gray-700 font-medium">清华大学</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center text-gray-500 mb-2">
+<i class="ri-alipay-fill ri-3x"></i>
+</div>
+<span class="text-gray-700 font-medium">支付宝</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center text-gray-500 mb-2">
+<i class="ri-wechat-pay-fill ri-3x"></i>
+</div>
+<span class="text-gray-700 font-medium">微信支付</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center text-gray-500 mb-2">
+<i class="ri-shopping-bag-line ri-3x"></i>
+</div>
+<span class="text-gray-700 font-medium">京东</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 flex items-center justify-center text-gray-500 mb-2">
+<i class="ri-shopping-cart-line ri-3x"></i>
+</div>
+<span class="text-gray-700 font-medium">淘宝</span>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-primary bg-opacity-5">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center justify-between">
+<div class="mb-8 md:mb-0 md:mr-8">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">加入智财青春</h2>
+<p class="text-lg text-gray-600 mb-6">立即注册，开启智慧消费之旅</p>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/e81681a9-ce8b-4600-9a62-08a4f2d832a4" data-readdy="true">
+<button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+免费注册
+</button>
+</a>
+</div>
+<div class="w-full md:w-1/2 max-w-md">
+<div class="bg-white p-8 rounded-lg shadow-md">
+<h3 class="text-xl font-semibold text-gray-900 mb-6">订阅最新消费洞察</h3>
+<div class="flex mb-4">
+<input type="email" class="flex-1 px-4 py-3 border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入您的邮箱">
+<button class="bg-primary text-white px-6 py-3 rounded-r-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+订阅
+</button>
+</div>
+<div class="flex items-center text-sm text-gray-500">
+<i class="ri-shield-check-line ri-lg mr-2 text-primary"></i>
+<span>我们尊重您的隐私，绝不会泄露您的信息</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<div class="flex items-center mb-4">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-1.5 rounded-lg mr-2">
+<span class="text-2xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+<span class="text-lg font-semibold">智财青春</span>
+</div>
+<p class="text-gray-400 mb-4">数据驱动的青年消费智慧平台</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-weibo-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-wechat-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-douban-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">产品服务</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">消费评估</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">VR 体验课程</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">AR 购物助手</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/9bed1c16-9607-4e96-aa73-91fc934cbded" data-readdy="true" class="text-gray-400 hover:text-white">预算规划工具</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">关于我们</h4>
+<ul class="space-y-2">
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/e1eee5aa-23bc-469b-9e69-41396fd6c750" data-readdy="true" class="text-gray-400 hover:text-white">平台介绍</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/98044e6a-88c7-4baa-8233-0ca237caa80f" data-readdy="true" class="text-gray-400 hover:text-white">团队成员</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/bd83066b-7525-453e-a50c-2c9eedbd4d37" data-readdy="true" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">帮助中心</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/f0fad234-5aa7-4809-baf0-0f5b445478a9" data-readdy="true" class="text-gray-400 hover:text-white">用户手册</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/92e1d4f4-1b48-4d94-a831-700b9d788e77" data-readdy="true" class="text-gray-400 hover:text-white">隐私政策</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">服务条款</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 智财青春. 保留所有权利.</p>
+<div class="flex items-center space-x-4">
+<div class="flex items-center text-gray-400">
+<i class="ri-visa-fill ri-lg mr-2"></i>
+<i class="ri-mastercard-fill ri-lg mr-2"></i>
+<i class="ri-paypal-fill ri-lg mr-2"></i>
+<i class="ri-alipay-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+// 搜索模态框
+document.getElementById('searchButton').addEventListener('click', function() {
+const searchModal = document.createElement('div');
+searchModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+searchModal.innerHTML = `
+<div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+<div class="p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-2xl font-bold text-gray-900">搜索</h3>
+<button id="closeSearchModal" class="text-gray-500 hover:text-gray-700 focus:outline-none w-8 h-8 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div class="mb-6">
+<div class="relative">
+<input id="searchInput" type="text" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-base" placeholder="搜索课程、工具、文章...">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+<i class="ri-search-line ri-lg"></i>
+</div>
+<button id="submitSearch" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-button text-sm font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+搜索
+</button>
+</div>
+</div>
+<div class="mb-6">
+<h4 class="text-sm font-medium text-gray-700 mb-2">热门搜索</h4>
+<div class="flex flex-wrap gap-2">
+<button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition">消费评估</button>
+<button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition">理财课程</button>
+<button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition">预算规划</button>
+<button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition">AR 购物助手</button>
+<button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition">消费人格</button>
+</div>
+</div>
+<div id="searchSuggestions" class="hidden mb-6">
+<h4 class="text-sm font-medium text-gray-700 mb-2">搜索建议</h4>
+<div class="space-y-2">
+<div class="p-2 hover:bg-gray-50 rounded cursor-pointer">
+<div class="flex items-center">
+<i class="ri-history-line ri-lg text-gray-400 mr-2"></i>
+<span class="text-gray-700">消费评估系统</span>
+</div>
+</div>
+<div class="p-2 hover:bg-gray-50 rounded cursor-pointer">
+<div class="flex items-center">
+<i class="ri-history-line ri-lg text-gray-400 mr-2"></i>
+<span class="text-gray-700">消费人格分析</span>
+</div>
+</div>
+<div class="p-2 hover:bg-gray-50 rounded cursor-pointer">
+<div class="flex items-center">
+<i class="ri-search-line ri-lg text-gray-400 mr-2"></i>
+<span class="text-gray-700">消费心理学</span>
+</div>
+</div>
+</div>
+</div>
+<div id="searchResults" class="hidden">
+<h4 class="text-sm font-medium text-gray-700 mb-4">搜索结果</h4>
+<div class="space-y-4">
+<div class="border-b border-gray-100 pb-4">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-line-chart-line ri-lg text-primary"></i>
+</div>
+<div>
+<h5 class="text-lg font-semibold text-gray-900 mb-1">消费评估系统</h5>
+<p class="text-sm text-gray-600 mb-2">基于 AI 算法生成 CHI 指数，精准评估消费健康度，识别双标行为，提供个性化改进建议。</p>
+<div class="flex items-center text-xs text-gray-500">
+<span class="bg-primary bg-opacity-10 text-primary px-2 py-0.5 rounded mr-2">工具</span>
+<span>使用人数: 12,458</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-b border-gray-100 pb-4">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-secondary bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-vip-crown-line ri-lg text-secondary"></i>
+</div>
+<div>
+<h5 class="text-lg font-semibold text-gray-900 mb-1">消费人格分析报告</h5>
+<p class="text-sm text-gray-600 mb-2">基于大数据分析，精准刻画您的消费决策模式，提供个性化消费建议。</p>
+<div class="flex items-center text-xs text-gray-500">
+<span class="bg-secondary bg-opacity-10 text-secondary px-2 py-0.5 rounded mr-2">报告</span>
+<span>下载次数: 8,721</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-b border-gray-100 pb-4">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-vidicon-line ri-lg text-primary"></i>
+</div>
+<div>
+<h5 class="text-lg font-semibold text-gray-900 mb-1">消费心理学入门课程</h5>
+<p class="text-sm text-gray-600 mb-2">了解消费决策背后的心理机制，学习如何避免营销陷阱，培养理性消费习惯。</p>
+<div class="flex items-center text-xs text-gray-500">
+<span class="bg-primary bg-opacity-10 text-primary px-2 py-0.5 rounded mr-2">课程</span>
+<span>学习人数: 5,632</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-b border-gray-100 pb-4">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-secondary bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-article-line ri-lg text-secondary"></i>
+</div>
+<div>
+<h5 class="text-lg font-semibold text-gray-900 mb-1">《消费主义陷阱与应对策略》</h5>
+<p class="text-sm text-gray-600 mb-2">深度剖析当代消费主义文化，探讨如何在商业社会中保持自我意识和理性消费。</p>
+<div class="flex items-center text-xs text-gray-500">
+<span class="bg-secondary bg-opacity-10 text-secondary px-2 py-0.5 rounded mr-2">文章</span>
+<span>阅读量: 15,247</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 text-center">
+<button class="text-primary hover:text-primary-dark font-medium flex items-center justify-center mx-auto">
+查看更多结果
+<i class="ri-arrow-right-line ri-lg ml-1"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+`;
+document.body.appendChild(searchModal);
+// 关闭搜索模态框
+document.getElementById('closeSearchModal').addEventListener('click', function() {
+document.body.removeChild(searchModal);
+});
+// 搜索输入框事件
+const searchInput = document.getElementById('searchInput');
+const searchSuggestions = document.getElementById('searchSuggestions');
+const searchResults = document.getElementById('searchResults');
+searchInput.addEventListener('input', function() {
+if (this.value.length > 0) {
+searchSuggestions.classList.remove('hidden');
+} else {
+searchSuggestions.classList.add('hidden');
+}
+});
+// 搜索按钮点击事件
+document.getElementById('submitSearch').addEventListener('click', function() {
+if (searchInput.value.length > 0) {
+searchSuggestions.classList.add('hidden');
+searchResults.classList.remove('hidden');
+}
+});
+// 热门搜索词点击事件
+const hotSearchButtons = searchModal.querySelectorAll('.bg-gray-100');
+hotSearchButtons.forEach(button => {
+button.addEventListener('click', function() {
+searchInput.value = this.textContent.trim();
+searchSuggestions.classList.add('hidden');
+searchResults.classList.remove('hidden');
+});
+});
+// 搜索建议点击事件
+const suggestionItems = searchSuggestions.querySelectorAll('.p-2');
+suggestionItems.forEach(item => {
+item.addEventListener('click', function() {
+searchInput.value = this.querySelector('span').textContent.trim();
+searchSuggestions.classList.add('hidden');
+searchResults.classList.remove('hidden');
+});
+});
+// 按下回车键搜索
+searchInput.addEventListener('keypress', function(e) {
+if (e.key === 'Enter' && this.value.length > 0) {
+searchSuggestions.classList.add('hidden');
+searchResults.classList.remove('hidden');
+}
+});
+});
+// 雷达图
+const radarChart = echarts.init(document.getElementById('radarChart'));
+const radarOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+radar: {
+indicator: [
+{ name: '预算管理能力', max: 100 },
+{ name: '消费决策理性', max: 100 },
+{ name: '财务规划意识', max: 100 },
+{ name: '风险识别能力', max: 100 },
+{ name: '价格敏感度', max: 100 },
+{ name: '消费多样性', max: 100 }
+],
+splitArea: {
+areaStyle: {
+color: ['#fff']
+}
+},
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+splitLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+name: {
+textStyle: {
+color: '#1f2937'
+}
+}
+},
+series: [{
+name: 'SEM模型评估',
+type: 'radar',
+data: [
+{
+value: [87, 82, 65, 90, 78, 72],
+name: '您的得分',
+symbol: 'none',
+lineStyle: {
+width: 2,
+color: '#57B5E7'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+}, {
+offset: 1, color: 'rgba(87, 181, 231, 0.1)'
+}]
+}
+}
+},
+{
+value: [70, 70, 70, 70, 70, 70],
+name: '同龄群体平均',
+symbol: 'none',
+lineStyle: {
+width: 2,
+color: '#8DD3C7'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(141, 211, 199, 0.2)'
+}, {
+offset: 1, color: 'rgba(141, 211, 199, 0.1)'
+}]
+}
+}
+}
+]
+}]
+};
+radarChart.setOption(radarOption);
+// 趋势图
+const trendChart = echarts.init(document.getElementById('trendChart'));
+const trendOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+data: ['CHI 指数', '干预事件'],
+bottom: 0,
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+top: 30,
+right: 10,
+bottom: 50,
+left: 40
+},
+xAxis: {
+type: 'category',
+data: ['1月', '2月', '3月', '4月', '5月', '6月'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: [
+{
+type: 'value',
+name: 'CHI 指数',
+nameTextStyle: {
+color: '#1f2937'
+},
+min: 60,
+max: 100,
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#eee'
+}
+}
+},
+{
+type: 'value',
+name: '干预次数',
+nameTextStyle: {
+color: '#1f2937'
+},
+min: 0,
+max: 10,
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+show: false
+}
+}
+],
+series: [
+{
+name: 'CHI 指数',
+type: 'line',
+data: [68, 72, 75, 80, 83, 87],
+symbol: 'none',
+smooth: true,
+lineStyle: {
+width: 3,
+color: '#57B5E7'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+}, {
+offset: 1, color: 'rgba(87, 181, 231, 0.05)'
+}]
+}
+}
+},
+{
+name: '干预事件',
+type: 'bar',
+yAxisIndex: 1,
+data: [8, 6, 5, 3, 2, 1],
+barWidth: 10,
+itemStyle: {
+color: '#FBBF72'
+}
+}
+]
+};
+trendChart.setOption(trendOption);
+// 预算图
+const budgetChart = echarts.init(document.getElementById('budgetChart'));
+const budgetOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+formatter: '{b}: {c} ({d}%)',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+series: [{
+name: '预算分配',
+type: 'pie',
+radius: ['40%', '70%'],
+avoidLabelOverlap: false,
+itemStyle: {
+borderRadius: 8,
+borderColor: '#fff',
+borderWidth: 2
+},
+label: {
+show: false
+},
+emphasis: {
+label: {
+show: false
+}
+},
+labelLine: {
+show: false
+},
+data: [
+{ value: 40, name: '基础生活', itemStyle: { color: '#57B5E7' } },
+{ value: 25, name: '储蓄投资', itemStyle: { color: '#8DD3C7' } },
+{ value: 15, name: '社交娱乐', itemStyle: { color: '#FBBF72' } },
+{ value: 10, name: '个人发展', itemStyle: { color: '#FC8D62' } },
+{ value: 10, name: '其他支出', itemStyle: { color: '#66C2A5' } }
+]
+}]
+};
+budgetChart.setOption(budgetOption);
+// 消费人格四维图
+const personalityChart = echarts.init(document.getElementById('personalityChart'));
+const personalityOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+radar: {
+indicator: [
+{ name: '即时满足指数', max: 100 },
+{ name: '品牌导向系数', max: 100 },
+{ name: '社交驱动强度', max: 100 },
+{ name: '环保意识评分', max: 100 }
+],
+shape: 'circle',
+splitNumber: 4,
+splitArea: {
+areaStyle: {
+color: ['rgba(255, 255, 255, 0.8)', 'rgba(250, 250, 250, 0.8)', 'rgba(245, 245, 245, 0.8)', 'rgba(240, 240, 240, 0.8)']
+}
+},
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+splitLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+name: {
+textStyle: {
+color: '#1f2937',
+fontSize: 14,
+padding: [3, 5]
+}
+}
+},
+series: [{
+name: '消费人格分析',
+type: 'radar',
+data: [
+{
+value: [35, 65, 42, 78],
+name: '您的消费人格',
+symbol: 'none',
+lineStyle: {
+width: 2,
+color: '#57B5E7'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(87, 181, 231, 0.3)'
+}, {
+offset: 1, color: 'rgba(87, 181, 231, 0.1)'
+}]
+}
+}
+},
+{
+value: [68, 45, 72, 38],
+name: '冲动型消费者',
+symbol: 'none',
+lineStyle: {
+width: 2,
+color: '#FC8D62',
+type: 'dashed'
+},
+areaStyle: {
+opacity: 0
+}
+},
+{
+value: [30, 40, 35, 75],
+name: '理性环保型',
+symbol: 'none',
+lineStyle: {
+width: 2,
+color: '#8DD3C7',
+type: 'dashed'
+},
+areaStyle: {
+opacity: 0
+}
+}
+]
+}],
+legend: {
+data: ['您的消费人格', '冲动型消费者', '理性环保型'],
+bottom: 0,
+textStyle: {
+color: '#1f2937'
+}
+}
+};
+personalityChart.setOption(personalityOption);
+// 响应式调整
+window.addEventListener('resize', function() {
+radarChart.resize();
+trendChart.resize();
+budgetChart.resize();
+personalityChart.resize();
+});
+// MBTI式四维消费人格分析系统交互
+document.getElementById('getPersonalityReport').addEventListener('click', function() {
+const modal = document.createElement('div');
+modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+modal.innerHTML = `
+<div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+<div class="p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-2xl font-bold text-gray-900">MBTI式四维消费人格详细分析</h3>
+<button id="closeModal" class="text-gray-500 hover:text-gray-700 focus:outline-none w-8 h-8 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div class="bg-gray-50 p-4 rounded-lg">
+<h4 class="text-lg font-semibold text-gray-900 mb-3">消费人格概览</h4>
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1">
+<div class="bg-white p-4 rounded shadow-sm">
+<h5 class="font-medium text-gray-800 mb-2">您的消费人格类型</h5>
+<div class="flex items-center">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-leaf-line ri-lg text-primary"></i>
+</div>
+<div>
+<span class="text-xl font-semibold text-primary">理性环保型</span>
+<p class="text-sm text-gray-600">在全部用户中占比 18.5%</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1">
+<div class="bg-white p-4 rounded shadow-sm h-full">
+<h5 class="font-medium text-gray-800 mb-2">核心特质</h5>
+<ul class="text-sm text-gray-600 space-y-1">
+<li class="flex items-start">
+<i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+<span>延迟满足能力强，注重长期价值</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+<span>消费决策理性且独立，不易受营销影响</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+<span>环保和可持续发展意识高于同龄人</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<h4 class="text-lg font-semibold text-gray-900 mb-3">四维度详细数据分析</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<div class="bg-white p-4 rounded shadow-sm">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#57B5E7] mr-2"></div>
+<h5 class="font-medium text-gray-800">即时满足指数: 35/100</h5>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full mb-3">
+<div class="absolute top-0 left-0 h-full bg-[#57B5E7] rounded-full" style="width: 35%"></div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs text-gray-500">
+<span>非必要消费频率: 每周2.1次</span>
+<span>同龄人均: 每周4.3次</span>
+</div>
+<div class="flex justify-between text-xs text-gray-500">
+<span>月度储蓄率: 28%</span>
+<span>同龄人均: 12%</span>
+</div>
+<p class="text-xs text-gray-600 mt-2">您的即时满足指数低于同龄人平均水平，表明您更倾向于延迟满足，为长期目标储蓄。</p>
+</div>
+</div>
+</div>
+<div>
+<div class="bg-white p-4 rounded shadow-sm">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#8DD3C7] mr-2"></div>
+<h5 class="font-medium text-gray-800">品牌导向系数: 65/100</h5>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full mb-3">
+<div class="absolute top-0 left-0 h-full bg-[#8DD3C7] rounded-full" style="width: 65%"></div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs text-gray-500">
+<span>溢价商品购买率: 32%</span>
+<span>同龄人均: 45%</span>
+</div>
+<div class="flex justify-between text-xs text-gray-500">
+<span>平替商品点击率: 58%</span>
+<span>同龄人均: 32%</span>
+</div>
+<p class="text-xs text-gray-600 mt-2">您在选择商品时会适度关注品牌，但更注重性价比，经常会主动寻找平替商品。</p>
+</div>
+</div>
+</div>
+<div>
+<div class="bg-white p-4 rounded shadow-sm">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#FBBF72] mr-2"></div>
+<h5 class="font-medium text-gray-800">社交驱动强度: 42/100</h5>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full mb-3">
+<div class="absolute top-0 left-0 h-full bg-[#FBBF72] rounded-full" style="width: 42%"></div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs text-gray-500">
+<span>直播间打赏金额占比: 1.2%</span>
+<span>同龄人均: 3.8%</span>
+</div>
+<div class="flex justify-between text-xs text-gray-500">
+<span>拼团参与率: 25%</span>
+<span>同龄人均: 42%</span>
+</div>
+<p class="text-xs text-gray-600 mt-2">您的消费决策较少受社交影响，更倾向于独立判断，不易受网红带货等营销手段影响。</p>
+</div>
+</div>
+</div>
+<div>
+<div class="bg-white p-4 rounded shadow-sm">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#FC8D62] mr-2"></div>
+<h5 class="font-medium text-gray-800">环保意识评分: 78/100</h5>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full mb-3">
+<div class="absolute top-0 left-0 h-full bg-[#FC8D62] rounded-full" style="width: 78%"></div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs text-gray-500">
+<span>可持续商品购买率: 45%</span>
+<span>同龄人均: 22%</span>
+</div>
+<div class="flex justify-between text-xs text-gray-500">
+<span>月均碳减排量: 12.8kg</span>
+<span>同龄人均: 5.2kg</span>
+</div>
+<p class="text-xs text-gray-600 mt-2">您在消费决策中高度重视环保因素，积极选择可持续产品，碳减排量显著高于同龄人。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<h4 class="text-lg font-semibold text-gray-900 mb-3">消费人格分类模型</h4>
+<div class="space-y-3">
+<div>
+<h5 class="font-medium text-gray-800">聚类模型（K-means++）</h5>
+<p class="text-sm text-gray-600 mt-1">基于标准化后的四维度特征矩阵，设置聚类数=6，将用户划分为不同消费人格类型</p>
+</div>
+<div class="overflow-x-auto">
+<table class="min-w-full text-sm">
+<thead>
+<tr class="bg-gray-100">
+<th class="px-4 py-2 text-left text-gray-700">聚类ID</th>
+<th class="px-4 py-2 text-left text-gray-700">人格类型</th>
+<th class="px-4 py-2 text-left text-gray-700">主要特征</th>
+<th class="px-4 py-2 text-left text-gray-700">用户占比</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr class="bg-primary bg-opacity-10">
+<td class="px-4 py-2 text-gray-800">0</td>
+<td class="px-4 py-2 font-medium text-gray-800">理性环保型</td>
+<td class="px-4 py-2 text-gray-600">延迟满足、功能导向、自主决策、环保意识强</td>
+<td class="px-4 py-2 text-gray-600">18.5%</td>
+</tr>
+<tr>
+<td class="px-4 py-2 text-gray-800">1</td>
+<td class="px-4 py-2 font-medium text-gray-800">社交冲动型</td>
+<td class="px-4 py-2 text-gray-600">即时满足、品牌导向、社交驱动、环保意识弱</td>
+<td class="px-4 py-2 text-gray-600">22.3%</td>
+</tr>
+<tr>
+<td class="px-4 py-2 text-gray-800">2</td>
+<td class="px-4 py-2 font-medium text-gray-800">品质生活型</td>
+<td class="px-4 py-2 text-gray-600">适度满足、品牌导向、自主决策、环保意识中</td>
+<td class="px-4 py-2 text-gray-600">19.7%</td>
+</tr>
+<tr>
+<td class="px-4 py-2 text-gray-800">3</td>
+<td class="px-4 py-2 font-medium text-gray-800">极简主义型</td>
+<td class="px-4 py-2 text-gray-600">延迟满足、功能导向、自主决策、环保意识中</td>
+<td class="px-4 py-2 text-gray-600">12.8%</td>
+</tr>
+<tr>
+<td class="px-4 py-2 text-gray-800">4</td>
+<td class="px-4 py-2 font-medium text-gray-800">跟风从众型</td>
+<td class="px-4 py-2 text-gray-600">即时满足、品牌导向、社交驱动强、环保意识中</td>
+<td class="px-4 py-2 text-gray-600">15.2%</td>
+</tr>
+<tr>
+<td class="px-4 py-2 text-gray-800">5</td>
+<td class="px-4 py-2 font-medium text-gray-800">环保社交型</td>
+<td class="px-4 py-2 text-gray-600">适度满足、功能导向、社交驱动、环保意识强</td>
+<td class="px-4 py-2 text-gray-600">11.5%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<h4 class="text-lg font-semibold text-gray-900 mb-3">个性化消费建议</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<div class="bg-white p-4 rounded shadow-sm">
+<h5 class="font-medium text-gray-800 mb-2">优势</h5>
+<ul class="text-sm text-gray-600 space-y-1">
+<li class="flex items-start">
+<i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+<span>长期财务健康度高，储蓄投资意识强</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+<span>不易受营销噱头和社交压力影响</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-secondary mr-2 mt-0.5"></i>
+<span>消费决策对环境友好，碳足迹较低</span>
+</li>
+</ul>
+</div>
+</div>
+<div>
+<div class="bg-white p-4 rounded shadow-sm">
+<h5 class="font-medium text-gray-800 mb-2">发展建议</h5>
+<ul class="text-sm text-gray-600 space-y-1">
+<li class="flex items-start">
+<i class="ri-arrow-right-line text-primary mr-2 mt-0.5"></i>
+<span>适当提高品质消费比例，平衡生活品质</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-line text-primary mr-2 mt-0.5"></i>
+<span>探索更多环保品牌，扩展可持续消费范围</span>
+</li>
+<li class="flex items-start">
+<i class="ri-arrow-right-line text-primary mr-2 mt-0.5"></i>
+<span>参与环保社区，获取更多消费决策参考</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="mt-4 bg-white p-4 rounded shadow-sm">
+<h5 class="font-medium text-gray-800 mb-2">下一步行动计划</h5>
+<div class="space-y-3">
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3 flex-shrink-0">
+<span class="text-primary font-medium">1</span>
+</div>
+<div>
+<h6 class="font-medium text-gray-800">设置"品质生活"预算</h6>
+<p class="text-sm text-gray-600">建议每月设置收入的5-10%作为品质生活预算，用于提升生活品质的消费，如高品质食材、文化活动等。</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3 flex-shrink-0">
+<span class="text-primary font-medium">2</span>
+</div>
+<div>
+<h6 class="font-medium text-gray-800">加入环保社区</h6>
+<p class="text-sm text-gray-600">推荐加入"绿色消费者联盟"等社区，获取更多可持续消费信息和优惠。</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3 flex-shrink-0">
+<span class="text-primary font-medium">3</span>
+</div>
+<div>
+<h6 class="font-medium text-gray-800">尝试投资ESG基金</h6>
+<p class="text-sm text-gray-600">考虑将部分投资资金配置到环境、社会和治理(ESG)相关的基金，既符合您的价值观，又能获得长期回报。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<h4 class="text-lg font-semibold text-gray-900 mb-3">技术实现细节</h4>
+<div class="space-y-3">
+<div>
+<h5 class="font-medium text-gray-800">维度计算规则</h5>
+<ul class="text-sm text-gray-600 space-y-1 mt-1">
+<li class="flex items-start">
+<span class="text-primary font-medium mr-2">•</span>
+<span>即时满足指数 = (非必要消费频率 × 0.6) + (1 - 储蓄率 × 0.4)</span>
+</li>
+<li class="flex items-start">
+<span class="text-primary font-medium mr-2">•</span>
+<span>品牌导向系数 = 溢价商品购买率 / (平替商品点击率 + 1e-5)</span>
+</li>
+<li class="flex items-start">
+<span class="text-primary font-medium mr-2">•</span>
+<span>社交驱动强度 = 直播间打赏金额占比 × 0.7 + 拼团参与率 × 0.3</span>
+</li>
+<li class="flex items-start">
+<span class="text-primary font-medium mr-2">•</span>
+<span>环保意识评分 = 可持续商品购买率 × 碳足迹减排量</span>
+</li>
+</ul>
+</div>
+<div>
+<h5 class="font-medium text-gray-800">特征存储规范</h5>
+<p class="text-sm text-gray-600 mt-1">数据存储于独立特征库表 user_persona_features，每日凌晨3点进行增量更新（T+1模式）</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button id="downloadReport" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+下载完整报告
+</button>
+</div>
+</div>
+</div>
+`;
+document.body.appendChild(modal);
+// 关闭弹窗
+document.getElementById('closeModal').addEventListener('click', function() {
+document.body.removeChild(modal);
+});
+// 下载报告
+document.getElementById('downloadReport').addEventListener('click', function() {
+const downloadingModal = document.createElement('div');
+downloadingModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+downloadingModal.innerHTML = `
+<div class="bg-white rounded-lg shadow-md p-6 max-w-md w-full">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+<i class="ri-download-line ri-3x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">报告下载中</h3>
+<p class="text-gray-600 mb-4">您的消费人格分析报告正在生成，请稍候...</p>
+<div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+<div class="bg-primary h-2 rounded-full" style="width: 0%" id="downloadProgress"></div>
+</div>
+<p class="text-sm text-gray-500">请勿关闭此窗口</p>
+</div>
+</div>
+`;
+document.body.appendChild(downloadingModal);
+// 模拟下载进度
+let progress = 0;
+const progressBar = document.getElementById('downloadProgress');
+const interval = setInterval(() => {
+progress += 5;
+progressBar.style.width = `${progress}%`;
+if (progress >= 100) {
+clearInterval(interval);
+document.body.removeChild(downloadingModal);
+// 显示下载完成消息
+const successModal = document.createElement('div');
+successModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+successModal.innerHTML = `
+<div class="bg-white rounded-lg shadow-md p-6 max-w-md w-full">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-green-100">
+<i class="ri-check-line ri-3x text-green-500"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">下载成功</h3>
+<p class="text-gray-600 mb-6">您的消费人格分析报告已成功下载</p>
+<button id="closeSuccessModal" class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+确定
+</button>
+</div>
+</div>
+`;
+document.body.appendChild(successModal);
+document.getElementById('closeSuccessModal').addEventListener('click', function() {
+document.body.removeChild(successModal);
+});
+}
+}, 100);
+});
+});
+</script>
+</body>
+</html>

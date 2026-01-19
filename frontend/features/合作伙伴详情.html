@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合作伙伴 - 智财青春平台</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+input[type="checkbox"] {
+appearance: none;
+-webkit-appearance: none;
+width: 18px;
+height: 18px;
+border: 1px solid #d1d5db;
+border-radius: 4px;
+outline: none;
+cursor: pointer;
+position: relative;
+}
+input[type="checkbox"]:checked {
+background-color: #297CBB;
+border-color: #297CBB;
+}
+input[type="checkbox"]:checked::after {
+content: "";
+position: absolute;
+top: 3px;
+left: 6px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.partner-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.timeline-item::before {
+content: '';
+position: absolute;
+left: -36px;
+top: 0;
+width: 16px;
+height: 16px;
+border-radius: 50%;
+background-color: #297CBB;
+border: 3px solid white;
+z-index: 2;
+}
+.timeline-item::after {
+content: '';
+position: absolute;
+left: -29px;
+top: 16px;
+width: 2px;
+height: calc(100% + 24px);
+background-color: #e5e7eb;
+z-index: 1;
+}
+.timeline-item:last-child::after {
+display: none;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- 导航栏 -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-2xl font-['Pacifico'] text-primary mr-8">logo</a>
+<nav class="hidden md:flex space-x-6">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/6fb1d6e4-409b-4a55-8a00-fa5b30fa0ba7" data-readdy="true" class="text-gray-600 hover:text-primary font-medium">首页</a>
+<a href="#" class="text-gray-600 hover:text-primary font-medium">关于我们</a>
+<a href="#" class="text-gray-600 hover:text-primary font-medium">服务项目</a>
+<a href="#" class="text-gray-600 hover:text-primary font-medium">学习资源</a>
+<a href="#" class="text-primary font-medium border-b-2 border-primary">合作伙伴</a>
+<a href="#" class="text-gray-600 hover:text-primary font-medium">联系我们</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<input type="text" placeholder="搜索" class="py-2 pl-10 pr-4 w-40 rounded-full text-sm border-none bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary/20">
+<div class="absolute left-3 top-2.5 w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200">
+<i class="ri-notification-3-line"></i>
+</button>
+<div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20young%20Asian%20person%20with%20a%20friendly%20smile%2C%20business%20attire%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=1&orientation=squarish" alt="用户头像" class="w-full h-full object-cover">
+</div>
+</div>
+</div>
+</header>
+<!-- 页面主体 -->
+<main class="container mx-auto px-4 py-8">
+<!-- 页面标题 -->
+<div class="mb-12 text-center">
+<h1 class="text-3xl font-bold text-gray-800 mb-4">合作伙伴</h1>
+<p class="text-gray-600 max-w-3xl mx-auto">智财青春平台与众多政府机构、高校及企业建立了深度合作关系，共同推动青年财经素养教育与创新创业发展</p>
+</div>
+<!-- 搜索筛选区 -->
+<div class="bg-white rounded-lg shadow-sm p-6 mb-10">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+<div class="relative w-full md:w-80 mb-4 md:mb-0">
+<input type="text" placeholder="搜索合作伙伴" class="w-full py-2.5 pl-10 pr-4 rounded text-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+<div class="absolute left-3 top-2.5 w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<div class="flex flex-wrap gap-3">
+<div class="relative">
+<button class="flex items-center bg-white border border-gray-200 rounded px-4 py-2 text-sm text-gray-700 whitespace-nowrap !rounded-button">
+<span>合作类型</span>
+<div class="w-5 h-5 flex items-center justify-center ml-2">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div class="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg z-10 hidden">
+<div class="p-2">
+<div class="flex items-center py-1.5 px-2 hover:bg-gray-100 rounded">
+<input type="checkbox" id="type1" class="mr-2">
+<label for="type1" class="text-sm cursor-pointer">战略合作</label>
+</div>
+<div class="flex items-center py-1.5 px-2 hover:bg-gray-100 rounded">
+<input type="checkbox" id="type2" class="mr-2">
+<label for="type2" class="text-sm cursor-pointer">项目合作</label>
+</div>
+<div class="flex items-center py-1.5 px-2 hover:bg-gray-100 rounded">
+<input type="checkbox" id="type3" class="mr-2">
+<label for="type3" class="text-sm cursor-pointer">资源共享</label>
+</div>
+<div class="flex items-center py-1.5 px-2 hover:bg-gray-100 rounded">
+<input type="checkbox" id="type4" class="mr-2">
+<label for="type4" class="text-sm cursor-pointer">技术支持</label>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<button class="flex items-center bg-white border border-gray-200 rounded px-4 py-2 text-sm text-gray-700 whitespace-nowrap !rounded-button">
+<span>所在地区</span>
+<div class="w-5 h-5 flex items-center justify-center ml-2">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+</div>
+<div class="relative">
+<button class="flex items-center bg-white border border-gray-200 rounded px-4 py-2 text-sm text-gray-700 whitespace-nowrap !rounded-button">
+<span>行业领域</span>
+<div class="w-5 h-5 flex items-center justify-center ml-2">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+</div>
+<button class="flex items-center bg-primary text-white rounded px-4 py-2 text-sm whitespace-nowrap !rounded-button">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-filter-3-line"></i>
+</div>
+<span>筛选</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 合作伙伴分类展示 -->
+<div class="mb-16">
+<div class="bg-white rounded-lg shadow-sm mb-6 overflow-hidden">
+<div class="flex border-b">
+<button id="gov-tab" class="flex-1 py-4 px-6 text-center font-medium text-gray-600 hover:text-primary">政府机构</button>
+<button id="edu-tab" class="flex-1 py-4 px-6 text-center font-medium text-primary border-b-2 border-primary">高校院所</button>
+<button id="corp-tab" class="flex-1 py-4 px-6 text-center font-medium text-gray-600 hover:text-primary">企业机构</button>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- 合作伙伴卡片 1 -->
+<div class="partner-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden transition-all duration-300">
+<div class="h-40 bg-gray-50 flex items-center justify-center p-6">
+<img src="https://readdy.ai/api/search-image?query=official%20government%20logo%2C%20minimalist%20design%2C%20blue%20and%20red%20colors%2C%20national%20emblem%20style%2C%20clean%20professional%20look%2C%20suitable%20for%20a%20Chinese%20financial%20education%20department&width=300&height=150&seq=1&orientation=landscape" alt="财政部金融教育司" class="max-h-full object-contain">
+</div>
+<div class="p-5">
+<h3 class="text-lg font-bold text-gray-800 mb-2">财政部金融教育司</h3>
+<p class="text-gray-600 text-sm mb-4 line-clamp-2">国家财政部下属机构，负责全国金融教育政策制定与实施，推动青年财经素养提升工作。</p>
+<div class="flex items-center text-xs text-gray-500 mb-4">
+<div class="flex items-center mr-4">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>北京市</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>合作始于 2021 年</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-blue-50 text-primary text-xs rounded-full">战略合作</span>
+<span class="px-2 py-1 bg-green-50 text-secondary text-xs rounded-full">政策支持</span>
+</div>
+<button class="w-full py-2 bg-gray-50 text-primary text-sm font-medium rounded hover:bg-gray-100 transition-colors whitespace-nowrap !rounded-button">查看详情</button>
+</div>
+</div>
+<!-- 合作伙伴卡片 2 -->
+<div class="partner-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden transition-all duration-300">
+<div class="h-40 bg-gray-50 flex items-center justify-center p-6">
+<img src="https://readdy.ai/api/search-image?query=modern%20government%20logo%20for%20youth%20development%20department%2C%20professional%20design%2C%20blue%20and%20green%20colors%2C%20clean%20lines%2C%20suitable%20for%20a%20Chinese%20youth%20development%20agency&width=300&height=150&seq=2&orientation=landscape" alt="共青团中央青年发展部" class="max-h-full object-contain">
+</div>
+<div class="p-5">
+<h3 class="text-lg font-bold text-gray-800 mb-2">共青团中央青年发展部</h3>
+<p class="text-gray-600 text-sm mb-4 line-clamp-2">负责全国青年发展规划实施，推动青年创新创业与财商教育工作，提供政策与资源支持。</p>
+<div class="flex items-center text-xs text-gray-500 mb-4">
+<div class="flex items-center mr-4">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>北京市</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>合作始于 2020 年</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-blue-50 text-primary text-xs rounded-full">战略合作</span>
+<span class="px-2 py-1 bg-green-50 text-secondary text-xs rounded-full">资源共享</span>
+</div>
+<button class="w-full py-2 bg-gray-50 text-primary text-sm font-medium rounded hover:bg-gray-100 transition-colors whitespace-nowrap !rounded-button">查看详情</button>
+</div>
+</div>
+<!-- 合作伙伴卡片 3 -->
+<div class="partner-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden transition-all duration-300">
+<div class="h-40 bg-gray-50 flex items-center justify-center p-6">
+<img src="https://readdy.ai/api/search-image?query=professional%20logo%20for%20a%20Chinese%20education%20ministry%20department%2C%20modern%20design%2C%20red%20and%20gold%20colors%2C%20academic%20symbols%2C%20clean%20professional%20look&width=300&height=150&seq=3&orientation=landscape" alt="教育部高校学生司" class="max-h-full object-contain">
+</div>
+<div class="p-5">
+<h3 class="text-lg font-bold text-gray-800 mb-2">教育部高校学生司</h3>
+<p class="text-gray-600 text-sm mb-4 line-clamp-2">负责全国高校学生工作指导，推动高校财经素养教育与创新创业教育融合发展。</p>
+<div class="flex items-center text-xs text-gray-500 mb-4">
+<div class="flex items-center mr-4">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>北京市</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>合作始于 2022 年</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-blue-50 text-primary text-xs rounded-full">项目合作</span>
+<span class="px-2 py-1 bg-green-50 text-secondary text-xs rounded-full">教育推广</span>
+</div>
+<button class="w-full py-2 bg-gray-50 text-primary text-sm font-medium rounded hover:bg-gray-100 transition-colors whitespace-nowrap !rounded-button">查看详情</button>
+</div>
+</div>
+<!-- 合作伙伴卡片 4 -->
+<div class="partner-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden transition-all duration-300">
+<div class="h-40 bg-gray-50 flex items-center justify-center p-6">
+<img src="https://readdy.ai/api/search-image?query=modern%20logo%20for%20Shanghai%20municipal%20government%20financial%20department%2C%20professional%20design%2C%20blue%20and%20white%20colors%2C%20skyline%20elements%2C%20clean%20professional%20look&width=300&height=150&seq=4&orientation=landscape" alt="上海市金融工作局" class="max-h-full object-contain">
+</div>
+<div class="p-5">
+<h3 class="text-lg font-bold text-gray-800 mb-2">上海市金融工作局</h3>
+<p class="text-gray-600 text-sm mb-4 line-clamp-2">负责上海市金融政策制定与实施，支持青年财经素养教育与金融科技创新发展。</p>
+<div class="flex items-center text-xs text-gray-500 mb-4">
+<div class="flex items-center mr-4">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>上海市</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>合作始于 2021 年</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-blue-50 text-primary text-xs rounded-full">区域合作</span>
+<span class="px-2 py-1 bg-green-50 text-secondary text-xs rounded-full">资源支持</span>
+</div>
+<button class="w-full py-2 bg-gray-50 text-primary text-sm font-medium rounded hover:bg-gray-100 transition-colors whitespace-nowrap !rounded-button">查看详情</button>
+</div>
+</div>
+<!-- 合作伙伴卡片 5 -->
+<div class="partner-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden transition-all duration-300">
+<div class="h-40 bg-gray-50 flex items-center justify-center p-6">
+<img src="https://readdy.ai/api/search-image?query=professional%20logo%20for%20Guangdong%20provincial%20youth%20entrepreneurship%20department%2C%20modern%20design%2C%20red%20and%20blue%20colors%2C%20dynamic%20elements%2C%20clean%20professional%20look&width=300&height=150&seq=5&orientation=landscape" alt="广东省青年创业促进会" class="max-h-full object-contain">
+</div>
+<div class="p-5">
+<h3 class="text-lg font-bold text-gray-800 mb-2">广东省青年创业促进会</h3>
+<p class="text-gray-600 text-sm mb-4 line-clamp-2">促进广东省青年创业发展，提供创业指导、资源对接与政策支持，助力青年财富增长。</p>
+<div class="flex items-center text-xs text-gray-500 mb-4">
+<div class="flex items-center mr-4">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>广州市</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>合作始于 2023 年</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-blue-50 text-primary text-xs rounded-full">项目合作</span>
+<span class="px-2 py-1 bg-green-50 text-secondary text-xs rounded-full">创业指导</span>
+</div>
+<button class="w-full py-2 bg-gray-50 text-primary text-sm font-medium rounded hover:bg-gray-100 transition-colors whitespace-nowrap !rounded-button">查看详情</button>
+</div>
+</div>
+<!-- 合作伙伴卡片 6 -->
+<div class="partner-card bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden transition-all duration-300">
+<div class="h-40 bg-gray-50 flex items-center justify-center p-6">
+<img src="https://readdy.ai/api/search-image?query=professional%20logo%20for%20Beijing%20municipal%20innovation%20center%2C%20modern%20design%2C%20purple%20and%20blue%20colors%2C%20tech%20elements%2C%20clean%20professional%20look&width=300&height=150&seq=6&orientation=landscape" alt="北京市青年创新中心" class="max-h-full object-contain">
+</div>
+<div class="p-5">
+<h3 class="text-lg font-bold text-gray-800 mb-2">北京市青年创新中心</h3>
+<p class="text-gray-600 text-sm mb-4 line-clamp-2">为北京市青年提供创新创业支持，整合政府、高校与企业资源，打造青年创新生态系统。</p>
+<div class="flex items-center text-xs text-gray-500 mb-4">
+<div class="flex items-center mr-4">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>北京市</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+<span>合作始于 2022 年</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-blue-50 text-primary text-xs rounded-full">资源共享</span>
+<span class="px-2 py-1 bg-green-50 text-secondary text-xs rounded-full">创新支持</span>
+</div>
+<button class="w-full py-2 bg-gray-50 text-primary text-sm font-medium rounded hover:bg-gray-100 transition-colors whitespace-nowrap !rounded-button">查看详情</button>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="px-6 py-2.5 bg-white border border-gray-200 rounded-full text-primary text-sm font-medium hover:bg-gray-50 whitespace-nowrap !rounded-button">
+查看更多
+<i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 合作案例展示 -->
+<div class="mb-16">
+<div class="text-center mb-10">
+<h2 class="text-2xl font-bold text-gray-800 mb-3">合作案例</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">展示我们与合作伙伴共同推进的典型项目与成果</p>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-8">
+<div class="relative pl-12">
+<!-- 案例 1 -->
+<div class="timeline-item relative pb-12">
+<div class="bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden">
+<div class="md:flex">
+<div class="md:w-2/5">
+<img src="https://readdy.ai/api/search-image?query=professional%20financial%20education%20workshop%20with%20young%20Chinese%20students%20and%20government%20officials%2C%20modern%20classroom%20setting%2C%20students%20engaged%20in%20learning%2C%20professional%20atmosphere%2C%20high%20quality%20image&width=600&height=400&seq=7&orientation=landscape" alt="全国大学生财商教育计划" class="w-full h-64 md:h-full object-cover">
+</div>
+<div class="p-6 md:w-3/5">
+<div class="flex items-center text-sm text-gray-500 mb-3">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+<span>2023 年 9 月 - 2024 年 6 月</span>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-3">全国大学生财商教育计划</h3>
+<p class="text-gray-600 mb-4">与教育部高校学生司、财政部金融教育司联合开展的全国性大学生财商教育项目，覆盖全国 200+ 高校，培训大学生超过 50 万人次，显著提升了大学生财经素养水平。</p>
+<div class="flex flex-wrap gap-2 mb-5">
+<span class="px-2 py-1 bg-blue-50 text-primary text-xs rounded-full">财商教育</span>
+<span class="px-2 py-1 bg-green-50 text-secondary text-xs rounded-full">全国项目</span>
+<span class="px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded-full">高校合作</span>
+</div>
+<div class="flex items-center">
+<div class="flex -space-x-2 mr-4">
+<img src="https://readdy.ai/api/search-image?query=professional%20logo%20for%20Chinese%20education%20ministry%20department%2C%20minimal%20design&width=40&height=40&seq=8&orientation=squarish" alt="教育部高校学生司" class="w-8 h-8 rounded-full border-2 border-white">
+<img src="https://readdy.ai/api/search-image?query=professional%20logo%20for%20Chinese%20financial%20education%20department%2C%20minimal%20design&width=40&height=40&seq=9&orientation=squarish" alt="财政部金融教育司" class="w-8 h-8 rounded-full border-2 border-white">
+</div>
+<button class="px-4 py-1.5 bg-primary text-white text-sm rounded hover:bg-primary/90 whitespace-nowrap !rounded-button">查看详情</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 案例 2 -->
+<div class="timeline-item relative pb-12">
+<div class="bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden">
+<div class="md:flex">
+<div class="md:w-2/5">
+<img src="https://readdy.ai/api/search-image?query=young%20Chinese%20entrepreneurs%20at%20a%20startup%20competition%2C%20modern%20conference%20hall%2C%20judges%20panel%2C%20presentation%20screens%2C%20professional%20business%20atmosphere%2C%20high%20quality%20image&width=600&height=400&seq=10&orientation=landscape" alt="青年创业者孵化计划" class="w-full h-64 md:h-full object-cover">
+</div>
+<div class="p-6 md:w-3/5">
+<div class="flex items-center text-sm text-gray-500 mb-3">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+<span>2022 年 3 月 - 2023 年 12 月</span>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-3">青年创业者孵化计划</h3>
+<p class="text-gray-600 mb-4">与共青团中央青年发展部、上海市金融工作局合作开展的青年创业支持项目，为 500+ 青年创业团队提供培训、指导与资源对接，孵化成功创业项目 120+ 个。</p>
+<div class="flex flex-wrap gap-2 mb-5">
+<span class="px-2 py-1 bg-blue-50 text-primary text-xs rounded-full">创业孵化</span>
+<span class="px-2 py-1 bg-green-50 text-secondary text-xs rounded-full">资源对接</span>
+<span class="px-2 py-1 bg-orange-50 text-orange-600 text-xs rounded-full">区域合作</span>
+</div>
+<div class="flex items-center">
+<div class="flex -space-x-2 mr-4">
+<img src="https://readdy.ai/api/search-image?query=professional%20logo%20for%20Chinese%20youth%20development%20department%2C%20minimal%20design&width=40&height=40&seq=11&orientation=squarish" alt="共青团中央青年发展部" class="w-8 h-8 rounded-full border-2 border-white">
+<img src="https://readdy.ai/api/search-image?query=professional%20logo%20for%20Shanghai%20financial%20bureau%2C%20minimal%20design&width=40&height=40&seq=12&orientation=squarish" alt="上海市金融工作局" class="w-8 h-8 rounded-full border-2 border-white">
+</div>
+<button class="px-4 py-1.5 bg-primary text-white text-sm rounded hover:bg-primary/90 whitespace-nowrap !rounded-button">查看详情</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 案例 3 -->
+<div class="timeline-item relative">
+<div class="bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden">
+<div class="md:flex">
+<div class="md:w-2/5">
+<img src="https://readdy.ai/api/search-image?query=financial%20technology%20innovation%20competition%20with%20young%20Chinese%20professionals%2C%20modern%20tech%20exhibition%20hall%2C%20digital%20displays%2C%20innovative%20atmosphere%2C%20high%20quality%20image&width=600&height=400&seq=13&orientation=landscape" alt="金融科技创新大赛" class="w-full h-64 md:h-full object-cover">
+</div>
+<div class="p-6 md:w-3/5">
+<div class="flex items-center text-sm text-gray-500 mb-3">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-calendar-line"></i>
+</div>
+<span>2023 年 5 月 - 2023 年 11 月</span>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-3">金融科技创新大赛</h3>
+<p class="text-gray-600 mb-4">与北京市青年创新中心、广东省青年创业促进会联合举办的全国性金融科技创新大赛，吸引了 1000+ 团队参赛，产生了一批具有市场潜力的金融科技创新项目。</p>
+<div class="flex flex-wrap gap-2 mb-5">
+<span class="px-2 py-1 bg-blue-50 text-primary text-xs rounded-full">金融科技</span>
+<span class="px-2 py-1 bg-green-50 text-secondary text-xs rounded-full">创新竞赛</span>
+<span class="px-2 py-1 bg-red-50 text-red-600 text-xs rounded-full">多地联动</span>
+</div>
+<div class="flex items-center">
+<div class="flex -space-x-2 mr-4">
+<img src="https://readdy.ai/api/search-image?query=professional%20logo%20for%20Beijing%20youth%20innovation%20center%2C%20minimal%20design&width=40&height=40&seq=14&orientation=squarish" alt="北京市青年创新中心" class="w-8 h-8 rounded-full border-2 border-white">
+<img src="https://readdy.ai/api/search-image?query=professional%20logo%20for%20Guangdong%20youth%20entrepreneurship%20association%2C%20minimal%20design&width=40&height=40&seq=15&orientation=squarish" alt="广东省青年创业促进会" class="w-8 h-8 rounded-full border-2 border-white">
+</div>
+<button class="px-4 py-1.5 bg-primary text-white text-sm rounded hover:bg-primary/90 whitespace-nowrap !rounded-button">查看详情</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="px-6 py-2.5 bg-white border border-gray-200 rounded-full text-primary text-sm font-medium hover:bg-gray-50 whitespace-nowrap !rounded-button">
+查看更多案例
+<i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- 合作申请 -->
+<div class="mb-16">
+<div class="text-center mb-10">
+<h2 class="text-2xl font-bold text-gray-800 mb-3">申请合作</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">如果您有意向与智财青春平台建立合作关系，欢迎提交申请</p>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden">
+<div class="md:flex">
+<div class="md:w-2/5 bg-primary relative">
+<div class="absolute inset-0" style="background-image: url('https://readdy.ai/api/search-image?query=business%20partnership%20concept%2C%20handshake%2C%20collaboration%2C%20professional%20setting%2C%20soft%20gradient%20blue%20background%2C%20abstract%20business%20elements%2C%20high%20quality%20image&width=800&height=1000&seq=16&orientation=portrait'); background-size: cover; background-position: center; opacity: 0.2;"></div>
+<div class="relative z-10 p-8 md:p-10 text-white h-full flex flex-col justify-center">
+<h3 class="text-2xl font-bold mb-6">合作流程</h3>
+<div class="space-y-6">
+<div class="flex">
+<div class="w-10 h-10 rounded-full bg-white/20 flex-shrink-0 flex items-center justify-center mr-4 mt-1">
+<div class="w-6 h-6 flex items-center justify-center text-white">
+<i class="ri-file-list-3-line"></i>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-medium mb-2">提交申请</h4>
+<p class="text-white/80 text-sm">填写合作申请表，提供机构基本信息与合作意向</p>
+</div>
+</div>
+<div class="flex">
+<div class="w-10 h-10 rounded-full bg-white/20 flex-shrink-0 flex items-center justify-center mr-4 mt-1">
+<div class="w-6 h-6 flex items-center justify-center text-white">
+<i class="ri-discuss-line"></i>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-medium mb-2">需求沟通</h4>
+<p class="text-white/80 text-sm">我们的合作团队将与您联系，深入了解合作需求</p>
+</div>
+</div>
+<div class="flex">
+<div class="w-10 h-10 rounded-full bg-white/20 flex-shrink-0 flex items-center justify-center mr-4 mt-1">
+<div class="w-6 h-6 flex items-center justify-center text-white">
+<i class="ri-file-paper-2-line"></i>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-medium mb-2">方案制定</h4>
+<p class="text-white/80 text-sm">根据双方需求，共同制定合作方案与计划</p>
+</div>
+</div>
+<div class="flex">
+<div class="w-10 h-10 rounded-full bg-white/20 flex-shrink-0 flex items-center justify-center mr-4 mt-1">
+<div class="w-6 h-6 flex items-center justify-center text-white">
+<i class="ri-shake-hands-line"></i>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-medium mb-2">签署协议</h4>
+<p class="text-white/80 text-sm">确认合作内容，签署正式合作协议</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md:w-3/5 p-8 md:p-10">
+<h3 class="text-xl font-bold text-gray-800 mb-6">合作申请表</h3>
+<form class="space-y-5">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">机构名称</label>
+<input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="请输入机构全称">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">机构类型</label>
+<div class="relative">
+<select class="w-full px-4 py-2.5 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary pr-8 bg-white">
+<option value="">请选择机构类型</option>
+<option value="government">政府机构</option>
+<option value="university">高校院所</option>
+<option value="enterprise">企业机构</option>
+<option value="ngo">社会组织</option>
+</select>
+<div class="absolute right-3 top-3 pointer-events-none w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">联系人姓名</label>
+<input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="请输入联系人姓名">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">联系人职位</label>
+<input type="text" class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="请输入联系人职位">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">联系电话</label>
+<input type="tel" class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="请输入联系电话">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">电子邮箱</label>
+<input type="email" class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="请输入电子邮箱">
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">合作意向</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="flex items-center">
+<input type="checkbox" id="intent1" class="mr-2">
+<label for="intent1" class="text-sm cursor-pointer">战略合作</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="intent2" class="mr-2">
+<label for="intent2" class="text-sm cursor-pointer">项目合作</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="intent3" class="mr-2">
+<label for="intent3" class="text-sm cursor-pointer">资源共享</label>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="intent4" class="mr-2">
+<label for="intent4" class="text-sm cursor-pointer">技术支持</label>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1">合作内容描述</label>
+<textarea rows="4" class="w-full px-4 py-2.5 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="请简要描述您希望的合作内容与期望"></textarea>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="agree" class="mr-2">
+<label for="agree" class="text-sm text-gray-600 cursor-pointer">我已阅读并同意<a href="#" class="text-primary hover:underline">《合作伙伴协议》</a></label>
+</div>
+<div>
+<button type="submit" class="px-6 py-2.5 bg-primary text-white font-medium rounded hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button">提交申请</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- 页脚 -->
+<footer class="bg-gray-900 text-white pt-12 pb-6">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">logo</a>
+<p class="text-gray-400 mb-4">智财青春平台致力于提升青年财经素养，助力青年创新创业，为青年财富增长赋能。</p>
+<div class="flex space-x-4">
+<a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-weibo-fill"></i>
+</div>
+</a>
+<a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-wechat-fill"></i>
+</div>
+</a>
+<a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-bilibili-fill"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">关于我们</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">平台介绍</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">团队成员</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">发展历程</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">新闻动态</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">服务项目</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">财商教育</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">创业指导</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">资源对接</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">活动赛事</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">联系我们</h3>
+<ul class="space-y-3">
+<li class="flex">
+<div class="w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-gray-400">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-400">北京市海淀区中关村大街1号</span>
+</li>
+<li class="flex">
+<div class="w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-gray-400">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-400">contact@zhicaiqingchun.com</span>
+</li>
+<li class="flex">
+<div class="w-5 h-5 flex items-center justify-center mr-3 mt-0.5 text-gray-400">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-400">400-888-7777</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-6">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 智财青春平台. 保留所有权利.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-500 text-sm hover:text-white">隐私政策</a>
+<a href="#" class="text-gray-500 text-sm hover:text-white">服务条款</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-500 text-sm hover:text-white">返回首页</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// 筛选下拉菜单
+const filterButtons = document.querySelectorAll('.relative button');
+filterButtons.forEach(button => {
+button.addEventListener('click', function() {
+const dropdown = this.nextElementSibling;
+if (dropdown.classList.contains('hidden')) {
+dropdown.classList.remove('hidden');
+} else {
+dropdown.classList.add('hidden');
+}
+});
+});
+// 点击页面其他地方关闭下拉菜单
+document.addEventListener('click', function(e) {
+filterButtons.forEach(button => {
+if (!button.contains(e.target)) {
+const dropdown = button.nextElementSibling;
+if (dropdown && !dropdown.classList.contains('hidden')) {
+dropdown.classList.add('hidden');
+}
+}
+});
+});
+// 选项卡切换功能
+const govTab = document.getElementById('gov-tab');
+const eduTab = document.getElementById('edu-tab');
+const corpTab = document.getElementById('corp-tab');
+const tabs = [govTab, eduTab, corpTab];
+function switchTab(activeTab) {
+tabs.forEach(tab => {
+if (tab === activeTab) {
+tab.classList.add('text-primary', 'border-b-2', 'border-primary');
+tab.classList.remove('text-gray-600');
+} else {
+tab.classList.remove('text-primary', 'border-b-2', 'border-primary');
+tab.classList.add('text-gray-600');
+}
+});
+}
+govTab.addEventListener('click', () => switchTab(govTab));
+eduTab.addEventListener('click', () => switchTab(eduTab));
+corpTab.addEventListener('click', () => switchTab(corpTab));
+});
+</script>
+</body>
+</html>

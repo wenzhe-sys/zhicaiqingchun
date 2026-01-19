@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>消费行动计划 - 智财青春</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Noto Sans SC', sans-serif;
+background-color: #f9fafb;
+}
+.chart-container {
+width: 100%;
+height: 300px;
+}
+.progress-ring {
+transform: rotate(-90deg);
+transform-origin: center;
+}
+.timeline-dot::before {
+content: '';
+position: absolute;
+left: -39px;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background-color: #297CBB;
+border: 4px solid white;
+z-index: 10;
+}
+.timeline-dot::after {
+content: '';
+position: absolute;
+left: -30px;
+top: 20px;
+bottom: -20px;
+width: 2px;
+background-color: #e5e7eb;
+z-index: 0;
+}
+.timeline-item:last-child .timeline-dot::after {
+display: none;
+}
+input[type="checkbox"] {
+display: none;
+}
+.custom-checkbox {
+width: 20px;
+height: 20px;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+position: relative;
+cursor: pointer;
+transition: all 0.2s;
+}
+input[type="checkbox"]:checked + .custom-checkbox {
+background-color: #297CBB;
+border-color: #297CBB;
+}
+input[type="checkbox"]:checked + .custom-checkbox::after {
+content: '';
+position: absolute;
+left: 6px;
+top: 2px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+</style>
+</head>
+<body>
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+<span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+<span class="text-xl font-semibold text-gray-800">智财青春</span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/d1158551-2f25-484e-9abd-14fe4fbe5192" data-readdy="true" class="text-gray-600 hover:text-primary">消费报告</a>
+<a href="#" class="text-primary font-medium">行动计划</a>
+<a href="#" class="text-gray-600 hover:text-primary">消费评估</a>
+<a href="#" class="text-gray-600 hover:text-primary">教育赋能</a>
+<a href="#" class="text-gray-600 hover:text-primary">决策干预</a>
+<a href="#" class="text-gray-600 hover:text-primary">生态协同</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-notification-3-line ri-lg"></i>
+</button>
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=young%2520asian%2520professional%2520student%2520portrait%252C%2520neutral%2520expression%252C%2520looking%2520at%2520camera%252C%2520high%2520quality%252C%2520studio%2520lighting%252C%2520clean%2520background&width=40&height=40&seq=1&orientation=squarish" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+</div>
+</div>
+</div>
+</header>
+
+<main class="container mx-auto px-4 py-8">
+<div class="flex items-center mb-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/d1158551-2f25-484e-9abd-14fe4fbe5192" data-readdy="true" class="flex items-center text-gray-600 hover:text-primary mr-4">
+<i class="ri-arrow-left-line ri-lg mr-1"></i>
+<span>返回消费报告</span>
+</a>
+<h1 class="text-3xl font-bold text-gray-900">消费行动计划</h1>
+</div>
+
+<!-- 计划概述 -->
+<section class="bg-white rounded-lg shadow-md p-6 mb-8">
+<div class="flex flex-col md:flex-row items-start justify-between">
+<div class="w-full md:w-2/3 mb-6 md:mb-0 md:pr-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-4">行动计划概述</h2>
+<div class="bg-blue-50 p-4 rounded-lg mb-6">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3 flex-shrink-0">
+<i class="ri-lightbulb-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="font-medium text-gray-900 mb-1">计划目标</h3>
+<p class="text-gray-600">基于您当前 <span class="text-primary font-medium">78%</span> 的消费能量转化率，本计划旨在通过优化消费结构，提高发展型消费质量，在 3 个月内将您的消费能量转化率提升至 <span class="text-primary font-medium">85%</span>，预计可带来 <span class="text-primary font-medium">12%</span> 的个人价值增长。</p>
+</div>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="text-gray-600">计划周期</span>
+<span class="text-lg font-semibold text-gray-900">3 个月</span>
+</div>
+<div class="text-sm text-gray-500">2025-04-12 至 2025-07-12</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="text-gray-600">目标转化率</span>
+<span class="text-lg font-semibold text-primary">85%</span>
+</div>
+<div class="text-sm text-gray-500">当前 <span class="text-primary">78%</span> → 目标 <span class="text-primary">85%</span></div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="text-gray-600">预期价值增长</span>
+<span class="text-lg font-semibold text-secondary">12%</span>
+</div>
+<div class="text-sm text-gray-500">较当前水平提升 <span class="text-green-500">+12%</span></div>
+</div>
+</div>
+
+<div class="bg-gray-50 p-4 rounded-lg">
+<h3 class="font-medium text-gray-900 mb-3">计划执行进度</h3>
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between">
+<div>
+<span class="text-xs font-semibold inline-block text-primary">
+0% 完成
+</span>
+</div>
+<div class="text-right">
+<span class="text-xs font-semibold inline-block text-primary">
+目标: 100%
+</span>
+</div>
+</div>
+<div class="overflow-hidden h-2 mb-1 text-xs flex rounded bg-gray-200">
+<div style="width:0%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"></div>
+</div>
+<div class="flex text-xs justify-between">
+<span>开始</span>
+<span>第一个月</span>
+<span>第二个月</span>
+<span>完成</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="w-full md:w-1/3">
+<div class="bg-gray-50 p-5 rounded-lg h-full">
+<h3 class="font-medium text-gray-900 mb-4">预期效果预览</h3>
+<div class="chart-container" id="effectPreviewChart" style="height: 250px;"></div>
+<div class="mt-4 text-sm text-gray-600">
+<div class="flex items-center mb-1">
+<div class="w-3 h-3 rounded-full bg-[#57B5E7] mr-2"></div>
+<span>消费能量转化率</span>
+</div>
+<div class="flex items-center">
+<div class="w-3 h-3 rounded-full bg-[#8DD3C7] mr-2"></div>
+<span>价值增长指数</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 分类优化建议 -->
+<section class="bg-white rounded-lg shadow-md p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">分类优化建议</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- 生存型消费 -->
+<div class="bg-green-50 p-5 rounded-lg border border-green-100">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-green-100 text-green-600 mr-3">
+<i class="ri-home-line ri-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold text-gray-900">生存型消费</h3>
+<div class="text-sm text-gray-600">当前占比: <span class="font-medium">40%</span></div>
+</div>
+</div>
+
+<div class="mb-4">
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm text-gray-600">当前状态</span>
+<span class="text-sm font-medium text-gray-900">合理</span>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full">
+<div class="absolute top-0 left-0 h-full bg-green-500 rounded-full" style="width: 70%"></div>
+</div>
+</div>
+
+<div class="space-y-3 mb-4">
+<h4 class="font-medium text-gray-900">优化建议</h4>
+<div class="flex items-start">
+<i class="ri-check-line text-green-600 mt-1 mr-2"></i>
+<p class="text-sm text-gray-600">通过共享经济和团购方式，降低住房和食品支出 5%</p>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-green-600 mt-1 mr-2"></i>
+<p class="text-sm text-gray-600">优化交通方式，减少不必要的出行成本</p>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-green-600 mt-1 mr-2"></i>
+<p class="text-sm text-gray-600">使用智能家居设备监控水电使用，降低能源成本</p>
+</div>
+</div>
+
+<div class="bg-white p-3 rounded shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-medium text-gray-900">预期效果</h4>
+<span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">节省 ¥310/月</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-600">优化后占比</span>
+<span class="font-medium text-gray-900">35%</span>
+</div>
+</div>
+</div>
+
+<!-- 发展型消费 -->
+<div class="bg-blue-50 p-5 rounded-lg border border-blue-100">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 mr-3">
+<i class="ri-arrow-up-line ri-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold text-gray-900">发展型消费</h3>
+<div class="text-sm text-gray-600">当前占比: <span class="font-medium">35%</span></div>
+</div>
+</div>
+
+<div class="mb-4">
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm text-gray-600">当前状态</span>
+<span class="text-sm font-medium text-blue-600">需提升</span>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full">
+<div class="absolute top-0 left-0 h-full bg-blue-500 rounded-full" style="width: 60%"></div>
+</div>
+</div>
+
+<div class="space-y-3 mb-4">
+<h4 class="font-medium text-gray-900">优化建议</h4>
+<div class="flex items-start">
+<i class="ri-check-line text-blue-600 mt-1 mr-2"></i>
+<p class="text-sm text-gray-600">增加技能培训投入，每月至少参加一个专业课程</p>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-blue-600 mt-1 mr-2"></i>
+<p class="text-sm text-gray-600">定期进行健康检查，增加预防性健康投入</p>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-blue-600 mt-1 mr-2"></i>
+<p class="text-sm text-gray-600">建立稳定的投资计划，每月固定投入收入的 10%</p>
+</div>
+</div>
+
+<div class="bg-white p-3 rounded shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-medium text-gray-900">预期效果</h4>
+<span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">增长 ¥680/月</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-600">优化后占比</span>
+<span class="font-medium text-gray-900">45%</span>
+</div>
+</div>
+</div>
+
+<!-- 享乐型消费 -->
+<div class="bg-orange-50 p-5 rounded-lg border border-orange-100">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-orange-100 text-orange-600 mr-3">
+<i class="ri-emotion-happy-line ri-lg"></i>
+</div>
+<div>
+<h3 class="font-semibold text-gray-900">享乐型消费</h3>
+<div class="text-sm text-gray-600">当前占比: <span class="font-medium">25%</span></div>
+</div>
+</div>
+
+<div class="mb-4">
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm text-gray-600">当前状态</span>
+<span class="text-sm font-medium text-orange-600">需优化</span>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full">
+<div class="absolute top-0 left-0 h-full bg-orange-500 rounded-full" style="width: 65%"></div>
+</div>
+</div>
+
+<div class="space-y-3 mb-4">
+<h4 class="font-medium text-gray-900">优化建议</h4>
+<div class="flex items-start">
+<i class="ri-check-line text-orange-600 mt-1 mr-2"></i>
+<p class="text-sm text-gray-600">减少低价值娱乐消费，转向有益身心的休闲活动</p>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-orange-600 mt-1 mr-2"></i>
+<p class="text-sm text-gray-600">控制外出就餐频率，每周不超过 2 次</p>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-orange-600 mt-1 mr-2"></i>
+<p class="text-sm text-gray-600">购物前制定清单，避免冲动消费</p>
+</div>
+</div>
+
+<div class="bg-white p-3 rounded shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-medium text-gray-900">预期效果</h4>
+<span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full">减少 ¥370/月</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-600">优化后占比</span>
+<span class="font-medium text-gray-900">20%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 月度行动项清单 -->
+<section class="bg-white rounded-lg shadow-md p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">月度行动项清单</h2>
+
+<div class="flex mb-6">
+<div class="w-full md:w-3/4">
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-semibold text-gray-900">第一个月 (2025-04-12 至 2025-05-12)</h3>
+<span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">进行中</span>
+</div>
+
+<div class="pl-10 relative">
+<div class="space-y-6">
+<div class="timeline-item relative timeline-dot">
+<div class="bg-white p-4 rounded-lg shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<label class="flex items-center">
+<input type="checkbox" class="hidden">
+<div class="custom-checkbox mr-3"></div>
+<h4 class="font-medium text-gray-900">建立消费预算系统</h4>
+</label>
+</div>
+<span class="text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded-full">高优先级</span>
+</div>
+<p class="text-sm text-gray-600 mb-3">使用智能记账工具建立详细的月度预算，设置各类消费上限，实时监控消费状态。</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">截止日期: 2025-04-19</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">量化指标: 预算执行率 ≥ 90%</span>
+</div>
+</div>
+</div>
+
+<div class="timeline-item relative timeline-dot">
+<div class="bg-white p-4 rounded-lg shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<label class="flex items-center">
+<input type="checkbox" class="hidden">
+<div class="custom-checkbox mr-3"></div>
+<h4 class="font-medium text-gray-900">优化餐饮消费结构</h4>
+</label>
+</div>
+<span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full">中优先级</span>
+</div>
+<p class="text-sm text-gray-600 mb-3">减少外出就餐频率，增加自煮饭菜比例，每周不超过 2 次外出就餐。</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">截止日期: 2025-05-12</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">量化指标: 餐饮支出减少 20%</span>
+</div>
+</div>
+</div>
+
+<div class="timeline-item relative timeline-dot">
+<div class="bg-white p-4 rounded-lg shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<label class="flex items-center">
+<input type="checkbox" class="hidden">
+<div class="custom-checkbox mr-3"></div>
+<h4 class="font-medium text-gray-900">开始技能培训课程</h4>
+</label>
+</div>
+<span class="text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded-full">高优先级</span>
+</div>
+<p class="text-sm text-gray-600 mb-3">报名参加数据分析专业课程，每周投入至少 6 小时学习时间。</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">截止日期: 2025-04-25</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">量化指标: 完成课程 30%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="w-full md:w-1/4 md:pl-6">
+<div class="bg-gray-50 p-4 rounded-lg mb-4">
+<h3 class="font-medium text-gray-900 mb-3">第二个月计划预览</h3>
+<div class="space-y-2">
+<div class="flex items-center">
+<div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+<p class="text-sm text-gray-600">建立投资计划</p>
+</div>
+<div class="flex items-center">
+<div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+<p class="text-sm text-gray-600">优化住房成本</p>
+</div>
+<div class="flex items-center">
+<div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+<p class="text-sm text-gray-600">健康体检与评估</p>
+</div>
+</div>
+</div>
+
+<div class="bg-gray-50 p-4 rounded-lg">
+<h3 class="font-medium text-gray-900 mb-3">第三个月计划预览</h3>
+<div class="space-y-2">
+<div class="flex items-center">
+<div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+<p class="text-sm text-gray-600">能力认证考试</p>
+</div>
+<div class="flex items-center">
+<div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+<p class="text-sm text-gray-600">消费模式全面评估</p>
+</div>
+<div class="flex items-center">
+<div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+<p class="text-sm text-gray-600">制定长期财务规划</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="mt-8">
+<button class="bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-button font-medium hover:bg-opacity-20 transition whitespace-nowrap flex items-center mx-auto">
+<i class="ri-calendar-line mr-1"></i>
+<span>查看完整行动计划时间表</span>
+</button>
+</div>
+</section>
+
+<!-- 预期效果预测 -->
+<section class="bg-white rounded-lg shadow-md p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-4">预期效果预测</h2>
+<p class="text-gray-600 mb-6">根据您的消费数据和行动计划，我们预测了以下改善效果</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<h3 class="font-semibold text-gray-900 mb-4">消费结构优化趋势</h3>
+<div class="chart-container" id="structureOptimizationChart"></div>
+</div>
+<div>
+<h3 class="font-semibold text-gray-900 mb-4">能量转化率提升预测</h3>
+<div class="chart-container" id="conversionRateChart"></div>
+</div>
+</div>
+
+<div class="bg-gray-50 p-5 rounded-lg">
+<h3 class="font-semibold text-gray-900 mb-4">关键指标改善预期</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-white p-4 rounded shadow-sm">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 mr-2">
+<i class="ri-funds-line"></i>
+</div>
+<h4 class="font-medium text-gray-900">消费能量转化率</h4>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<div class="text-sm text-gray-600">当前</div>
+<div class="text-xl font-semibold text-gray-900">78%</div>
+</div>
+<i class="ri-arrow-right-line text-gray-400 mx-2"></i>
+<div>
+<div class="text-sm text-gray-600">目标</div>
+<div class="text-xl font-semibold text-primary">85%</div>
+</div>
+</div>
+</div>
+
+<div class="bg-white p-4 rounded shadow-sm">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-green-100 text-green-600 mr-2">
+<i class="ri-line-chart-line"></i>
+</div>
+<h4 class="font-medium text-gray-900">价值增长指数</h4>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<div class="text-sm text-gray-600">当前</div>
+<div class="text-xl font-semibold text-gray-900">4.2</div>
+</div>
+<i class="ri-arrow-right-line text-gray-400 mx-2"></i>
+<div>
+<div class="text-sm text-gray-600">目标</div>
+<div class="text-xl font-semibold text-secondary">4.7</div>
+</div>
+</div>
+</div>
+
+<div class="bg-white p-4 rounded shadow-sm">
+<div class="flex items-center mb-3">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-purple-100 text-purple-600 mr-2">
+<i class="ri-wallet-3-line"></i>
+</div>
+<h4 class="font-medium text-gray-900">月度节省金额</h4>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<div class="text-sm text-gray-600">当前</div>
+<div class="text-xl font-semibold text-gray-900">¥0</div>
+</div>
+<i class="ri-arrow-right-line text-gray-400 mx-2"></i>
+<div>
+<div class="text-sm text-gray-600">目标</div>
+<div class="text-xl font-semibold text-purple-600">¥680</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 进度跟踪工具 -->
+<section class="bg-white rounded-lg shadow-md p-6 mb-8">
+<div class="flex flex-col md:flex-row items-start justify-between">
+<div class="w-full md:w-2/3 mb-6 md:mb-0 md:pr-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">进度跟踪工具</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+<div class="bg-gray-50 p-4 rounded-lg">
+<h3 class="font-medium text-gray-900 mb-3">整体完成度</h3>
+<div class="relative pt-1">
+<div class="overflow-hidden h-4 text-xs flex rounded bg-gray-200">
+<div style="width:0%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary rounded-l"></div>
+</div>
+<div class="flex justify-between text-xs text-gray-600 mt-1">
+<span>0%</span>
+<span>100%</span>
+</div>
+</div>
+</div>
+
+<div class="bg-gray-50 p-4 rounded-lg">
+<h3 class="font-medium text-gray-900 mb-3">行动项完成</h3>
+<div class="flex items-center justify-center">
+<div class="text-center">
+<div class="text-3xl font-bold text-primary">0/9</div>
+<div class="text-sm text-gray-600">已完成项目</div>
+</div>
+</div>
+</div>
+
+<div class="bg-gray-50 p-4 rounded-lg">
+<h3 class="font-medium text-gray-900 mb-3">里程碑达成</h3>
+<div class="flex items-center justify-center">
+<div class="text-center">
+<div class="text-3xl font-bold text-secondary">0/3</div>
+<div class="text-sm text-gray-600">已达成里程碑</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-gray-50 p-5 rounded-lg mb-6">
+<h3 class="font-medium text-gray-900 mb-4">分类进度</h3>
+<div class="space-y-4">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm text-gray-600">生存型消费优化</span>
+<span class="text-sm font-medium text-gray-900">0%</span>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full">
+<div class="absolute top-0 left-0 h-full bg-green-500 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm text-gray-600">发展型消费优化</span>
+<span class="text-sm font-medium text-gray-900">0%</span>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full">
+<div class="absolute top-0 left-0 h-full bg-blue-500 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm text-gray-600">享乐型消费优化</span>
+<span class="text-sm font-medium text-gray-900">0%</span>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full">
+<div class="absolute top-0 left-0 h-full bg-orange-500 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-primary bg-opacity-5 p-5 rounded-lg">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3 flex-shrink-0">
+<i class="ri-settings-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="font-medium text-gray-900 mb-2">动态调整建议</h3>
+<p class="text-gray-600 text-sm mb-3">根据您的执行情况，系统将实时提供调整建议，确保计划的有效性。请每周至少记录一次消费数据，以便系统进行精准分析。</p>
+<button class="text-sm text-primary font-medium flex items-center">
+<span>设置提醒</span>
+<i class="ri-arrow-right-s-line ml-1"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="w-full md:w-1/3">
+<div class="bg-gray-50 p-5 rounded-lg">
+<h3 class="font-medium text-gray-900 mb-4">近期活动</h3>
+<div class="space-y-4">
+<div class="bg-white p-3 rounded shadow-sm">
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 mr-2 flex-shrink-0">
+<i class="ri-file-list-3-line"></i>
+</div>
+<div>
+<h4 class="text-sm font-medium text-gray-900">行动计划已生成</h4>
+<p class="text-xs text-gray-500">2025-04-12 14:30</p>
+</div>
+</div>
+</div>
+
+<div class="bg-white p-3 rounded shadow-sm">
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 mr-2 flex-shrink-0">
+<i class="ri-calendar-check-line"></i>
+</div>
+<div>
+<h4 class="text-sm font-medium text-gray-900">第一个月计划已开始</h4>
+<p class="text-xs text-gray-500">2025-04-12 14:30</p>
+</div>
+</div>
+</div>
+
+<div class="bg-white p-3 rounded shadow-sm">
+<div class="flex items-start">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 mr-2 flex-shrink-0">
+<i class="ri-notification-3-line"></i>
+</div>
+<div>
+<h4 class="text-sm font-medium text-gray-900">建立预算系统提醒</h4>
+<p class="text-xs text-gray-500">截止日期: 2025-04-19</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="mt-4">
+<button class="w-full bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap flex items-center justify-center">
+<i class="ri-history-line mr-1"></i>
+<span>查看所有活动</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- 底部操作栏 -->
+<div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 px-4 py-3">
+<div class="container mx-auto flex justify-between items-center">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+<i class="ri-file-list-3-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="font-medium text-gray-900">消费行动计划</h3>
+<p class="text-xs text-gray-500">生成于 2025-04-12</p>
+</div>
+</div>
+<div class="flex space-x-3">
+<button class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap flex items-center">
+<i class="ri-save-line mr-1"></i>
+<span>保存计划</span>
+</button>
+<div class="relative group">
+<button class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap flex items-center">
+<i class="ri-share-line mr-1"></i>
+<span>分享</span>
+<i class="ri-arrow-down-s-line ml-1"></i>
+</button>
+<div class="absolute right-0 bottom-full mb-2 hidden group-hover:block">
+<div class="bg-white rounded-lg shadow-lg overflow-hidden w-40">
+<button class="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 flex items-center">
+<i class="ri-wechat-fill mr-2 text-green-500"></i>
+<span>微信</span>
+</button>
+<button class="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 flex items-center">
+<i class="ri-weibo-fill mr-2 text-red-500"></i>
+<span>微博</span>
+</button>
+<button class="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 flex items-center">
+<i class="ri-link mr-2 text-blue-500"></i>
+<span>复制链接</span>
+</button>
+</div>
+</div>
+</div>
+<button class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap flex items-center">
+<i class="ri-download-line mr-1"></i>
+<span>导出PDF</span>
+</button>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/d1158551-2f25-484e-9abd-14fe4fbe5192" data-readdy="true" class="bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap flex items-center">
+<i class="ri-check-line mr-1"></i>
+<span>确认执行</span>
+</a>
+</div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 预期效果预览图表
+    const effectPreviewChart = echarts.init(document.getElementById('effectPreviewChart'));
+    const effectPreviewOption = {
+        animation: false,
+        tooltip: {
+            trigger: 'axis',
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            borderColor: '#eee',
+            borderWidth: 1,
+            textStyle: {
+                color: '#1f2937'
+            }
+        },
+        grid: {
+            top: 10,
+            right: 10,
+            bottom: 30,
+            left: 50
+        },
+        xAxis: {
+            type: 'category',
+            data: ['当前', '1个月', '2个月', '3个月'],
+            axisLine: {
+                lineStyle: {
+                    color: '#ddd'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937'
+            }
+        },
+        yAxis: {
+            type: 'value',
+            axisLine: {
+                lineStyle: {
+                    color: '#ddd'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937',
+                formatter: '{value}%'
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#eee'
+                }
+            }
+        },
+        series: [
+            {
+                name: '消费能量转化率',
+                type: 'line',
+                data: [78, 80, 83, 85],
+                symbol: 'circle',
+                symbolSize: 8,
+                lineStyle: {
+                    width: 3,
+                    color: '#57B5E7'
+                },
+                itemStyle: {
+                    color: '#57B5E7'
+                }
+            },
+            {
+                name: '价值增长指数',
+                type: 'line',
+                data: [100, 104, 108, 112],
+                symbol: 'circle',
+                symbolSize: 8,
+                lineStyle: {
+                    width: 3,
+                    color: '#8DD3C7'
+                },
+                itemStyle: {
+                    color: '#8DD3C7'
+                }
+            }
+        ]
+    };
+    effectPreviewChart.setOption(effectPreviewOption);
+
+    // 消费结构优化趋势图表
+    const structureOptimizationChart = echarts.init(document.getElementById('structureOptimizationChart'));
+    const structureOptimizationOption = {
+        animation: false,
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            },
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            borderColor: '#eee',
+            borderWidth: 1,
+            textStyle: {
+                color: '#1f2937'
+            }
+        },
+        legend: {
+            data: ['生存型消费', '发展型消费', '享乐型消费'],
+            bottom: 0,
+            textStyle: {
+                color: '#1f2937'
+            }
+        },
+        grid: {
+            top: 10,
+            right: 10,
+            bottom: 60,
+            left: 50
+        },
+        xAxis: {
+            type: 'category',
+            data: ['当前', '1个月', '2个月', '3个月'],
+            axisLine: {
+                lineStyle: {
+                    color: '#ddd'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937'
+            }
+        },
+        yAxis: {
+            type: 'value',
+            axisLine: {
+                lineStyle: {
+                    color: '#ddd'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937',
+                formatter: '{value}%'
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#eee'
+                }
+            }
+        },
+        series: [
+            {
+                name: '生存型消费',
+                type: 'bar',
+                stack: '总量',
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [40, 38, 36, 35],
+                itemStyle: {
+                    color: '#4ade80',
+                    borderRadius: [4, 4, 0, 0]
+                }
+            },
+            {
+                name: '发展型消费',
+                type: 'bar',
+                stack: '总量',
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [35, 38, 42, 45],
+                itemStyle: {
+                    color: '#60a5fa'
+                }
+            },
+            {
+                name: '享乐型消费',
+                type: 'bar',
+                stack: '总量',
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [25, 24, 22, 20],
+                itemStyle: {
+                    color: '#fb923c',
+                    borderRadius: [0, 0, 4, 4]
+                }
+            }
+        ]
+    };
+    structureOptimizationChart.setOption(structureOptimizationOption);
+
+    // 能量转化率提升预测图表
+    const conversionRateChart = echarts.init(document.getElementById('conversionRateChart'));
+    const conversionRateOption = {
+        animation: false,
+        tooltip: {
+            trigger: 'axis',
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            borderColor: '#eee',
+            borderWidth: 1,
+            textStyle: {
+                color: '#1f2937'
+            }
+        },
+        grid: {
+            top: 10,
+            right: 10,
+            bottom: 60,
+            left: 50
+        },
+        xAxis: {
+            type: 'category',
+            data: ['当前', '1周', '2周', '3周', '1个月', '2个月', '3个月'],
+            axisLine: {
+                lineStyle: {
+                    color: '#ddd'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937',
+                rotate: 30
+            }
+        },
+        yAxis: {
+            type: 'value',
+            min: 75,
+            max: 86,
+            axisLine: {
+                lineStyle: {
+                    color: '#ddd'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937',
+                formatter: '{value}%'
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#eee'
+                }
+            }
+        },
+        series: [
+            {
+                name: '能量转化率',
+                type: 'line',
+                data: [78, 78.5, 79, 79.5, 80, 83, 85],
+                symbol: 'circle',
+                symbolSize: 8,
+                smooth: true,
+                areaStyle: {
+                    color: {
+                        type: 'linear',
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        colorStops: [{
+                            offset: 0, color: 'rgba(87, 181, 231, 0.3)'
+                        }, {
+                            offset: 1, color: 'rgba(87, 181, 231, 0.1)'
+                        }]
+                    }
+                },
+                lineStyle: {
+                    width: 3,
+                    color: '#57B5E7'
+                },
+                itemStyle: {
+                    color: '#57B5E7'
+                },
+                markLine: {
+                    silent: true,
+                    lineStyle: {
+                        color: '#297CBB',
+                        type: 'dashed'
+                    },
+                    data: [
+                        {
+                            yAxis: 85,
+                            label: {
+                                formatter: '目标: 85%',
+                                position: 'start'
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    };
+    conversionRateChart.setOption(conversionRateOption);
+
+    // 响应式调整
+    window.addEventListener('resize', function() {
+        effectPreviewChart.resize();
+        structureOptimizationChart.resize();
+        conversionRateChart.resize();
+    });
+
+    // 复选框交互
+    const checkboxes = document.querySelectorAll('.custom-checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('click', function() {
+            const input = this.previousElementSibling;
+            input.checked = !input.checked;
+            if (input.checked) {
+                this.classList.add('bg-primary', 'border-primary');
+            } else {
+                this.classList.remove('bg-primary', 'border-primary');
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

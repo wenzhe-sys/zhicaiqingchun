@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VR消费模拟课程 - 智财青春</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.custom-checkbox:checked + label:before {
+  background-color: #297CBB;
+  border-color: #297CBB;
+}
+.custom-switch:checked + label {
+  background-color: #297CBB;
+}
+.custom-switch:checked + label:after {
+  transform: translateX(20px);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center">
+      <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center">
+        <div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+          <span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+        </div>
+        <span class="text-xl font-semibold text-gray-800">智财青春</span>
+      </a>
+    </div>
+    <nav class="hidden md:flex space-x-8">
+      <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+      <a href="#" class="text-gray-600 hover:text-primary">消费评估</a>
+      <a href="#" class="text-primary font-medium">教育赋能</a>
+      <a href="#" class="text-gray-600 hover:text-primary">决策干预</a>
+      <a href="#" class="text-gray-600 hover:text-primary">生态协同</a>
+    </nav>
+    <div class="flex items-center space-x-4">
+      <button id="searchButton" class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+        <i class="ri-search-line ri-lg"></i>
+      </button>
+      <button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+        <i class="ri-notification-3-line ri-lg"></i>
+      </button>
+      <div class="relative">
+        <img src="https://public.readdy.ai/ai/img_res/1b82bd4a42973383179f53d2455f8318.jpg" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container mx-auto px-4 py-8">
+  <div class="flex items-center mb-6">
+    <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center text-gray-600 hover:text-primary mr-4">
+      <i class="ri-arrow-left-line ri-lg mr-1"></i>
+      <span>返回首页</span>
+    </a>
+    <h1 class="text-2xl font-bold text-gray-900">VR消费模拟课程</h1>
+  </div>
+
+  <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+    <div class="flex flex-col md:flex-row items-stretch gap-6">
+      <div class="w-full md:w-2/3">
+        <div class="relative">
+          <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+            <div class="flex-1 relative">
+              <input type="text" placeholder="搜索课程名称、关键词、讲师..." class="w-full pl-10 pr-4 py-3 border-none focus:outline-none focus:ring-2 focus:ring-primary text-sm">
+              <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                <i class="ri-search-line"></i>
+              </div>
+            </div>
+            <button class="bg-primary text-white px-6 py-3 font-medium hover:bg-opacity-90 transition whitespace-nowrap !rounded-button">
+              搜索
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3">
+        <div class="relative h-full">
+          <button id="sortButton" class="flex items-center justify-between w-full h-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary">
+            <div class="flex items-center">
+              <i class="ri-sort-desc ri-lg mr-2 text-gray-500"></i>
+              <span>排序方式: 热度优先</span>
+            </div>
+            <i class="ri-arrow-down-s-line"></i>
+          </button>
+          <div id="sortDropdown" class="hidden absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-lg z-10">
+            <div class="p-2">
+              <div class="py-2 px-3 hover:bg-gray-100 rounded cursor-pointer flex items-center">
+                <i class="ri-fire-line ri-lg mr-2 text-orange-500"></i>
+                <span>热度优先</span>
+              </div>
+              <div class="py-2 px-3 hover:bg-gray-100 rounded cursor-pointer flex items-center">
+                <i class="ri-time-line ri-lg mr-2 text-blue-500"></i>
+                <span>最新优先</span>
+              </div>
+              <div class="py-2 px-3 hover:bg-gray-100 rounded cursor-pointer flex items-center">
+                <i class="ri-star-line ri-lg mr-2 text-yellow-500"></i>
+                <span>评分优先</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-lg shadow-md p-6 mb-8 overflow-x-auto">
+    <div class="flex space-x-2 pb-2">
+      <button class="px-4 py-2 bg-primary text-white rounded-full text-sm font-medium whitespace-nowrap">全部课程</button>
+      <button class="px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap">理财入门</button>
+      <button class="px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap">消费心理</button>
+      <button class="px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap">投资理财</button>
+      <button class="px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap">预算规划</button>
+      <button class="px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap">债务管理</button>
+      <button class="px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap">消费陷阱</button>
+      <button class="px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-full text-sm font-medium whitespace-nowrap">可持续消费</button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/2d781ff96fc5ddba11fc15e72c549888.jpg" class="w-full h-full object-cover object-top" alt="VR 消费模拟">
+        <div class="absolute top-3 right-3 bg-primary text-white text-xs font-medium px-2 py-1 rounded">热门</div>
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">理财小白成长记：从月光族到投资达人</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">体验从月光族到投资达人的转变过程，学习科学理财方法，感受复利的魔力。通过沉浸式场景模拟，直观了解不同消费决策的长期影响。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">初级</span>
+          <span class="text-sm text-gray-500">时长: 30 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/b2e80a16301fcb584c6ddbbe48731c1d.jpg" class="w-full h-full object-cover object-top" alt="VR 购物体验">
+        <div class="absolute top-3 right-3 bg-orange-500 text-white text-xs font-medium px-2 py-1 rounded">推荐</div>
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">消费陷阱大揭秘：识破商家营销套路</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">识别商家营销套路，学会理性分析商品价值，避免冲动消费和过度消费。通过模拟真实购物场景，掌握辨别促销陷阱的技巧。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">中级</span>
+          <span class="text-sm text-gray-500">时长: 45 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="AR 财务规划">
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">人生规划模拟器：财务决策的长期影响</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">体验不同消费习惯对未来 10 年财务状况的影响，制定长期财务目标。通过数据可视化，直观感受复利效应和长期投资的力量。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">高级</span>
+          <span class="text-sm text-gray-500">时长: 60 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="债务管理模拟">
+        <div class="absolute top-3 right-3 bg-green-500 text-white text-xs font-medium px-2 py-1 rounded">新课</div>
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">债务自由之路：科学管理个人负债</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">学习雪球法、雪崩法等债务管理策略，合理规划还款顺序，降低利息支出。通过模拟不同还款方案，找到最适合自己的债务管理方式。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">中级</span>
+          <span class="text-sm text-gray-500">时长: 40 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="消费心理学">
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">消费心理学：解码购物决策背后的大脑活动</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">探索消费决策背后的心理机制，了解情绪如何影响购买行为，学习控制冲动消费的方法。通过神经科学可视化，观察购物时的大脑活动。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">中级</span>
+          <span class="text-sm text-gray-500">时长: 50 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="可持续消费">
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">绿色消费者：可持续消费的环境影响</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">了解消费行为对环境的影响，学习识别真正的环保产品，掌握减少碳足迹的消费策略。通过可视化展示不同消费选择的环境影响。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">初级</span>
+          <span class="text-sm text-gray-500">时长: 35 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="预算规划">
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">零基预算法：打造个人财务系统</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">学习零基预算法、50/30/20 法则等科学预算方法，建立适合自己的预算系统。通过交互式工具，实时调整预算分配，优化资金使用效率。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">初级</span>
+          <span class="text-sm text-gray-500">时长: 45 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="投资模拟">
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">投资入门：构建多元化资产组合</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">了解不同投资工具的特点和风险，学习资产配置原则，构建适合自己风险承受能力的投资组合。通过模拟市场波动，体验投资决策的影响。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">中级</span>
+          <span class="text-sm text-gray-500">时长: 55 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="电商陷阱">
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">电商陷阱揭秘：识破暗黑模式设计</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">识别电商平台常用的"暗黑模式"设计，了解如何避免被诱导消费，掌握理性网购的技巧。通过交互式体验，学会识别并规避常见的电商陷阱。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">初级</span>
+          <span class="text-sm text-gray-500">时长: 40 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="应急基金">
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">财务安全网：应急基金与风险管理</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">学习建立应急基金的方法，了解个人风险管理策略，提高财务抗风险能力。通过模拟不同的财务危机场景，体验应急基金的重要性。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">初级</span>
+          <span class="text-sm text-gray-500">时长: 35 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="奢侈品价值">
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">奢侈品真相：品牌溢价与价值评估</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">分析奢侈品的品牌溢价构成，学习客观评估商品实际价值的方法，避免盲目追求品牌。通过对比体验，了解奢侈品与平替商品的差异。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">中级</span>
+          <span class="text-sm text-gray-500">时长: 50 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="relative h-48">
+        <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="财务自由">
+      </div>
+      <div class="p-5">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">FIRE 运动：提前退休与财务自由</h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">了解 FIRE（财务独立提早退休）运动的核心理念，学习高储蓄率和被动收入策略，规划自己的财务自由之路。通过模拟不同储蓄率的长期影响。</p>
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">高级</span>
+          <span class="text-sm text-gray-500">时长: 60 分钟</span>
+        </div>
+        <button class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">立即体验</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center items-center mb-12">
+    <nav class="inline-flex rounded-md shadow">
+      <a href="#" class="py-2 px-4 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-50 text-gray-500">
+        <i class="ri-arrow-left-s-line"></i>
+      </a>
+      <a href="#" class="py-2 px-4 bg-primary text-white border border-primary hover:bg-primary-dark">1</a>
+      <a href="#" class="py-2 px-4 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700">2</a>
+      <a href="#" class="py-2 px-4 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700">3</a>
+      <a href="#" class="py-2 px-4 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700">...</a>
+      <a href="#" class="py-2 px-4 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700">8</a>
+      <a href="#" class="py-2 px-4 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-50 text-gray-500">
+        <i class="ri-arrow-right-s-line"></i>
+      </a>
+    </nav>
+  </div>
+</main>
+
+<footer class="bg-gray-900 text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <div class="flex items-center mb-4">
+          <div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-1.5 rounded-lg mr-2">
+            <span class="text-2xl font-['Pacifico'] text-white">ZCQ</span>
+          </div>
+          <span class="text-lg font-semibold">智财青春</span>
+        </div>
+        <p class="text-gray-400 mb-4">数据驱动的青年消费智慧平台</p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-douban-fill"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">产品服务</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">消费评估</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">VR 体验课程</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">AR 购物助手</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">预算规划工具</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">关于我们</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">平台介绍</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">团队成员</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">帮助中心</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">用户手册</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">隐私政策</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 智财青春. 保留所有权利.</p>
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center text-gray-400">
+          <i class="ri-visa-fill ri-lg mr-2"></i>
+          <i class="ri-mastercard-fill ri-lg mr-2"></i>
+          <i class="ri-paypal-fill ri-lg mr-2"></i>
+          <i class="ri-alipay-fill ri-lg"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 排序下拉菜单
+  const sortButton = document.getElementById('sortButton');
+  const sortDropdown = document.getElementById('sortDropdown');
+  
+  sortButton.addEventListener('click', function() {
+    sortDropdown.classList.toggle('hidden');
+  });
+  
+  document.addEventListener('click', function(event) {
+    if (!sortButton.contains(event.target) && !sortDropdown.contains(event.target)) {
+      sortDropdown.classList.add('hidden');
+    }
+  });
+  
+  // 排序选项点击事件
+  const sortOptions = sortDropdown.querySelectorAll('.py-2');
+  sortOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      const optionText = this.querySelector('span').textContent;
+      sortButton.querySelector('span').textContent = '排序方式: ' + optionText;
+      sortDropdown.classList.add('hidden');
+    });
+  });
+  
+  // 搜索模态框
+  document.getElementById('searchButton').addEventListener('click', function() {
+    const searchModal = document.createElement('div');
+    searchModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+    searchModal.innerHTML = `
+      <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-bold text-gray-900">搜索</h3>
+            <button id="closeSearchModal" class="text-gray-500 hover:text-gray-700 focus:outline-none w-8 h-8 flex items-center justify-center">
+              <i class="ri-close-line ri-lg"></i>
+            </button>
+          </div>
+          <div class="mb-6">
+            <div class="relative">
+              <input id="searchInput" type="text" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-base" placeholder="搜索课程、工具、文章...">
+              <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                <i class="ri-search-line ri-lg"></i>
+              </div>
+              <button id="submitSearch" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-button text-sm font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                搜索
+              </button>
+            </div>
+          </div>
+          <div class="mb-6">
+            <h4 class="text-sm font-medium text-gray-700 mb-2">热门搜索</h4>
+            <div class="flex flex-wrap gap-2">
+              <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition">VR 消费模拟</button>
+              <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition">理财入门</button>
+              <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition">消费心理学</button>
+              <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition">预算规划</button>
+              <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm transition">投资理财</button>
+            </div>
+          </div>
+          <div id="searchSuggestions" class="hidden mb-6">
+            <h4 class="text-sm font-medium text-gray-700 mb-2">搜索建议</h4>
+            <div class="space-y-2">
+              <div class="p-2 hover:bg-gray-50 rounded cursor-pointer">
+                <div class="flex items-center">
+                  <i class="ri-history-line ri-lg text-gray-400 mr-2"></i>
+                  <span class="text-gray-700">VR 消费模拟</span>
+                </div>
+              </div>
+              <div class="p-2 hover:bg-gray-50 rounded cursor-pointer">
+                <div class="flex items-center">
+                  <i class="ri-history-line ri-lg text-gray-400 mr-2"></i>
+                  <span class="text-gray-700">消费心理学</span>
+                </div>
+              </div>
+              <div class="p-2 hover:bg-gray-50 rounded cursor-pointer">
+                <div class="flex items-center">
+                  <i class="ri-search-line ri-lg text-gray-400 mr-2"></i>
+                  <span class="text-gray-700">投资理财课程</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(searchModal);
+    
+    // 关闭搜索模态框
+    document.getElementById('closeSearchModal').addEventListener('click', function() {
+      document.body.removeChild(searchModal);
+    });
+    
+    // 搜索输入框事件
+    const searchInput = document.getElementById('searchInput');
+    const searchSuggestions = document.getElementById('searchSuggestions');
+    
+    searchInput.addEventListener('input', function() {
+      if (this.value.length > 0) {
+        searchSuggestions.classList.remove('hidden');
+      } else {
+        searchSuggestions.classList.add('hidden');
+      }
+    });
+    
+    // 搜索按钮点击事件
+    document.getElementById('submitSearch').addEventListener('click', function() {
+      if (searchInput.value.length > 0) {
+        searchSuggestions.classList.add('hidden');
+        // 这里可以添加搜索逻辑
+      }
+    });
+    
+    // 热门搜索词点击事件
+    const hotSearchButtons = searchModal.querySelectorAll('.bg-gray-100');
+    hotSearchButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        searchInput.value = this.textContent.trim();
+        searchSuggestions.classList.add('hidden');
+        // 这里可以添加搜索逻辑
+      });
+    });
+    
+    // 搜索建议点击事件
+    const suggestionItems = searchSuggestions.querySelectorAll('.p-2');
+    suggestionItems.forEach(item => {
+      item.addEventListener('click', function() {
+        searchInput.value = this.querySelector('span').textContent.trim();
+        searchSuggestions.classList.add('hidden');
+        // 这里可以添加搜索逻辑
+      });
+    });
+    
+    // 按下回车键搜索
+    searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter' && this.value.length > 0) {
+        searchSuggestions.classList.add('hidden');
+        // 这里可以添加搜索逻辑
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>消费心理疗愈系统 - 智财青春</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.emotion-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #297CBB;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.custom-checkbox {
+  display: none;
+}
+.custom-checkbox + label {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.custom-checkbox + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  background: #fff;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+.custom-checkbox:checked + label:before {
+  background-color: #297CBB;
+  border-color: #297CBB;
+}
+.custom-checkbox:checked + label:after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.custom-switch {
+  display: none;
+}
+.custom-switch + label {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 26px;
+  background-color: #e2e8f0;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.custom-switch + label:after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.custom-switch:checked + label {
+  background-color: #297CBB;
+}
+.custom-switch:checked + label:after {
+  transform: translateX(24px);
+}
+.chat-bubble-user {
+  border-radius: 18px 18px 0 18px;
+}
+.chat-bubble-ai {
+  border-radius: 18px 18px 18px 0;
+}
+.emotion-btn.active {
+  transform: scale(1.2);
+  border-color: #297CBB;
+  background-color: rgba(41, 124, 187, 0.1);
+}
+.consumption-card {
+  transition: all 0.3s ease;
+}
+.consumption-card:hover {
+  transform: translateY(-5px);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center">
+      <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center text-gray-600 hover:text-primary mr-4">
+        <i class="ri-arrow-left-line ri-lg"></i>
+        <span class="ml-1">返回首页</span>
+      </a>
+      <div class="flex items-center">
+        <div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+          <span class="text-2xl font-['Pacifico'] text-white">ZCQ</span>
+        </div>
+        <span class="text-xl font-semibold text-gray-800">消费心理疗愈系统</span>
+      </div>
+    </div>
+    <div class="flex items-center space-x-4">
+      <button id="notificationBtn" class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+        <i class="ri-notification-3-line ri-lg"></i>
+      </button>
+      <div class="relative">
+        <img src="https://public.readdy.ai/ai/img_res/1b82bd4a42973383179f53d2455f8318.jpg" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- 功能模块区域 -->
+  <section class="py-10 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h1 class="text-3xl font-bold text-gray-900 mb-4">心理疗愈 · 健康消费</h1>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">识别消费焦虑，建立健康消费心态，让每一次消费都成为自我成长的投资</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- AI心理陪伴 -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-primary hover:shadow-lg transition consumption-card">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-4">
+            <i class="ri-mental-health-line ri-2x text-primary"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-gray-900 mb-3">AI心理陪伴</h2>
+          <p class="text-gray-600 mb-4">专属语言模型识别消费焦虑信号，提供情绪支持和认知重构，帮助您建立健康的消费心态。</p>
+          <div class="flex items-center text-sm text-gray-500 mb-4">
+            <div class="flex items-center mr-4">
+              <i class="ri-user-heart-line mr-1"></i>
+              <span>今日已陪伴 1,256 人</span>
+            </div>
+            <div class="flex items-center">
+              <i class="ri-time-line mr-1"></i>
+              <span>平均缓解时间 15 分钟</span>
+            </div>
+          </div>
+          <button id="openAIChatBtn" class="w-full bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+            开始对话
+          </button>
+        </div>
+        
+        <!-- 消费焦虑识别 -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-purple-500 hover:shadow-lg transition consumption-card">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-purple-500 bg-opacity-10 mb-4">
+            <i class="ri-psychotherapy-line ri-2x text-purple-500"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-gray-900 mb-3">消费焦虑识别</h2>
+          <p class="text-gray-600 mb-4">通过科学量表评估您的消费心理状态，识别潜在的消费焦虑模式，提供针对性干预建议。</p>
+          <div class="flex items-center text-sm text-gray-500 mb-4">
+            <div class="flex items-center mr-4">
+              <i class="ri-scales-line mr-1"></i>
+              <span>专业量表 6 种</span>
+            </div>
+            <div class="flex items-center">
+              <i class="ri-shield-check-line mr-1"></i>
+              <span>准确率 92.5%</span>
+            </div>
+          </div>
+          <button id="openAnxietyTestBtn" class="w-full bg-purple-500 text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+            开始测评
+          </button>
+        </div>
+        
+        <!-- 消费价值可视化 -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-green-500 hover:shadow-lg transition consumption-card">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 bg-opacity-10 mb-4">
+            <i class="ri-bar-chart-grouped-line ri-2x text-green-500"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-gray-900 mb-3">消费价值可视化</h2>
+          <p class="text-gray-600 mb-4">将您的开支映射为能力成长曲线，直观感受消费如何转化为个人价值，重塑消费认知。</p>
+          <div class="flex items-center text-sm text-gray-500 mb-4">
+            <div class="flex items-center mr-4">
+              <i class="ri-line-chart-line mr-1"></i>
+              <span>数据维度 8 个</span>
+            </div>
+            <div class="flex items-center">
+              <i class="ri-calendar-check-line mr-1"></i>
+              <span>每周更新</span>
+            </div>
+          </div>
+          <button id="openValueVisualizationBtn" class="w-full bg-green-500 text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+            查看报告
+          </button>
+        </div>
+        
+        <!-- 反向消费榜样 -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-orange-500 hover:shadow-lg transition consumption-card">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-orange-500 bg-opacity-10 mb-4">
+            <i class="ri-group-line ri-2x text-orange-500"></i>
+          </div>
+          <h2 class="text-xl font-semibold text-gray-900 mb-3">反向消费榜样</h2>
+          <p class="text-gray-600 mb-4">军大衣选购攻略、二手书交换地图等节省达人分享，帮助您发现高性价比的替代消费方式。</p>
+          <div class="flex items-center text-sm text-gray-500 mb-4">
+            <div class="flex items-center mr-4">
+              <i class="ri-user-star-line mr-1"></i>
+              <span>榜样案例 128 个</span>
+            </div>
+            <div class="flex items-center">
+              <i class="ri-money-cny-circle-line mr-1"></i>
+              <span>平均节省 35%</span>
+            </div>
+          </div>
+          <button id="openRoleModelBtn" class="w-full bg-orange-500 text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+            浏览案例
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- AI心理陪伴系统 -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row items-start gap-8">
+        <!-- 情绪记录工具 -->
+        <div class="w-full lg:w-1/3">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">今日情绪记录</h2>
+            <p class="text-gray-600 mb-6">记录您的消费相关情绪，帮助AI更好地理解您的心理状态</p>
+            
+            <div class="mb-6">
+              <h3 class="text-lg font-medium text-gray-800 mb-3">您现在的感受是？</h3>
+              <div class="flex justify-between mb-4">
+                <button class="emotion-btn w-14 h-14 flex flex-col items-center justify-center border-2 border-gray-200 rounded-full transition focus:outline-none">
+                  <span class="text-2xl">😊</span>
+                  <span class="text-xs mt-1">愉悦</span>
+                </button>
+                <button class="emotion-btn w-14 h-14 flex flex-col items-center justify-center border-2 border-gray-200 rounded-full transition focus:outline-none">
+                  <span class="text-2xl">😌</span>
+                  <span class="text-xs mt-1">平静</span>
+                </button>
+                <button class="emotion-btn w-14 h-14 flex flex-col items-center justify-center border-2 border-gray-200 rounded-full transition focus:outline-none active">
+                  <span class="text-2xl">😟</span>
+                  <span class="text-xs mt-1">焦虑</span>
+                </button>
+                <button class="emotion-btn w-14 h-14 flex flex-col items-center justify-center border-2 border-gray-200 rounded-full transition focus:outline-none">
+                  <span class="text-2xl">😞</span>
+                  <span class="text-xs mt-1">失落</span>
+                </button>
+                <button class="emotion-btn w-14 h-14 flex flex-col items-center justify-center border-2 border-gray-200 rounded-full transition focus:outline-none">
+                  <span class="text-2xl">😠</span>
+                  <span class="text-xs mt-1">愤怒</span>
+                </button>
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-lg font-medium text-gray-800 mb-3">焦虑程度</h3>
+              <div class="mb-2 flex justify-between text-sm text-gray-500">
+                <span>轻微</span>
+                <span>中等</span>
+                <span>严重</span>
+              </div>
+              <input type="range" min="1" max="10" value="7" class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer emotion-slider">
+              <div class="mt-2 text-right text-sm text-gray-600">当前值: 7/10</div>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-lg font-medium text-gray-800 mb-3">焦虑来源</h3>
+              <div class="space-y-2">
+                <label class="flex items-center">
+                  <input type="checkbox" class="custom-checkbox" id="anxietySource1">
+                  <label for="anxietySource1" class="text-gray-700">担心消费超出预算</label>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="custom-checkbox" id="anxietySource2" checked>
+                  <label for="anxietySource2" class="text-gray-700">购买后感到内疚或后悔</label>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="custom-checkbox" id="anxietySource3">
+                  <label for="anxietySource3" class="text-gray-700">担心买到不值得的商品</label>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="custom-checkbox" id="anxietySource4" checked>
+                  <label for="anxietySource4" class="text-gray-700">与他人比较产生焦虑</label>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="custom-checkbox" id="anxietySource5">
+                  <label for="anxietySource5" class="text-gray-700">冲动消费后的自责</label>
+                </label>
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-lg font-medium text-gray-800 mb-3">具体情况描述</h3>
+              <textarea class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none" rows="3" placeholder="请描述您的具体情况...">昨天看到朋友买了新款手机，我也冲动消费了，现在很后悔，感觉钱花得不值得，但又不想退货显得我消费能力差。</textarea>
+            </div>
+            
+            <button class="w-full bg-primary text-white px-4 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+              保存记录
+            </button>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md p-6 mt-6">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">情绪趋势</h2>
+            <div id="emotionTrendChart" class="h-64"></div>
+            <div class="mt-4 text-sm text-gray-500">
+              <p>近7天情绪波动分析：您的消费焦虑呈下降趋势，继续保持！</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- AI对话界面 -->
+        <div class="w-full lg:w-2/3">
+          <div class="bg-white rounded-lg shadow-md h-[700px] flex flex-col">
+            <div class="p-4 border-b flex items-center justify-between">
+              <div class="flex items-center">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+                  <i class="ri-robot-line text-primary"></i>
+                </div>
+                <div>
+                  <h2 class="font-semibold text-gray-900">心灵伙伴</h2>
+                  <div class="flex items-center">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
+                    <span class="text-xs text-gray-500">在线</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <button class="text-gray-500 hover:text-gray-700 w-8 h-8 flex items-center justify-center">
+                  <i class="ri-history-line"></i>
+                </button>
+                <button class="text-gray-500 hover:text-gray-700 w-8 h-8 flex items-center justify-center ml-2">
+                  <i class="ri-settings-3-line"></i>
+                </button>
+              </div>
+            </div>
+            
+            <div class="flex-1 p-4 overflow-y-auto space-y-4" id="chatContainer">
+              <div class="flex items-start">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-2 flex-shrink-0">
+                  <i class="ri-robot-line text-primary text-sm"></i>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg max-w-[80%] chat-bubble-ai">
+                  <p class="text-gray-800">你好，我是你的心灵伙伴。我注意到你最近在消费方面感到有些焦虑，特别是关于昨天购买的新手机。能告诉我更多关于这个情况吗？</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start justify-end">
+                <div class="bg-primary bg-opacity-10 p-3 rounded-lg max-w-[80%] chat-bubble-user">
+                  <p class="text-gray-800">是的，昨天我看到朋友买了新款手机，我一时冲动也买了同款，花了5000多元。但现在我很后悔，感觉这钱花得不值得，我原来的手机其实还能用。但我又不想退货，怕朋友觉得我消费能力差。</p>
+                </div>
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 ml-2 flex-shrink-0">
+                  <i class="ri-user-line text-gray-500 text-sm"></i>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-2 flex-shrink-0">
+                  <i class="ri-robot-line text-primary text-sm"></i>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg max-w-[80%] chat-bubble-ai">
+                  <p class="text-gray-800">我理解你的感受。冲动消费后的后悔是很常见的心理反应，这被称为"购买后认知失调"。首先，请记住你的消费决策不需要取决于他人的看法。</p>
+                  <p class="text-gray-800 mt-2">让我们一起分析一下：</p>
+                  <ol class="list-decimal pl-5 mt-2 space-y-1 text-gray-800">
+                    <li>你对这部手机真正的需求是什么？</li>
+                    <li>这笔支出对你的整体预算有多大影响？</li>
+                    <li>保留或退货，哪个选择会让你更平静？</li>
+                  </ol>
+                  <p class="text-gray-800 mt-2">记住，真正的朋友不会因为你的消费能力而评判你。</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start justify-end">
+                <div class="bg-primary bg-opacity-10 p-3 rounded-lg max-w-[80%] chat-bubble-user">
+                  <p class="text-gray-800">我其实并不真的需要新手机，旧的还能用。这笔钱占了我这个月预算的一大部分，可能会影响我的其他计划。我想退货，但又担心朋友会怎么看我。</p>
+                </div>
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 ml-2 flex-shrink-0">
+                  <i class="ri-user-line text-gray-500 text-sm"></i>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-2 flex-shrink-0">
+                  <i class="ri-robot-line text-primary text-sm"></i>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-lg max-w-[80%] chat-bubble-ai">
+                  <p class="text-gray-800">谢谢你的坦诚分享。根据你的描述，退货似乎是更符合你实际需求的选择。关于朋友的看法，我想提供几个思考角度：</p>
+                  <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-800">
+                    <li>理性消费其实是一种财商的表现，而非消费能力的问题</li>
+                    <li>你可以坦诚地告诉朋友你更倾向于将资金用在更需要的地方</li>
+                    <li>真正关心你的朋友会理解并尊重你的决定</li>
+                  </ul>
+                  <p class="text-gray-800 mt-2">你也可以尝试这个认知重构练习：当你想"朋友会觉得我消费能力差"时，可以重新思考为"我在做对自己负责任的决定，这展示了我的财务智慧"。</p>
+                  <p class="text-gray-800 mt-2">你觉得这个思路有帮助吗？</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-4 border-t">
+              <div class="flex items-center">
+                <button class="text-gray-500 hover:text-gray-700 w-10 h-10 flex items-center justify-center">
+                  <i class="ri-emotion-line ri-lg"></i>
+                </button>
+                <button class="text-gray-500 hover:text-gray-700 w-10 h-10 flex items-center justify-center">
+                  <i class="ri-image-line ri-lg"></i>
+                </button>
+                <div class="flex-1 mx-2">
+                  <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="输入消息...">
+                </div>
+                <button class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-90 transition">
+                  <i class="ri-send-plane-fill ri-lg"></i>
+                </button>
+              </div>
+              <div class="mt-2 flex justify-between items-center text-xs text-gray-500">
+                <div class="flex items-center">
+                  <i class="ri-information-line mr-1"></i>
+                  <span>AI助手会根据您的情绪记录提供个性化建议</span>
+                </div>
+                <div class="flex items-center">
+                  <label class="flex items-center cursor-pointer">
+                    <input type="checkbox" class="custom-switch" id="saveConversation" checked>
+                    <label for="saveConversation" class="mr-2"></label>
+                    <span>保存对话</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 消费行为分析 -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">消费行为分析</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">识别不健康的消费模式，培养积极的消费心态</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- 消费心理雷达图 -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">消费心理雷达图</h3>
+          <div id="psychologyRadarChart" class="h-80"></div>
+          <div class="mt-4">
+            <p class="text-sm text-gray-600">您的消费心理相对健康，但在"社交比较"和"冲动控制"方面有提升空间。</p>
+            <div class="mt-2">
+              <button class="text-primary hover:text-primary-dark text-sm font-medium flex items-center">
+                查看详细分析
+                <i class="ri-arrow-right-line ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 消费触发因素 -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">消费触发因素</h3>
+          <div id="triggerFactorsChart" class="h-80"></div>
+          <div class="mt-4">
+            <p class="text-sm text-gray-600">社交媒体和朋友推荐是您消费决策的主要外部影响因素，建议增强媒体素养。</p>
+            <div class="mt-2">
+              <button class="text-primary hover:text-primary-dark text-sm font-medium flex items-center">
+                获取干预建议
+                <i class="ri-arrow-right-line ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 消费后情绪变化 -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">消费后情绪变化</h3>
+          <div id="emotionChangeChart" class="h-80"></div>
+          <div class="mt-4">
+            <p class="text-sm text-gray-600">您的消费满足感持续时间较短，购买后愉悦感迅速下降，这可能导致频繁消费寻求刺激。</p>
+            <div class="mt-2">
+              <button class="text-primary hover:text-primary-dark text-sm font-medium flex items-center">
+                查看改善方案
+                <i class="ri-arrow-right-line ml-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-10 bg-gray-50 rounded-lg p-6 shadow-sm">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">个性化建议</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-4 rounded shadow-sm">
+            <div class="flex items-start">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3 flex-shrink-0">
+                <i class="ri-timer-line text-primary"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800 mb-1">实施24小时冷静期</h4>
+                <p class="text-sm text-gray-600">对于500元以上的非必需品，设置24小时冷静期，减少冲动消费。您已成功避免3次冲动消费，节省约¥2,350。</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white p-4 rounded shadow-sm">
+            <div class="flex items-start">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full bg-green-500 bg-opacity-10 mr-3 flex-shrink-0">
+                <i class="ri-list-check-3 text-green-500"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800 mb-1">建立购物清单制度</h4>
+                <p class="text-sm text-gray-600">提前规划购物清单，减少即兴购买。数据显示，使用清单的用户平均可减少18%的非计划支出。</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white p-4 rounded shadow-sm">
+            <div class="flex items-start">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full bg-purple-500 bg-opacity-10 mr-3 flex-shrink-0">
+                <i class="ri-mind-map text-purple-500"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800 mb-1">情绪消费觉察练习</h4>
+                <p class="text-sm text-gray-600">每次购物前，评估自己的情绪状态。研究表明，负面情绪下的消费决策满意度降低42%。</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white p-4 rounded shadow-sm">
+            <div class="flex items-start">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full bg-orange-500 bg-opacity-10 mr-3 flex-shrink-0">
+                <i class="ri-group-line text-orange-500"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-gray-800 mb-1">加入理性消费社群</h4>
+                <p class="text-sm text-gray-600">推荐加入"极简生活"社群，与志同道合的朋友分享消费心得，建立健康的消费价值观。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 反向消费榜样 -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">反向消费榜样专区</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">发现高性价比的替代消费方式，让每一分钱都创造更多价值</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 榜样案例1 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="relative h-48">
+            <img src="https://public.readdy.ai/ai/img_res/1c2f3d4e5b6a7c8d9e0f1a2b3c4d5e6f.jpg" class="w-full h-full object-cover object-top" alt="军大衣穿搭">
+            <div class="absolute top-3 right-3 bg-green-500 text-white text-xs px-2 py-1 rounded">
+              节省 65%
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center mb-3">
+              <img src="https://public.readdy.ai/ai/img_res/a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6.jpg" class="w-8 h-8 rounded-full object-cover mr-2" alt="用户头像">
+              <span class="text-sm text-gray-700">陈雨晴 | 时尚博主</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">军大衣选购与穿搭指南</h3>
+            <p class="text-gray-600 text-sm mb-3">一件好的军大衣可以替代多件时尚外套，既保暖又百搭。我花350元在二手市场淘到的这件，比商场同款便宜65%，已穿3年依然挺括有型。</p>
+            <div class="flex items-center justify-between">
+              <div class="flex text-yellow-400 text-sm">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-half-fill"></i>
+                <span class="text-gray-500 ml-1">4.8</span>
+              </div>
+              <button class="text-primary text-sm font-medium">查看详情</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 榜样案例2 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="relative h-48">
+            <img src="https://public.readdy.ai/ai/img_res/q1w2e3r4t5y6u7i8o9p0a1s2d3f4g5h6.jpg" class="w-full h-full object-cover object-top" alt="二手书交换">
+            <div class="absolute top-3 right-3 bg-green-500 text-white text-xs px-2 py-1 rounded">
+              节省 85%
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center mb-3">
+              <img src="https://public.readdy.ai/ai/img_res/z1x2c3v4b5n6m7q8w9e0r1t2y3u4i5o6.jpg" class="w-8 h-8 rounded-full object-cover mr-2" alt="用户头像">
+              <span class="text-sm text-gray-700">李明哲 | 研究生</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">二手书交换地图</h3>
+            <p class="text-gray-600 text-sm mb-3">整理了全国32个城市的二手书店和交换平台，去年我通过交换获得了46本专业书籍，仅花费新书15%的价格，还认识了一群志同道合的朋友。</p>
+            <div class="flex items-center justify-between">
+              <div class="flex text-yellow-400 text-sm">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <span class="text-gray-500 ml-1">5.0</span>
+              </div>
+              <button class="text-primary text-sm font-medium">查看详情</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 榜样案例3 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="relative h-48">
+            <img src="https://public.readdy.ai/ai/img_res/j1k2l3z4x5c6v7b8n9m0q1w2e3r4t5.jpg" class="w-full h-full object-cover object-top" alt="健康餐食准备">
+            <div class="absolute top-3 right-3 bg-green-500 text-white text-xs px-2 py-1 rounded">
+              节省 50%
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center mb-3">
+              <img src="https://public.readdy.ai/ai/img_res/y6u7i8o9p0a1s2d3f4g5h6j7k8l9z0x1.jpg" class="w-8 h-8 rounded-full object-cover mr-2" alt="用户头像">
+              <span class="text-sm text-gray-700">张婉婷 | 营养师</span>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">一周健康餐食计划</h3>
+            <p class="text-gray-600 text-sm mb-3">分享我的一周健康餐食计划与采购清单，每周只需2小时准备，比外卖节省50%费用，热量减少35%，还能避免食物浪费和冲动消费。</p>
+            <div class="flex items-center justify-between">
+              <div class="flex text-yellow-400 text-sm">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-line"></i>
+                <span class="text-gray-500 ml-1">4.2</span>
+              </div>
+              <button class="text-primary text-sm font-medium">查看详情</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-10 text-center">
+        <button class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+          查看更多榜样案例
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 心理测评工具 -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">心理测评工具</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">科学评估您的消费心理状态，找到改善方向</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 测评工具1 -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-primary hover:shadow-lg transition">
+          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-4">
+            <i class="ri-shopping-cart-line ri-lg text-primary"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">冲动消费倾向测评</h3>
+          <p class="text-gray-600 text-sm mb-4">评估您的冲动购物倾向，识别触发因素，建立自控策略。</p>
+          <div class="flex items-center text-xs text-gray-500 mb-4">
+            <span class="bg-gray-100 px-2 py-1 rounded">15分钟</span>
+            <span class="mx-2">|</span>
+            <span class="bg-gray-100 px-2 py-1 rounded">20个问题</span>
+          </div>
+          <button class="w-full bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+            开始测评
+          </button>
+        </div>
+        
+        <!-- 测评工具2 -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-purple-500 hover:shadow-lg transition">
+          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-purple-500 bg-opacity-10 mb-4">
+            <i class="ri-scales-3-line ri-lg text-purple-500"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">消费价值观分析</h3>
+          <p class="text-gray-600 text-sm mb-4">探索您的消费价值观念，了解金钱心理模式，建立健康金钱关系。</p>
+          <div class="flex items-center text-xs text-gray-500 mb-4">
+            <span class="bg-gray-100 px-2 py-1 rounded">20分钟</span>
+            <span class="mx-2">|</span>
+            <span class="bg-gray-100 px-2 py-1 rounded">25个问题</span>
+          </div>
+          <button class="w-full bg-purple-500 text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+            开始测评
+          </button>
+        </div>
+        
+        <!-- 测评工具3 -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-green-500 hover:shadow-lg transition">
+          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-green-500 bg-opacity-10 mb-4">
+            <i class="ri-emotion-happy-line ri-lg text-green-500"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">消费幸福感评估</h3>
+          <p class="text-gray-600 text-sm mb-4">测量不同类型消费对您幸福感的影响，优化消费结构，提升满足感。</p>
+          <div class="flex items-center text-xs text-gray-500 mb-4">
+            <span class="bg-gray-100 px-2 py-1 rounded">10分钟</span>
+            <span class="mx-2">|</span>
+            <span class="bg-gray-100 px-2 py-1 rounded">15个问题</span>
+          </div>
+          <button class="w-full bg-green-500 text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+            开始测评
+          </button>
+        </div>
+        
+        <!-- 测评工具4 -->
+        <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-orange-500 hover:shadow-lg transition">
+          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-orange-500 bg-opacity-10 mb-4">
+            <i class="ri-user-heart-line ri-lg text-orange-500"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">社交比较焦虑测试</h3>
+          <p class="text-gray-600 text-sm mb-4">评估社交媒体和朋友圈对您消费决策的影响，减少攀比心理。</p>
+          <div class="flex items-center text-xs text-gray-500 mb-4">
+            <span class="bg-gray-100 px-2 py-1 rounded">12分钟</span>
+            <span class="mx-2">|</span>
+            <span class="bg-gray-100 px-2 py-1 rounded">18个问题</span>
+          </div>
+          <button class="w-full bg-orange-500 text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+            开始测评
+          </button>
+        </div>
+      </div>
+      
+      <div class="mt-10 bg-gray-50 rounded-lg p-6 shadow-sm">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="w-full md:w-2/3 md:pr-8">
+            <h3 class="text-xl font-semibold text-gray-900 mb-3">您的消费心理健康报告</h3>
+            <p class="text-gray-600 mb-4">完成所有测评后，您将获得一份全面的消费心理健康报告，包含个性化的改善建议和行动计划。</p>
+            <div class="flex items-center text-sm text-gray-500">
+              <div class="w-6 h-6 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-2">
+                <i class="ri-shield-check-line text-primary"></i>
+              </div>
+              <span>您的数据将严格保密，仅用于生成个性化建议</span>
+            </div>
+          </div>
+          <div class="w-full md:w-1/3 mt-6 md:mt-0">
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-gray-700 font-medium">测评完成度</span>
+                <span class="text-primary font-medium">1/4</span>
+              </div>
+              <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 25%"></div>
+              </div>
+              <div class="mt-4">
+                <button class="w-full bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                  继续测评
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 月光坦白局 -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">月光坦白局</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">匿名树洞，消费愧疚故事可兑换"心灵代金券"</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 坦白故事1 -->
+        <div class="bg-white rounded-lg shadow-md p-5">
+          <div class="flex items-center mb-3">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 mr-3">
+              <span class="text-gray-500 font-medium">匿</span>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-800">匿名用户</h4>
+              <p class="text-xs text-gray-500">2025-04-10 发布</p>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">我是一名在校大学生，上个月为了在朋友面前有面子，花3000元买了一双限量版球鞋，结果导致生活费严重不足。现在每天只能吃食堂最便宜的套餐，还要瞒着父母。这种虚荣心带来的后果让我很后悔。</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-gray-500 text-sm">
+              <button class="flex items-center mr-4">
+                <i class="ri-heart-line mr-1"></i>
+                <span>38</span>
+              </button>
+              <button class="flex items-center">
+                <i class="ri-message-2-line mr-1"></i>
+                <span>12</span>
+              </button>
+            </div>
+            <span class="text-green-600 text-sm">+15 心灵代金券</span>
+          </div>
+        </div>
+        
+        <!-- 坦白故事2 -->
+        <div class="bg-white rounded-lg shadow-md p-5">
+          <div class="flex items-center mb-3">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 mr-3">
+              <span class="text-gray-500 font-medium">匿</span>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-800">匿名用户</h4>
+              <p class="text-xs text-gray-500">2025-04-11 发布</p>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">我有网购成瘾的问题，每天睡前都要刷电商平台。上个月一共下了37个订单，花了近8000元，大部分都是用不上的东西。拆包的快感过后就是深深的内疚，但就是控制不住自己。</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-gray-500 text-sm">
+              <button class="flex items-center mr-4">
+                <i class="ri-heart-line mr-1"></i>
+                <span>52</span>
+              </button>
+              <button class="flex items-center">
+                <i class="ri-message-2-line mr-1"></i>
+                <span>23</span>
+              </button>
+            </div>
+            <span class="text-green-600 text-sm">+20 心灵代金券</span>
+          </div>
+        </div>
+        
+        <!-- 坦白故事3 -->
+        <div class="bg-white rounded-lg shadow-md p-5">
+          <div class="flex items-center mb-3">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 mr-3">
+              <span class="text-gray-500 font-medium">匿</span>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-800">匿名用户</h4>
+              <p class="text-xs text-gray-500">2025-04-12 发布</p>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">我是一名职场新人，为了融入同事圈，每次聚餐都主动买单，每月餐饮支出占工资的40%。最近发现同事们只是把我当成"冤大头"，而不是真心交流。现在既心痛钱包又伤心，不知如何收场。</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-gray-500 text-sm">
+              <button class="flex items-center mr-4">
+                <i class="ri-heart-line mr-1"></i>
+                <span>45</span>
+              </button>
+              <button class="flex items-center">
+                <i class="ri-message-2-line mr-1"></i>
+                <span>18</span>
+              </button>
+            </div>
+            <span class="text-green-600 text-sm">+18 心灵代金券</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-8 flex flex-col md:flex-row items-center justify-between bg-white rounded-lg shadow-md p-6">
+        <div class="w-full md:w-2/3 mb-4 md:mb-0 md:pr-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">分享您的消费愧疚故事</h3>
+          <p class="text-gray-600 text-sm">匿名分享您的消费困扰和教训，获得心灵代金券，可兑换专业心理咨询服务。您的故事也将帮助他人避免类似错误。</p>
+        </div>
+        <button class="w-full md:w-auto bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+          匿名发布故事
+        </button>
+      </div>
+      
+      <div class="mt-8 text-center">
+        <div class="inline-block bg-white px-4 py-2 rounded-full text-gray-700 shadow-sm">
+          已有 <span class="font-semibold text-primary">156</span> 个消费愧疚故事
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-gray-900 text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <div class="flex items-center mb-4">
+          <div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-1.5 rounded-lg mr-2">
+            <span class="text-2xl font-['Pacifico'] text-white">ZCQ</span>
+          </div>
+          <span class="text-lg font-semibold">智财青春</span>
+        </div>
+        <p class="text-gray-400 mb-4">数据驱动的青年消费智慧平台</p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-douban-fill"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">心理疗愈服务</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">AI心理陪伴</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">消费焦虑测评</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">消费价值可视化</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">反向消费榜样</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">其他功能</h4>
+        <ul class="space-y-2">
+          <li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-400 hover:text-white">返回首页</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">消费评估系统</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">教育赋能模块</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">决策干预工具</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+        <ul class="space-y-2">
+          <li class="flex items-center text-gray-400">
+            <i class="ri-mail-line mr-2"></i>
+            <span>support@zcq.com</span>
+          </li>
+          <li class="flex items-center text-gray-400">
+            <i class="ri-phone-line mr-2"></i>
+            <span>400-888-9999</span>
+          </li>
+          <li class="flex items-center text-gray-400">
+            <i class="ri-map-pin-line mr-2"></i>
+            <span>北京市海淀区中关村大街1号</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 智财青春. 保留所有权利.</p>
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center text-gray-400">
+          <i class="ri-visa-fill ri-lg mr-2"></i>
+          <i class="ri-mastercard-fill ri-lg mr-2"></i>
+          <i class="ri-paypal-fill ri-lg mr-2"></i>
+          <i class="ri-alipay-fill ri-lg"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 情绪按钮交互
+  const emotionBtns = document.querySelectorAll('.emotion-btn');
+  emotionBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      emotionBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+  
+  // 情绪趋势图表
+  const emotionTrendChart = echarts.init(document.getElementById('emotionTrendChart'));
+  const emotionTrendOption = {
+    animation: false,
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderColor: '#eee',
+      borderWidth: 1,
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    grid: {
+      top: 10,
+      right: 10,
+      bottom: 30,
+      left: 40
+    },
+    xAxis: {
+      type: 'category',
+      data: ['4/6', '4/7', '4/8', '4/9', '4/10', '4/11', '4/12'],
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937'
+      }
+    },
+    yAxis: {
+      type: 'value',
+      name: '焦虑程度',
+      min: 0,
+      max: 10,
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937'
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#eee'
+        }
+      }
+    },
+    series: [
+      {
+        name: '消费焦虑',
+        type: 'line',
+        data: [8, 7, 9, 8, 6, 5, 4],
+        symbol: 'circle',
+        symbolSize: 6,
+        lineStyle: {
+          width: 3,
+          color: '#57B5E7'
+        },
+        itemStyle: {
+          color: '#57B5E7'
+        },
+        areaStyle: {
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [{
+              offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+            }, {
+              offset: 1, color: 'rgba(87, 181, 231, 0.05)'
+            }]
+          }
+        }
+      }
+    ]
+  };
+  emotionTrendChart.setOption(emotionTrendOption);
+  
+  // 消费心理雷达图
+  const psychologyRadarChart = echarts.init(document.getElementById('psychologyRadarChart'));
+  const psychologyRadarOption = {
+    animation: false,
+    tooltip: {
+      trigger: 'item',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderColor: '#eee',
+      borderWidth: 1,
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    radar: {
+      indicator: [
+        { name: '理性决策', max: 100 },
+        { name: '冲动控制', max: 100 },
+        { name: '价值认知', max: 100 },
+        { name: '社交比较', max: 100 },
+        { name: '情绪调节', max: 100 },
+        { name: '满足延迟', max: 100 }
+      ],
+      shape: 'circle',
+      splitNumber: 4,
+      splitArea: {
+        areaStyle: {
+          color: ['rgba(255, 255, 255, 0.8)', 'rgba(250, 250, 250, 0.8)', 'rgba(245, 245, 245, 0.8)', 'rgba(240, 240, 240, 0.8)']
+        }
+      },
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      name: {
+        textStyle: {
+          color: '#1f2937',
+          fontSize: 12,
+          padding: [3, 5]
+        }
+      }
+    },
+    series: [{
+      name: '消费心理分析',
+      type: 'radar',
+      data: [
+        {
+          value: [85, 60, 78, 55, 75, 82],
+          name: '您的得分',
+          symbol: 'none',
+          lineStyle: {
+            width: 2,
+            color: '#57B5E7'
+          },
+          areaStyle: {
+            color: {
+              type: 'linear',
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [{
+                offset: 0, color: 'rgba(87, 181, 231, 0.3)'
+              }, {
+                offset: 1, color: 'rgba(87, 181, 231, 0.1)'
+              }]
+            }
+          }
+        },
+        {
+          value: [70, 70, 70, 70, 70, 70],
+          name: '健康参考值',
+          symbol: 'none',
+          lineStyle: {
+            width: 2,
+            color: '#8DD3C7',
+            type: 'dashed'
+          },
+          areaStyle: {
+            opacity: 0
+          }
+        }
+      ]
+    }],
+    legend: {
+      data: ['您的得分', '健康参考值'],
+      bottom: 0,
+      textStyle: {
+        color: '#1f2937'
+      }
+    }
+  };
+  psychologyRadarChart.setOption(psychologyRadarOption);
+  
+  // 消费触发因素图表
+  const triggerFactorsChart = echarts.init(document.getElementById('triggerFactorsChart'));
+  const triggerFactorsOption = {
+    animation: false,
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      },
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderColor: '#eee',
+      borderWidth: 1,
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    grid: {
+      top: 10,
+      right: 10,
+      bottom: 60,
+      left: 60
+    },
+    xAxis: {
+      type: 'category',
+      data: ['社交媒体', '朋友推荐', '促销活动', '情绪波动', '广告推送', '身份认同'],
+      axisLabel: {
+        interval: 0,
+        rotate: 30,
+        color: '#1f2937'
+      },
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      }
+    },
+    yAxis: {
+      type: 'value',
+      name: '影响程度',
+      min: 0,
+      max: 100,
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937'
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#eee'
+        }
+      }
+    },
+    series: [
+      {
+        name: '影响程度',
+        type: 'bar',
+        data: [85, 72, 65, 58, 45, 38],
+        itemStyle: {
+          color: function(params) {
+            const colorList = ['#FBBF72', '#FC8D62', '#8DD3C7', '#57B5E7', '#66C2A5', '#A6D854'];
+            return colorList[params.dataIndex];
+          },
+          borderRadius: 4
+        },
+        label: {
+          show: true,
+          position: 'top',
+          color: '#1f2937'
+        }
+      }
+    ]
+  };
+  triggerFactorsChart.setOption(triggerFactorsOption);
+  
+  // 消费后情绪变化图表
+  const emotionChangeChart = echarts.init(document.getElementById('emotionChangeChart'));
+  const emotionChangeOption = {
+    animation: false,
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderColor: '#eee',
+      borderWidth: 1,
+      textStyle: {
+        color: '#1f2937'
+      }
+    },
+    grid: {
+      top: 10,
+      right: 10,
+      bottom: 30,
+      left: 40
+    },
+    xAxis: {
+      type: 'category',
+      data: ['购买前', '购买时', '购买后1天', '3天', '7天', '14天', '30天'],
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937'
+      }
+    },
+    yAxis: {
+      type: 'value',
+      name: '情绪水平',
+      min: 0,
+      max: 100,
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937'
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#eee'
+        }
+      }
+    },
+    series: [
+      {
+        name: '您的情绪变化',
+        type: 'line',
+        data: [60, 95, 85, 65, 45, 40, 38],
+        symbol: 'circle',
+        symbolSize: 6,
+        lineStyle: {
+          width: 3,
+          color: '#57B5E7'
+        },
+        itemStyle: {
+          color: '#57B5E7'
+        }
+      },
+      {
+        name: '健康参考模式',
+        type: 'line',
+        data: [60, 85, 80, 75, 72, 70, 68],
+        symbol: 'circle',
+        symbolSize: 6,
+        lineStyle: {
+          width: 3,
+          color: '#8DD3C7',
+          type: 'dashed'
+        },
+        itemStyle: {
+          color: '#8DD3C7'
+        }
+      }
+    ],
+    legend: {
+      data: ['您的情绪变化', '健康参考模式'],
+      bottom: 0,
+      textStyle: {
+        color: '#1f2937'
+      }
+    }
+  };
+  emotionChangeChart.setOption(emotionChangeOption);
+  
+  // 响应式调整
+  window.addEventListener('resize', function() {
+    emotionTrendChart.resize();
+    psychologyRadarChart.resize();
+    triggerFactorsChart.resize();
+    emotionChangeChart.resize();
+  });
+});
+
+// 模块按钮事件监听
+document.addEventListener('DOMContentLoaded', function() {
+  // AI心理陪伴按钮
+  document.getElementById('openAIChatBtn').addEventListener('click', function() {
+    const chatContainer = document.getElementById('chatContainer');
+    chatContainer.scrollIntoView({ behavior: 'smooth' });
+  });
+  
+  // 消费焦虑识别按钮
+  document.getElementById('openAnxietyTestBtn').addEventListener('click', function() {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+    modal.innerHTML = `
+      <div class="bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-bold text-gray-900">消费焦虑自测量表</h3>
+            <button id="closeAnxietyModal" class="text-gray-500 hover:text-gray-700 focus:outline-none w-8 h-8 flex items-center justify-center">
+              <i class="ri-close-line ri-lg"></i>
+            </button>
+          </div>
+          
+          <div class="mb-6">
+            <p class="text-gray-600 mb-4">本测评包含20个问题，用于评估您的消费焦虑水平和具体表现形式。请根据您的真实情况选择最符合的选项。</p>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <div class="w-6 h-6 flex items-center justify-center rounded-full bg-purple-500 bg-opacity-10 mr-2">
+                <i class="ri-shield-check-line text-purple-500"></i>
+              </div>
+              <span>您的数据将严格保密，仅用于生成个性化建议</span>
+            </div>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="p-4 bg-gray-50 rounded-lg">
+              <h4 class="font-medium text-gray-900 mb-3">1. 我经常因为担心消费超出预算而感到焦虑</h4>
+              <div class="space-y-2">
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q1" value="1" class="mr-2">
+                  <span class="text-gray-700">1 - 完全不符合</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q1" value="2" class="mr-2">
+                  <span class="text-gray-700">2 - 比较不符合</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q1" value="3" class="mr-2">
+                  <span class="text-gray-700">3 - 一般</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q1" value="4" class="mr-2">
+                  <span class="text-gray-700">4 - 比较符合</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q1" value="5" class="mr-2" checked>
+                  <span class="text-gray-700">5 - 完全符合</span>
+                </label>
+              </div>
+            </div>
+            
+            <div class="p-4 bg-gray-50 rounded-lg">
+              <h4 class="font-medium text-gray-900 mb-3">2. 购物后我经常感到内疚或后悔</h4>
+              <div class="space-y-2">
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q2" value="1" class="mr-2">
+                  <span class="text-gray-700">1 - 完全不符合</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q2" value="2" class="mr-2">
+                  <span class="text-gray-700">2 - 比较不符合</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q2" value="3" class="mr-2">
+                  <span class="text-gray-700">3 - 一般</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q2" value="4" class="mr-2" checked>
+                  <span class="text-gray-700">4 - 比较符合</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q2" value="5" class="mr-2">
+                  <span class="text-gray-700">5 - 完全符合</span>
+                </label>
+              </div>
+            </div>
+            
+            <div class="p-4 bg-gray-50 rounded-lg">
+              <h4 class="font-medium text-gray-900 mb-3">3. 我会因为朋友购买了某样东西而感到压力，觉得自己也应该购买</h4>
+              <div class="space-y-2">
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q3" value="1" class="mr-2">
+                  <span class="text-gray-700">1 - 完全不符合</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q3" value="2" class="mr-2">
+                  <span class="text-gray-700">2 - 比较不符合</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q3" value="3" class="mr-2">
+                  <span class="text-gray-700">3 - 一般</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q3" value="4" class="mr-2" checked>
+                  <span class="text-gray-700">4 - 比较符合</span>
+                </label>
+                <label class="flex items-center p-2 bg-white rounded hover:bg-gray-100 cursor-pointer">
+                  <input type="radio" name="q3" value="5" class="mr-2">
+                  <span class="text-gray-700">5 - 完全符合</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8 flex items-center justify-between">
+            <div class="flex items-center">
+              <span class="text-gray-700 mr-2">当前进度:</span>
+              <div class="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div class="h-full bg-purple-500 rounded-full" style="width: 15%"></div>
+              </div>
+              <span class="text-gray-700 ml-2">3/20</span>
+            </div>
+            <div class="flex space-x-4">
+              <button class="px-4 py-2 border border-gray-300 rounded-button text-gray-700 font-medium hover:bg-gray-50 transition whitespace-nowrap">
+                上一页
+              </button>
+              <button class="px-4 py-2 bg-purple-500 text-white rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                下一页
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
+    document.getElementById('closeAnxietyModal').addEventListener('click', function() {
+      document.body.removeChild(modal);
+    });
+  });
+  
+  // 消费价值可视化按钮
+  document.getElementById('openValueVisualizationBtn').addEventListener('click', function() {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+    modal.innerHTML = `
+      <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-bold text-gray-900">消费能量转化报告</h3>
+            <button id="closeVisualizationModal" class="text-gray-500 hover:text-gray-700 focus:outline-none w-8 h-8 flex items-center justify-center">
+              <i class="ri-close-line ri-lg"></i>
+            </button>
+          </div>
+          
+          <div class="mb-8">
+            <p class="text-gray-600">本报告将您的开支映射为能力成长曲线，帮助您直观感受消费如何转化为个人价值。</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h4 class="text-lg font-semibold text-gray-900 mb-4">消费类型分布</h4>
+              <div id="consumptionTypeChart" style="height: 300px;"></div>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-gray-900 mb-4">消费价值转化率</h4>
+              <div id="valueConversionChart" style="height: 300px;"></div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-50 p-5 rounded-lg mb-8">
+            <h4 class="text-lg font-semibold text-gray-900 mb-4">消费价值洞察</h4>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-green-500 bg-opacity-10 mr-3 flex-shrink-0">
+                  <i class="ri-arrow-up-line text-green-500"></i>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-800 mb-1">高价值消费</h5>
+                  <p class="text-sm text-gray-600">您在教育培训和健康管理方面的支出转化率最高，每投入100元可产生约180元的长期价值。建议适当增加这类投资性消费。</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-yellow-500 bg-opacity-10 mr-3 flex-shrink-0">
+                  <i class="ri-arrow-right-line text-yellow-500"></i>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-800 mb-1">平衡型消费</h5>
+                  <p class="text-sm text-gray-600">您的基础生活和社交娱乐支出基本合理，转化率接近1:1。这类消费有助于维持生活质量和社交关系，比例适中。</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-red-500 bg-opacity-10 mr-3 flex-shrink-0">
+                  <i class="ri-arrow-down-line text-red-500"></i>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-800 mb-1">低价值消费</h5>
+                  <p class="text-sm text-gray-600">冲动购物和攀比性消费的转化率较低，每投入100元仅产生约35元的实际价值。建议减少此类支出，将资金转向高价值领域。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <h5 class="font-medium text-gray-800">本月消费总额</h5>
+                <span class="text-xl font-semibold text-gray-900">¥5,280</span>
+              </div>
+              <div class="flex items-center text-sm">
+                <span class="text-green-500 mr-1">↑12%</span>
+                <span class="text-gray-500">环比上月</span>
+              </div>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <h5 class="font-medium text-gray-800">平均价值转化率</h5>
+                <span class="text-xl font-semibold text-gray-900">1.2x</span>
+              </div>
+              <div class="flex items-center text-sm">
+                <span class="text-green-500 mr-1">↑0.3x</span>
+                <span class="text-gray-500">环比上月</span>
+              </div>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <h5 class="font-medium text-gray-800">潜在优化空间</h5>
+                <span class="text-xl font-semibold text-gray-900">¥1,350</span>
+              </div>
+              <div class="flex items-center text-sm">
+                <span class="text-gray-500">约占总支出的25.6%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gray-50 p-5 rounded-lg">
+            <h4 class="text-lg font-semibold text-gray-900 mb-4">个性化优化建议</h4>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-green-500 bg-opacity-10 mr-3 flex-shrink-0">
+                  <span class="text-green-500 font-medium">1</span>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-800 mb-1">增加技能投资</h5>
+                  <p class="text-sm text-gray-600">建议将冲动购物节省下来的资金投入到职业技能提升上，如线上课程或专业认证，预计可提高长期收入潜力15-20%。</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-green-500 bg-opacity-10 mr-3 flex-shrink-0">
+                  <span class="text-green-500 font-medium">2</span>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-800 mb-1">优化社交支出</h5>
+                  <p class="text-sm text-gray-600">您的社交支出中，小型聚会和共同爱好活动的价值转化率是大型聚餐的2.5倍。建议调整社交方式，提高社交资本回报。</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-green-500 bg-opacity-10 mr-3 flex-shrink-0">
+                  <span class="text-green-500 font-medium">3</span>
+                </div>
+                <div>
+                  <h5 class="font-medium text-gray-800 mb-1">建立经验库存</h5>
+                  <p class="text-sm text-gray-600">相比物质消费，体验型消费（如旅行、学习新技能）的价值转化率更高且持续时间更长。建议增加此类支出比例。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8 flex justify-end">
+            <button class="bg-green-500 text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+              下载完整报告
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
+    document.getElementById('closeVisualizationModal').addEventListener('click', function() {
+      document.body.removeChild(modal);
+    });
+    
+    // 消费类型分布图表
+    setTimeout(() => {
+      const consumptionTypeChart = echarts.init(document.getElementById('consumptionTypeChart'));
+      const consumptionTypeOption = {
+        animation: false,
+        tooltip: {
+          trigger: 'item',
+          formatter: '{b}: {c} ({d}%)',
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          borderColor: '#eee',
+          borderWidth: 1,
+          textStyle: {
+            color: '#1f2937'
+          }
+        },
+        legend: {
+          orient: 'vertical',
+          right: 10,
+          top: 'center',
+          data: ['基础生活', '教育培训', '社交娱乐', '健康管理', '冲动购物', '攀比消费'],
+          textStyle: {
+            color: '#1f2937'
+          }
+        },
+        series: [
+          {
+            name: '消费类型',
+            type: 'pie',
+            radius: ['40%', '70%'],
+            avoidLabelOverlap: false,
+            itemStyle: {
+              borderRadius: 8,
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            label: {
+              show: false
+            },
+            emphasis: {
+              label: {
+                show: false
+              }
+            },
+            labelLine: {
+              show: false
+            },
+            data: [
+              { value: 1850, name: '基础生活', itemStyle: { color: '#57B5E7' } },
+              { value: 1200, name: '教育培训', itemStyle: { color: '#8DD3C7' } },
+              { value: 950, name: '社交娱乐', itemStyle: { color: '#FBBF72' } },
+              { value: 650, name: '健康管理', itemStyle: { color: '#66C2A5' } },
+              { value: 380, name: '冲动购物', itemStyle: { color: '#FC8D62' } },
+              { value: 250, name: '攀比消费', itemStyle: { color: '#E78AC3' } }
+            ]
+          }
+        ]
+      };
+      consumptionTypeChart.setOption(consumptionTypeOption);
+      
+      // 消费价值转化率图表
+      const valueConversionChart = echarts.init(document.getElementById('valueConversionChart'));
+      const valueConversionOption = {
+        animation: false,
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          },
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          borderColor: '#eee',
+          borderWidth: 1,
+          textStyle: {
+            color: '#1f2937'
+          }
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'value',
+          name: '价值转化率',
+          axisLabel: {
+            formatter: '{value}x',
+            color: '#1f2937'
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ddd'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: '#eee'
+            }
+          }
+        },
+        yAxis: {
+          type: 'category',
+          data: ['教育培训', '健康管理', '基础生活', '社交娱乐', '冲动购物', '攀比消费'],
+          axisLabel: {
+            color: '#1f2937'
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#ddd'
+            }
+          }
+        },
+        series: [
+          {
+            name: '价值转化率',
+            type: 'bar',
+            data: [1.8, 1.6, 1.1, 0.9, 0.4, 0.3],
+            itemStyle: {
+              color: function(params) {
+                const colorList = ['#8DD3C7', '#66C2A5', '#57B5E7', '#FBBF72', '#FC8D62', '#E78AC3'];
+                return colorList[params.dataIndex];
+              },
+              borderRadius: 4
+            },
+            label: {
+              show: true,
+              position: 'right',
+              formatter: '{c}x',
+              color: '#1f2937'
+            }
+          }
+        ]
+      };
+      valueConversionChart.setOption(valueConversionOption);
+      
+      // 响应式调整
+      window.addEventListener('resize', function() {
+        consumptionTypeChart.resize();
+        valueConversionChart.resize();
+      });
+    }, 100);
+  });
+  
+  // 反向消费榜样按钮
+  document.getElementById('openRoleModelBtn').addEventListener('click', function() {
+    const roleModelSection = document.querySelector('section:nth-of-type(4)');
+    roleModelSection.scrollIntoView({ behavior: 'smooth' });
+  });
+  
+  // 通知按钮
+  document.getElementById('notificationBtn').addEventListener('click', function() {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+    modal.innerHTML = `
+      <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold text-gray-900">通知中心</h3>
+            <button id="closeNotificationModal" class="text-gray-500 hover:text-gray-700 focus:outline-none w-8 h-8 flex items-center justify-center">
+              <i class="ri-close-line ri-lg"></i>
+            </button>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="p-4 bg-blue-50 rounded-lg border border-blue-100">
+              <div class="flex items-start">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 mr-3 flex-shrink-0">
+                  <i class="ri-calendar-check-line text-primary"></i>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="font-medium text-gray-900">每周消费报告已生成</h4>
+                    <span class="text-xs text-gray-500">1小时前</span>
+                  </div>
+                  <p class="text-sm text-gray-600">您的每周消费报告已生成，本周消费健康指数提升了5分，继续保持！</p>
+                  <button class="mt-2 text-primary text-sm font-medium">查看报告</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-4 bg-green-50 rounded-lg border border-green-100">
+              <div class="flex items-start">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-green-100 mr-3 flex-shrink-0">
+                  <i class="ri-award-line text-green-600"></i>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="font-medium text-gray-900">成功避免冲动消费</h4>
+                    <span class="text-xs text-gray-500">昨天</span>
+                  </div>
+                  <p class="text-sm text-gray-600">您成功抵制了一次冲动消费，节省了¥860。已自动为您添加15心灵代金券作为奖励！</p>
+                  <button class="mt-2 text-green-600 text-sm font-medium">查看详情</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <div class="flex items-start">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 mr-3 flex-shrink-0">
+                  <i class="ri-group-line text-gray-600"></i>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="font-medium text-gray-900">新的反向消费榜样</h4>
+                    <span class="text-xs text-gray-500">2天前</span>
+                  </div>
+                  <p class="text-sm text-gray-600">3位新的反向消费榜样加入平台，他们的节省经验可能对您有所启发。</p>
+                  <button class="mt-2 text-gray-600 text-sm font-medium">浏览案例</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+              <div class="flex items-start">
+                <div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 mr-3 flex-shrink-0">
+                  <i class="ri-questionnaire-line text-gray-600"></i>
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <h4 class="font-medium text-gray-900">消费心理测评提醒</h4>
+                    <span class="text-xs text-gray-500">3天前</span>
+                  </div>
+                  <p class="text-sm text-gray-600">您已有30天未完成消费心理测评，建议定期评估以获取更精准的改善建议。</p>
+                  <button class="mt-2 text-gray-600 text-sm font-medium">开始测评</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-6 text-center">
+            <button class="text-primary hover:text-primary-dark text-sm font-medium">
+              查看全部通知
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
+    document.getElementById('closeNotificationModal').addEventListener('click', function() {
+      document.body.removeChild(modal);
+    });
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>消费预测详细报告 - 智财青春平台</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2A5C8B',secondary:'#4CAF87'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+.custom-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+.custom-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #2A5C8B;
+}
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+.custom-radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.custom-radio-input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+}
+.custom-radio-input:checked {
+  border-color: #2A5C8B;
+}
+.custom-radio-input:checked::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  background-color: #2A5C8B;
+  border-radius: 50%;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2A5C8B;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.custom-checkbox-input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  margin-right: 8px;
+  position: relative;
+}
+.custom-checkbox-input:checked {
+  background-color: #2A5C8B;
+  border-color: #2A5C8B;
+}
+.custom-checkbox-input:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- 导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center">
+      <a href="#" class="text-2xl font-['Pacifico'] text-primary mr-10">logo</a>
+      <nav class="hidden md:flex space-x-8">
+        <a href="#" class="text-gray-600 hover:text-primary font-medium">首页</a>
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/29be6da9-d794-4386-96b8-2be7a8b8e5d7" data-readdy="true" class="text-primary font-medium border-b-2 border-primary pb-1">决策干预</a>
+        <a href="#" class="text-gray-600 hover:text-primary font-medium">理财规划</a>
+        <a href="#" class="text-gray-600 hover:text-primary font-medium">消费分析</a>
+        <a href="#" class="text-gray-600 hover:text-primary font-medium">教育资源</a>
+      </nav>
+    </div>
+    <div class="flex items-center space-x-4">
+      <button class="bg-gray-100 rounded-full p-2 text-gray-600 hover:bg-gray-200">
+        <div class="w-6 h-6 flex items-center justify-center">
+          <i class="ri-notification-3-line"></i>
+        </div>
+      </button>
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white">
+          <span>张</span>
+        </div>
+        <span class="hidden md:inline text-gray-700">张小明</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 返回区域 -->
+<div class="bg-white border-b">
+  <div class="container mx-auto px-4 py-3">
+    <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/29be6da9-d794-4386-96b8-2be7a8b8e5d7" data-readdy="true" class="flex items-center text-gray-600 hover:text-primary">
+      <div class="w-5 h-5 flex items-center justify-center mr-1">
+        <i class="ri-arrow-left-line"></i>
+      </div>
+      <span>返回决策干预工具</span>
+    </a>
+  </div>
+</div>
+
+<!-- 报告标题区 -->
+<section class="bg-white py-8 border-b">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">消费预测详细报告</h1>
+        <p class="text-gray-600">基于您的历史消费数据和地理位置信息，为您提供未来消费趋势预测和风险分析</p>
+      </div>
+      <div class="mt-4 md:mt-0 flex items-center space-x-3">
+        <button class="flex items-center bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-button hover:bg-gray-50 whitespace-nowrap">
+          <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-download-line"></i>
+          </div>
+          下载报告
+        </button>
+        <button class="flex items-center bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-button hover:bg-gray-50 whitespace-nowrap">
+          <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-share-line"></i>
+          </div>
+          分享
+        </button>
+        <button class="flex items-center bg-primary text-white px-4 py-2 rounded-button hover:bg-primary/90 whitespace-nowrap">
+          <div class="w-5 h-5 flex items-center justify-center mr-2">
+            <i class="ri-printer-line"></i>
+          </div>
+          打印
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数据筛选区 -->
+<section class="bg-white py-6 mb-6 shadow-sm">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="w-full md:w-auto flex items-center space-x-4">
+        <div class="font-medium text-gray-700">报告周期:</div>
+        <div class="flex border border-gray-300 rounded-full p-1 bg-gray-50">
+          <button class="px-4 py-1 rounded-full bg-primary text-white whitespace-nowrap !rounded-full">1个月</button>
+          <button class="px-4 py-1 rounded-full text-gray-700 hover:bg-gray-100 whitespace-nowrap !rounded-full">3个月</button>
+          <button class="px-4 py-1 rounded-full text-gray-700 hover:bg-gray-100 whitespace-nowrap !rounded-full">6个月</button>
+          <button class="px-4 py-1 rounded-full text-gray-700 hover:bg-gray-100 whitespace-nowrap !rounded-full">12个月</button>
+        </div>
+      </div>
+      <div class="w-full md:w-auto flex flex-wrap items-center gap-4">
+        <div class="flex items-center space-x-2">
+          <div class="font-medium text-gray-700">消费类型:</div>
+          <div class="relative">
+            <button class="flex items-center bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-button whitespace-nowrap">
+              <span>全部类型</span>
+              <div class="w-5 h-5 flex items-center justify-center ml-2">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+            <!-- 下拉菜单可在这里添加 -->
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <div class="font-medium text-gray-700">消费场景:</div>
+          <div class="relative">
+            <button class="flex items-center bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-button whitespace-nowrap">
+              <span>全部场景</span>
+              <div class="w-5 h-5 flex items-center justify-center ml-2">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+            <!-- 下拉菜单可在这里添加 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 报告内容区 -->
+<div class="container mx-auto px-4 mb-12">
+  <!-- 消费概览卡片 -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-medium text-gray-800">预计总消费</h3>
+        <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-500">
+          <div class="w-5 h-5 flex items-center justify-center">
+            <i class="ri-money-cny-circle-line"></i>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-end">
+        <div class="text-3xl font-bold text-gray-900">¥8,450</div>
+        <div class="ml-2 text-red-500 flex items-center">
+          <div class="w-4 h-4 flex items-center justify-center">
+            <i class="ri-arrow-up-line"></i>
+          </div>
+          <span>12%</span>
+        </div>
+      </div>
+      <p class="text-gray-500 mt-2">较上月增加 ¥902</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-medium text-gray-800">高风险消费</h3>
+        <div class="w-10 h-10 bg-red-50 rounded-full flex items-center justify-center text-red-500">
+          <div class="w-5 h-5 flex items-center justify-center">
+            <i class="ri-alarm-warning-line"></i>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-end">
+        <div class="text-3xl font-bold text-gray-900">¥3,280</div>
+        <div class="ml-2 text-red-500 flex items-center">
+          <div class="w-4 h-4 flex items-center justify-center">
+            <i class="ri-arrow-up-line"></i>
+          </div>
+          <span>23%</span>
+        </div>
+      </div>
+      <p class="text-gray-500 mt-2">占总消费的 38.8%</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-medium text-gray-800">风险区域数</h3>
+        <div class="w-10 h-10 bg-yellow-50 rounded-full flex items-center justify-center text-yellow-500">
+          <div class="w-5 h-5 flex items-center justify-center">
+            <i class="ri-map-pin-line"></i>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-end">
+        <div class="text-3xl font-bold text-gray-900">5</div>
+        <div class="ml-2 text-red-500 flex items-center">
+          <div class="w-4 h-4 flex items-center justify-center">
+            <i class="ri-add-line"></i>
+          </div>
+          <span>2</span>
+        </div>
+      </div>
+      <p class="text-gray-500 mt-2">新增西湖商圈、城西银泰</p>
+    </div>
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-medium text-gray-800">借贷风险</h3>
+        <div class="w-10 h-10 bg-purple-50 rounded-full flex items-center justify-center text-purple-500">
+          <div class="w-5 h-5 flex items-center justify-center">
+            <i class="ri-bank-card-line"></i>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-end">
+        <div class="text-3xl font-bold text-red-500">68%</div>
+        <div class="ml-2 text-red-500 flex items-center">
+          <div class="w-4 h-4 flex items-center justify-center">
+            <i class="ri-arrow-up-line"></i>
+          </div>
+          <span>15%</span>
+        </div>
+      </div>
+      <p class="text-gray-500 mt-2">预计需要额外借贷 ¥1,200</p>
+    </div>
+  </div>
+
+  <!-- 消费趋势图表 -->
+  <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+      <h2 class="text-xl font-bold text-gray-900">消费趋势预测</h2>
+      <div class="flex items-center space-x-4 mt-2 md:mt-0">
+        <div class="flex items-center space-x-2">
+          <label class="custom-checkbox">
+            <input type="checkbox" checked class="custom-checkbox-input">
+            <span class="text-sm text-gray-700">实际消费</span>
+          </label>
+        </div>
+        <div class="flex items-center space-x-2">
+          <label class="custom-checkbox">
+            <input type="checkbox" checked class="custom-checkbox-input">
+            <span class="text-sm text-gray-700">预测消费</span>
+          </label>
+        </div>
+        <div class="flex items-center space-x-2">
+          <label class="custom-checkbox">
+            <input type="checkbox" checked class="custom-checkbox-input">
+            <span class="text-sm text-gray-700">安全阈值</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id="trend-chart" style="width: 100%; height: 380px;"></div>
+    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-blue-50 rounded-lg p-4">
+        <div class="flex items-start">
+          <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 mr-3">
+            <div class="w-4 h-4 flex items-center justify-center">
+              <i class="ri-line-chart-line"></i>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-medium text-gray-900 mb-1">趋势分析</h4>
+            <p class="text-sm text-gray-700">您的消费呈现稳定上升趋势，预计 5 月中旬将达到峰值，建议提前做好预算规划</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-yellow-50 rounded-lg p-4">
+        <div class="flex items-start">
+          <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-500 mr-3">
+            <div class="w-4 h-4 flex items-center justify-center">
+              <i class="ri-alert-line"></i>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-medium text-gray-900 mb-1">风险提示</h4>
+            <p class="text-sm text-gray-700">预计 5 月第 3 周消费将超出安全阈值，可能导致当月预算赤字，建议控制非必要开支</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-green-50 rounded-lg p-4">
+        <div class="flex items-start">
+          <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-500 mr-3">
+            <div class="w-4 h-4 flex items-center justify-center">
+              <i class="ri-lightbulb-line"></i>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-medium text-gray-900 mb-1">优化建议</h4>
+            <p class="text-sm text-gray-700">建议将部分非必要消费推迟到 6 月初，可以平滑消费曲线，避免出现财务压力</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 高风险消费区域地图 -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+    <div class="md:col-span-2">
+      <div class="bg-white rounded-lg shadow-sm p-6 h-full">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-bold text-gray-900">高风险消费区域</h2>
+          <div class="flex items-center space-x-2">
+            <button class="bg-white border border-gray-300 p-1.5 rounded text-gray-700 hover:bg-gray-50">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-zoom-in-line"></i>
+              </div>
+            </button>
+            <button class="bg-white border border-gray-300 p-1.5 rounded text-gray-700 hover:bg-gray-50">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-zoom-out-line"></i>
+              </div>
+            </button>
+            <button class="bg-white border border-gray-300 p-1.5 rounded text-gray-700 hover:bg-gray-50">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-refresh-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="relative rounded-lg overflow-hidden" style="height: 400px; background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;">
+          <div class="absolute inset-0 bg-black/5"></div>
+          <!-- 地图图例 -->
+          <div class="absolute bottom-4 right-4 bg-white/90 p-3 rounded-lg shadow">
+            <h5 class="font-medium text-gray-800 mb-2 text-sm">风险等级</h5>
+            <div class="space-y-2">
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-red-500 rounded-sm mr-2"></div>
+                <span class="text-xs text-gray-700">极高风险</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-orange-400 rounded-sm mr-2"></div>
+                <span class="text-xs text-gray-700">高风险</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-yellow-300 rounded-sm mr-2"></div>
+                <span class="text-xs text-gray-700">中等风险</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-green-300 rounded-sm mr-2"></div>
+                <span class="text-xs text-gray-700">低风险</span>
+              </div>
+            </div>
+          </div>
+          <!-- 区域信息卡片 -->
+          <div class="absolute top-4 left-4 bg-white/90 p-3 rounded-lg shadow max-w-xs">
+            <div class="flex items-center justify-between mb-1">
+              <h5 class="font-medium text-gray-800">西湖商圈</h5>
+              <span class="text-xs font-medium px-2 py-0.5 bg-red-100 text-red-600 rounded-full">极高风险</span>
+            </div>
+            <p class="text-xs text-gray-600 mb-2">预计消费增长: <span class="font-medium text-red-500">+38%</span></p>
+            <div class="text-xs text-gray-600">高风险品类: 奢侈品、电子产品、高端餐饮</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="bg-white rounded-lg shadow-sm p-6 h-full">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">风险区域详情</h2>
+        <div class="space-y-4 mb-4">
+          <div class="border border-gray-200 rounded-lg p-3 hover:border-primary hover:bg-blue-50/30 transition cursor-pointer">
+            <div class="flex items-center justify-between mb-1">
+              <h5 class="font-medium text-gray-800">西湖商圈</h5>
+              <span class="text-xs font-medium px-2 py-0.5 bg-red-100 text-red-600 rounded-full">极高风险</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-1">预计消费: ¥1,850 <span class="text-red-500 text-xs">↑38%</span></p>
+            <div class="flex items-center text-xs text-gray-500">
+              <div class="w-3 h-3 flex items-center justify-center mr-1">
+                <i class="ri-map-pin-line"></i>
+              </div>
+              杭州市上城区湖滨路
+            </div>
+          </div>
+          <div class="border border-gray-200 rounded-lg p-3 hover:border-primary hover:bg-blue-50/30 transition cursor-pointer">
+            <div class="flex items-center justify-between mb-1">
+              <h5 class="font-medium text-gray-800">城西银泰</h5>
+              <span class="text-xs font-medium px-2 py-0.5 bg-orange-100 text-orange-600 rounded-full">高风险</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-1">预计消费: ¥1,230 <span class="text-red-500 text-xs">↑25%</span></p>
+            <div class="flex items-center text-xs text-gray-500">
+              <div class="w-3 h-3 flex items-center justify-center mr-1">
+                <i class="ri-map-pin-line"></i>
+              </div>
+              杭州市拱墅区丰潭路
+            </div>
+          </div>
+          <div class="border border-gray-200 rounded-lg p-3 hover:border-primary hover:bg-blue-50/30 transition cursor-pointer">
+            <div class="flex items-center justify-between mb-1">
+              <h5 class="font-medium text-gray-800">滨江天街</h5>
+              <span class="text-xs font-medium px-2 py-0.5 bg-orange-100 text-orange-600 rounded-full">高风险</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-1">预计消费: ¥980 <span class="text-red-500 text-xs">↑18%</span></p>
+            <div class="flex items-center text-xs text-gray-500">
+              <div class="w-3 h-3 flex items-center justify-center mr-1">
+                <i class="ri-map-pin-line"></i>
+              </div>
+              杭州市滨江区长河街道
+            </div>
+          </div>
+        </div>
+        <div class="bg-yellow-50 border border-yellow-100 rounded-lg p-4">
+          <div class="flex items-start">
+            <div class="w-5 h-5 flex items-center justify-center text-yellow-500 mt-0.5 mr-2">
+              <i class="ri-lightbulb-line"></i>
+            </div>
+            <div>
+              <h5 class="font-medium text-yellow-700 mb-1">风险防范建议</h5>
+              <p class="text-sm text-yellow-600">建议避开西湖商圈的周末高峰期，选择工作日前往可降低冲动消费风险。在城西银泰购物前建议提前列购物清单，避免超预算</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 品类细分分析 -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-bold text-gray-900">消费品类分布</h2>
+        <div class="flex items-center space-x-2">
+          <button class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm whitespace-nowrap !rounded-full">实际</button>
+          <button class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 whitespace-nowrap !rounded-full">预测</button>
+        </div>
+      </div>
+      <div id="category-chart" style="width: 100%; height: 350px;"></div>
+    </div>
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-bold text-gray-900">品类增长趋势</h2>
+        <div class="relative">
+          <button class="flex items-center bg-white border border-gray-300 text-gray-700 px-3 py-1 rounded text-sm whitespace-nowrap">
+            <span>按增长率排序</span>
+            <div class="w-4 h-4 flex items-center justify-center ml-1">
+              <i class="ri-arrow-down-s-line"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div id="category-growth-chart" style="width: 100%; height: 350px;"></div>
+    </div>
+  </div>
+
+  <!-- 消费行为模式 -->
+  <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-6">消费行为模式分析</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+      <div>
+        <h3 class="text-lg font-medium text-gray-800 mb-4">消费时间分布</h3>
+        <div id="time-distribution-chart" style="width: 100%; height: 220px;"></div>
+      </div>
+      <div>
+        <h3 class="text-lg font-medium text-gray-800 mb-4">消费场景分析</h3>
+        <div id="scene-analysis-chart" style="width: 100%; height: 220px;"></div>
+      </div>
+      <div>
+        <h3 class="text-lg font-medium text-gray-800 mb-4">支付方式统计</h3>
+        <div id="payment-method-chart" style="width: 100%; height: 220px;"></div>
+      </div>
+    </div>
+    <div class="bg-gray-50 rounded-lg p-5">
+      <h3 class="text-lg font-medium text-gray-800 mb-4">行为特征标签</h3>
+      <div class="flex flex-wrap gap-3">
+        <div class="bg-blue-100 text-blue-800 px-3 py-1.5 rounded-full text-sm">周末消费高峰</div>
+        <div class="bg-purple-100 text-purple-800 px-3 py-1.5 rounded-full text-sm">夜间网购偏好</div>
+        <div class="bg-red-100 text-red-800 px-3 py-1.5 rounded-full text-sm">促销敏感型</div>
+        <div class="bg-green-100 text-green-800 px-3 py-1.5 rounded-full text-sm">品质追求者</div>
+        <div class="bg-yellow-100 text-yellow-800 px-3 py-1.5 rounded-full text-sm">科技爱好者</div>
+        <div class="bg-indigo-100 text-indigo-800 px-3 py-1.5 rounded-full text-sm">社交场景消费高</div>
+        <div class="bg-pink-100 text-pink-800 px-3 py-1.5 rounded-full text-sm">线下体验偏好</div>
+        <div class="bg-teal-100 text-teal-800 px-3 py-1.5 rounded-full text-sm">分期付款频繁</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 个性化消费建议 -->
+  <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+    <h2 class="text-xl font-bold text-gray-900 mb-6">个性化消费建议</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <div class="bg-primary/5 border border-primary/20 rounded-lg p-5 mb-6">
+          <div class="flex items-start">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-shield-check-line"></i>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-lg font-medium text-gray-900 mb-2">总体建议</h4>
+              <p class="text-gray-700 mb-4">根据您的消费预测分析，建议您在未来一个月内采取以下措施来优化您的消费结构和控制风险</p>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2">
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">控制3C电子品类消费，建议将部分购买计划推迟到6月促销季</span>
+                </li>
+                <li class="flex items-start">
+                  <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2">
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">减少西湖商圈的消费频次，特别是周末高峰期的非计划性消费</span>
+                </li>
+                <li class="flex items-start">
+                  <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2">
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">设置每周消费上限，建议不超过¥2,000，避免月底资金紧张</span>
+                </li>
+                <li class="flex items-start">
+                  <div class="w-5 h-5 flex items-center justify-center text-primary mt-0.5 mr-2">
+                    <i class="ri-check-line"></i>
+                  </div>
+                  <span class="text-gray-700">减少夜间网购频率，建议将商品加入购物车次日再确认购买</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bg-red-50 border border-red-100 rounded-lg p-5">
+          <div class="flex items-start">
+            <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-500 mr-4">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-error-warning-line"></i>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-lg font-medium text-gray-900 mb-2">风险提醒</h4>
+              <p class="text-gray-700 mb-4">我们检测到以下几个可能导致超支的风险因素，建议您特别注意</p>
+              <div class="space-y-3">
+                <div class="bg-white rounded p-3 border border-red-100">
+                  <h5 class="font-medium text-red-600 mb-1">信用卡额度使用过高</h5>
+                  <p class="text-sm text-gray-600">当前使用率已达68%，预计下月将超过80%，存在较高的循环利息风险</p>
+                </div>
+                <div class="bg-white rounded p-3 border border-red-100">
+                  <h5 class="font-medium text-red-600 mb-1">3C电子品类消费激增</h5>
+                  <p class="text-sm text-gray-600">该品类消费预计增长38%，远高于收入增长，建议控制非必要更新</p>
+                </div>
+                <div class="bg-white rounded p-3 border border-red-100">
+                  <h5 class="font-medium text-red-600 mb-1">分期付款压力增大</h5>
+                  <p class="text-sm text-gray-600">当前月供总额已达月收入的23%，接近合理上限，不建议新增分期</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="bg-green-50 border border-green-100 rounded-lg p-5 mb-6">
+          <div class="flex items-start">
+            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-500 mr-4">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-coin-line"></i>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-lg font-medium text-gray-900 mb-2">节约机会</h4>
+              <p class="text-gray-700 mb-4">根据您的消费习惯和市场分析，我们发现了以下可能的节约机会</p>
+              <div class="space-y-3">
+                <div class="bg-white rounded p-3 border border-green-100">
+                  <div class="flex justify-between items-center mb-1">
+                    <h5 class="font-medium text-gray-800">餐饮外卖优化</h5>
+                    <span class="text-green-600 font-medium">省¥320/月</span>
+                  </div>
+                  <p class="text-sm text-gray-600">工作日午餐建议选择商场优惠套餐，减少高溢价外卖平台使用频率</p>
+                </div>
+                <div class="bg-white rounded p-3 border border-green-100">
+                  <div class="flex justify-between items-center mb-1">
+                    <h5 class="font-medium text-gray-800">数码产品购买时机</h5>
+                    <span class="text-green-600 font-medium">省¥800+</span>
+                  </div>
+                  <p class="text-sm text-gray-600">您关注的几款数码产品预计在6月18日有大幅度促销，建议等待购买</p>
+                </div>
+                <div class="bg-white rounded p-3 border border-green-100">
+                  <div class="flex justify-between items-center mb-1">
+                    <h5 class="font-medium text-gray-800">会员服务整合</h5>
+                    <span class="text-green-600 font-medium">省¥89/月</span>
+                  </div>
+                  <p class="text-sm text-gray-600">您当前订阅了3个重叠的视频服务，建议保留使用频率最高的1-2个</p>
+                </div>
+                <div class="bg-white rounded p-3 border border-green-100">
+                  <div class="flex justify-between items-center mb-1">
+                    <h5 class="font-medium text-gray-800">信用卡优惠活动</h5>
+                    <span class="text-green-600 font-medium">返现¥200+</span>
+                  </div>
+                  <p class="text-sm text-gray-600">您的招商银行信用卡在指定商户有高额返现，建议查看并合理利用</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-blue-50 border border-blue-100 rounded-lg p-5">
+          <div class="flex items-start">
+            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 mr-4">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-calendar-check-line"></i>
+              </div>
+            </div>
+            <div>
+              <h4 class="text-lg font-medium text-gray-900 mb-2">行动计划</h4>
+              <p class="text-gray-700 mb-4">我们为您制定了未来一个月的消费优化行动计划，帮助您逐步改善财务状况</p>
+              <div class="relative">
+                <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-blue-200"></div>
+                <div class="space-y-4 relative">
+                  <div class="flex">
+                    <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white z-10 mt-0.5 mr-4">
+                      <span class="text-xs">1</span>
+                    </div>
+                    <div class="bg-white rounded p-3 border border-blue-100 flex-1">
+                      <h5 class="font-medium text-gray-800 mb-1">第1周: 消费审计</h5>
+                      <p class="text-sm text-gray-600">梳理所有订阅服务和固定支出，取消不必要的服务，设置每周预算</p>
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white z-10 mt-0.5 mr-4">
+                      <span class="text-xs">2</span>
+                    </div>
+                    <div class="bg-white rounded p-3 border border-blue-100 flex-1">
+                      <h5 class="font-medium text-gray-800 mb-1">第2周: 高风险区域规避</h5>
+                      <p class="text-sm text-gray-600">避开西湖商圈和城西银泰的周末消费，改为工作日错峰消费</p>
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white z-10 mt-0.5 mr-4">
+                      <span class="text-xs">3</span>
+                    </div>
+                    <div class="bg-white rounded p-3 border border-blue-100 flex-1">
+                      <h5 class="font-medium text-gray-800 mb-1">第3周: 消费替代方案</h5>
+                      <p class="text-sm text-gray-600">对计划购买的3C产品寻找性价比替代品，控制总支出不超过预算</p>
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white z-10 mt-0.5 mr-4">
+                      <span class="text-xs">4</span>
+                    </div>
+                    <div class="bg-white rounded p-3 border border-blue-100 flex-1">
+                      <h5 class="font-medium text-gray-800 mb-1">第4周: 效果评估</h5>
+                      <p class="text-sm text-gray-600">对比计划和实际消费情况，调整下月预算和消费策略</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 报告结论 -->
+  <div class="bg-white rounded-lg shadow-sm p-6">
+    <h2 class="text-xl font-bold text-gray-900 mb-6">报告结论</h2>
+    <div class="flex items-start mb-8">
+      <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mr-4 flex-shrink-0">
+        <div class="w-6 h-6 flex items-center justify-center">
+          <i class="ri-file-list-3-line"></i>
+        </div>
+      </div>
+      <div>
+        <p class="text-gray-700 mb-4">根据对您过去3个月消费数据的分析和未来1个月的预测，我们得出以下结论：</p>
+        <div class="space-y-4">
+          <div class="bg-gray-50 rounded-lg p-4">
+            <h4 class="font-medium text-gray-900 mb-2">消费趋势</h4>
+            <p class="text-gray-700">您的总体消费呈现上升趋势，预计下月总消费将达到¥8,450，同比增长12%。其中，3C电子、餐饮和服装是主要增长品类，建议重点关注这些领域的支出控制。</p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-4">
+            <h4 class="font-medium text-gray-900 mb-2">风险评估</h4>
+            <p class="text-gray-700">您的消费行为存在中等风险，主要表现为特定区域的高消费倾向和信用卡使用率偏高。西湖商圈和城西银泰是您的高风险消费区域，建议减少在这些区域的非计划性消费。</p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-4">
+            <h4 class="font-medium text-gray-900 mb-2">优化机会</h4>
+            <p class="text-gray-700">通过实施我们提供的消费优化建议，您有潜力节省约¥1,400的月度支出，这相当于您预计月消费的16.5%。主要优化空间来自于餐饮外卖、数码产品购买时机选择和订阅服务整合。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between items-center bg-primary/5 rounded-lg p-6">
+      <div class="mb-4 md:mb-0">
+        <h3 class="text-lg font-medium text-gray-900 mb-2">需要更详细的消费分析和个性化建议？</h3>
+        <p class="text-gray-700">我们的消费顾问可以为您提供一对一的消费规划指导</p>
+      </div>
+      <div class="flex space-x-4">
+        <button class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-button hover:bg-gray-50 whitespace-nowrap">预约顾问</button>
+        <button class="bg-primary text-white px-4 py-2 rounded-button hover:bg-primary/90 whitespace-nowrap">定制消费计划</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="bg-gray-900 text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">logo</a>
+        <p class="text-gray-400 mb-4">智财青春平台致力于帮助年轻人培养健康的消费习惯和财务意识，做出更明智的经济决策</p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <i class="ri-weibo-fill ri-lg"></i>
+            </div>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <i class="ri-wechat-fill ri-lg"></i>
+            </div>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <div class="w-8 h-8 flex items-center justify-center">
+              <i class="ri-qq-fill ri-lg"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h5 class="font-semibold text-lg mb-4">功能导航</h5>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">首页</a></li>
+          <li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/29be6da9-d794-4386-96b8-2be7a8b8e5d7" data-readdy="true" class="text-white">决策干预</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">理财规划</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">消费分析</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">教育资源</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold text-lg mb-4">关于我们</h5>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">平台介绍</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">团队成员</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">加入我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold text-lg mb-4">联系方式</h5>
+        <ul class="space-y-2">
+          <li class="flex items-center text-gray-400">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+              <i class="ri-mail-line"></i>
+            </div>
+            <span>contact@zhicaiqingchun.com</span>
+          </li>
+          <li class="flex items-center text-gray-400">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+              <i class="ri-phone-line"></i>
+            </div>
+            <span>400-888-7777</span>
+          </li>
+          <li class="flex items-center text-gray-400">
+            <div class="w-5 h-5 flex items-center justify-center mr-2">
+              <i class="ri-map-pin-line"></i>
+            </div>
+            <span>北京市海淀区中关村科技园</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500 mb-4 md:mb-0">© 2025 智财青春平台. 保留所有权利</p>
+      <div class="flex space-x-6">
+        <a href="#" class="text-gray-500 hover:text-white text-sm">隐私政策</a>
+        <a href="#" class="text-gray-500 hover:text-white text-sm">使用条款</a>
+        <a href="#" class="text-gray-500 hover:text-white text-sm">Cookie 政策</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 消费趋势图表
+const trendChart = echarts.init(document.getElementById('trend-chart'));
+const trendOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'axis',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  legend: {
+    data: ['实际消费', '预测消费', '安全阈值'],
+    bottom: 0,
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  grid: {
+    top: 10,
+    right: 20,
+    bottom: 60,
+    left: 50
+  },
+  xAxis: {
+    type: 'category',
+    data: ['1月', '2月', '3月', '4月', '5月', '6月'],
+    axisLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    axisLabel: {
+      color: '#1f2937'
+    }
+  },
+  yAxis: {
+    type: 'value',
+    axisLine: {
+      show: false
+    },
+    axisLabel: {
+      color: '#1f2937',
+      formatter: '{value} 元'
+    },
+    splitLine: {
+      lineStyle: {
+        color: '#eee'
+      }
+    }
+  },
+  series: [
+    {
+      name: '实际消费',
+      type: 'line',
+      data: [6580, 7120, 7550, null, null, null],
+      smooth: true,
+      symbol: 'none',
+      lineStyle: {
+        width: 3,
+        color: 'rgba(87, 181, 231, 1)'
+      },
+      areaStyle: {
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [{
+            offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+          }, {
+            offset: 1, color: 'rgba(87, 181, 231, 0.05)'
+          }]
+        }
+      }
+    },
+    {
+      name: '预测消费',
+      type: 'line',
+      data: [null, null, null, 8100, 8450, 8200],
+      smooth: true,
+      symbol: 'none',
+      lineStyle: {
+        width: 3,
+        color: 'rgba(141, 211, 199, 1)',
+        type: 'dashed'
+      },
+      areaStyle: {
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [{
+            offset: 0, color: 'rgba(141, 211, 199, 0.2)'
+          }, {
+            offset: 1, color: 'rgba(141, 211, 199, 0.05)'
+          }]
+        }
+      }
+    },
+    {
+      name: '安全阈值',
+      type: 'line',
+      data: [7500, 7500, 7500, 7500, 7500, 7500],
+      symbol: 'none',
+      lineStyle: {
+        width: 2,
+        color: 'rgba(252, 141, 98, 0.8)',
+        type: 'dashed'
+      }
+    }
+  ]
+};
+trendChart.setOption(trendOption);
+
+// 消费品类分布图表
+const categoryChart = echarts.init(document.getElementById('category-chart'));
+const categoryOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b}: {c} ({d}%)',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  legend: {
+    orient: 'vertical',
+    right: 10,
+    top: 'center',
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  series: [
+    {
+      name: '消费品类',
+      type: 'pie',
+      radius: ['40%', '70%'],
+      center: ['40%', '50%'],
+      avoidLabelOverlap: false,
+      itemStyle: {
+        borderRadius: 8,
+        borderColor: '#fff',
+        borderWidth: 2
+      },
+      label: {
+        show: false
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: 14,
+          fontWeight: 'bold'
+        }
+      },
+      labelLine: {
+        show: false
+      },
+      data: [
+        { value: 2450, name: '3C电子', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+        { value: 1830, name: '餐饮', itemStyle: { color: 'rgba(141, 211, 199, 1)' } },
+        { value: 1350, name: '服装鞋帽', itemStyle: { color: 'rgba(251, 191, 114, 1)' } },
+        { value: 980, name: '日用百货', itemStyle: { color: 'rgba(252, 141, 98, 1)' } },
+        { value: 780, name: '交通出行', itemStyle: { color: 'rgba(179, 179, 179, 1)' } },
+        { value: 650, name: '娱乐社交', itemStyle: { color: 'rgba(190, 186, 218, 1)' } },
+        { value: 410, name: '其他', itemStyle: { color: 'rgba(231, 138, 195, 1)' } }
+      ]
+    }
+  ]
+};
+categoryChart.setOption(categoryOption);
+
+// 品类增长趋势图表
+const categoryGrowthChart = echarts.init(document.getElementById('category-growth-chart'));
+const categoryGrowthOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    },
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  grid: {
+    top: 10,
+    right: 10,
+    bottom: 20,
+    left: 80
+  },
+  xAxis: {
+    type: 'value',
+    axisLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    axisLabel: {
+      color: '#1f2937',
+      formatter: '{value}%'
+    },
+    splitLine: {
+      lineStyle: {
+        color: '#eee'
+      }
+    }
+  },
+  yAxis: {
+    type: 'category',
+    data: ['3C电子', '餐饮', '服装鞋帽', '娱乐社交', '日用百货', '交通出行', '其他'],
+    axisLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    axisLabel: {
+      color: '#1f2937'
+    }
+  },
+  series: [
+    {
+      name: '增长率',
+      type: 'bar',
+      data: [38, 23, 18, 12, 8, 5, 3],
+      barWidth: 16,
+      itemStyle: {
+        color: function(params) {
+          const colorList = [
+            'rgba(252, 141, 98, 1)',
+            'rgba(252, 141, 98, 0.9)',
+            'rgba(252, 141, 98, 0.8)',
+            'rgba(251, 191, 114, 1)',
+            'rgba(141, 211, 199, 1)',
+            'rgba(141, 211, 199, 0.9)',
+            'rgba(141, 211, 199, 0.8)'
+          ];
+          return colorList[params.dataIndex];
+        },
+        borderRadius: 4
+      },
+      label: {
+        show: true,
+        position: 'right',
+        formatter: '{c}%',
+        color: '#1f2937'
+      }
+    }
+  ]
+};
+categoryGrowthChart.setOption(categoryGrowthOption);
+
+// 消费时间分布图表
+const timeDistributionChart = echarts.init(document.getElementById('time-distribution-chart'));
+const timeDistributionOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'item',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  grid: {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  },
+  series: [
+    {
+      name: '消费时间',
+      type: 'pie',
+      radius: ['30%', '80%'],
+      center: ['50%', '50%'],
+      roseType: 'area',
+      itemStyle: {
+        borderRadius: 4,
+        borderColor: '#fff',
+        borderWidth: 2
+      },
+      label: {
+        show: false
+      },
+      emphasis: {
+        label: {
+          show: true
+        }
+      },
+      data: [
+        { value: 35, name: '晚上 (18-22点)', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+        { value: 28, name: '下午 (14-18点)', itemStyle: { color: 'rgba(141, 211, 199, 1)' } },
+        { value: 20, name: '中午 (11-14点)', itemStyle: { color: 'rgba(251, 191, 114, 1)' } },
+        { value: 12, name: '夜间 (22-24点)', itemStyle: { color: 'rgba(252, 141, 98, 1)' } },
+        { value: 5, name: '上午 (8-11点)', itemStyle: { color: 'rgba(179, 179, 179, 1)' } }
+      ]
+    }
+  ]
+};
+timeDistributionChart.setOption(timeDistributionOption);
+
+// 消费场景分析图表
+const sceneAnalysisChart = echarts.init(document.getElementById('scene-analysis-chart'));
+const sceneAnalysisOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'item',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  grid: {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  },
+  series: [
+    {
+      name: '消费场景',
+      type: 'pie',
+      radius: '70%',
+      center: ['50%', '50%'],
+      itemStyle: {
+        borderRadius: 4,
+        borderColor: '#fff',
+        borderWidth: 2
+      },
+      label: {
+        show: false
+      },
+      emphasis: {
+        label: {
+          show: true
+        }
+      },
+      data: [
+        { value: 45, name: '线上购物', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+        { value: 25, name: '商场购物', itemStyle: { color: 'rgba(141, 211, 199, 1)' } },
+        { value: 15, name: '餐厅用餐', itemStyle: { color: 'rgba(251, 191, 114, 1)' } },
+        { value: 10, name: '娱乐场所', itemStyle: { color: 'rgba(252, 141, 98, 1)' } },
+        { value: 5, name: '其他', itemStyle: { color: 'rgba(179, 179, 179, 1)' } }
+      ]
+    }
+  ]
+};
+sceneAnalysisChart.setOption(sceneAnalysisOption);
+
+// 支付方式统计图表
+const paymentMethodChart = echarts.init(document.getElementById('payment-method-chart'));
+const paymentMethodOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    },
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  grid: {
+    top: 10,
+    right: 10,
+    bottom: 20,
+    left: 60
+  },
+  xAxis: {
+    type: 'category',
+    data: ['信用卡', '微信支付', '支付宝', '储蓄卡', '其他'],
+    axisLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    axisLabel: {
+      color: '#1f2937',
+      interval: 0,
+      rotate: 0
+    }
+  },
+  yAxis: {
+    type: 'value',
+    axisLine: {
+      show: false
+    },
+    axisLabel: {
+      color: '#1f2937',
+      formatter: '{value}%'
+    },
+    splitLine: {
+      lineStyle: {
+        color: '#eee'
+      }
+    }
+  },
+  series: [
+    {
+      name: '占比',
+      type: 'bar',
+      data: [42, 28, 20, 8, 2],
+      barWidth: 30,
+      itemStyle: {
+        color: function(params) {
+          const colorList = [
+            'rgba(252, 141, 98, 1)',
+            'rgba(251, 191, 114, 1)',
+            'rgba(141, 211, 199, 1)',
+            'rgba(87, 181, 231, 1)',
+            'rgba(179, 179, 179, 1)'
+          ];
+          return colorList[params.dataIndex];
+        },
+        borderRadius: 4
+      },
+      label: {
+        show: true,
+        position: 'top',
+        formatter: '{c}%',
+        color: '#1f2937'
+      }
+    }
+  ]
+};
+paymentMethodChart.setOption(paymentMethodOption);
+
+// 响应式调整
+window.addEventListener('resize', function() {
+  trendChart.resize();
+  categoryChart.resize();
+  categoryGrowthChart.resize();
+  timeDistributionChart.resize();
+  sceneAnalysisChart.resize();
+  paymentMethodChart.resize();
+});
+</script>
+</body>
+</html>

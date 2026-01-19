@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智财青春 - 教育赋能</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#10b981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #3b82f6;
+cursor: pointer;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+border-radius: 4px;
+border: 2px solid #d1d5db;
+background-color: white;
+transition: all 0.2s ease;
+}
+.custom-checkbox.checked {
+background-color: #3b82f6;
+border-color: #3b82f6;
+}
+.custom-checkbox.checked::after {
+content: "";
+position: absolute;
+top: 2px;
+left: 6px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 48px;
+height: 24px;
+}
+.custom-switch-track {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #e5e7eb;
+border-radius: 24px;
+transition: 0.4s;
+}
+.custom-switch-thumb {
+position: absolute;
+height: 20px;
+width: 20px;
+left: 2px;
+bottom: 2px;
+background-color: white;
+border-radius: 50%;
+transition: 0.4s;
+}
+.custom-switch.active .custom-switch-track {
+background-color: #3b82f6;
+}
+.custom-switch.active .custom-switch-thumb {
+transform: translateX(24px);
+}
+.custom-radio {
+position: relative;
+display: inline-block;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+border: 2px solid #d1d5db;
+background-color: white;
+transition: all 0.2s ease;
+}
+.custom-radio.checked {
+border-color: #3b82f6;
+}
+.custom-radio.checked::after {
+content: "";
+position: absolute;
+top: 4px;
+left: 4px;
+width: 8px;
+height: 8px;
+border-radius: 50%;
+background-color: #3b82f6;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- 导航栏 -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+<div class="container mx-auto px-4 flex items-center justify-between h-16">
+<div class="flex items-center">
+<a href="#" class="text-2xl font-['Pacifico'] text-primary mr-8">logo</a>
+<nav class="hidden md:flex space-x-6">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+<a href="#" class="text-primary font-medium border-b-2 border-primary pb-1">教育赋能</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3ece40b0-f507-43a5-9787-62983e9c8bb1" data-readdy="true" class="text-gray-600 hover:text-primary">金融服务</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/4281f937-ed72-45c2-988e-271aff319dc6" data-readdy="true" class="text-gray-600 hover:text-primary">社区互动</a>
+<a href="#" class="text-gray-600 hover:text-primary">关于我们</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<input type="text" placeholder="搜索课程、内容" class="pl-10 pr-4 py-2 w-48 rounded-full text-sm bg-gray-100 border-none focus:ring-2 focus:ring-primary focus:outline-none">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-600">
+<i class="ri-notification-3-line"></i>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="text-sm">林</span>
+</div>
+<span class="text-sm font-medium">林晓明</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Banner区域 -->
+<section class="relative h-80 overflow-hidden" style="background-image: url('https://public.readdy.ai/ai/img_res/d5900ab6c421f4271e463a4e30051c28.jpg'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent"></div>
+<div class="container mx-auto px-4 h-full flex items-center relative z-10">
+<div class="max-w-2xl text-white">
+<h1 class="text-4xl font-bold mb-4">教育赋能 · 智慧财商</h1>
+<p class="text-xl mb-6">通过沉浸式体验、互动学习和社区分享，培养青少年健康的财商意识和消费习惯</p>
+<div class="flex space-x-4">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/7a3bcf54-12c4-44ae-9fa0-4211fd0246ed" data-readdy="true" class="inline-block">
+<button class="bg-white text-primary px-6 py-3 rounded-button font-medium shadow-lg hover:bg-gray-100 transition whitespace-nowrap">
+开始学习之旅
+</button>
+</a>
+<button class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-button font-medium hover:bg-white/10 transition whitespace-nowrap">
+了解更多
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 主体内容区 -->
+<main class="container mx-auto px-4 py-12">
+<!-- 学习路径导航 -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold">个性化学习路径</h2>
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:bg-gray-100">
+<i class="ri-arrow-left-s-line"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:bg-gray-100">
+<i class="ri-arrow-right-s-line"></i>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-100 text-primary mb-4">
+<i class="ri-vip-crown-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold mb-2">入门探索</h3>
+<p class="text-gray-600 mb-4">适合财商零基础的学员，通过趣味互动了解基础金融概念</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">5 课程 · 预计 8 小时</span>
+<button class="text-primary font-medium flex items-center whitespace-nowrap">
+开始学习 <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 text-green-600 mb-4">
+<i class="ri-line-chart-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold mb-2">进阶实践</h3>
+<p class="text-gray-600 mb-4">深入理解消费决策、预算规划和基础投资知识</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">8 课程 · 预计 15 小时</span>
+<button class="text-primary font-medium flex items-center whitespace-nowrap">
+开始学习 <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+<div class="w-12 h-12 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600 mb-4">
+<i class="ri-funds-box-line ri-lg"></i>
+</div>
+<h3 class="text-lg font-semibold mb-2">高阶挑战</h3>
+<p class="text-gray-600 mb-4">掌握复杂金融规划、投资组合和风险管理策略</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">6 课程 · 预计 12 小时</span>
+<button class="text-primary font-medium flex items-center whitespace-nowrap">
+开始学习 <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- VR消费模拟体验课程 -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+<h2 class="text-2xl font-bold mb-4 md:mb-0">VR 消费模拟体验</h2>
+<div class="flex flex-wrap gap-2">
+<div class="bg-white rounded-full px-1 py-1 shadow-sm border border-gray-100">
+<button class="px-4 py-1.5 rounded-full bg-primary text-white text-sm font-medium whitespace-nowrap">全部</button>
+<button class="px-4 py-1.5 rounded-full text-gray-600 text-sm font-medium hover:bg-gray-100 whitespace-nowrap">初级</button>
+<button class="px-4 py-1.5 rounded-full text-gray-600 text-sm font-medium hover:bg-gray-100 whitespace-nowrap">中级</button>
+<button class="px-4 py-1.5 rounded-full text-gray-600 text-sm font-medium hover:bg-gray-100 whitespace-nowrap">高级</button>
+</div>
+<div class="bg-white rounded-full px-1 py-1 shadow-sm border border-gray-100">
+<button class="px-4 py-1.5 rounded-full bg-primary text-white text-sm font-medium whitespace-nowrap">全部主题</button>
+<button class="px-4 py-1.5 rounded-full text-gray-600 text-sm font-medium hover:bg-gray-100 whitespace-nowrap">购物</button>
+<button class="px-4 py-1.5 rounded-full text-gray-600 text-sm font-medium hover:bg-gray-100 whitespace-nowrap">投资</button>
+<button class="px-4 py-1.5 rounded-full text-gray-600 text-sm font-medium hover:bg-gray-100 whitespace-nowrap">理财</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/23e82a610dd109846f88239b3b2be5d3.jpg" alt="超市购物决策" class="w-full h-full object-cover object-top">
+<div class="absolute top-3 left-3 bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded">初级</div>
+<div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">45 分钟</div>
+</div>
+<div class="p-5">
+<h3 class="text-lg font-semibold mb-2">超市购物决策模拟</h3>
+<p class="text-gray-600 text-sm mb-4">在虚拟超市环境中，学习如何在有限预算内做出明智的购物决策，辨别需求与欲望</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<div class="w-6 h-6 flex items-center justify-center text-yellow-500">
+<i class="ri-star-fill"></i>
+</div>
+<span class="font-medium">4.8</span>
+<span class="text-gray-500 text-sm">(246)</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium hover:bg-primary/90 transition whitespace-nowrap">开始体验</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/5b6f8608a02b0a0a5233a4f39079b66f.jpg" alt="投资决策" class="w-full h-full object-cover object-top">
+<div class="absolute top-3 left-3 bg-yellow-500 text-white text-xs font-medium px-2 py-1 rounded">中级</div>
+<div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">60 分钟</div>
+</div>
+<div class="p-5">
+<h3 class="text-lg font-semibold mb-2">投资风险与收益体验</h3>
+<p class="text-gray-600 text-sm mb-4">通过虚拟投资平台，体验不同投资选择的风险与收益，学习基础投资决策原则</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<div class="w-6 h-6 flex items-center justify-center text-yellow-500">
+<i class="ri-star-fill"></i>
+</div>
+<span class="font-medium">4.7</span>
+<span class="text-gray-500 text-sm">(189)</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium hover:bg-primary/90 transition whitespace-nowrap">开始体验</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/b697795741bc5722b14e4e91a180ed8a.jpg" alt="房产决策" class="w-full h-full object-cover object-top">
+<div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">高级</div>
+<div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">75 分钟</div>
+</div>
+<div class="p-5">
+<h3 class="text-lg font-semibold mb-2">房产购买与贷款规划</h3>
+<p class="text-gray-600 text-sm mb-4">在虚拟房地产市场中，学习评估房产价值、比较贷款方案并做出长期财务规划</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<div class="w-6 h-6 flex items-center justify-center text-yellow-500">
+<i class="ri-star-fill"></i>
+</div>
+<span class="font-medium">4.9</span>
+<span class="text-gray-500 text-sm">(132)</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium hover:bg-primary/90 transition whitespace-nowrap">开始体验</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/3a65b99e975c64141bd56c2a8c6b2c23.jpg" alt="网购安全" class="w-full h-full object-cover object-top">
+<div class="absolute top-3 left-3 bg-blue-500 text-white text-xs font-medium px-2 py-1 rounded">初级</div>
+<div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">40 分钟</div>
+</div>
+<div class="p-5">
+<h3 class="text-lg font-semibold mb-2">网购安全与消费者权益</h3>
+<p class="text-gray-600 text-sm mb-4">学习如何安全网购，识别潜在风险，了解消费者权益保护和退款流程</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<div class="w-6 h-6 flex items-center justify-center text-yellow-500">
+<i class="ri-star-fill"></i>
+</div>
+<span class="font-medium">4.6</span>
+<span class="text-gray-500 text-sm">(215)</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium hover:bg-primary/90 transition whitespace-nowrap">开始体验</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/30266d0102cee0e895dd4f7c0172f552.jpg" alt="信用卡管理" class="w-full h-full object-cover object-top">
+<div class="absolute top-3 left-3 bg-yellow-500 text-white text-xs font-medium px-2 py-1 rounded">中级</div>
+<div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">55 分钟</div>
+</div>
+<div class="p-5">
+<h3 class="text-lg font-semibold mb-2">信用卡管理与负债规划</h3>
+<p class="text-gray-600 text-sm mb-4">了解信用卡使用原则，学习如何避免过度负债，制定合理的还款计划</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<div class="w-6 h-6 flex items-center justify-center text-yellow-500">
+<i class="ri-star-fill"></i>
+</div>
+<span class="font-medium">4.8</span>
+<span class="text-gray-500 text-sm">(178)</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium hover:bg-primary/90 transition whitespace-nowrap">开始体验</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/ddf2319ced1ba2444e33310ffef45b59.jpg" alt="应急资金规划" class="w-full h-full object-cover object-top">
+<div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-medium px-2 py-1 rounded">高级</div>
+<div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">65 分钟</div>
+</div>
+<div class="p-5">
+<h3 class="text-lg font-semibold mb-2">应急资金规划与风险管理</h3>
+<p class="text-gray-600 text-sm mb-4">学习如何建立应急资金，应对突发财务危机，规划长期财务安全保障</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1">
+<div class="w-6 h-6 flex items-center justify-center text-yellow-500">
+<i class="ri-star-fill"></i>
+</div>
+<span class="font-medium">4.9</span>
+<span class="text-gray-500 text-sm">(146)</span>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium hover:bg-primary/90 transition whitespace-nowrap">开始体验</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-8">
+<button class="flex items-center text-primary font-medium hover:text-primary/80 transition whitespace-nowrap">
+查看更多课程 <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</section>
+<!-- KOL短剧课程专区 -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-2xl font-bold">KOL 财商短剧专区</h2>
+<div class="flex space-x-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:bg-gray-100">
+<i class="ri-arrow-left-s-line"></i>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-200 text-gray-500 hover:bg-gray-100">
+<i class="ri-arrow-right-s-line"></i>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/924e7cb78d5edf082caa6e1300d4a5db.jpg" alt="预算规划" class="w-full h-full object-cover object-top">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">10:25</div>
+<button class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 flex items-center justify-center rounded-full bg-white/30 backdrop-blur-sm text-white hover:bg-white/40 transition">
+<i class="ri-play-fill ri-2x"></i>
+</button>
+</div>
+<div class="p-5">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian female financial advisor with a friendly smile, business casual attire, clean background&width=100&height=100&seq=avatar1&orientation=squarish&removebg=false" alt="陈晓雯" class="w-full h-full object-cover">
+</div>
+<span class="font-medium text-sm">陈晓雯·理财规划师</span>
+</div>
+<div class="flex items-center space-x-3 text-gray-500 text-sm">
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-eye-line"></i>
+</div>
+<span>2.8万</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>1.2万</span>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-semibold mb-2">【理财小课堂】大学生如何制定合理预算规划</h3>
+<p class="text-gray-600 text-sm">从零开始学习如何分析收入来源、必要支出和灵活支出，建立适合大学生的预算规划方案</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/52b8bec54f5ac595700835ec25c38a9f.jpg" alt="投资入门" class="w-full h-full object-cover object-top">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">15:42</div>
+<button class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 flex items-center justify-center rounded-full bg-white/30 backdrop-blur-sm text-white hover:bg-white/40 transition">
+<i class="ri-play-fill ri-2x"></i>
+</button>
+</div>
+<div class="p-5">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian male financial expert with glasses, business casual attire, clean background&width=100&height=100&seq=avatar2&orientation=squarish&removebg=false" alt="王金融" class="w-full h-full object-cover">
+</div>
+<span class="font-medium text-sm">王金融·投资分析师</span>
+</div>
+<div class="flex items-center space-x-3 text-gray-500 text-sm">
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-eye-line"></i>
+</div>
+<span>3.5万</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>1.8万</span>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-semibold mb-2">【投资小白必看】零基础入门股票投资的五个步骤</h3>
+<p class="text-gray-600 text-sm">通俗易懂地讲解股票投资基础知识，从开户到选股，适合完全没有投资经验的年轻人</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/6df924105cad6ffc331e5e48d2522925.jpg" alt="网购陷阱" class="w-full h-full object-cover object-top">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">08:37</div>
+<button class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 flex items-center justify-center rounded-full bg-white/30 backdrop-blur-sm text-white hover:bg-white/40 transition">
+<i class="ri-play-fill ri-2x"></i>
+</button>
+</div>
+<div class="p-5">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian female lifestyle blogger with a casual style, friendly expression, clean background&width=100&height=100&seq=avatar3&orientation=squarish&removebg=false" alt="李消费" class="w-full h-full object-cover">
+</div>
+<span class="font-medium text-sm">李消费·消费评测师</span>
+</div>
+<div class="flex items-center space-x-3 text-gray-500 text-sm">
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-eye-line"></i>
+</div>
+<span>4.2万</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>2.5万</span>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-semibold mb-2">【避坑指南】网购陷阱大揭秘，这些套路千万别踩</h3>
+<p class="text-gray-600 text-sm">揭露电商平台常见的营销陷阱和消费陷阱，教你如何理性消费，避免冲动购物</p>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+<div class="relative h-48">
+<img src="https://public.readdy.ai/ai/img_res/d4e0c8c4dd6f397161270d37658683dd.jpg" alt="信用卡管理" class="w-full h-full object-cover object-top">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">12:18</div>
+<button class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 flex items-center justify-center rounded-full bg-white/30 backdrop-blur-sm text-white hover:bg-white/40 transition">
+<i class="ri-play-fill ri-2x"></i>
+</button>
+</div>
+<div class="p-5">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-full overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a middle-aged Asian male banking expert with a trustworthy expression, formal business attire, clean background&width=100&height=100&seq=avatar4&orientation=squarish&removebg=false" alt="张银行" class="w-full h-full object-cover">
+</div>
+<span class="font-medium text-sm">张银行·银行从业专家</span>
+</div>
+<div class="flex items-center space-x-3 text-gray-500 text-sm">
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-eye-line"></i>
+</div>
+<span>2.4万</span>
+</div>
+<div class="flex items-center">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>1.1万</span>
+</div>
+</div>
+</div>
+<h3 class="text-lg font-semibold mb-2">【信用卡全攻略】如何正确使用信用卡避免负债陷阱</h3>
+<p class="text-gray-600 text-sm">详解信用卡的利息计算、还款策略和常见误区，帮助年轻人建立良好的信用记录</p>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-lg font-semibold mb-4">推荐财商导师</h3>
+<div class="space-y-4">
+<div class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian female financial advisor with a friendly smile, business casual attire, clean background&width=100&height=100&seq=avatar1&orientation=squarish&removebg=false" alt="陈晓雯" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">陈晓雯</h4>
+<button class="text-primary text-sm font-medium whitespace-nowrap">关注</button>
+</div>
+<p class="text-gray-600 text-sm">理财规划师 | 个人预算专家</p>
+</div>
+</div>
+<div class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian male financial expert with glasses, business casual attire, clean background&width=100&height=100&seq=avatar2&orientation=squarish&removebg=false" alt="王金融" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">王金融</h4>
+<button class="text-primary text-sm font-medium whitespace-nowrap">关注</button>
+</div>
+<p class="text-gray-600 text-sm">投资分析师 | 股市入门导师</p>
+</div>
+</div>
+<div class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian female lifestyle blogger with a casual style, friendly expression, clean background&width=100&height=100&seq=avatar3&orientation=squarish&removebg=false" alt="李消费" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">李消费</h4>
+<button class="text-primary text-sm font-medium whitespace-nowrap">关注</button>
+</div>
+<p class="text-gray-600 text-sm">消费评测师 | 网购达人</p>
+</div>
+</div>
+<div class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a middle-aged Asian male banking expert with a trustworthy expression, formal business attire, clean background&width=100&height=100&seq=avatar4&orientation=squarish&removebg=false" alt="张银行" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">张银行</h4>
+<button class="text-primary text-sm font-medium whitespace-nowrap">关注</button>
+</div>
+<p class="text-gray-600 text-sm">银行从业专家 | 信用卡顾问</p>
+</div>
+</div>
+<div class="flex items-center p-3 rounded-lg hover:bg-gray-50 transition">
+<div class="w-12 h-12 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/699e15c400cfd02eb67e7a339ed68956.jpg" alt="赵教授" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">赵教授</h4>
+<button class="text-primary text-sm font-medium whitespace-nowrap">关注</button>
+</div>
+<p class="text-gray-600 text-sm">经济学教授 | 财商教育专家</p>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<button class="w-full py-3 border border-gray-200 rounded-button text-gray-600 font-medium hover:bg-gray-50 transition whitespace-nowrap">
+查看全部导师
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 互动学习与进度追踪 -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+<!-- 互动学习模块 -->
+<div class="lg:col-span-2 bg-white rounded-lg shadow-sm p-6">
+<h2 class="text-2xl font-bold mb-6">互动学习挑战</h2>
+<div class="mb-8">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold">财商知识测试</h3>
+<button class="text-primary text-sm font-medium whitespace-nowrap">查看全部</button>
+</div>
+<div class="space-y-4">
+<div class="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition">
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-medium">基础财务概念测试</h4>
+<span class="text-sm text-gray-500">预计用时：15 分钟</span>
+</div>
+<p class="text-gray-600 text-sm mb-3">测试你对基本财务术语、预算概念和储蓄原则的理解</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 flex items-center justify-center text-yellow-500">
+<i class="ri-award-fill"></i>
+</div>
+<span class="text-sm font-medium">奖励：50 积分</span>
+</div>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/731be0f4-d6a1-4177-ae84-589d5777fae9" data-readdy="true">
+<button class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium hover:bg-primary/90 transition whitespace-nowrap">开始测试</button>
+</a>
+</div>
+</div>
+<div class="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition">
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-medium">消费决策能力评估</h4>
+<span class="text-sm text-gray-500">预计用时：20 分钟</span>
+</div>
+<p class="text-gray-600 text-sm mb-3">通过实际案例，测试你在各种消费场景中做出明智决策的能力</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 flex items-center justify-center text-yellow-500">
+<i class="ri-award-fill"></i>
+</div>
+<span class="text-sm font-medium">奖励：80 积分</span>
+</div>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/731be0f4-d6a1-4177-ae84-589d5777fae9" data-readdy="true">
+<button class="bg-primary text-white px-4 py-2 rounded-button text-sm font-medium hover:bg-primary/90 transition whitespace-nowrap">开始测试</button>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold">实践任务</h3>
+<button class="text-primary text-sm font-medium whitespace-nowrap">查看全部</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition">
+<div class="flex items-center space-x-3 mb-3">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-primary">
+<i class="ri-money-dollar-circle-line ri-lg"></i>
+</div>
+<h4 class="font-medium">制定个人月度预算</h4>
+</div>
+<p class="text-gray-600 text-sm mb-3">使用平台提供的预算模板，记录并分析你的收入和支出，制定合理的月度预算计划</p>
+<div class="flex items-center justify-between">
+<div class="w-full max-w-[120px] h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 60%;"></div>
+</div>
+<span class="text-sm text-gray-500">60%</span>
+</div>
+</div>
+<div class="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition">
+<div class="flex items-center space-x-3 mb-3">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-green-100 text-green-600">
+<i class="ri-shopping-cart-line ri-lg"></i>
+</div>
+<h4 class="font-medium">智慧购物挑战</h4>
+</div>
+<p class="text-gray-600 text-sm mb-3">在限定预算内完成一周的生活必需品购物，并记录决策过程和节省策略</p>
+<div class="flex items-center justify-between">
+<div class="w-full max-w-[120px] h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 30%;"></div>
+</div>
+<span class="text-sm text-gray-500">30%</span>
+</div>
+</div>
+<div class="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition">
+<div class="flex items-center space-x-3 mb-3">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-purple-100 text-purple-600">
+<i class="ri-bank-card-line ri-lg"></i>
+</div>
+<h4 class="font-medium">信用评分提升计划</h4>
+</div>
+<p class="text-gray-600 text-sm mb-3">了解信用评分的构成因素，制定并执行提升个人信用评分的行动计划</p>
+<div class="flex items-center justify-between">
+<div class="w-full max-w-[120px] h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 0%;"></div>
+</div>
+<span class="text-sm text-gray-500">0%</span>
+</div>
+</div>
+<div class="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition">
+<div class="flex items-center space-x-3 mb-3">
+<div class="w-10 h-10 flex items-center justify-center rounded-lg bg-orange-100 text-orange-600">
+<i class="ri-funds-line ri-lg"></i>
+</div>
+<h4 class="font-medium">模拟投资组合</h4>
+</div>
+<p class="text-gray-600 text-sm mb-3">使用虚拟资金创建投资组合，跟踪市场变化并做出投资决策，体验投资过程</p>
+<div class="flex items-center justify-between">
+<div class="w-full max-w-[120px] h-2 bg-gray-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 45%;"></div>
+</div>
+<span class="text-sm text-gray-500">45%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 学习进度追踪 -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h2 class="text-xl font-bold mb-6">我的学习进度</h2>
+<div class="mb-6">
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-gray-50 rounded-lg p-4 text-center">
+<div class="text-2xl font-bold text-primary mb-1">28.5</div>
+<div class="text-sm text-gray-600">学习小时</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-4 text-center">
+<div class="text-2xl font-bold text-primary mb-1">12</div>
+<div class="text-sm text-gray-600">完成课程</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-4 text-center">
+<div class="text-2xl font-bold text-primary mb-1">720</div>
+<div class="text-sm text-gray-600">获得积分</div>
+</div>
+<div class="bg-gray-50 rounded-lg p-4 text-center">
+<div class="text-2xl font-bold text-primary mb-1">Lv.3</div>
+<div class="text-sm text-gray-600">当前等级</div>
+</div>
+</div>
+<div class="mb-6">
+<h3 class="text-lg font-semibold mb-4">财商能力雷达</h3>
+<div id="skills-radar" class="w-full h-64"></div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">获得的成就</h3>
+<div class="grid grid-cols-3 gap-3">
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-100 text-primary mb-2">
+<i class="ri-book-read-fill ri-xl"></i>
+</div>
+<span class="text-xs text-center">学习达人</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 flex items-center justify-center rounded-full bg-green-100 text-green-600 mb-2">
+<i class="ri-money-dollar-box-fill ri-xl"></i>
+</div>
+<span class="text-xs text-center">预算专家</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 mb-2">
+<i class="ri-vip-diamond-fill ri-xl"></i>
+</div>
+<span class="text-xs text-center text-gray-400">投资高手</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 flex items-center justify-center rounded-full bg-purple-100 text-purple-600 mb-2">
+<i class="ri-team-fill ri-xl"></i>
+</div>
+<span class="text-xs text-center">社区活跃</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 mb-2">
+<i class="ri-shield-check-fill ri-xl"></i>
+</div>
+<span class="text-xs text-center text-gray-400">风险管理</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-14 h-14 flex items-center justify-center rounded-full bg-gray-100 text-gray-400 mb-2">
+<i class="ri-bank-card-fill ri-xl"></i>
+</div>
+<span class="text-xs text-center text-gray-400">信用精通</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 社区讨论区 -->
+<section class="mb-16">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-2xl font-bold">社区讨论</h2>
+<button class="bg-primary text-white px-5 py-2 rounded-button text-sm font-medium hover:bg-primary/90 transition whitespace-nowrap">
+发布讨论
+</button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 space-y-4">
+<div class="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition">
+<div class="flex items-start mb-3">
+<div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian female college student with a casual style, friendly expression, clean background&width=100&height=100&seq=user1&orientation=squarish&removebg=false" alt="刘同学" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">刘同学</h4>
+<span class="text-sm text-gray-500">2 小时前</span>
+</div>
+<p class="text-gray-600 text-sm">大学生 | 理财新手</p>
+</div>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-semibold mb-2">大学生如何在有限预算内提高生活质量？</h3>
+<p class="text-gray-600">最近在学习预算规划课程，想知道大家有什么好的方法在有限的生活费内提高生活质量？有没有什么省钱但又不降低生活品质的小技巧可以分享？</p>
+</div>
+<div class="flex items-center space-x-4 text-sm text-gray-500">
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-message-3-line"></i>
+</div>
+<span>32 回复</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>48 点赞</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-bookmark-line"></i>
+</div>
+<span>收藏</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-share-line"></i>
+</div>
+<span>分享</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition">
+<div class="flex items-start mb-3">
+<div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian male professional with a business casual style, confident expression, clean background&width=100&height=100&seq=user2&orientation=squarish&removebg=false" alt="张先生" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">张先生</h4>
+<span class="text-sm text-gray-500">昨天 14:35</span>
+</div>
+<p class="text-gray-600 text-sm">职场新人 | 投资爱好者</p>
+</div>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-semibold mb-2">分享：我的第一次股票投资经历与心得</h3>
+<p class="text-gray-600">最近完成了王金融老师的投资入门课程后，尝试进行了人生第一次股票投资。虽然金额不大，但过程中的心理变化和决策思考很有意思，想和大家分享一下经验和教训...</p>
+</div>
+<div class="flex items-center space-x-4 text-sm text-gray-500">
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-message-3-line"></i>
+</div>
+<span>56 回复</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>87 点赞</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-bookmark-line"></i>
+</div>
+<span>收藏</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-share-line"></i>
+</div>
+<span>分享</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-5 hover:shadow-md transition">
+<div class="flex items-start mb-3">
+<div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian female professional with a smart casual style, friendly expression, clean background&width=100&height=100&seq=user3&orientation=squarish&removebg=false" alt="王女士" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium">王女士</h4>
+<span class="text-sm text-gray-500">3 天前</span>
+</div>
+<p class="text-gray-600 text-sm">上班族 | 理财达人</p>
+</div>
+</div>
+<div class="mb-4">
+<h3 class="text-lg font-semibold mb-2">讨论：VR消费模拟真的能改变我们的消费习惯吗？</h3>
+<p class="text-gray-600">最近体验了几次VR消费模拟课程，感觉很新颖，但我想知道大家是否真的因此改变了现实中的消费习惯？有没有人能分享一下实际的转变案例？</p>
+</div>
+<div class="flex items-center space-x-4 text-sm text-gray-500">
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-message-3-line"></i>
+</div>
+<span>78 回复</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-thumb-up-line"></i>
+</div>
+<span>125 点赞</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-bookmark-line"></i>
+</div>
+<span>收藏</span>
+</div>
+<div class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-1">
+<i class="ri-share-line"></i>
+</div>
+<span>分享</span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+<h3 class="text-lg font-semibold mb-4">热门话题</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-blue-50 text-primary rounded-full text-sm">#大学生理财</span>
+<span class="px-3 py-1.5 bg-green-50 text-green-600 rounded-full text-sm">#投资入门</span>
+<span class="px-3 py-1.5 bg-purple-50 text-purple-600 rounded-full text-sm">#消费心理学</span>
+<span class="px-3 py-1.5 bg-orange-50 text-orange-600 rounded-full text-sm">#省钱技巧</span>
+<span class="px-3 py-1.5 bg-red-50 text-red-600 rounded-full text-sm">#信用卡管理</span>
+<span class="px-3 py-1.5 bg-yellow-50 text-yellow-600 rounded-full text-sm">#VR体验</span>
+<span class="px-3 py-1.5 bg-indigo-50 text-indigo-600 rounded-full text-sm">#财商教育</span>
+<span class="px-3 py-1.5 bg-pink-50 text-pink-600 rounded-full text-sm">#理财规划</span>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-lg font-semibold mb-4">活跃用户</h3>
+<div class="space-y-4">
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian female college student with a casual style, friendly expression, clean background&width=100&height=100&seq=user1&orientation=squarish&removebg=false" alt="刘同学" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium text-sm">刘同学</h4>
+<span class="text-xs text-primary">32 讨论</span>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian male professional with a business casual style, confident expression, clean background&width=100&height=100&seq=user2&orientation=squarish&removebg=false" alt="张先生" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium text-sm">张先生</h4>
+<span class="text-xs text-primary">28 讨论</span>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full overflow-hidden mr-3">
+<img src="https://readdy.ai/api/search-image?query=Professional headshot of a young Asian female professional with a smart casual style, friendly expression, clean background&width=100&height=100&seq=user3&orientation=squarish&removebg=false" alt="王女士" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium text-sm">王女士</h4>
+<span class="text-xs text-primary">25 讨论</span>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/02e3276e8c0b560b1fe9761f554c64ad.jpg" alt="李教授" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium text-sm">李教授</h4>
+<span class="text-xs text-primary">22 讨论</span>
+</div>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-8 h-8 rounded-full overflow-hidden mr-3">
+<img src="https://public.readdy.ai/ai/img_res/fcf23cc9be5cafba905a7f1d66badc49.jpg" alt="赵同学" class="w-full h-full object-cover">
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-medium text-sm">赵同学</h4>
+<span class="text-xs text-primary">18 讨论</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- 页脚 -->
+<footer class="bg-gray-800 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<h3 class="text-xl font-['Pacifico'] mb-4">logo</h3>
+<p class="text-gray-400 mb-4">智财青春平台致力于为青少年提供专业、有趣的财商教育，培养健康的金钱观和消费习惯</p>
+<div class="flex space-x-4">
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+<i class="ri-wechat-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+<i class="ri-weibo-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+<i class="ri-qq-fill"></i>
+</a>
+<a href="#" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white hover:bg-primary transition">
+<i class="ri-douyin-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">快速链接</h4>
+<ul class="space-y-2 text-gray-400">
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="hover:text-white transition">首页</a></li>
+<li><a href="#" class="hover:text-white transition">教育赋能</a></li>
+<li><a href="#" class="hover:text-white transition">金融服务</a></li>
+<li><a href="#" class="hover:text-white transition">社区互动</a></li>
+<li><a href="#" class="hover:text-white transition">关于我们</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">联系我们</h4>
+<ul class="space-y-2 text-gray-400">
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>北京市海淀区中关村大街1号</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<span>contact@zhicaiqingchun.com</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<span>400-888-7777</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">订阅更新</h4>
+<p class="text-gray-400 mb-4">订阅我们的新闻通讯，获取最新的财商教育资讯和课程更新</p>
+<div class="flex">
+<input type="email" placeholder="您的邮箱地址" class="px-4 py-2 w-full bg-gray-700 border-none rounded-l text-white focus:outline-none focus:ring-2 focus:ring-primary">
+<button class="bg-primary px-4 py-2 rounded-r text-white font-medium hover:bg-primary/90 transition whitespace-nowrap">订阅</button>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-700 text-center text-gray-500 text-sm">
+<p>© 2025 智财青春平台 版权所有 | 京ICP备12345678号</p>
+</div>
+</div>
+</footer>
+<script>
+// 初始化雷达图
+const skillsRadar = echarts.init(document.getElementById('skills-radar'));
+const option = {
+animation: false,
+radar: {
+indicator: [
+{ name: '预算规划', max: 100 },
+{ name: '消费决策', max: 100 },
+{ name: '投资知识', max: 100 },
+{ name: '风险管理', max: 100 },
+{ name: '信用管理', max: 100 }
+],
+radius: 80,
+splitNumber: 4,
+axisName: {
+color: '#666',
+fontSize: 12
+},
+splitArea: {
+areaStyle: {
+color: ['#f5f5f5', '#fff']
+}
+}
+},
+series: [{
+type: 'radar',
+data: [
+{
+value: [85, 70, 45, 60, 55],
+name: '我的能力',
+areaStyle: {
+color: 'rgba(87, 181, 231, 0.1)'
+},
+lineStyle: {
+color: 'rgba(87, 181, 231, 1)'
+},
+itemStyle: {
+color: 'rgba(87, 181, 231, 1)'
+}
+}
+]
+}],
+textStyle: {
+color: '#1f2937'
+}
+};
+skillsRadar.setOption(option);
+// 自定义复选框交互
+document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+checkbox.addEventListener('click', function() {
+this.classList.toggle('checked');
+});
+});
+// 自定义开关交互
+document.querySelectorAll('.custom-switch').forEach(switchEl => {
+switchEl.addEventListener('click', function() {
+this.classList.toggle('active');
+});
+});
+// 自定义单选框交互
+document.querySelectorAll('.custom-radio').forEach(radio => {
+radio.addEventListener('click', function() {
+const name = this.getAttribute('data-name');
+if (name) {
+document.querySelectorAll(`.custom-radio[data-name="${name}"]`).forEach(r => {
+r.classList.remove('checked');
+});
+}
+this.classList.add('checked');
+});
+});
+// 窗口大小变化时重新调整图表大小
+window.addEventListener('resize', function() {
+skillsRadar.resize();
+});
+</script>
+</body>
+</html>

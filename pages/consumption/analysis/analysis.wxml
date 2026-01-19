@@ -1,0 +1,145 @@
+<!--pages/consumption/analysis/analysis.wxml-->
+<view class="container">
+  <!-- 消费概览 -->
+  <view class="overview-section">
+    <view class="section-header">
+      <text class="section-title">消费分析</text>
+      <text class="section-subtitle">了解你的消费习惯，做出更明智的财务决策</text>
+    </view>
+    
+    <view class="overview-cards">
+      <view class="overview-card">
+        <text class="card-label">本月总支出</text>
+        <text class="card-value">¥5,842</text>
+        <view class="card-change">
+          <text class="change-icon">↑</text>
+          <text class="change-value">12.3%</text>
+          <text class="change-desc">较上月</text>
+        </view>
+      </view>
+      
+      <view class="overview-card">
+        <text class="card-label">最高支出类别</text>
+        <text class="card-value">餐饮</text>
+        <text class="card-subvalue">¥1,872 · 占比 32%</text>
+      </view>
+      
+      <view class="overview-card">
+        <text class="card-label">预算完成度</text>
+        <text class="card-value">78%</text>
+        <text class="card-subvalue">已用 ¥5,842 · 剩余 ¥1,658</text>
+      </view>
+      
+      <view class="overview-card">
+        <text class="card-label">消费健康分</text>
+        <text class="card-value">76</text>
+        <view class="card-change">
+          <text class="change-icon">↑</text>
+          <text class="change-value">4 分</text>
+          <text class="change-desc">较上月</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 消费趋势 -->
+  <view class="trend-section">
+    <view class="section-header">
+      <text class="section-title">消费趋势分析</text>
+      <view class="trend-tabs">
+        <text class="tab {{activeTab === 'week' ? 'active' : ''}}" bindtap="onTabChange" data-tab="week">周</text>
+        <text class="tab {{activeTab === 'month' ? 'active' : ''}}" bindtap="onTabChange" data-tab="month">月</text>
+        <text class="tab {{activeTab === 'year' ? 'active' : ''}}" bindtap="onTabChange" data-tab="year">年</text>
+      </view>
+    </view>
+    
+    <view class="chart-container">
+      <view class="chart-placeholder">
+        <text class="placeholder-text">消费趋势图表</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 消费类别分布 -->
+  <view class="category-section">
+    <view class="section-header">
+      <text class="section-title">消费类别分布</text>
+    </view>
+    
+    <view class="chart-container">
+      <view class="chart-placeholder">
+        <text class="placeholder-text">消费类别分布图表</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 消费详情 -->
+  <view class="detail-section">
+    <view class="section-header">
+      <text class="section-title">消费明细</text>
+      <view class="detail-actions">
+        <view class="search-box">
+          <text class="search-icon">🔍</text>
+          <input class="search-input" placeholder="搜索交易" />
+        </view>
+      </view>
+    </view>
+    
+    <view class="detail-list">
+      <view class="detail-item">
+        <view class="item-info">
+          <view class="item-icon">🛒</view>
+          <view class="item-text">
+            <text class="item-name">京东超市</text>
+            <text class="item-date">2025-04-03</text>
+          </view>
+        </view>
+        <view class="item-amount">¥256.80</view>
+      </view>
+      
+      <view class="detail-item">
+        <view class="item-info">
+          <view class="item-icon">🍲</view>
+          <view class="item-text">
+            <text class="item-name">海底捞火锅</text>
+            <text class="item-date">2025-04-02</text>
+          </view>
+        </view>
+        <view class="item-amount">¥328.50</view>
+      </view>
+      
+      <view class="detail-item">
+        <view class="item-info">
+          <view class="item-icon">👕</view>
+          <view class="item-text">
+            <text class="item-name">优衣库</text>
+            <text class="item-date">2025-04-01</text>
+          </view>
+        </view>
+        <view class="item-amount">¥499.00</view>
+      </view>
+      
+      <view class="detail-item">
+        <view class="item-info">
+          <view class="item-icon">🚖</view>
+          <view class="item-text">
+            <text class="item-name">滴滴出行</text>
+            <text class="item-date">2025-03-31</text>
+          </view>
+        </view>
+        <view class="item-amount">¥45.50</view>
+      </view>
+      
+      <view class="detail-item">
+        <view class="item-info">
+          <view class="item-icon">🎬</view>
+          <view class="item-text">
+            <text class="item-name">万达影城</text>
+            <text class="item-date">2025-03-30</text>
+          </view>
+        </view>
+        <view class="item-amount">¥98.00</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智财青春 - 预算规划工具</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #297CBB;
+    cursor: pointer;
+}
+.custom-checkbox:checked + label {
+    border-color: #297CBB;
+    background-color: rgba(41, 124, 187, 0.1);
+}
+.custom-checkbox:checked + label:before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #297CBB;
+}
+.custom-switch:checked + label {
+    background-color: #297CBB;
+}
+.custom-switch:checked + label:after {
+    transform: translateX(20px);
+}
+input:focus {
+    outline: none;
+    border-color: #297CBB;
+}
+.chart-container {
+    width: 100%;
+    height: 300px;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center">
+            <div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+                <span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+            </div>
+            <span class="text-xl font-semibold text-gray-800">智财青春</span>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+            <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+            <a href="#" class="text-gray-600 hover:text-primary">消费评估</a>
+            <a href="#" class="text-gray-600 hover:text-primary">教育赋能</a>
+            <a href="#" class="text-gray-600 hover:text-primary">决策干预</a>
+            <a href="#" class="text-primary font-medium">预算规划</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+            <button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+                <i class="ri-search-line ri-lg"></i>
+            </button>
+            <button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+                <i class="ri-notification-3-line ri-lg"></i>
+            </button>
+            <div class="relative">
+                <img src="https://public.readdy.ai/ai/img_res/ea1b5484f506808fd969043a6a802057.jpg" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container mx-auto px-4 py-8">
+    <div class="flex justify-between items-center mb-8">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-900">预算规划工具</h1>
+            <p class="text-gray-600 mt-2">智能管理您的收支，实现财务目标</p>
+        </div>
+        <div class="flex space-x-4">
+            <button class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition flex items-center whitespace-nowrap">
+                <i class="ri-download-line mr-2"></i>
+                导出数据
+            </button>
+            <button class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-opacity-90 transition flex items-center whitespace-nowrap">
+                <i class="ri-add-line mr-2"></i>
+                添加记录
+            </button>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">月度预算概览</h2>
+                <div class="relative">
+                    <select class="appearance-none bg-transparent pr-8 text-gray-700 border-b border-gray-300 focus:border-primary cursor-pointer">
+                        <option>2025年4月</option>
+                        <option>2025年3月</option>
+                        <option>2025年2月</option>
+                    </select>
+                    <div class="absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                        <i class="ri-arrow-down-s-line text-gray-500"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center mb-6">
+                <div class="relative w-48 h-48">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <span class="text-3xl font-bold text-gray-900">68%</span>
+                        <span class="text-sm text-gray-600">已使用</span>
+                    </div>
+                    <div id="budgetOverviewChart" class="w-full h-full"></div>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-700">总预算</span>
+                    <span class="text-xl font-semibold text-gray-900">¥8,000</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-700">已使用</span>
+                    <span class="text-xl font-semibold text-primary">¥5,440</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-700">剩余</span>
+                    <span class="text-xl font-semibold text-secondary">¥2,560</span>
+                </div>
+                <div class="pt-4 border-t border-gray-100">
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-gray-600">距离月底还有</span>
+                        <span class="text-gray-900 font-medium">10 天</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm mt-1">
+                        <span class="text-gray-600">日均可用</span>
+                        <span class="text-gray-900 font-medium">¥256/天</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">收支趋势</h2>
+                <div class="flex space-x-2">
+                    <button class="px-3 py-1 text-sm rounded-full bg-primary bg-opacity-10 text-primary">周</button>
+                    <button class="px-3 py-1 text-sm rounded-full bg-gray-100 text-gray-700">月</button>
+                    <button class="px-3 py-1 text-sm rounded-full bg-gray-100 text-gray-700">年</button>
+                </div>
+            </div>
+            <div id="incomeExpenseChart" class="chart-container"></div>
+            <div class="flex justify-between mt-4">
+                <div class="flex items-center">
+                    <div class="w-3 h-3 rounded-full bg-[#57B5E7] mr-2"></div>
+                    <span class="text-sm text-gray-700">支出: ¥5,440</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-3 h-3 rounded-full bg-[#8DD3C7] mr-2"></div>
+                    <span class="text-sm text-gray-700">收入: ¥9,200</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-3 h-3 rounded-full bg-[#FBBF72] mr-2"></div>
+                    <span class="text-sm text-gray-700">结余: ¥3,760</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">支出分类</h2>
+                <button class="text-primary text-sm flex items-center">
+                    查看详情
+                    <i class="ri-arrow-right-s-line ml-1"></i>
+                </button>
+            </div>
+            <div id="expenseCategoryChart" class="chart-container"></div>
+            <div class="space-y-3 mt-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-[#57B5E7] mr-2"></div>
+                        <span class="text-sm text-gray-700">餐饮</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-sm font-medium text-gray-900 mr-2">¥1,850</span>
+                        <span class="text-xs text-gray-500">34%</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-[#8DD3C7] mr-2"></div>
+                        <span class="text-sm text-gray-700">住房</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-sm font-medium text-gray-900 mr-2">¥1,500</span>
+                        <span class="text-xs text-gray-500">28%</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-[#FBBF72] mr-2"></div>
+                        <span class="text-sm text-gray-700">交通</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-sm font-medium text-gray-900 mr-2">¥820</span>
+                        <span class="text-xs text-gray-500">15%</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-[#FC8D62] mr-2"></div>
+                        <span class="text-sm text-gray-700">购物</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-sm font-medium text-gray-900 mr-2">¥650</span>
+                        <span class="text-xs text-gray-500">12%</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-[#66C2A5] mr-2"></div>
+                        <span class="text-sm text-gray-700">其他</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-sm font-medium text-gray-900 mr-2">¥620</span>
+                        <span class="text-xs text-gray-500">11%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div class="lg:col-span-2 bg-white rounded-lg shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">预算分配</h2>
+                <button class="text-primary text-sm flex items-center">
+                    调整预算
+                    <i class="ri-settings-4-line ml-1"></i>
+                </button>
+            </div>
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mr-3">
+                                <i class="ri-restaurant-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-900 font-medium">餐饮</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm text-gray-700 mr-4">¥1,850 / ¥2,000</span>
+                            <span class="text-sm font-medium text-primary">93%</span>
+                        </div>
+                    </div>
+                    <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 93%"></div>
+                    </div>
+                    <div class="flex justify-between mt-1">
+                        <span class="text-xs text-gray-500">已超出预期进度 18%</span>
+                        <span class="text-xs text-gray-500">剩余: ¥150</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-secondary bg-opacity-10 flex items-center justify-center mr-3">
+                                <i class="ri-home-line text-secondary"></i>
+                            </div>
+                            <span class="text-gray-900 font-medium">住房</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm text-gray-700 mr-4">¥1,500 / ¥1,500</span>
+                            <span class="text-sm font-medium text-secondary">100%</span>
+                        </div>
+                    </div>
+                    <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="absolute top-0 left-0 h-full bg-secondary rounded-full" style="width: 100%"></div>
+                    </div>
+                    <div class="flex justify-between mt-1">
+                        <span class="text-xs text-gray-500">固定支出已完成</span>
+                        <span class="text-xs text-gray-500">剩余: ¥0</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-[#FBBF72] bg-opacity-10 flex items-center justify-center mr-3">
+                                <i class="ri-car-line text-[#FBBF72]"></i>
+                            </div>
+                            <span class="text-gray-900 font-medium">交通</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm text-gray-700 mr-4">¥820 / ¥1,200</span>
+                            <span class="text-sm font-medium text-[#FBBF72]">68%</span>
+                        </div>
+                    </div>
+                    <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="absolute top-0 left-0 h-full bg-[#FBBF72] rounded-full" style="width: 68%"></div>
+                    </div>
+                    <div class="flex justify-between mt-1">
+                        <span class="text-xs text-gray-500">进度正常</span>
+                        <span class="text-xs text-gray-500">剩余: ¥380</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-[#FC8D62] bg-opacity-10 flex items-center justify-center mr-3">
+                                <i class="ri-shopping-bag-line text-[#FC8D62]"></i>
+                            </div>
+                            <span class="text-gray-900 font-medium">购物</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm text-gray-700 mr-4">¥650 / ¥1,000</span>
+                            <span class="text-sm font-medium text-[#FC8D62]">65%</span>
+                        </div>
+                    </div>
+                    <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="absolute top-0 left-0 h-full bg-[#FC8D62] rounded-full" style="width: 65%"></div>
+                    </div>
+                    <div class="flex justify-between mt-1">
+                        <span class="text-xs text-gray-500">进度正常</span>
+                        <span class="text-xs text-gray-500">剩余: ¥350</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-[#66C2A5] bg-opacity-10 flex items-center justify-center mr-3">
+                                <i class="ri-more-line text-[#66C2A5]"></i>
+                            </div>
+                            <span class="text-gray-900 font-medium">其他</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm text-gray-700 mr-4">¥620 / ¥1,300</span>
+                            <span class="text-sm font-medium text-[#66C2A5]">48%</span>
+                        </div>
+                    </div>
+                    <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="absolute top-0 left-0 h-full bg-[#66C2A5] rounded-full" style="width: 48%"></div>
+                    </div>
+                    <div class="flex justify-between mt-1">
+                        <span class="text-xs text-gray-500">支出低于预期</span>
+                        <span class="text-xs text-gray-500">剩余: ¥680</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-[#8DD3C7] bg-opacity-10 flex items-center justify-center mr-3">
+                                <i class="ri-bank-line text-[#8DD3C7]"></i>
+                            </div>
+                            <span class="text-gray-900 font-medium">储蓄</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm text-gray-700 mr-4">¥0 / ¥1,000</span>
+                            <span class="text-sm font-medium text-[#8DD3C7]">0%</span>
+                        </div>
+                    </div>
+                    <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="absolute top-0 left-0 h-full bg-[#8DD3C7] rounded-full" style="width: 0%"></div>
+                    </div>
+                    <div class="flex justify-between mt-1">
+                        <span class="text-xs text-gray-500">尚未存入</span>
+                        <span class="text-xs text-gray-500">剩余: ¥1,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">智能建议</h2>
+                <button class="text-primary text-sm flex items-center">
+                    刷新
+                    <i class="ri-refresh-line ml-1"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-primary bg-opacity-5 p-4 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center flex-shrink-0 mr-3">
+                            <i class="ri-alert-line text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-gray-900 font-medium mb-1">餐饮预算预警</h3>
+                            <p class="text-sm text-gray-600">您的餐饮支出已达预算的93%，按当前消费速度将在3天内超出预算。建议减少外卖频率，尝试自己做饭。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-secondary bg-opacity-5 p-4 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 rounded-full bg-secondary bg-opacity-10 flex items-center justify-center flex-shrink-0 mr-3">
+                            <i class="ri-lightbulb-line text-secondary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-gray-900 font-medium mb-1">储蓄提醒</h3>
+                            <p class="text-sm text-gray-600">本月尚未进行储蓄。建议将剩余预算的30%（约¥768）转入储蓄账户，以实现您的长期财务目标。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-4 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0 mr-3">
+                            <i class="ri-line-chart-line text-gray-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-gray-900 font-medium mb-1">消费模式分析</h3>
+                            <p class="text-sm text-gray-600">您的餐饮支出比上月增加了15%，主要来自工作日午餐外卖。考虑准备便当或选择更经济的午餐选项。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#FBBF72] bg-opacity-5 p-4 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 rounded-full bg-[#FBBF72] bg-opacity-10 flex items-center justify-center flex-shrink-0 mr-3">
+                            <i class="ri-money-cny-circle-line text-[#FBBF72]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-gray-900 font-medium mb-1">节省机会</h3>
+                            <p class="text-sm text-gray-600">发现您订阅了3个重复的流媒体服务。合并订阅可每月节省约¥45，一年可节省¥540。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="w-full mt-2 text-primary text-sm flex items-center justify-center">
+                    查看更多建议
+                    <i class="ri-arrow-down-s-line ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div class="lg:col-span-2 bg-white rounded-lg shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">最近交易</h2>
+                <div class="flex items-center">
+                    <div class="relative mr-4">
+                        <input type="text" placeholder="搜索交易" class="pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+                            <i class="ri-search-line text-gray-400"></i>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <select class="appearance-none bg-transparent pr-8 text-gray-700 border-b border-gray-300 focus:border-primary cursor-pointer text-sm">
+                            <option>全部分类</option>
+                            <option>餐饮</option>
+                            <option>住房</option>
+                            <option>交通</option>
+                            <option>购物</option>
+                            <option>其他</option>
+                        </select>
+                        <div class="absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                            <i class="ri-arrow-down-s-line text-gray-500"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-500">日期</th>
+                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-500">描述</th>
+                            <th class="text-left py-3 px-4 text-sm font-medium text-gray-500">分类</th>
+                            <th class="text-right py-3 px-4 text-sm font-medium text-gray-500">金额</th>
+                            <th class="text-center py-3 px-4 text-sm font-medium text-gray-500">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4 text-sm text-gray-700">2025-04-04</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">美团外卖 - 午餐</td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary bg-opacity-10 text-primary">
+                                    餐饮
+                                </span>
+                            </td>
+                            <td class="py-3 px-4 text-sm text-red-500 text-right">-¥38</td>
+                            <td class="py-3 px-4 text-center">
+                                <button class="text-gray-500 hover:text-primary">
+                                    <i class="ri-more-2-fill"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4 text-sm text-gray-700">2025-04-03</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">滴滴出行 - 打车</td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FBBF72] bg-opacity-10 text-[#FBBF72]">
+                                    交通
+                                </span>
+                            </td>
+                            <td class="py-3 px-4 text-sm text-red-500 text-right">-¥45</td>
+                            <td class="py-3 px-4 text-center">
+                                <button class="text-gray-500 hover:text-primary">
+                                    <i class="ri-more-2-fill"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4 text-sm text-gray-700">2025-04-03</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">工资入账</td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    收入
+                                </span>
+                            </td>
+                            <td class="py-3 px-4 text-sm text-green-500 text-right">+¥9,200</td>
+                            <td class="py-3 px-4 text-center">
+                                <button class="text-gray-500 hover:text-primary">
+                                    <i class="ri-more-2-fill"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4 text-sm text-gray-700">2025-04-02</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">京东 - 生活用品</td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FC8D62] bg-opacity-10 text-[#FC8D62]">
+                                    购物
+                                </span>
+                            </td>
+                            <td class="py-3 px-4 text-sm text-red-500 text-right">-¥128</td>
+                            <td class="py-3 px-4 text-center">
+                                <button class="text-gray-500 hover:text-primary">
+                                    <i class="ri-more-2-fill"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4 text-sm text-gray-700">2025-04-01</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">房租</td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary bg-opacity-10 text-secondary">
+                                    住房
+                                </span>
+                            </td>
+                            <td class="py-3 px-4 text-sm text-red-500 text-right">-¥1,500</td>
+                            <td class="py-3 px-4 text-center">
+                                <button class="text-gray-500 hover:text-primary">
+                                    <i class="ri-more-2-fill"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50">
+                            <td class="py-3 px-4 text-sm text-gray-700">2025-03-31</td>
+                            <td class="py-3 px-4 text-sm text-gray-700">星巴克 - 咖啡</td>
+                            <td class="py-3 px-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary bg-opacity-10 text-primary">
+                                    餐饮
+                                </span>
+                            </td>
+                            <td class="py-3 px-4 text-sm text-red-500 text-right">-¥32</td>
+                            <td class="py-3 px-4 text-center">
+                                <button class="text-gray-500 hover:text-primary">
+                                    <i class="ri-more-2-fill"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="flex justify-between items-center mt-4">
+                <div class="text-sm text-gray-500">显示 1-6 条，共 42 条</div>
+                <div class="flex space-x-1">
+                    <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 text-gray-500 hover:border-primary hover:text-primary">
+                        <i class="ri-arrow-left-s-line"></i>
+                    </button>
+                    <button class="w-8 h-8 flex items-center justify-center rounded border border-primary bg-primary text-white">1</button>
+                    <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 text-gray-700 hover:border-primary hover:text-primary">2</button>
+                    <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 text-gray-700 hover:border-primary hover:text-primary">3</button>
+                    <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-300 text-gray-500 hover:border-primary hover:text-primary">
+                        <i class="ri-arrow-right-s-line"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">快速添加</h2>
+                <button class="text-primary text-sm">
+                    高级模式
+                </button>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">交易类型</label>
+                    <div class="flex space-x-4">
+                        <div class="flex-1">
+                            <input type="radio" id="expense" name="transactionType" class="hidden custom-checkbox" checked>
+                            <label for="expense" class="flex items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:border-primary text-center relative">
+                                <span class="text-gray-900">支出</span>
+                            </label>
+                        </div>
+                        <div class="flex-1">
+                            <input type="radio" id="income" name="transactionType" class="hidden custom-checkbox">
+                            <label for="income" class="flex items-center justify-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:border-primary text-center relative">
+                                <span class="text-gray-900">收入</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">金额</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">¥</span>
+                        <input type="text" class="w-full pl-8 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="0.00">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">分类</label>
+                    <div class="grid grid-cols-4 gap-2">
+                        <div>
+                            <input type="radio" id="cat1" name="category" class="hidden custom-checkbox" checked>
+                            <label for="cat1" class="flex flex-col items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:border-primary text-center relative">
+                                <div class="w-8 h-8 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mb-1">
+                                    <i class="ri-restaurant-line text-primary"></i>
+                                </div>
+                                <span class="text-xs text-gray-700">餐饮</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cat2" name="category" class="hidden custom-checkbox">
+                            <label for="cat2" class="flex flex-col items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:border-primary text-center relative">
+                                <div class="w-8 h-8 rounded-full bg-secondary bg-opacity-10 flex items-center justify-center mb-1">
+                                    <i class="ri-home-line text-secondary"></i>
+                                </div>
+                                <span class="text-xs text-gray-700">住房</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cat3" name="category" class="hidden custom-checkbox">
+                            <label for="cat3" class="flex flex-col items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:border-primary text-center relative">
+                                <div class="w-8 h-8 rounded-full bg-[#FBBF72] bg-opacity-10 flex items-center justify-center mb-1">
+                                    <i class="ri-car-line text-[#FBBF72]"></i>
+                                </div>
+                                <span class="text-xs text-gray-700">交通</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cat4" name="category" class="hidden custom-checkbox">
+                            <label for="cat4" class="flex flex-col items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:border-primary text-center relative">
+                                <div class="w-8 h-8 rounded-full bg-[#FC8D62] bg-opacity-10 flex items-center justify-center mb-1">
+                                    <i class="ri-shopping-bag-line text-[#FC8D62]"></i>
+                                </div>
+                                <span class="text-xs text-gray-700">购物</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cat5" name="category" class="hidden custom-checkbox">
+                            <label for="cat5" class="flex flex-col items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:border-primary text-center relative">
+                                <div class="w-8 h-8 rounded-full bg-[#8DD3C7] bg-opacity-10 flex items-center justify-center mb-1">
+                                    <i class="ri-bank-line text-[#8DD3C7]"></i>
+                                </div>
+                                <span class="text-xs text-gray-700">储蓄</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cat6" name="category" class="hidden custom-checkbox">
+                            <label for="cat6" class="flex flex-col items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:border-primary text-center relative">
+                                <div class="w-8 h-8 rounded-full bg-[#66C2A5] bg-opacity-10 flex items-center justify-center mb-1">
+                                    <i class="ri-heart-pulse-line text-[#66C2A5]"></i>
+                                </div>
+                                <span class="text-xs text-gray-700">健康</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cat7" name="category" class="hidden custom-checkbox">
+                            <label for="cat7" class="flex flex-col items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:border-primary text-center relative">
+                                <div class="w-8 h-8 rounded-full bg-[#A6D854] bg-opacity-10 flex items-center justify-center mb-1">
+                                    <i class="ri-gamepad-line text-[#A6D854]"></i>
+                                </div>
+                                <span class="text-xs text-gray-700">娱乐</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="cat8" name="category" class="hidden custom-checkbox">
+                            <label for="cat8" class="flex flex-col items-center p-2 border border-gray-300 rounded-lg cursor-pointer hover:border-primary text-center relative">
+                                <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mb-1">
+                                    <i class="ri-more-line text-gray-500"></i>
+                                </div>
+                                <span class="text-xs text-gray-700">其他</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">描述（选填）</label>
+                    <input type="text" class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="添加交易描述">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">日期</label>
+                    <div class="relative">
+                        <input type="date" class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" value="2025-04-04">
+                        <div class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                            <i class="ri-calendar-line text-gray-500"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                    保存交易
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">支出趋势分析</h2>
+                <div class="relative">
+                    <select class="appearance-none bg-transparent pr-8 text-gray-700 border-b border-gray-300 focus:border-primary cursor-pointer">
+                        <option>近6个月</option>
+                        <option>近12个月</option>
+                        <option>今年</option>
+                    </select>
+                    <div class="absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                        <i class="ri-arrow-down-s-line text-gray-500"></i>
+                    </div>
+                </div>
+            </div>
+            <div id="expenseTrendChart" class="chart-container"></div>
+            <div class="mt-4">
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-gray-600">平均月支出:</span>
+                    <span class="font-medium text-gray-900">¥5,820</span>
+                </div>
+                <div class="flex items-center justify-between text-sm mt-1">
+                    <span class="text-gray-600">支出增长率:</span>
+                    <span class="font-medium text-red-500">+8.3%</span>
+                </div>
+                <div class="flex items-center justify-between text-sm mt-1">
+                    <span class="text-gray-600">最高支出月份:</span>
+                    <span class="font-medium text-gray-900">2025年1月 (¥7,450)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900">储蓄目标进度</h2>
+                <button class="text-primary text-sm flex items-center">
+                    设置新目标
+                    <i class="ri-add-line ml-1"></i>
+                </button>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mr-3">
+                                <i class="ri-flight-takeoff-line text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-gray-900 font-medium">旅行基金</h3>
+                                <p class="text-xs text-gray-500">目标日期: 2025年8月</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-semibold text-primary">35%</span>
+                    </div>
+                    <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden mb-2">
+                        <div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 35%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500">
+                        <span>已存 ¥3,500</span>
+                        <span>目标 ¥10,000</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-secondary bg-opacity-10 flex items-center justify-center mr-3">
+                                <i class="ri-computer-line text-secondary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-gray-900 font-medium">新电脑</h3>
+                                <p class="text-xs text-gray-500">目标日期: 2025年6月</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-semibold text-secondary">68%</span>
+                    </div>
+                    <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden mb-2">
+                        <div class="absolute top-0 left-0 h-full bg-secondary rounded-full" style="width: 68%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500">
+                        <span>已存 ¥5,440</span>
+                        <span>目标 ¥8,000</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-[#FBBF72] bg-opacity-10 flex items-center justify-center mr-3">
+                                <i class="ri-bank-line text-[#FBBF72]"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-gray-900 font-medium">紧急备用金</h3>
+                                <p class="text-xs text-gray-500">长期目标</p>
+                            </div>
+                        </div>
+                        <span class="text-lg font-semibold text-[#FBBF72]">12%</span>
+                    </div>
+                    <div class="relative h-2 bg-gray-200 rounded-full overflow-hidden mb-2">
+                        <div class="absolute top-0 left-0 h-full bg-[#FBBF72] rounded-full" style="width: 12%"></div>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500">
+                        <span>已存 ¥3,600</span>
+                        <span>目标 ¥30,000</span>
+                    </div>
+                </div>
+
+                <div class="mt-2">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-600">总储蓄额:</span>
+                        <span class="font-medium text-gray-900">¥12,540</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm mt-1">
+                        <span class="text-gray-600">月均储蓄:</span>
+                        <span class="font-medium text-gray-900">¥1,850</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm mt-1">
+                        <span class="text-gray-600">储蓄率:</span>
+                        <span class="font-medium text-green-500">20.1%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-semibold text-gray-900">预算规划助手</h2>
+            <button class="text-primary text-sm flex items-center">
+                自定义规则
+                <i class="ri-settings-4-line ml-1"></i>
+            </button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center flex-shrink-0 mr-3">
+                        <i class="ri-pie-chart-line text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-900 font-medium mb-2">收入分配建议</h3>
+                        <div class="space-y-2">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-600">基础生活</span>
+                                    <span class="text-gray-900">50%</span>
+                                </div>
+                                <div class="relative h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-600">储蓄投资</span>
+                                    <span class="text-gray-900">30%</span>
+                                </div>
+                                <div class="relative h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="absolute top-0 left-0 h-full bg-secondary rounded-full" style="width: 30%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-600">自由支配</span>
+                                    <span class="text-gray-900">20%</span>
+                                </div>
+                                <div class="relative h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="absolute top-0 left-0 h-full bg-[#FBBF72] rounded-full" style="width: 20%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-3">基于您的收入水平和财务目标，我们建议采用50/30/20法则进行预算分配。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-secondary bg-opacity-10 flex items-center justify-center flex-shrink-0 mr-3">
+                        <i class="ri-calendar-check-line text-secondary"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-900 font-medium mb-2">自动储蓄计划</h3>
+                        <p class="text-sm text-gray-600 mb-3">设置自动转账，在每次收到工资时自动将一部分资金转入储蓄账户。</p>
+                        <div class="flex items-center mb-3">
+                            <span class="text-sm text-gray-700 mr-2">启用自动储蓄:</span>
+                            <div class="relative inline-block w-10 h-6">
+                                <input type="checkbox" class="hidden custom-switch" id="autoSave" checked>
+                                <label for="autoSave" class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                                    <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm text-gray-700 mr-2">储蓄比例:</span>
+                            <div class="relative flex-1">
+                                <select class="w-full appearance-none bg-white border border-gray-300 rounded py-1 px-2 text-sm">
+                                    <option>10%</option>
+                                    <option>15%</option>
+                                    <option selected>20%</option>
+                                    <option>25%</option>
+                                    <option>30%</option>
+                                </select>
+                                <div class="absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                    <i class="ri-arrow-down-s-line text-gray-500 text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="flex items-start">
+                    <div class="w-10 h-10 rounded-full bg-[#FBBF72] bg-opacity-10 flex items-center justify-center flex-shrink-0 mr-3">
+                        <i class="ri-notification-3-line text-[#FBBF72]"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-900 font-medium mb-2">预算提醒设置</h3>
+                        <p class="text-sm text-gray-600 mb-3">自定义预算预警阈值，在接近预算限制时收到通知。</p>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-700">预算达到75%</span>
+                                <div class="relative inline-block w-10 h-6">
+                                    <input type="checkbox" class="hidden custom-switch" id="alert75" checked>
+                                    <label for="alert75" class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                                        <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-700">预算达到90%</span>
+                                <div class="relative inline-block w-10 h-6">
+                                    <input type="checkbox" class="hidden custom-switch" id="alert90" checked>
+                                    <label for="alert90" class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                                        <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-700">预算超支提醒</span>
+                                <div class="relative inline-block w-10 h-6">
+                                    <input type="checkbox" class="hidden custom-switch" id="alertOver" checked>
+                                    <label for="alertOver" class="block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer transition-all duration-300 w-12">
+                                        <span class="absolute w-4 h-4 rounded-full bg-white shadow-md transform transition-transform duration-300 left-1 top-1"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <div class="flex items-center mb-4">
+                    <div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-1.5 rounded-lg mr-2">
+                        <span class="text-2xl font-['Pacifico'] text-white">ZCQ</span>
+                    </div>
+                    <span class="text-lg font-semibold">智财青春</span>
+                </div>
+                <p class="text-gray-400 mb-4">数据驱动的青年消费智慧平台</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+                        <i class="ri-weibo-fill"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+                        <i class="ri-wechat-fill"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+                        <i class="ri-douban-fill"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">产品服务</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">消费评估</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">VR 体验课程</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">AR 购物助手</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">预算规划工具</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">关于我们</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">平台介绍</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">团队成员</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">帮助中心</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">用户手册</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">隐私政策</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">服务条款</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 智财青春. 保留所有权利.</p>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center text-gray-400">
+                    <i class="ri-visa-fill ri-lg mr-2"></i>
+                    <i class="ri-mastercard-fill ri-lg mr-2"></i>
+                    <i class="ri-paypal-fill ri-lg mr-2"></i>
+                    <i class="ri-alipay-fill ri-lg"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+    // 预算概览环形图
+    const budgetOverviewChart = echarts.init(document.getElementById('budgetOverviewChart'));
+    const budgetOverviewOption = {
+        animation: false,
+        series: [{
+            type: 'pie',
+            radius: ['70%', '90%'],
+            avoidLabelOverlap: false,
+            label: {
+                show: false
+            },
+            emphasis: {
+                label: {
+                    show: false
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data: [
+                { value: 68, name: '已使用', itemStyle: { color: '#297CBB' } },
+                { value: 32, name: '剩余', itemStyle: { color: '#E5E7EB' } }
+            ]
+        }]
+    };
+    budgetOverviewChart.setOption(budgetOverviewOption);
+
+    // 收支趋势图
+    const incomeExpenseChart = echarts.init(document.getElementById('incomeExpenseChart'));
+    const incomeExpenseOption = {
+        animation: false,
+        tooltip: {
+            trigger: 'axis',
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            borderColor: '#eee',
+            borderWidth: 1,
+            textStyle: {
+                color: '#1f2937'
+            }
+        },
+        legend: {
+            data: ['支出', '收入', '结余'],
+            bottom: 0,
+            textStyle: {
+                color: '#1f2937'
+            }
+        },
+        grid: {
+            top: 10,
+            right: 10,
+            bottom: 30,
+            left: 40
+        },
+        xAxis: {
+            type: 'category',
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+            axisLine: {
+                lineStyle: {
+                    color: '#ddd'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937'
+            }
+        },
+        yAxis: {
+            type: 'value',
+            axisLine: {
+                lineStyle: {
+                    color: '#ddd'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937',
+                formatter: '¥{value}'
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#eee'
+                }
+            }
+        },
+        series: [
+            {
+                name: '支出',
+                type: 'bar',
+                data: [320, 180, 450, 280, 900, 1200, 500],
+                itemStyle: {
+                    color: '#57B5E7'
+                }
+            },
+            {
+                name: '收入',
+                type: 'bar',
+                data: [120, 0, 9000, 0, 0, 0, 0],
+                itemStyle: {
+                    color: '#8DD3C7'
+                }
+            },
+            {
+                name: '结余',
+                type: 'line',
+                smooth: true,
+                symbol: 'none',
+                data: [-200, -180, 8550, -280, -900, -1200, -500],
+                lineStyle: {
+                    color: '#FBBF72'
+                }
+            }
+        ]
+    };
+    incomeExpenseChart.setOption(incomeExpenseOption);
+
+    // 支出分类饼图
+    const expenseCategoryChart = echarts.init(document.getElementById('expenseCategoryChart'));
+    const expenseCategoryOption = {
+        animation: false,
+        tooltip: {
+            trigger: 'item',
+            formatter: '{b}: ¥{c} ({d}%)',
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            borderColor: '#eee',
+            borderWidth: 1,
+            textStyle: {
+                color: '#1f2937'
+            }
+        },
+        series: [{
+            name: '支出分类',
+            type: 'pie',
+            radius: '70%',
+            center: ['50%', '50%'],
+            data: [
+                { value: 1850, name: '餐饮', itemStyle: { color: '#57B5E7' } },
+                { value: 1500, name: '住房', itemStyle: { color: '#8DD3C7' } },
+                { value: 820, name: '交通', itemStyle: { color: '#FBBF72' } },
+                { value: 650, name: '购物', itemStyle: { color: '#FC8D62' } },
+                { value: 620, name: '其他', itemStyle: { color: '#66C2A5' } }
+            ],
+            emphasis: {
+                itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            },
+            label: {
+                show: false
+            },
+            labelLine: {
+                show: false
+            },
+            itemStyle: {
+                borderRadius: 8,
+                borderColor: '#fff',
+                borderWidth: 2
+            }
+        }]
+    };
+    expenseCategoryChart.setOption(expenseCategoryOption);
+
+    // 支出趋势分析图
+    const expenseTrendChart = echarts.init(document.getElementById('expenseTrendChart'));
+    const expenseTrendOption = {
+        animation: false,
+        tooltip: {
+            trigger: 'axis',
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            borderColor: '#eee',
+            borderWidth: 1,
+            textStyle: {
+                color: '#1f2937'
+            }
+        },
+        grid: {
+            top: 10,
+            right: 10,
+            bottom: 30,
+            left: 50
+        },
+        xAxis: {
+            type: 'category',
+            data: ['11月', '12月', '1月', '2月', '3月', '4月'],
+            axisLine: {
+                lineStyle: {
+                    color: '#ddd'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937'
+            }
+        },
+        yAxis: {
+            type: 'value',
+            axisLine: {
+                lineStyle: {
+                    color: '#ddd'
+                }
+            },
+            axisLabel: {
+                color: '#1f2937',
+                formatter: '¥{value}'
+            },
+            splitLine: {
+                lineStyle: {
+                    color: '#eee'
+                }
+            }
+        },
+        series: [
+            {
+                name: '总支出',
+                type: 'line',
+                smooth: true,
+                symbol: 'none',
+                data: [5200, 5800, 7450, 5100, 5900, 5440],
+                lineStyle: {
+                    width: 3,
+                    color: '#57B5E7'
+                },
+                areaStyle: {
+                    color: {
+                        type: 'linear',
+                        x: 0,
+                        y: 0,
+                        x2: 0,
+                        y2: 1,
+                        colorStops: [{
+                            offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+                        }, {
+                            offset: 1, color: 'rgba(87, 181, 231, 0.05)'
+                        }]
+                    }
+                }
+            },
+            {
+                name: '餐饮',
+                type: 'line',
+                smooth: true,
+                symbol: 'none',
+                data: [1600, 1750, 1900, 1650, 1800, 1850],
+                lineStyle: {
+                    width: 2,
+                    color: '#8DD3C7'
+                }
+            },
+            {
+                name: '住房',
+                type: 'line',
+                smooth: true,
+                symbol: 'none',
+                data: [1500, 1500, 1500, 1500, 1500, 1500],
+                lineStyle: {
+                    width: 2,
+                    color: '#FBBF72'
+                }
+            }
+        ],
+        legend: {
+            data: ['总支出', '餐饮', '住房'],
+            bottom: 0,
+            textStyle: {
+                color: '#1f2937'
+            }
+        }
+    };
+    expenseTrendChart.setOption(expenseTrendOption);
+
+    // 响应式调整
+    window.addEventListener('resize', function() {
+        budgetOverviewChart.resize();
+        incomeExpenseChart.resize();
+        expenseCategoryChart.resize();
+        expenseTrendChart.resize();
+    });
+
+    // 自定义复选框和开关交互
+    document.querySelectorAll('.custom-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const labels = document.querySelectorAll(`label[for="${this.id}"]`);
+            labels.forEach(label => {
+                if (this.checked) {
+                    label.classList.add('border-primary', 'bg-primary', 'bg-opacity-10');
+                } else {
+                    label.classList.remove('border-primary', 'bg-primary', 'bg-opacity-10');
+                }
+            });
+        });
+    });
+
+    document.querySelectorAll('.custom-switch').forEach(switchEl => {
+        switchEl.addEventListener('change', function() {
+            const label = document.querySelector(`label[for="${this.id}"]`);
+            if (this.checked) {
+                label.classList.add('bg-primary');
+                label.querySelector('span').style.transform = 'translateX(20px)';
+            } else {
+                label.classList.remove('bg-primary');
+                label.querySelector('span').style.transform = 'translateX(0)';
+            }
+        });
+    });
+</script>
+</body>
+</html>

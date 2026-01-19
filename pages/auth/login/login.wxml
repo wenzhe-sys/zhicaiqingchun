@@ -1,0 +1,23 @@
+<!-- pages/auth/login/login.wxml -->
+<view class="container">
+  <view class="form-container">
+    <view class="title">用户登录</view>
+    
+    <view class="input-group">
+      <text class="label">邮箱</text>
+      <input type="text" placeholder="请输入邮箱" bindinput="onEmailInput" value="{{email}}" />
+    </view>
+    
+    <view class="input-group">
+      <text class="label">密码</text>
+      <input type="password" placeholder="请输入密码" bindinput="onPasswordInput" value="{{password}}" />
+    </view>
+    
+    <button class="btn-primary" bindtap="onLogin">登录</button>
+    
+    <view class="login-link">
+      <text>还没有账号？</text>
+      <navigator url="/pages/auth/register/register">去注册</navigator>
+    </view>
+  </view>
+</view>

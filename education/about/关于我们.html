@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智财青春 - 关于我们</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#64748b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+.custom-shadow {
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+.timeline-item:not(:last-child)::after {
+content: '';
+position: absolute;
+left: 27px;
+top: 40px;
+bottom: -20px;
+width: 2px;
+background-color: #e5e7eb;
+}
+.partner-logo {
+transition: all 0.3s ease;
+}
+.partner-logo:hover {
+transform: translateY(-5px);
+}
+.team-card {
+transition: all 0.3s ease;
+}
+.team-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+.team-card .team-info {
+opacity: 0;
+transform: translateY(20px);
+transition: all 0.3s ease;
+}
+.team-card:hover .team-info {
+opacity: 1;
+transform: translateY(0);
+}
+.mission-card {
+transition: all 0.3s ease;
+}
+.mission-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+.contact-info-item {
+transition: all 0.2s ease;
+}
+.contact-info-item:hover {
+background-color: #f0f9ff;
+}
+.join-us-card {
+transition: all 0.3s ease;
+}
+.join-us-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+.logo-animation {
+animation: pulse 2s infinite alternate;
+}
+@keyframes pulse {
+0% {
+  transform: scale(1);
+  box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+}
+100% {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+}
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- 导航栏 -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center mr-10">
+  <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-2 logo-animation">
+    <i class="ri-coin-line text-white text-xl"></i>
+  </div>
+  <span class="font-['Pacifico'] text-2xl text-primary">智财青春</span>
+</a>
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="text-gray-600 hover:text-primary">教育赋能</a>
+<a href="#" class="text-gray-600 hover:text-primary">金融服务</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/4281f937-ed72-45c2-988e-271aff319dc6" data-readdy="true" class="text-gray-600 hover:text-primary">社区互动</a>
+<a href="#" class="text-primary font-medium border-b-2 border-primary pb-1">关于我们</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<input type="text" placeholder="搜索内容" class="pl-10 pr-4 py-2 w-64 rounded border-none bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20">
+<div class="absolute left-3 top-2.5 w-4 h-4 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<div class="flex items-center space-x-1">
+<div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+<i class="ri-user-3-line text-gray-600"></i>
+</div>
+<span class="text-sm font-medium">陈明宇</span>
+</div>
+</div>
+</div>
+</header>
+<!-- 主横幅 -->
+<section class="relative h-[500px] overflow-hidden">
+<div style="background-image: url('https://public.readdy.ai/ai/img_res/e90db2cb2d226d10ba82b39493988004.jpg'); background-size: cover; background-position: center;" class="absolute inset-0 z-0"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/60 z-10"></div>
+<div class="container mx-auto px-4 h-full flex items-center relative z-20">
+<div class="max-w-3xl">
+<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">关于智财青春</h1>
+<p class="text-xl text-white/90 mb-8">我们致力于为青少年提供全方位的财商教育，培养健康的金融素养和理性的消费观念，助力青少年成长为具备健康财务观念的社会人才。</p>
+<div class="flex space-x-4">
+<a href="#mission" class="px-6 py-3 bg-white text-primary font-medium rounded-button hover:bg-gray-100 !rounded-button whitespace-nowrap">了解我们的使命</a>
+<a href="#contact" class="px-6 py-3 bg-transparent text-white border-2 border-white font-medium rounded-button hover:bg-white/10 !rounded-button whitespace-nowrap">联系我们</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 平台介绍 -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">平台介绍</h2>
+<p class="text-lg text-gray-600">智财青春平台成立于2022年，是国内领先的青少年财商教育平台，致力于通过创新的教育方式和先进的技术手段，培养青少年的财务素养和健康的金钱观念。</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div>
+<h3 class="text-2xl font-bold text-gray-800 mb-4">我们的故事</h3>
+<p class="text-gray-600 mb-4">智财青春平台源于创始团队对当代青少年财商教育缺失的深刻关注。在一个消费主义盛行的时代，我们发现许多青少年缺乏基本的财务知识和健康的消费观念，这导致他们在成年后面临各种财务困境。</p>
+<p class="text-gray-600 mb-4">2022年，一群来自金融教育、心理学和科技领域的专家联合创立了智财青春平台，希望通过融合金融知识、心理辅导和科技创新，为青少年提供全方位的财商教育解决方案。</p>
+<p class="text-gray-600">三年来，我们已服务超过50万青少年用户，与200多所学校建立合作关系，开发了包括VR模拟消费体验、消费心理疗愈系统等多项创新产品，成为国内青少年财商教育领域的领军者。</p>
+</div>
+<div>
+<img src="https://public.readdy.ai/ai/img_res/5dc28ba418875d2cf66b31988a279978.jpg" alt="智财青春团队" class="rounded-lg shadow-lg w-full h-auto">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+<div class="bg-gray-50 p-6 rounded-lg custom-shadow">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-user-heart-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">用户至上</h3>
+<p class="text-gray-600">我们始终将用户需求放在首位，深入了解青少年的心理特点和学习习惯，打造符合他们需求的教育产品。</p>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg custom-shadow">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-lightbulb-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">创新驱动</h3>
+<p class="text-gray-600">我们不断探索教育科技的前沿，将VR、AI等技术融入财商教育，让学习变得更加生动有趣。</p>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg custom-shadow">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-shield-check-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">专业可靠</h3>
+<p class="text-gray-600">我们的课程和产品由金融教育专家和心理学家共同开发，确保内容的专业性和适用性。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 使命与愿景 -->
+<section id="mission" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">使命与愿景</h2>
+<p class="text-lg text-gray-600">我们致力于通过创新的教育方式，培养青少年的财商素养，帮助他们建立健康的金钱观念和消费习惯。</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="mission-card bg-white p-8 rounded-lg custom-shadow">
+<div class="flex items-start mb-6">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mr-4 flex-shrink-0">
+<div class="w-6 h-6 flex items-center justify-center text-white">
+<i class="ri-flag-line"></i>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-800 mb-2">我们的使命</h3>
+<p class="text-gray-600">为每一位青少年提供系统、专业的财商教育，帮助他们在成长过程中建立健康的金钱观念，掌握基本的财务管理技能，培养理性的消费习惯，为未来的财务健康奠定基础。</p>
+</div>
+</div>
+<img src="https://public.readdy.ai/ai/img_res/15837fd66ab364e13db870abf3c2ffc0.jpg" alt="财商教育课堂" class="w-full h-48 object-cover rounded-lg">
+</div>
+<div class="mission-card bg-white p-8 rounded-lg custom-shadow">
+<div class="flex items-start mb-6">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mr-4 flex-shrink-0">
+<div class="w-6 h-6 flex items-center justify-center text-white">
+<i class="ri-eye-line"></i>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-gray-800 mb-2">我们的愿景</h3>
+<p class="text-gray-600">成为中国青少年财商教育领域的领导者，通过科技创新和专业服务，让财商教育融入每个青少年的成长过程，推动形成全社会重视青少年财商教育的良好氛围，培养具备健康财务观念的新一代。</p>
+</div>
+</div>
+<img src="https://public.readdy.ai/ai/img_res/dcda33e44387e84c1bdb5104fc247cdb.jpg" alt="未来财商教育" class="w-full h-48 object-cover rounded-lg">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+<div class="bg-white p-6 rounded-lg custom-shadow">
+<div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-green-600">
+<i class="ri-book-open-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">教育赋能</h3>
+<p class="text-gray-600">提供系统化的财商课程和实践活动，帮助青少年掌握财务知识和技能，培养理性的消费观念。</p>
+</div>
+<div class="bg-white p-6 rounded-lg custom-shadow">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-blue-600">
+<i class="ri-heart-pulse-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">心理支持</h3>
+<p class="text-gray-600">关注青少年的消费心理健康，提供专业的心理疗愈服务，帮助他们建立健康的金钱观念。</p>
+</div>
+<div class="bg-white p-6 rounded-lg custom-shadow">
+<div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-purple-600">
+<i class="ri-community-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">社区互动</h3>
+<p class="text-gray-600">构建青少年财商交流社区，让他们在互动中学习、分享和成长，形成良好的学习氛围。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 核心价值观 -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">核心价值观</h2>
+<p class="text-lg text-gray-600">我们的价值观指引着我们的行动和决策，确保我们始终朝着正确的方向前进。</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-gray-50 p-6 rounded-lg custom-shadow">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-user-heart-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2 text-center">以人为本</h3>
+<p class="text-gray-600 text-center">我们关注每位青少年的个性化需求，尊重他们的成长节奏，提供有针对性的教育服务。</p>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg custom-shadow">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-award-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2 text-center">专业卓越</h3>
+<p class="text-gray-600 text-center">我们追求专业卓越，不断提升自身能力，为用户提供最优质的教育产品和服务。</p>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg custom-shadow">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-lightbulb-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2 text-center">创新引领</h3>
+<p class="text-gray-600 text-center">我们勇于创新，不断探索教育科技的前沿，引领青少年财商教育的发展方向。</p>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg custom-shadow">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-team-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2 text-center">协作共赢</h3>
+<p class="text-gray-600 text-center">我们注重与各方的协作，与学校、家庭、社会共同努力，为青少年创造良好的成长环境。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 团队成员 -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">核心团队</h2>
+<p class="text-lg text-gray-600">我们的团队由来自金融教育、心理学、科技创新等领域的专业人士组成，致力于为青少年提供最优质的财商教育服务。</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="team-card bg-white rounded-lg overflow-hidden custom-shadow">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/a7c5a8b4b0f50a8d4db49b9473b8bd90.jpg" alt="张志远" class="w-full h-64 object-cover object-top">
+<div class="team-info absolute inset-0 bg-primary/80 flex flex-col justify-center items-center text-white p-6">
+<p class="text-sm mb-4">拥有20年金融教育经验，曾任多家知名教育机构高管，对青少年财商教育有深入研究和丰富实践。</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40">
+<div class="w-4 h-4 flex items-center justify-center text-white">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+<a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40">
+<div class="w-4 h-4 flex items-center justify-center text-white">
+<i class="ri-mail-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-800">张志远</h3>
+<p class="text-gray-600">创始人兼CEO</p>
+</div>
+</div>
+<div class="team-card bg-white rounded-lg overflow-hidden custom-shadow">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/5037250346e0c66f34968726aede4b17.jpg" alt="李梦华" class="w-full h-64 object-cover object-top">
+<div class="team-info absolute inset-0 bg-primary/80 flex flex-col justify-center items-center text-white p-6">
+<p class="text-sm mb-4">教育学博士，曾主导多个国家级教育项目，专注于创新教育方法研究，推动财商教育融入学校课程体系。</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40">
+<div class="w-4 h-4 flex items-center justify-center text-white">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+<a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40">
+<div class="w-4 h-4 flex items-center justify-center text-white">
+<i class="ri-mail-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-800">李梦华</h3>
+<p class="text-gray-600">教育总监</p>
+</div>
+</div>
+<div class="team-card bg-white rounded-lg overflow-hidden custom-shadow">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/27b8a1de4b8c8954b125e4dcf9f4745f.jpg" alt="王天明" class="w-full h-64 object-cover object-top">
+<div class="team-info absolute inset-0 bg-primary/80 flex flex-col justify-center items-center text-white p-6">
+<p class="text-sm mb-4">计算机科学博士，曾在国际知名科技公司担任技术主管，领导开发了多个教育科技创新产品，推动VR、AI技术在教育领域的应用。</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40">
+<div class="w-4 h-4 flex items-center justify-center text-white">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+<a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40">
+<div class="w-4 h-4 flex items-center justify-center text-white">
+<i class="ri-mail-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-800">王天明</h3>
+<p class="text-gray-600">技术负责人</p>
+</div>
+</div>
+<div class="team-card bg-white rounded-lg overflow-hidden custom-shadow">
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/2190ded3eebfa820564603a66f8e6fe4.jpg" alt="陈静怡" class="w-full h-64 object-cover object-top">
+<div class="team-info absolute inset-0 bg-primary/80 flex flex-col justify-center items-center text-white p-6">
+<p class="text-sm mb-4">心理学博士，注册心理咨询师，专注于青少年心理健康研究，开发了"消费心理疗愈系统"，帮助青少年建立健康的消费心理。</p>
+<div class="flex space-x-3">
+<a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40">
+<div class="w-4 h-4 flex items-center justify-center text-white">
+<i class="ri-linkedin-fill"></i>
+</div>
+</a>
+<a href="#" class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/40">
+<div class="w-4 h-4 flex items-center justify-center text-white">
+<i class="ri-mail-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-800">陈静怡</h3>
+<p class="text-gray-600">心理顾问</p>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-12">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/19b22296-e46a-4793-8925-67d21091a5ed" data-readdy="true" class="px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-primary/90 !rounded-button whitespace-nowrap">查看完整团队</a>
+</div>
+</div>
+</section>
+<!-- 发展历程 -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">发展历程</h2>
+<p class="text-lg text-gray-600">从创立至今，我们不断探索创新，为青少年财商教育领域贡献力量。</p>
+</div>
+<div class="max-w-4xl mx-auto">
+<div class="space-y-12">
+<div class="timeline-item relative pl-16">
+<div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+<span class="text-white font-bold">2022</span>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg custom-shadow">
+<h3 class="text-xl font-bold text-gray-800 mb-2">平台创立</h3>
+<p class="text-gray-600 mb-4">智财青春平台正式成立，由一群来自金融教育、心理学和科技领域的专家共同创立，致力于为青少年提供专业的财商教育服务。</p>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">团队组建</span>
+<span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">平台上线</span>
+<span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">首批课程</span>
+</div>
+</div>
+</div>
+<div class="timeline-item relative pl-16">
+<div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+<span class="text-white font-bold">2023</span>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg custom-shadow">
+<h3 class="text-xl font-bold text-gray-800 mb-2">快速发展</h3>
+<p class="text-gray-600 mb-4">平台用户突破10万，与50所学校建立合作关系，推出VR模拟消费体验系统，获得A轮融资，团队规模扩大到50人。</p>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">用户突破10万</span>
+<span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">VR系统上线</span>
+<span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">A轮融资</span>
+</div>
+</div>
+</div>
+<div class="timeline-item relative pl-16">
+<div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+<span class="text-white font-bold">2024</span>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg custom-shadow">
+<h3 class="text-xl font-bold text-gray-800 mb-2">创新突破</h3>
+<p class="text-gray-600 mb-4">推出消费心理疗愈系统，获得国家级教育创新奖，用户突破30万，与150所学校建立合作关系，完成B轮融资。</p>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">心理疗愈系统</span>
+<span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">国家级奖项</span>
+<span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm">B轮融资</span>
+</div>
+</div>
+</div>
+<div class="timeline-item relative pl-16">
+<div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+<span class="text-white font-bold">2025</span>
+</div>
+<div class="bg-gray-50 p-6 rounded-lg custom-shadow">
+<h3 class="text-xl font-bold text-gray-800 mb-2">行业领军</h3>
+<p class="text-gray-600 mb-4">用户突破50万，与200多所学校建立合作关系，推出AI个性化学习系统，成为国内青少年财商教育领域的领军企业。</p>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm">用户突破50万</span>
+<span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm">AI学习系统</span>
+<span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-sm">行业领军</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 合作伙伴 -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">合作伙伴</h2>
+<p class="text-lg text-gray-600">我们与众多教育机构、金融企业和科技公司建立了紧密的合作关系，共同推动青少年财商教育的发展。</p>
+</div>
+<div class="bg-white p-8 rounded-lg custom-shadow">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+<div class="partner-logo flex items-center justify-center p-4">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-building-4-line ri-3x"></i>
+</div>
+<p class="font-medium text-gray-800">北京大学</p>
+</div>
+</div>
+<div class="partner-logo flex items-center justify-center p-4">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-building-2-line ri-3x"></i>
+</div>
+<p class="font-medium text-gray-800">清华大学</p>
+</div>
+</div>
+<div class="partner-logo flex items-center justify-center p-4">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-bank-line ri-3x"></i>
+</div>
+<p class="font-medium text-gray-800">中国建设银行</p>
+</div>
+</div>
+<div class="partner-logo flex items-center justify-center p-4">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-bank-fill ri-3x"></i>
+</div>
+<p class="font-medium text-gray-800">中国工商银行</p>
+</div>
+</div>
+<div class="partner-logo flex items-center justify-center p-4">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-government-line ri-3x"></i>
+</div>
+<p class="font-medium text-gray-800">教育部</p>
+</div>
+</div>
+<div class="partner-logo flex items-center justify-center p-4">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-microsoft-line ri-3x"></i>
+</div>
+<p class="font-medium text-gray-800">微软中国</p>
+</div>
+</div>
+<div class="partner-logo flex items-center justify-center p-4">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-alipay-line ri-3x"></i>
+</div>
+<p class="font-medium text-gray-800">支付宝</p>
+</div>
+</div>
+<div class="partner-logo flex items-center justify-center p-4">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-wechat-pay-line ri-3x"></i>
+</div>
+<p class="font-medium text-gray-800">微信支付</p>
+</div>
+</div>
+<div class="partner-logo flex items-center justify-center p-4">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-google-line ri-3x"></i>
+</div>
+<p class="font-medium text-gray-800">谷歌</p>
+</div>
+</div>
+<div class="partner-logo flex items-center justify-center p-4">
+<div class="text-center">
+<div class="w-16 h-16 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-alibaba-line ri-3x"></i>
+</div>
+<p class="font-medium text-gray-800">阿里巴巴</p>
+</div>
+</div>
+</div>
+<div class="mt-12 text-center">
+<p class="text-gray-600 mb-6">我们欢迎更多志同道合的伙伴加入我们，共同为青少年财商教育事业贡献力量。</p>
+<a href="#" class="px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-primary/90 !rounded-button whitespace-nowrap">成为合作伙伴</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 联系我们 -->
+<section id="contact" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">联系我们</h2>
+<p class="text-lg text-gray-600">如果您对我们的产品和服务有任何疑问，或者想要了解更多信息，欢迎随时联系我们。</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<div class="bg-gray-50 p-8 rounded-lg custom-shadow mb-8">
+<h3 class="text-xl font-bold text-gray-800 mb-6">联系方式</h3>
+<div class="space-y-4">
+<div class="flex items-start contact-info-item p-3 rounded-lg">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-map-pin-line"></i>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-800">总部地址</h4>
+<p class="text-gray-600">北京市海淀区中关村科技园区8号楼</p>
+</div>
+</div>
+<div class="flex items-start contact-info-item p-3 rounded-lg">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-mail-line"></i>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-800">电子邮箱</h4>
+<p class="text-gray-600">contact@zhicaiqingchun.com</p>
+</div>
+</div>
+<div class="flex items-start contact-info-item p-3 rounded-lg">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-phone-line"></i>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-800">联系电话</h4>
+<p class="text-gray-600">400-888-7777</p>
+</div>
+</div>
+<div class="flex items-start contact-info-item p-3 rounded-lg">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0">
+<div class="w-5 h-5 flex items-center justify-center text-primary">
+<i class="ri-time-line"></i>
+</div>
+</div>
+<div>
+<h4 class="font-medium text-gray-800">工作时间</h4>
+<p class="text-gray-600">周一至周五 9:00-18:00</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-8 rounded-lg custom-shadow">
+<h3 class="text-xl font-bold text-gray-800 mb-6">关注我们</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="text-center p-4 bg-white rounded-lg">
+<div class="w-12 h-12 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-wechat-fill ri-2x"></i>
+</div>
+<p class="font-medium text-gray-800">微信公众号</p>
+<p class="text-sm text-gray-600">智财青春</p>
+</div>
+<div class="text-center p-4 bg-white rounded-lg">
+<div class="w-12 h-12 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-weibo-fill ri-2x"></i>
+</div>
+<p class="font-medium text-gray-800">官方微博</p>
+<p class="text-sm text-gray-600">@智财青春平台</p>
+</div>
+<div class="text-center p-4 bg-white rounded-lg">
+<div class="w-12 h-12 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-douyin-fill ri-2x"></i>
+</div>
+<p class="font-medium text-gray-800">抖音号</p>
+<p class="text-sm text-gray-600">智财青春教育</p>
+</div>
+<div class="text-center p-4 bg-white rounded-lg">
+<div class="w-12 h-12 mx-auto flex items-center justify-center text-gray-700 mb-2">
+<i class="ri-bilibili-fill ri-2x"></i>
+</div>
+<p class="font-medium text-gray-800">哔哩哔哩</p>
+<p class="text-sm text-gray-600">智财青春财商</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="bg-gray-50 p-8 rounded-lg custom-shadow">
+<h3 class="text-xl font-bold text-gray-800 mb-6">留言咨询</h3>
+<form>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div>
+<label for="name" class="block text-gray-700 mb-2">姓名</label>
+<input type="text" id="name" class="w-full px-4 py-2 rounded border-none bg-white focus:outline-none focus:ring-2 focus:ring-primary/20">
+</div>
+<div>
+<label for="email" class="block text-gray-700 mb-2">邮箱</label>
+<input type="email" id="email" class="w-full px-4 py-2 rounded border-none bg-white focus:outline-none focus:ring-2 focus:ring-primary/20">
+</div>
+</div>
+<div class="mb-4">
+<label for="subject" class="block text-gray-700 mb-2">主题</label>
+<input type="text" id="subject" class="w-full px-4 py-2 rounded border-none bg-white focus:outline-none focus:ring-2 focus:ring-primary/20">
+</div>
+<div class="mb-6">
+<label for="message" class="block text-gray-700 mb-2">留言内容</label>
+<textarea id="message" rows="5" class="w-full px-4 py-2 rounded border-none bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"></textarea>
+</div>
+<button type="submit" class="w-full py-3 bg-primary text-white font-medium rounded-button hover:bg-primary/90 !rounded-button whitespace-nowrap">提交留言</button>
+</form>
+</div>
+</div>
+</div>
+<div class="mt-12">
+<div class="bg-gray-50 p-8 rounded-lg custom-shadow">
+<h3 class="text-xl font-bold text-gray-800 mb-6 text-center">我们的位置</h3>
+<div class="w-full h-80 rounded-lg overflow-hidden" style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-position: center; background-size: cover;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 加入我们 -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">加入我们</h2>
+<p class="text-lg text-gray-600">我们欢迎志同道合的伙伴加入智财青春团队，共同为青少年财商教育事业贡献力量。</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="join-us-card bg-white p-6 rounded-lg custom-shadow">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-blue-600">
+<i class="ri-user-settings-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">教育研发专家</h3>
+<p class="text-gray-600 mb-4">负责财商教育课程研发和教学内容设计，需要具备教育学或金融学背景，有课程开发经验。</p>
+<a href="#" class="text-primary hover:underline">查看详情</a>
+</div>
+<div class="join-us-card bg-white p-6 rounded-lg custom-shadow">
+<div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-green-600">
+<i class="ri-code-s-slash-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">技术开发工程师</h3>
+<p class="text-gray-600 mb-4">负责平台技术开发和维护，需要具备前端或后端开发能力，熟悉教育科技产品开发。</p>
+<a href="#" class="text-primary hover:underline">查看详情</a>
+</div>
+<div class="join-us-card bg-white p-6 rounded-lg custom-shadow">
+<div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-purple-600">
+<i class="ri-heart-pulse-line"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-800 mb-2">心理咨询师</h3>
+<p class="text-gray-600 mb-4">负责消费心理疗愈系统研发和心理咨询服务，需要具备心理学背景和相关资质。</p>
+<a href="#" class="text-primary hover:underline">查看详情</a>
+</div>
+</div>
+<div class="mt-12 text-center">
+<p class="text-gray-600 mb-6">除了以上职位，我们还有更多岗位等待您的加入。无论您是刚毕业的学生，还是有丰富经验的专业人士，只要您对青少年财商教育充满热情，我们都欢迎您的加入。</p>
+<a href="#" class="px-6 py-3 bg-primary text-white font-medium rounded-button hover:bg-primary/90 !rounded-button whitespace-nowrap">查看更多职位</a>
+</div>
+</div>
+</section>
+<!-- 页脚 -->
+<footer class="bg-gray-800 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center mb-4 inline-block">
+  <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-2 logo-animation">
+    <i class="ri-coin-line text-primary text-xl"></i>
+  </div>
+  <span class="font-['Pacifico'] text-2xl text-white">智财青春</span>
+</a>
+<p class="text-gray-400 text-sm mb-4">智财青春平台致力于为青少年提供财商教育和金融素养培养，助力青少年成长为具备健康财务观念的社会人才。</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-weibo-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-wechat-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-qq-fill"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-douyin-fill"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">快速链接</h3>
+<ul class="space-y-2">
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-400 hover:text-white">首页</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="text-gray-400 hover:text-white">教育赋能</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">金融服务</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/4281f937-ed72-45c2-988e-271aff319dc6" data-readdy="true" class="text-gray-400 hover:text-white">社区互动</a></li>
+<li><a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-400 hover:text-white">关于我们</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">社区资源</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">经验分享</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">问答解惑</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">学习心得</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">活动讨论</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">社区规则</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">联系我们</h3>
+<ul class="space-y-2">
+<li class="flex items-start">
+<div class="w-5 h-5 mt-0.5 flex items-center justify-center text-gray-400 mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span class="text-gray-400">北京市海淀区中关村科技园区</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-gray-400">contact@zhicaiqingchun.com</span>
+</li>
+<li class="flex items-center">
+<div class="w-5 h-5 flex items-center justify-center text-gray-400 mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<span class="text-gray-400">400-888-7777</span>
+</li>
+</ul>
+<div class="mt-4">
+<div class="flex items-center">
+<input type="email" placeholder="输入邮箱订阅资讯" class="px-4 py-2 rounded-l bg-gray-700 text-white border-none focus:outline-none text-sm w-full">
+<button class="px-4 py-2 bg-primary text-white rounded-r hover:bg-primary/90 !rounded-button whitespace-nowrap">订阅</button>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">© 2025 智财青春平台. 保留所有权利.</p>
+<div class="flex space-x-4 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-white text-sm">隐私政策</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm">服务条款</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm">帮助中心</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+// 团队卡片交互
+document.querySelectorAll('.team-card').forEach(card => {
+card.addEventListener('mouseenter', function() {
+this.querySelector('.team-info').style.opacity = '1';
+this.querySelector('.team-info').style.transform = 'translateY(0)';
+});
+card.addEventListener('mouseleave', function() {
+this.querySelector('.team-info').style.opacity = '0';
+this.querySelector('.team-info').style.transform = 'translateY(20px)';
+});
+});
+// 联系表单验证
+const contactForm = document.querySelector('form');
+if (contactForm) {
+contactForm.addEventListener('submit', function(e) {
+e.preventDefault();
+const name = document.getElementById('name').value;
+const email = document.getElementById('email').value;
+const subject = document.getElementById('subject').value;
+const message = document.getElementById('message').value;
+if (!name || !email || !subject || !message) {
+  showNotification('请填写所有必填字段', 'error');
+  return;
+}
+if (!validateEmail(email)) {
+  showNotification('请输入有效的邮箱地址', 'error');
+  return;
+}
+// 模拟表单提交成功
+showNotification('感谢您的留言，我们会尽快回复您！', 'success');
+contactForm.reset();
+});
+}
+
+// 自定义通知函数
+function showNotification(message, type) {
+  // 创建通知元素
+  const notification = document.createElement('div');
+  notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 ${
+    type === 'success' ? 'bg-green-500' : 'bg-red-500'
+  } text-white`;
+  
+  // 添加图标和消息
+  notification.innerHTML = `
+    <div class="flex items-center">
+      <div class="w-5 h-5 flex items-center justify-center mr-2">
+        <i class="ri-${type === 'success' ? 'check-line' : 'error-warning-line'}"></i>
+      </div>
+      <span>${message}</span>
+    </div>
+  `;
+  
+  // 添加到页面
+  document.body.appendChild(notification);
+  
+  // 设置自动消失
+  setTimeout(() => {
+    notification.style.opacity = '0';
+    notification.style.transform = 'translateY(-20px)';
+    notification.style.transition = 'all 0.5s ease';
+    setTimeout(() => {
+      document.body.removeChild(notification);
+    }, 500);
+  }, 3000);
+}
+// 邮箱验证函数
+function validateEmail(email) {
+const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+return re.test(String(email).toLowerCase());
+}
+// 平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 100,
+behavior: 'smooth'
+});
+}
+});
+});
+</script>
+</body>
+</html>

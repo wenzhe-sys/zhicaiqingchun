@@ -1,0 +1,426 @@
+undefined<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web 全栈开发学习路径 - 详情</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#60a5fa'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #f9fafb;
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+        .progress-value {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+        }
+        input[type="checkbox"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        input[type="checkbox"]:checked::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="flex items-center text-gray-700 hover:text-primary transition-colors">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 mr-2">
+                        <i class="ri-arrow-left-s-line ri-lg"></i>
+                    </div>
+                    <span class="text-sm">返回</span>
+                </a>
+            </div>
+            <h1 class="text-lg font-medium">学习路径详情</h1>
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 cursor-pointer hover:bg-gray-200 transition-colors">
+                    <i class="ri-share-line"></i>
+                </div>
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 cursor-pointer hover:bg-gray-200 transition-colors">
+                    <i class="ri-bookmark-line"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-6 pb-24">
+        <section class="bg-white rounded-lg shadow-sm overflow-hidden mb-8">
+            <div class="h-48 bg-gradient-to-r from-blue-500 to-indigo-600 relative">
+                <img src="https://readdy.ai/api/search-image?query=modern%20web%20development%20coding%20environment%20with%20multiple%20screens%20showing%20code%2C%20web%20design%2C%20and%20development%20tools%2C%20clean%20and%20professional%20workspace&width=1200&height=400&seq=1&orientation=landscape" alt="Web 全栈开发学习路径" class="w-full h-full object-cover object-top opacity-25">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/80 to-indigo-600/80"></div>
+                <div class="absolute bottom-0 left-0 p-6 text-white">
+                    <h2 class="text-2xl font-bold mb-2">Web 全栈开发学习路径</h2>
+                    <p class="text-white/90 max-w-2xl">掌握前端与后端开发技能，成为一名全能的 Web 开发工程师。从基础 HTML/CSS 到高级框架和数据库，全面提升您的开发能力。</p>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex flex-wrap gap-8">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-primary mr-3">
+                            <i class="ri-book-open-line ri-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">课程数量</p>
+                            <p class="font-medium">12 门课程</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-primary mr-3">
+                            <i class="ri-time-line ri-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">预计完成时间</p>
+                            <p class="font-medium">3 个月</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-primary mr-3">
+                            <i class="ri-bar-chart-line ri-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">难度等级</p>
+                            <p class="font-medium">中级</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-primary mr-3">
+                            <i class="ri-user-line ri-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">学习人数</p>
+                            <p class="font-medium">12,458 人</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 pt-6 border-t border-gray-100">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-medium">总体进度</h3>
+                        <span class="text-sm text-gray-500">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-value" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <section class="mb-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold">课程内容</h2>
+                        <div class="flex items-center">
+                            <span class="text-sm text-gray-500 mr-2">排序方式:</span>
+                            <div class="relative">
+                                <button class="flex items-center text-sm bg-white border border-gray-200 rounded-button px-3 py-2 !rounded-button whitespace-nowrap">
+                                    <span>默认顺序</span>
+                                    <i class="ri-arrow-down-s-line ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-primary">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-primary">
+                                        <span class="font-medium">1</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h3 class="font-medium">HTML5 与 CSS3 基础</h3>
+                                        <div class="flex items-center">
+                                            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full mr-2">入门</span>
+                                            <span class="text-xs text-gray-500">3 小时</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">学习 HTML5 的语义化标签和 CSS3 的新特性，掌握现代网页布局技术，包括 Flexbox 和 Grid 布局。</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <i class="ri-file-list-line text-gray-400 mr-1"></i>
+                                            <span class="text-xs text-gray-500">8 个小节</span>
+                                        </div>
+                                        <button class="text-sm text-primary hover:text-primary/80 transition-colors whitespace-nowrap">查看详情</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-gray-200">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500">
+                                        <span class="font-medium">2</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h3 class="font-medium">JavaScript 核心概念</h3>
+                                        <div class="flex items-center">
+                                            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full mr-2">入门</span>
+                                            <span class="text-xs text-gray-500">5 小时</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">深入理解 JavaScript 的基础语法、变量、数据类型、函数、对象和数组，以及 ES6+ 的新特性。</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <i class="ri-file-list-line text-gray-400 mr-1"></i>
+                                            <span class="text-xs text-gray-500">12 个小节</span>
+                                        </div>
+                                        <button class="text-sm text-primary hover:text-primary/80 transition-colors whitespace-nowrap">查看详情</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-gray-200">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500">
+                                        <span class="font-medium">3</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h3 class="font-medium">响应式网页设计</h3>
+                                        <div class="flex items-center">
+                                            <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full mr-2">中级</span>
+                                            <span class="text-xs text-gray-500">4 小时</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">学习如何创建适应不同设备屏幕尺寸的网页，掌握媒体查询和移动优先设计原则。</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <i class="ri-file-list-line text-gray-400 mr-1"></i>
+                                            <span class="text-xs text-gray-500">6 个小节</span>
+                                        </div>
+                                        <button class="text-sm text-primary hover:text-primary/80 transition-colors whitespace-nowrap">查看详情</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-gray-200">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500">
+                                        <span class="font-medium">4</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h3 class="font-medium">React 框架基础</h3>
+                                        <div class="flex items-center">
+                                            <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full mr-2">中级</span>
+                                            <span class="text-xs text-gray-500">8 小时</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">学习 React 组件、状态管理、生命周期和 Hooks，构建现代化的单页应用程序。</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <i class="ri-file-list-line text-gray-400 mr-1"></i>
+                                            <span class="text-xs text-gray-500">15 个小节</span>
+                                        </div>
+                                        <button class="text-sm text-primary hover:text-primary/80 transition-colors whitespace-nowrap">查看详情</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-sm p-4 border-l-4 border-gray-200">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mr-4">
+                                    <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-500">
+                                        <span class="font-medium">5</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h3 class="font-medium">Node.js 与 Express 框架</h3>
+                                        <div class="flex items-center">
+                                            <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full mr-2">中级</span>
+                                            <span class="text-xs text-gray-500">6 小时</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">学习使用 Node.js 和 Express 框架构建后端服务，掌握路由、中间件和 API 开发。</p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center">
+                                            <i class="ri-file-list-line text-gray-400 mr-1"></i>
+                                            <span class="text-xs text-gray-500">10 个小节</span>
+                                        </div>
+                                        <button class="text-sm text-primary hover:text-primary/80 transition-colors whitespace-nowrap">查看详情</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 bg-white border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors whitespace-nowrap">
+                            查看全部 12 门课程
+                            <i class="ri-arrow-down-s-line ml-1"></i>
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="lg:col-span-1">
+                <section class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                    <h2 class="text-lg font-bold mb-4">学习目标</h2>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <input type="checkbox" class="mt-1 mr-3" disabled>
+                            <span class="text-sm">掌握 HTML5/CSS3 的核心概念和应用</span>
+                        </li>
+                        <li class="flex items-start">
+                            <input type="checkbox" class="mt-1 mr-3" disabled>
+                            <span class="text-sm">熟练使用 JavaScript 进行网页交互开发</span>
+                        </li>
+                        <li class="flex items-start">
+                            <input type="checkbox" class="mt-1 mr-3" disabled>
+                            <span class="text-sm">学会使用 React 框架构建现代化前端应用</span>
+                        </li>
+                        <li class="flex items-start">
+                            <input type="checkbox" class="mt-1 mr-3" disabled>
+                            <span class="text-sm">掌握 Node.js 后端开发的基本技能</span>
+                        </li>
+                        <li class="flex items-start">
+                            <input type="checkbox" class="mt-1 mr-3" disabled>
+                            <span class="text-sm">能够设计和实现 RESTful API</span>
+                        </li>
+                        <li class="flex items-start">
+                            <input type="checkbox" class="mt-1 mr-3" disabled>
+                            <span class="text-sm">学会使用 MongoDB 数据库进行数据存储</span>
+                        </li>
+                        <li class="flex items-start">
+                            <input type="checkbox" class="mt-1 mr-3" disabled>
+                            <span class="text-sm">掌握前后端联调和项目部署技能</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                    <h2 class="text-lg font-bold mb-4">先决条件</h2>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+                                <i class="ri-checkbox-circle-line"></i>
+                            </div>
+                            <span class="text-sm">基本的计算机操作能力</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+                                <i class="ri-checkbox-circle-line"></i>
+                            </div>
+                            <span class="text-sm">了解基本的编程概念</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+                                <i class="ri-checkbox-circle-line"></i>
+                            </div>
+                            <span class="text-sm">具备基础的英语阅读能力</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary mr-2">
+                                <i class="ri-checkbox-circle-line"></i>
+                            </div>
+                            <span class="text-sm">有一定的逻辑思维能力</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                    <h2 class="text-lg font-bold mb-4">完成奖励</h2>
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-primary rounded-full mr-4">
+                            <i class="ri-medal-line ri-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium">全栈开发者认证</h3>
+                            <p class="text-sm text-gray-500">完成所有课程后获得</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-primary rounded-full mr-4">
+                            <i class="ri-coupon-line ri-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-medium">进阶课程优惠券</h3>
+                            <p class="text-sm text-gray-500">8.5 折优惠券一张</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-white rounded-lg shadow-sm p-6">
+                    <h2 class="text-lg font-bold mb-4">讲师介绍</h2>
+                    <div class="flex items-center mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20asian%20male%20teacher%20with%20glasses%20in%20modern%20office%20setting%2C%20professional%20portrait%20photo&width=100&height=100&seq=2&orientation=squarish" alt="张明" class="w-14 h-14 rounded-full object-cover object-top mr-4">
+                        <div>
+                            <h3 class="font-medium">张明</h3>
+                            <p class="text-sm text-gray-500">资深全栈开发工程师</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                        拥有 10 年 Web 开发经验，曾在多家知名互联网公司担任技术负责人。精通前端和后端开发技术栈，热衷于分享技术知识和经验。
+                    </p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 z-40">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-primary mr-3">
+                    <i class="ri-time-line ri-lg"></i>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-500">预计学习时间</p>
+                    <p class="font-medium">120 小时</p>
+                </div>
+            </div>
+            <button class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-button font-medium transition-colors whitespace-nowrap">
+                开始学习
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('click', function(e) {
+                    e.preventDefault();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

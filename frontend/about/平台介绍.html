@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智财青春 - 平台介绍</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.hero-gradient {
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0) 100%);
+}
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: #297CBB;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 10px 40px;
+}
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 4px solid #297CBB;
+  border-radius: 50%;
+  top: 15px;
+  z-index: 1;
+}
+.left {
+  left: 0;
+}
+.right {
+  left: 50%;
+}
+.left::after {
+  right: -10px;
+}
+.right::after {
+  left: -10px;
+}
+@media screen and (max-width: 768px) {
+  .timeline-container::after {
+    left: 31px;
+  }
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+  .timeline-item::after {
+    left: 21px;
+  }
+  .left::after, .right::after {
+    left: 21px;
+  }
+  .right {
+    left: 0;
+  }
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center">
+      <div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+        <span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+      </div>
+      <span class="text-xl font-semibold text-gray-800">智财青春</span>
+    </div>
+    <nav class="hidden md:flex space-x-8">
+      <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+      <a href="#" class="text-gray-600 hover:text-primary">消费评估</a>
+      <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/77b96c53-e2b2-4a91-aa7b-2fb4aaf613d5" data-readdy="true" class="text-gray-600 hover:text-primary">教育赋能</a>
+      <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/51b07ac8-c2aa-4dfb-aca5-a7fa8e4300b7" data-readdy="true" class="text-gray-600 hover:text-primary">决策干预</a>
+      <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/36f9142a-46e6-4714-8059-22720b6c1be4" data-readdy="true" class="text-gray-600 hover:text-primary">生态协同</a>
+      <a href="#" class="text-primary font-medium">平台介绍</a>
+    </nav>
+    <div class="flex items-center space-x-4">
+      <button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+        <i class="ri-search-line ri-lg"></i>
+      </button>
+      <button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+        <i class="ri-notification-3-line ri-lg"></i>
+      </button>
+      <div class="relative">
+        <img src="https://public.readdy.ai/ai/img_res/1b82bd4a42973383179f53d2455f8318.jpg" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="relative overflow-hidden" style="min-height: 600px;">
+  <div style="background-image: url('https://public.readdy.ai/ai/img_res/810c0b90cc66662c986642775a7e99eb.jpg'); background-size: cover; background-position: center right;" class="absolute inset-0"></div>
+  <div class="relative z-10 container mx-auto px-4 py-24">
+    <div class="hero-gradient max-w-2xl p-12 rounded-xl">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">智财青春平台介绍</h1>
+      <p class="text-lg text-gray-700 mb-8">智财青春是一个数据驱动的青年消费智慧平台，致力于通过科技创新赋能青年群体，培养健康消费观念，实现可持续发展的消费生态。</p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true">
+          <button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+            返回首页
+          </button>
+        </a>
+        <button class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+          联系我们
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-12">
+      <div class="w-full lg:w-1/2">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">平台起源与背景</h2>
+        <p class="text-lg text-gray-600 mb-6">智财青春平台诞生于2023年，是由一群关注青年消费问题的学者、技术专家和社会企业家共同发起的创新项目。在当前消费主义盛行的社会环境下，年轻人面临着消费决策困境、财务压力和可持续发展挑战。</p>
+        <p class="text-lg text-gray-600 mb-6">我们注意到，虽然市场上存在各类消费指导和理财教育产品，但大多缺乏针对青年群体的特性化设计，难以有效解决"双标消费"、冲动消费和过度消费等问题。同时，传统的消费教育方式往往过于理论化，缺乏沉浸式体验和实时干预机制。</p>
+        <p class="text-lg text-gray-600 mb-6">基于这些观察，我们整合了人工智能、虚拟现实、增强现实和区块链等前沿技术，打造了这个集消费评估、教育赋能、决策干预和生态协同于一体的综合性平台，旨在从根本上改变青年的消费行为和观念。</p>
+      </div>
+      <div class="w-full lg:w-1/2">
+        <div class="relative rounded-lg overflow-hidden shadow-lg" style="height: 400px;">
+          <img src="https://public.readdy.ai/ai/img_res/29b8634eb793f759af4ca07a3d76e120.jpg" class="w-full h-full object-cover object-top" alt="团队协作">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">使命与愿景</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">我们致力于构建一个更加理性、健康、可持续的消费生态</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
+        <div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-6">
+          <i class="ri-compass-3-line ri-2x text-primary"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">使命</h3>
+        <p class="text-gray-600">赋能青年群体做出明智的消费决策，培养健康的消费观念和财务习惯，促进个人财务健康与社会可持续发展的和谐统一。</p>
+      </div>
+      <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
+        <div class="w-16 h-16 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mb-6">
+          <i class="ri-eye-line ri-2x text-secondary"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">愿景</h3>
+        <p class="text-gray-600">成为青年消费领域的引领者，打造一个数据驱动、技术赋能、多方协同的消费生态系统，让每一次消费决策都更加明智、理性和可持续。</p>
+      </div>
+      <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
+        <div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-6">
+          <i class="ri-heart-line ri-2x text-primary"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">价值观</h3>
+        <p class="text-gray-600">科技创新、数据驱动、用户至上、生态协同、可持续发展。我们坚信，通过技术与教育的结合，可以培养出更具理财素养的新一代青年。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">核心技术创新</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">融合前沿科技，打造智能消费决策系统</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <div class="flex items-start">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+            <i class="ri-ai-generate ri-xl text-primary"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">AI 消费行为分析</h3>
+            <p class="text-gray-600 mb-4">基于深度学习和自然语言处理技术，我们的 AI 系统能够分析用户的消费记录、浏览历史和社交媒体行为，识别消费模式和潜在风险。系统采用 BERT+CNN 混合架构，准确率达到 92.7%，远超传统规则引擎。</p>
+            <div class="flex items-center text-sm text-primary">
+              <span class="mr-2">技术亮点：</span>
+              <span class="px-2 py-1 bg-primary bg-opacity-10 rounded-full mr-2">多模态融合</span>
+              <span class="px-2 py-1 bg-primary bg-opacity-10 rounded-full mr-2">注意力机制</span>
+              <span class="px-2 py-1 bg-primary bg-opacity-10 rounded-full">增量学习</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <div class="flex items-start">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mr-4 flex-shrink-0">
+            <i class="ri-bar-chart-grouped-line ri-xl text-secondary"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">CHI 指数评估系统</h3>
+            <p class="text-gray-600 mb-4">消费健康指数（CHI）是我们独创的综合评估体系，通过结构方程模型（SEM）量化消费行为的健康程度。该系统整合了 27 个微观指标和 6 个宏观维度，采用随机森林与 GBDT 双模型架构，精准评估消费健康状况。</p>
+            <div class="flex items-center text-sm text-secondary">
+              <span class="mr-2">技术亮点：</span>
+              <span class="px-2 py-1 bg-secondary bg-opacity-10 rounded-full mr-2">SEM 模型</span>
+              <span class="px-2 py-1 bg-secondary bg-opacity-10 rounded-full mr-2">双模型架构</span>
+              <span class="px-2 py-1 bg-secondary bg-opacity-10 rounded-full">实时评估</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <div class="flex items-start">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+            <i class="ri-vr-line ri-xl text-primary"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">VR/AR 沉浸式体验</h3>
+            <p class="text-gray-600 mb-4">我们开发了业界领先的 VR 消费模拟系统和 AR 购物助手，通过沉浸式体验帮助用户理解不同消费决策的长期影响。VR 系统采用 Unity 引擎和 WebXR 技术，实现跨平台兼容；AR 助手基于 ARCore 和计算机视觉技术，可实时识别商品并提供决策辅助。</p>
+            <div class="flex items-center text-sm text-primary">
+              <span class="mr-2">技术亮点：</span>
+              <span class="px-2 py-1 bg-primary bg-opacity-10 rounded-full mr-2">WebXR</span>
+              <span class="px-2 py-1 bg-primary bg-opacity-10 rounded-full mr-2">实时渲染</span>
+              <span class="px-2 py-1 bg-primary bg-opacity-10 rounded-full">物体识别</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <div class="flex items-start">
+          <div class="w-14 h-14 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mr-4 flex-shrink-0">
+            <i class="ri-links-line ri-xl text-secondary"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">区块链信用系统</h3>
+            <p class="text-gray-600 mb-4">我们采用联盟链技术构建了商家信用评价系统，确保评价数据的真实性和不可篡改性。该系统基于 Hyperledger Fabric 框架，采用 PBFT 共识机制，支持每秒 3000+ 交易处理能力，有效解决了传统评价系统中的信任问题。</p>
+            <div class="flex items-center text-sm text-secondary">
+              <span class="mr-2">技术亮点：</span>
+              <span class="px-2 py-1 bg-secondary bg-opacity-10 rounded-full mr-2">联盟链</span>
+              <span class="px-2 py-1 bg-secondary bg-opacity-10 rounded-full mr-2">智能合约</span>
+              <span class="px-2 py-1 bg-secondary bg-opacity-10 rounded-full">隐私计算</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">核心团队</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">汇聚各领域精英，共同打造智慧消费新生态</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="relative h-64">
+          <img src="https://public.readdy.ai/ai/img_res/2d781ff96fc5ddba11fc15e72c549888.jpg" class="w-full h-full object-cover object-top" alt="CEO 肖像">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-1">陈志远</h3>
+          <p class="text-primary font-medium mb-3">创始人 & CEO</p>
+          <p class="text-gray-600 mb-4">前阿里巴巴技术专家，清华大学计算机博士，拥有15年金融科技和消费行为分析经验。</p>
+          <div class="flex space-x-3">
+            <a href="#" class="text-gray-400 hover:text-primary w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition">
+              <i class="ri-linkedin-fill"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition">
+              <i class="ri-twitter-x-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="relative h-64">
+          <img src="https://public.readdy.ai/ai/img_res/b2e80a16301fcb584c6ddbbe48731c1d.jpg" class="w-full h-full object-cover object-top" alt="CTO 肖像">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-1">林晓华</h3>
+          <p class="text-primary font-medium mb-3">CTO</p>
+          <p class="text-gray-600 mb-4">前腾讯高级工程师，北京大学人工智能博士，专注于机器学习和大数据分析领域。</p>
+          <div class="flex space-x-3">
+            <a href="#" class="text-gray-400 hover:text-primary w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition">
+              <i class="ri-linkedin-fill"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition">
+              <i class="ri-github-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="relative h-64">
+          <img src="https://public.readdy.ai/ai/img_res/5cf9b8c8fd6cd7d26de86c7fdc21e4d7.jpg" class="w-full h-full object-cover object-top" alt="CFO 肖像">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-1">王建国</h3>
+          <p class="text-primary font-medium mb-3">CFO</p>
+          <p class="text-gray-600 mb-4">前招商银行高管，上海交通大学金融学博士，20年金融行业经验，擅长风险管理。</p>
+          <div class="flex space-x-3">
+            <a href="#" class="text-gray-400 hover:text-primary w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition">
+              <i class="ri-linkedin-fill"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition">
+              <i class="ri-wechat-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="relative h-64">
+          <img src="https://public.readdy.ai/ai/img_res/c77a9344a92466f68317f6acd3366f51.jpg" class="w-full h-full object-cover object-top" alt="首席研究官肖像">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-1">张梦琪</h3>
+          <p class="text-primary font-medium mb-3">首席研究官</p>
+          <p class="text-gray-600 mb-4">中国人民大学行为经济学教授，哈佛大学访问学者，专注于青年消费心理研究。</p>
+          <div class="flex space-x-3">
+            <a href="#" class="text-gray-400 hover:text-primary w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition">
+              <i class="ri-linkedin-fill"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-primary w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition">
+              <i class="ri-google-scholar-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-10">
+      <button class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+        查看完整团队
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">发展历程</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">从创想到实践，我们不断突破与创新</p>
+    </div>
+    <div class="relative timeline-container py-8">
+      <div class="timeline-item left">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">2023年1月</h3>
+          <p class="text-gray-600">项目构想阶段，团队组建完成，完成市场调研和需求分析，确定平台核心功能和技术路线。</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">2023年4月</h3>
+          <p class="text-gray-600">完成种子轮融资，获得教育部"青年创新创业"专项支持，CHI指数评估系统原型开发完成。</p>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">2023年7月</h3>
+          <p class="text-gray-600">平台Alpha版上线，在北京、上海、广州三所高校展开内测，收集用户反馈并持续优化产品体验。</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">2023年10月</h3>
+          <p class="text-gray-600">完成A轮融资，VR消费模拟和AR购物助手功能上线，用户规模突破10万，获得多家媒体报道。</p>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">2024年1月</h3>
+          <p class="text-gray-600">区块链商家信用系统上线，与50家电商平台达成合作，实现数据互通和服务集成，用户规模突破50万。</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">2024年4月</h3>
+          <p class="text-gray-600">平台正式版全面上线，覆盖全国100+高校，与政府部门建立战略合作，推动青年消费健康教育。</p>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">2024年至今</h3>
+          <p class="text-gray-600">持续优化产品功能，拓展合作伙伴网络，用户规模突破100万，成为中国领先的青年消费智慧平台。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-12">
+      <div class="w-full lg:w-1/2">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">社会影响力</h2>
+        <p class="text-lg text-gray-600 mb-8">智财青春平台致力于推动青年消费观念的转变，培养健康的财务习惯，促进社会可持续发展。通过数据驱动和技术创新，我们已经在多个维度产生了积极影响。</p>
+        <div class="space-y-6">
+          <div class="flex items-start">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+              <i class="ri-user-star-line ri-lg text-primary"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">用户行为改变</h3>
+              <p class="text-gray-600">平台用户的冲动消费行为平均减少38%，储蓄率提升25%，消费满意度提高42%，财务压力感降低31%。</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mr-4 flex-shrink-0">
+              <i class="ri-earth-line ri-lg text-secondary"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">环境可持续性</h3>
+              <p class="text-gray-600">通过引导用户选择环保产品和减少过度消费，平台已帮助减少碳排放超过5000吨，相当于种植25万棵树木的效果。</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+              <i class="ri-government-line ri-lg text-primary"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">政策影响</h3>
+              <p class="text-gray-600">我们的研究报告和数据分析已被多个政府部门采纳，为青年消费政策制定提供了科学依据，推动了消费者保护法规的完善。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">平台影响力数据</h3>
+          <div class="chart-container" id="impactChart" style="height: 400px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">未来规划</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">持续创新，拓展边界，构建更完善的消费生态</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition border-t-4 border-primary">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">技术创新路线</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <i class="ri-check-line text-primary mr-2 mt-1"></i>
+            <span class="text-gray-600">引入多模态大模型，提升消费行为分析精度</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-primary mr-2 mt-1"></i>
+            <span class="text-gray-600">开发脑机接口消费体验系统，探索情绪与决策关系</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-primary mr-2 mt-1"></i>
+            <span class="text-gray-600">构建去中心化数据交换协议，保障用户数据主权</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-primary mr-2 mt-1"></i>
+            <span class="text-gray-600">开发智能可穿戴设备，实现全天候消费行为监测</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-primary mr-2 mt-1"></i>
+            <span class="text-gray-600">升级AR购物助手，支持3D全息投影展示</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition border-t-4 border-secondary">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">业务拓展计划</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <i class="ri-check-line text-secondary mr-2 mt-1"></i>
+            <span class="text-gray-600">拓展国际市场，优先布局东南亚和欧洲地区</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-secondary mr-2 mt-1"></i>
+            <span class="text-gray-600">推出企业版SaaS服务，赋能金融机构和零售商</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-secondary mr-2 mt-1"></i>
+            <span class="text-gray-600">与高校合作开发财商教育课程体系</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-secondary mr-2 mt-1"></i>
+            <span class="text-gray-600">推出智能投顾服务，实现消费与投资的闭环</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-secondary mr-2 mt-1"></i>
+            <span class="text-gray-600">建立消费者权益保护基金，提供法律援助服务</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition border-t-4 border-primary">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">社会责任目标</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <i class="ri-check-line text-primary mr-2 mt-1"></i>
+            <span class="text-gray-600">到2026年，帮助100万青年用户建立健康消费习惯</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-primary mr-2 mt-1"></i>
+            <span class="text-gray-600">推动将财商教育纳入高校必修课程体系</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-primary mr-2 mt-1"></i>
+            <span class="text-gray-600">建立青年消费大数据研究中心，定期发布行业报告</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-primary mr-2 mt-1"></i>
+            <span class="text-gray-600">开展乡村青年财商教育公益项目，覆盖100个县域</span>
+          </li>
+          <li class="flex items-start">
+            <i class="ri-check-line text-primary mr-2 mt-1"></i>
+            <span class="text-gray-600">推动建立行业自律联盟，促进消费生态健康发展</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-primary bg-opacity-5">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center justify-between">
+      <div class="mb-8 md:mb-0 md:mr-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">加入我们的行列</h2>
+        <p class="text-lg text-gray-600 mb-6">成为智慧消费的践行者，共同创造更美好的未来</p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true">
+            <button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+              立即体验
+            </button>
+          </a>
+          <button class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+            加入社区
+          </button>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 max-w-md">
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">联系我们</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+                <i class="ri-mail-line text-primary"></i>
+              </div>
+              <span class="text-gray-600">contact@zhicaiqingchun.com</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+                <i class="ri-phone-line text-primary"></i>
+              </div>
+              <span class="text-gray-600">400-888-7766</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+                <i class="ri-map-pin-line text-primary"></i>
+              </div>
+              <span class="text-gray-600">北京市海淀区中关村创业大厦B座15层</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-gray-900 text-white py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <div class="flex items-center mb-4">
+          <div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-1.5 rounded-lg mr-2">
+            <span class="text-2xl font-['Pacifico'] text-white">ZCQ</span>
+          </div>
+          <span class="text-lg font-semibold">智财青春</span>
+        </div>
+        <p class="text-gray-400 mb-4">数据驱动的青年消费智慧平台</p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+            <i class="ri-douban-fill"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">产品服务</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">消费评估</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">VR 体验课程</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">AR 购物助手</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">预算规划工具</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">关于我们</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-primary hover:text-white">平台介绍</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">团队成员</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">帮助中心</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">用户手册</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">隐私政策</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 智财青春. 保留所有权利.</p>
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center text-gray-400">
+          <i class="ri-visa-fill ri-lg mr-2"></i>
+          <i class="ri-mastercard-fill ri-lg mr-2"></i>
+          <i class="ri-paypal-fill ri-lg mr-2"></i>
+          <i class="ri-alipay-fill ri-lg"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+// 社会影响力图表
+const impactChart = echarts.init(document.getElementById('impactChart'));
+const impactOption = {
+  animation: false,
+  tooltip: {
+    trigger: 'axis',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderColor: '#eee',
+    borderWidth: 1,
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  legend: {
+    data: ['用户规模(万)', '用户储蓄率提升(%)', '碳减排量(吨)'],
+    bottom: 0,
+    textStyle: {
+      color: '#1f2937'
+    }
+  },
+  grid: {
+    top: 30,
+    right: 10,
+    bottom: 80,
+    left: 40
+  },
+  xAxis: {
+    type: 'category',
+    data: ['2023Q1', '2023Q2', '2023Q3', '2023Q4', '2024Q1', '2024Q2'],
+    axisLine: {
+      lineStyle: {
+        color: '#ddd'
+      }
+    },
+    axisLabel: {
+      color: '#1f2937'
+    }
+  },
+  yAxis: [
+    {
+      type: 'value',
+      name: '用户规模(万)',
+      nameTextStyle: {
+        color: '#1f2937'
+      },
+      min: 0,
+      max: 120,
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937'
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#eee'
+        }
+      }
+    },
+    {
+      type: 'value',
+      name: '百分比/吨位',
+      nameTextStyle: {
+        color: '#1f2937'
+      },
+      min: 0,
+      max: 6000,
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisLabel: {
+        color: '#1f2937'
+      },
+      splitLine: {
+        show: false
+      }
+    }
+  ],
+  series: [
+    {
+      name: '用户规模(万)',
+      type: 'bar',
+      data: [5, 15, 35, 60, 85, 105],
+      barWidth: 15,
+      itemStyle: {
+        color: '#57B5E7'
+      }
+    },
+    {
+      name: '用户储蓄率提升(%)',
+      type: 'line',
+      yAxisIndex: 1,
+      data: [15, 18, 20, 22, 24, 25],
+      symbol: 'none',
+      smooth: true,
+      lineStyle: {
+        width: 3,
+        color: '#8DD3C7'
+      }
+    },
+    {
+      name: '碳减排量(吨)',
+      type: 'line',
+      yAxisIndex: 1,
+      data: [200, 650, 1500, 2800, 4200, 5000],
+      symbol: 'none',
+      smooth: true,
+      lineStyle: {
+        width: 3,
+        color: '#FBBF72'
+      }
+    }
+  ]
+};
+impactChart.setOption(impactOption);
+
+// 响应式调整
+window.addEventListener('resize', function() {
+  impactChart.resize();
+});
+</script>
+</body>
+</html>

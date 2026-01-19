@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>决策干预工具 - 智财青春平台</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2A5C8B',secondary:'#4CAF87'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: #2A5C8B;
+cursor: pointer;
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 48px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 24px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #2A5C8B;
+}
+input:checked + .slider:before {
+transform: translateX(24px);
+}
+.custom-radio {
+display: flex;
+align-items: center;
+cursor: pointer;
+}
+.custom-radio-input {
+appearance: none;
+width: 18px;
+height: 18px;
+border: 2px solid #ccc;
+border-radius: 50%;
+margin-right: 8px;
+position: relative;
+}
+.custom-radio-input:checked {
+border-color: #2A5C8B;
+}
+.custom-radio-input:checked::after {
+content: "";
+position: absolute;
+top: 3px;
+left: 3px;
+width: 8px;
+height: 8px;
+background-color: #2A5C8B;
+border-radius: 50%;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- 导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-2xl font-['Pacifico'] text-primary mr-10">logo</a>
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary font-medium">首页</a>
+<a href="#" class="text-primary font-medium border-b-2 border-primary pb-1">决策干预</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/2ee6e9dc-26b6-47dd-9f9e-47eb7ec5158c" data-readdy="true" class="text-gray-600 hover:text-primary font-medium">理财规划</a>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/35d4b66d-9f29-422d-bf37-9facf603e015" data-readdy="true" class="text-gray-600 hover:text-primary font-medium">消费分析</a>
+<a href="#" class="text-gray-600 hover:text-primary font-medium">教育资源</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<button class="bg-gray-100 rounded-full p-2 text-gray-600 hover:bg-gray-200">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-notification-3-line"></i>
+</div>
+</button>
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white">
+<span>张</span>
+</div>
+<span class="hidden md:inline text-gray-700">张小明</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero 区域 -->
+<section class="relative overflow-hidden">
+<div style="background-image: url('https://public.readdy.ai/ai/img_res/d33bdf0a37ade4316fb3cb76c77d1c12.jpg');" class="bg-cover bg-center h-[500px] w-full">
+<div class="container mx-auto px-4 h-full flex items-center">
+<div class="max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">智能决策干预</h1>
+<p class="text-xl text-white mb-8">在消费决策关键时刻，为您提供实时智能建议，避免冲动消费，做出更明智的财务选择</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-button font-medium shadow-lg transition whitespace-nowrap">立即体验</button>
+<button class="bg-white hover:bg-gray-100 text-primary px-6 py-3 rounded-button font-medium shadow-lg transition whitespace-nowrap">了解更多</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 功能介绍 -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">智能决策干预核心功能</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">我们的工具在您的消费决策过程中提供实时辅助，帮助您避免冲动消费，做出更明智的财务选择</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- 实时预警机制 -->
+<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-primary">
+<i class="ri-alarm-warning-line ri-lg"></i>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">实时预警机制</h3>
+<p class="text-gray-600 mb-4">当您浏览商品时，我们会分析价格波动趋势，在不合理高价或即将降价时发出预警提醒</p>
+<a href="#price-alert" class="text-primary font-medium flex items-center">
+了解详情
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+<!-- 智能平替推荐 -->
+<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+<div class="w-14 h-14 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-secondary">
+<i class="ri-swap-line ri-lg"></i>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">智能平替推荐</h3>
+<p class="text-gray-600 mb-4">针对高价品牌商品，我们会推荐性价比更高的替代选择，帮您在保证品质的同时节省开支</p>
+<a href="#alternative" class="text-secondary font-medium flex items-center">
+了解详情
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+<!-- 分期付款评估 -->
+<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+<div class="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-yellow-600">
+<i class="ri-funds-line ri-lg"></i>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">分期付款评估</h3>
+<p class="text-gray-600 mb-4">在您考虑分期付款时，我们会分析总成本、月供压力和替代方案，帮您做出最优财务决策</p>
+<a href="#installment" class="text-yellow-600 font-medium flex items-center">
+了解详情
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+<!-- 时空消费预测 -->
+<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+<div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+<div class="w-6 h-6 flex items-center justify-center text-purple-600">
+<i class="ri-map-pin-time-line ri-lg"></i>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-3">时空消费预测</h3>
+<p class="text-gray-600 mb-4">基于您的历史消费数据和地理位置信息，预测未来消费趋势和风险区域，帮助您提前规划财务</p>
+<a href="#spatial-prediction" class="text-purple-600 font-medium flex items-center">
+了解详情
+<div class="w-5 h-5 flex items-center justify-center ml-1">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 实时预警机制演示 -->
+<section id="price-alert" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-1/2">
+<h2 class="text-3xl font-bold text-gray-900 mb-6">实时价格预警</h2>
+<p class="text-lg text-gray-600 mb-8">我们会追踪您感兴趣商品的历史价格走势，当检测到不合理定价或即将降价时，及时提醒您暂缓购买决策</p>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+<div class="flex justify-between items-center mb-4">
+<h4 class="font-semibold text-gray-800">价格预警设置</h4>
+<label class="custom-switch">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+<div class="mb-6">
+<div class="flex justify-between mb-2">
+<span class="text-gray-600">预警阈值</span>
+<span class="font-medium text-primary">15%</span>
+</div>
+<input type="range" min="5" max="30" value="15" class="w-full h-2 bg-gray-200 rounded-full appearance-none">
+<div class="flex justify-between text-xs text-gray-500 mt-1">
+<span>5%</span>
+<span>30%</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<label class="custom-radio">
+<input type="radio" name="alert-type" class="custom-radio-input" checked>
+<span>所有商品</span>
+</label>
+</div>
+<div>
+<label class="custom-radio">
+<input type="radio" name="alert-type" class="custom-radio-input">
+<span>收藏商品</span>
+</label>
+</div>
+<div>
+<label class="custom-radio">
+<input type="radio" name="alert-type" class="custom-radio-input">
+<span>自定义</span>
+</label>
+</div>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-button font-medium shadow-md transition whitespace-nowrap">开启价格预警</button>
+</div>
+<div class="md:w-1/2 bg-white p-6 rounded-lg shadow-md">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-semibold text-gray-800">价格波动监控</h4>
+<div class="flex items-center text-sm text-gray-500">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+更新于 10 分钟前
+</div>
+</div>
+<div class="mb-6" id="price-chart" style="width: 100%; height: 300px;"></div>
+<div class="bg-red-50 border border-red-100 rounded-lg p-4 mb-4">
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-red-500 mt-0.5 mr-2">
+<i class="ri-alert-line"></i>
+</div>
+<div>
+<h5 class="font-medium text-red-700">价格预警</h5>
+<p class="text-sm text-red-600">当前价格比历史最低价高出 23%，建议等待价格回落再购买</p>
+</div>
+</div>
+</div>
+<div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-blue-500 mt-0.5 mr-2">
+<i class="ri-information-line"></i>
+</div>
+<div>
+<h5 class="font-medium text-blue-700">历史价格信息</h5>
+<p class="text-sm text-blue-600">该商品预计将在 15 天后进入促销期，届时价格可能下降 20% 左右</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 智能平替推荐演示 -->
+<section id="alternative" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row-reverse items-center gap-12">
+<div class="md:w-1/2">
+<h2 class="text-3xl font-bold text-gray-900 mb-6">智能平替推荐</h2>
+<p class="text-lg text-gray-600 mb-8">针对高价品牌商品，我们会分析其核心功能和性能参数，推荐性价比更高的替代选择</p>
+<div class="bg-white border border-gray-200 rounded-lg shadow-md mb-6">
+<div class="p-4 border-b border-gray-200">
+<div class="flex justify-between items-center">
+<h4 class="font-semibold text-gray-800">智能平替分析</h4>
+<div class="flex items-center text-sm text-gray-500">
+<span class="text-primary font-medium">已为您找到 3 个平替商品</span>
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<div class="w-12 h-12 bg-gray-100 rounded-md flex items-center justify-center mr-3">
+<div class="w-6 h-6 flex items-center justify-center text-gray-500">
+<i class="ri-smartphone-line"></i>
+</div>
+</div>
+<div>
+<h5 class="font-medium text-gray-800">旗舰手机 Pro Max</h5>
+<p class="text-sm text-gray-500">128GB, 午夜蓝</p>
+</div>
+</div>
+<div class="text-right">
+<div class="font-bold text-gray-800">¥8,999</div>
+<div class="text-sm text-gray-500">原始选择</div>
+</div>
+</div>
+<div class="h-px bg-gray-200 my-4"></div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-green-50 border border-green-100 rounded-lg">
+<div class="flex items-center">
+<div class="w-10 h-10 bg-white rounded-md flex items-center justify-center mr-3 shadow-sm">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-smartphone-line"></i>
+</div>
+</div>
+<div>
+<h5 class="font-medium text-gray-800">性价比手机 Pro</h5>
+<div class="flex items-center text-xs text-green-600">
+<div class="w-3 h-3 flex items-center justify-center mr-1">
+<i class="ri-check-line"></i>
+</div>
+推荐选择
+</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-bold text-gray-800">¥3,999</div>
+<div class="text-sm text-green-600">节省 56%</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg">
+<div class="flex items-center">
+<div class="w-10 h-10 bg-white rounded-md flex items-center justify-center mr-3 shadow-sm">
+<div class="w-5 h-5 flex items-center justify-center text-gray-500">
+<i class="ri-smartphone-line"></i>
+</div>
+</div>
+<div>
+<h5 class="font-medium text-gray-800">次旗舰手机 Ultra</h5>
+<div class="flex items-center text-xs text-gray-500">
+<div class="w-3 h-3 flex items-center justify-center mr-1">
+<i class="ri-information-line"></i>
+</div>
+备选方案
+</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-bold text-gray-800">¥5,499</div>
+<div class="text-sm text-gray-500">节省 39%</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-gray-200 bg-gray-50">
+<button class="w-full bg-secondary hover:bg-secondary/90 text-white px-4 py-2 rounded-button font-medium transition whitespace-nowrap">查看详细对比</button>
+</div>
+</div>
+</div>
+<div class="md:w-1/2">
+<div id="comparison-chart" style="width: 100%; height: 400px;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 分期付款评估演示 -->
+<section id="installment" class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="md:w-1/2">
+<h2 class="text-3xl font-bold text-gray-900 mb-6">分期付款评估</h2>
+<p class="text-lg text-gray-600 mb-8">在您考虑分期付款时，我们会分析总成本、月供压力和替代方案，帮您做出最优财务决策</p>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+<h4 class="font-semibold text-gray-800 mb-4">分期付款计算器</h4>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">商品价格</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="text-gray-500">¥</span>
+</div>
+<input type="text" value="8999" class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+</div>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">分期期数</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 border border-gray-300 rounded text-gray-700 hover:border-primary hover:text-primary whitespace-nowrap !rounded-button">3 期</button>
+<button class="py-2 border border-primary rounded text-primary bg-primary/5 whitespace-nowrap !rounded-button">6 期</button>
+<button class="py-2 border border-gray-300 rounded text-gray-700 hover:border-primary hover:text-primary whitespace-nowrap !rounded-button">12 期</button>
+<button class="py-2 border border-gray-300 rounded text-gray-700 hover:border-primary hover:text-primary whitespace-nowrap !rounded-button">24 期</button>
+<button class="py-2 border border-gray-300 rounded text-gray-700 hover:border-primary hover:text-primary whitespace-nowrap !rounded-button">36 期</button>
+</div>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">月收入</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="text-gray-500">¥</span>
+</div>
+<input type="text" value="12000" class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+</div>
+</div>
+<button class="w-full bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-3 rounded-button font-medium transition whitespace-nowrap">获取分期评估</button>
+</div>
+</div>
+<div class="md:w-1/2 bg-white p-6 rounded-lg shadow-md">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-semibold text-gray-800">分期付款评估结果</h4>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="text-sm text-gray-500 mb-1">每月还款</div>
+<div class="text-2xl font-bold text-gray-900">¥1,558</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="text-sm text-gray-500 mb-1">总支付金额</div>
+<div class="text-2xl font-bold text-gray-900">¥9,348</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="text-sm text-gray-500 mb-1">额外成本</div>
+<div class="text-2xl font-bold text-red-500">¥349</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="text-sm text-gray-500 mb-1">月收入占比</div>
+<div class="text-2xl font-bold text-yellow-500">13%</div>
+</div>
+</div>
+<div id="pressure-chart" style="width: 100%; height: 200px;"></div>
+<div class="mt-6">
+<div class="bg-yellow-50 border border-yellow-100 rounded-lg p-4 mb-4">
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-yellow-500 mt-0.5 mr-2">
+<i class="ri-alert-line"></i>
+</div>
+<div>
+<h5 class="font-medium text-yellow-700">财务压力提醒</h5>
+<p class="text-sm text-yellow-600">该分期方案占用您月收入的 13%，接近合理范围上限（15%）</p>
+</div>
+</div>
+</div>
+<div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-blue-500 mt-0.5 mr-2">
+<i class="ri-lightbulb-line"></i>
+</div>
+<div>
+<h5 class="font-medium text-blue-700">建议</h5>
+<p class="text-sm text-blue-600">考虑延长至 12 期分期，或选择我们推荐的性价比替代品，可降低月供至 ¥699</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 时空消费预测演示 -->
+<section id="spatial-prediction" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row-reverse items-center gap-12">
+<div class="md:w-1/2">
+<h2 class="text-3xl font-bold text-gray-900 mb-6">时空消费预测系统</h2>
+<p class="text-lg text-gray-600 mb-8">基于您的历史消费数据和地理位置信息，我们能够预测未来消费趋势和风险区域，帮助您提前规划财务决策</p>
+<div class="bg-white border border-gray-200 rounded-lg shadow-md mb-6">
+<div class="p-4 border-b border-gray-200">
+<div class="flex justify-between items-center">
+<h4 class="font-semibold text-gray-800">消费预测分析</h4>
+<div class="flex items-center text-sm text-gray-500">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+更新于 2 小时前
+</div>
+</div>
+</div>
+<div class="p-4">
+<div class="mb-4">
+<h5 class="font-medium text-gray-800 mb-2">预测时间范围</h5>
+<div class="flex items-center space-x-2">
+<button class="py-1 px-3 border border-purple-600 rounded text-purple-600 bg-purple-50 whitespace-nowrap !rounded-button">1 个月</button>
+<button class="py-1 px-3 border border-gray-300 rounded text-gray-700 hover:border-purple-600 hover:text-purple-600 whitespace-nowrap !rounded-button">3 个月</button>
+<button class="py-1 px-3 border border-gray-300 rounded text-gray-700 hover:border-purple-600 hover:text-purple-600 whitespace-nowrap !rounded-button">6 个月</button>
+</div>
+</div>
+<div class="mb-4">
+<h5 class="font-medium text-gray-800 mb-2">图层控制</h5>
+<div class="grid grid-cols-2 gap-2">
+<label class="flex items-center space-x-2">
+<input type="checkbox" checked class="w-4 h-4 accent-purple-600">
+<span class="text-sm">基础消费热度</span>
+</label>
+<label class="flex items-center space-x-2">
+<input type="checkbox" checked class="w-4 h-4 accent-red-500">
+<span class="text-sm">高风险预警区域</span>
+</label>
+<label class="flex items-center space-x-2">
+<input type="checkbox" class="w-4 h-4 accent-green-500">
+<span class="text-sm">政策覆盖区</span>
+</label>
+<label class="flex items-center space-x-2">
+<input type="checkbox" class="w-4 h-4 accent-blue-500">
+<span class="text-sm">商圈热度</span>
+</label>
+</div>
+</div>
+<div class="mb-4">
+<h5 class="font-medium text-gray-800 mb-2">预测结果摘要</h5>
+<div class="space-y-2">
+<div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+<span class="text-sm text-gray-700">预计总消费</span>
+<span class="font-medium text-gray-900">¥8,450 <span class="text-red-500 text-xs">↑12%</span></span>
+</div>
+<div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+<span class="text-sm text-gray-700">高风险品类</span>
+<span class="font-medium text-gray-900">3C电子 <span class="text-red-500 text-xs">↑23%</span></span>
+</div>
+<div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+<span class="text-sm text-gray-700">借贷概率</span>
+<span class="font-medium text-red-500">68%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-gray-200 bg-gray-50">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/dafc9d93-6cb3-47d1-8851-cc49a3ef4207" data-readdy="true">
+<button class="w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-button font-medium transition whitespace-nowrap">查看详细预测报告</button>
+</a>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 bg-white p-4 rounded-lg shadow-md">
+<div class="relative" style="height: 450px; background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-black/10"></div>
+<div class="absolute top-4 left-4 right-4 flex justify-between items-center">
+<h4 class="font-semibold text-white bg-black/50 px-3 py-1 rounded">消费风险地图</h4>
+<div class="flex space-x-2">
+<button class="bg-white p-2 rounded shadow">
+<div class="w-5 h-5 flex items-center justify-center text-gray-700">
+<i class="ri-zoom-in-line"></i>
+</div>
+</button>
+<button class="bg-white p-2 rounded shadow">
+<div class="w-5 h-5 flex items-center justify-center text-gray-700">
+<i class="ri-zoom-out-line"></i>
+</div>
+</button>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 right-4">
+<div class="bg-white/90 p-3 rounded-lg shadow">
+<h5 class="font-medium text-gray-800 mb-2">区域消费预测</h5>
+<div class="flex items-center justify-between mb-2">
+<span class="text-sm text-gray-600">时间轴</span>
+<span class="text-sm font-medium text-purple-600">2025年5月</span>
+</div>
+<input type="range" min="1" max="3" value="1" class="w-full h-2 bg-gray-200 rounded-full appearance-none">
+<div class="flex justify-between text-xs text-gray-500 mt-1">
+<span>4月</span>
+<span>5月</span>
+<span>6月</span>
+</div>
+<div class="mt-3 p-3 bg-purple-50 border border-purple-100 rounded">
+<div class="flex items-start">
+<div class="w-5 h-5 flex items-center justify-center text-purple-600 mt-0.5 mr-2">
+<i class="ri-information-line"></i>
+</div>
+<div>
+<h6 class="font-medium text-purple-700">西湖商圈预测</h6>
+<p class="text-xs text-purple-600">点击地图上的网格可查看该区域的详细消费预测和Top3增长品类</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 使用案例 -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">真实使用案例</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">看看其他用户如何通过我们的决策干预工具做出更明智的消费决策</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="h-48 bg-gray-100 relative" style="background-image: url('https://public.readdy.ai/ai/img_res/d9f07876170bd9377158e93ab5a230ae.jpg'); background-size: cover; background-position: center;"></div>
+<div class="p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-medium mr-3">
+<span>李</span>
+</div>
+<div>
+<h5 class="font-medium text-gray-800">李明宇</h5>
+<p class="text-sm text-gray-500">大学生</p>
+</div>
+</div>
+<p class="text-gray-600 mb-4">"原本打算买一台旗舰手机，价格接近 9000 元。使用平台的价格预警功能后发现该手机即将在一个月后降价，同时平替推荐功能给我找到了一款性能相近但价格只有 4000 元的替代品。最终节省了 5000 元！"</p>
+<div class="flex items-center text-sm text-primary">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-coins-line"></i>
+</div>
+节省金额: ¥5,000
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="h-48 bg-gray-100 relative" style="background-image: url('https://public.readdy.ai/ai/img_res/b5f4d4da94f68140595d96b4e0f1f52f.jpg'); background-size: cover; background-position: center;"></div>
+<div class="p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-white font-medium mr-3">
+<span>王</span>
+</div>
+<div>
+<h5 class="font-medium text-gray-800">王佳怡</h5>
+<p class="text-sm text-gray-500">职场新人</p>
+</div>
+</div>
+<p class="text-gray-600 mb-4">"刚工作不久就想买一台高配笔记本电脑，准备用分期付款。平台的分期评估工具显示我的月供压力过大，并建议了更合理的购买方案。最终我选择了先存钱再购买，避免了不必要的利息支出。"</p>
+<div class="flex items-center text-sm text-green-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-shield-check-line"></i>
+</div>
+避免不必要负债: ¥12,000
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="h-48 bg-gray-100 relative" style="background-image: url('https://public.readdy.ai/ai/img_res/4532e53f6c271d4b8278592372c177a3.jpg'); background-size: cover; background-position: center;"></div>
+<div class="p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-white font-medium mr-3">
+<span>陈</span>
+</div>
+<div>
+<h5 class="font-medium text-gray-800">陈志强</h5>
+<p class="text-sm text-gray-500">工程师</p>
+</div>
+</div>
+<p class="text-gray-600 mb-4">"我是一个容易冲动消费的人，特别是看到限时优惠。自从使用了这个平台的决策干预工具，已经帮我避免了多次不必要的购买。最近一次是平台提醒我一款产品的'特价'其实是虚假折扣，真实历史价格更低。"</p>
+<div class="flex items-center text-sm text-blue-600">
+<div class="w-4 h-4 flex items-center justify-center mr-1">
+<i class="ri-time-line"></i>
+</div>
+避免冲动消费次数: 8次
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-10">
+<button class="bg-white border border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-6 py-3 rounded-button font-medium transition whitespace-nowrap">查看更多案例</button>
+</div>
+</div>
+</section>
+<!-- 用户评价 -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">用户评价</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">了解其他用户对我们决策干预工具的真实评价</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex text-yellow-400 mb-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-600 mb-4">"这个工具太实用了！帮我省下了不少钱，特别是那个价格预警功能，让我避开了很多商家的营销陷阱。"</p>
+<div class="flex items-center">
+<div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-medium mr-2">
+<span>赵</span>
+</div>
+<div>
+<h5 class="font-medium text-gray-800">赵雪琪</h5>
+<p class="text-xs text-gray-500">使用 6 个月</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex text-yellow-400 mb-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-half-line"></i>
+</div>
+</div>
+<p class="text-gray-600 mb-4">"分期付款评估功能很棒，帮我分析了月供压力，让我重新考虑了购买计划，避免了财务紧张。"</p>
+<div class="flex items-center">
+<div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-medium mr-2">
+<span>孙</span>
+</div>
+<div>
+<h5 class="font-medium text-gray-800">孙浩然</h5>
+<p class="text-xs text-gray-500">使用 3 个月</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex text-yellow-400 mb-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-line"></i>
+</div>
+</div>
+<p class="text-gray-600 mb-4">"智能平替推荐功能真的很强大，找到的替代品质量和功能都不错，价格却便宜很多，很实用。"</p>
+<div class="flex items-center">
+<div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-medium mr-2">
+<span>林</span>
+</div>
+<div>
+<h5 class="font-medium text-gray-800">林嘉欣</h5>
+<p class="text-xs text-gray-500">使用 8 个月</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex text-yellow-400 mb-3">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-star-fill"></i>
+</div>
+</div>
+<p class="text-gray-600 mb-4">"这个工具让我养成了理性消费的习惯，不再盲目跟风购物。每次想买东西都会先用它分析一下，非常好用！"</p>
+<div class="flex items-center">
+<div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-medium mr-2">
+<span>刘</span>
+</div>
+<div>
+<h5 class="font-medium text-gray-800">刘伟明</h5>
+<p class="text-xs text-gray-500">使用 12 个月</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 开始使用 CTA -->
+<section class="py-20 bg-primary/5">
+<div class="container mx-auto px-4 text-center">
+<h2 class="text-3xl font-bold text-gray-900 mb-6">开始做出更明智的消费决策</h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">立即体验我们的决策干预工具，避免冲动消费，找到最具性价比的商品，做出更明智的财务决策</p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-button font-medium shadow-lg transition text-lg whitespace-nowrap">立即开始使用</button>
+<button class="bg-white border border-gray-300 hover:border-primary text-gray-700 hover:text-primary px-8 py-4 rounded-button font-medium shadow-lg transition text-lg whitespace-nowrap">了解更多功能</button>
+</div>
+</div>
+</section>
+<!-- 页脚 -->
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">logo</a>
+<p class="text-gray-400 mb-4">智财青春平台致力于帮助年轻人培养健康的消费习惯和财务意识，做出更明智的经济决策</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-weibo-fill ri-lg"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-wechat-fill ri-lg"></i>
+</div>
+</a>
+<a href="#" class="text-gray-400 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-qq-fill ri-lg"></i>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-semibold text-lg mb-4">功能导航</h5>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">首页</a></li>
+<li><a href="#" class="text-white">决策干预</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">理财规划</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">消费分析</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">教育资源</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-semibold text-lg mb-4">关于我们</h5>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">平台介绍</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">团队成员</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">加入我们</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-semibold text-lg mb-4">联系方式</h5>
+<ul class="space-y-2">
+<li class="flex items-center text-gray-400">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-mail-line"></i>
+</div>
+<span>contact@zhicaiqingchun.com</span>
+</li>
+<li class="flex items-center text-gray-400">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-phone-line"></i>
+</div>
+<span>400-888-7777</span>
+</li>
+<li class="flex items-center text-gray-400">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-map-pin-line"></i>
+</div>
+<span>北京市海淀区中关村科技园</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-500 mb-4 md:mb-0">© 2025 智财青春平台. 保留所有权利</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-500 hover:text-white text-sm">隐私政策</a>
+<a href="#" class="text-gray-500 hover:text-white text-sm">使用条款</a>
+<a href="#" class="text-gray-500 hover:text-white text-sm">Cookie 政策</a>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+// 价格波动监控图表
+const priceChart = echarts.init(document.getElementById('price-chart'));
+const priceOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+top: 10,
+right: 10,
+bottom: 30,
+left: 50
+},
+xAxis: {
+type: 'category',
+data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+min: 7000,
+max: 10000,
+axisLine: {
+show: false
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#eee'
+}
+}
+},
+series: [
+{
+name: '商品价格',
+type: 'line',
+data: [8999, 8899, 8799, 8599, 8399, 8799, 8999, 9299, 8999],
+smooth: true,
+symbol: 'none',
+lineStyle: {
+width: 3,
+color: 'rgba(87, 181, 231, 1)'
+},
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(87, 181, 231, 0.2)'
+}, {
+offset: 1, color: 'rgba(87, 181, 231, 0.05)'
+}]
+}
+},
+markLine: {
+symbol: 'none',
+lineStyle: {
+color: '#ff4d4f',
+type: 'dashed'
+},
+data: [
+{
+name: '历史最低价',
+yAxis: 8399,
+label: {
+position: 'insideEndTop',
+formatter: '历史最低: ¥8,399',
+color: '#ff4d4f',
+fontSize: 12
+}
+}
+]
+}
+}
+]
+};
+priceChart.setOption(priceOption);
+// 商品比较图表
+const comparisonChart = echarts.init(document.getElementById('comparison-chart'));
+const comparisonOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+axisPointer: {
+type: 'shadow'
+},
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+data: ['旗舰手机 Pro Max', '性价比手机 Pro', '次旗舰手机 Ultra'],
+textStyle: {
+color: '#1f2937'
+},
+bottom: 0
+},
+grid: {
+top: 10,
+right: 10,
+bottom: 80,
+left: 60
+},
+xAxis: {
+type: 'value',
+max: 100,
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#eee'
+}
+}
+},
+yAxis: {
+type: 'category',
+data: ['性价比', '拍照性能', '处理器性能', '电池续航', '屏幕显示'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+series: [
+{
+name: '旗舰手机 Pro Max',
+type: 'bar',
+data: [55, 95, 90, 85, 92],
+barWidth: 15,
+itemStyle: {
+color: 'rgba(87, 181, 231, 1)',
+borderRadius: 4
+}
+},
+{
+name: '性价比手机 Pro',
+type: 'bar',
+data: [95, 82, 78, 90, 85],
+barWidth: 15,
+itemStyle: {
+color: 'rgba(141, 211, 199, 1)',
+borderRadius: 4
+}
+},
+{
+name: '次旗舰手机 Ultra',
+type: 'bar',
+data: [75, 88, 85, 88, 90],
+barWidth: 15,
+itemStyle: {
+color: 'rgba(251, 191, 114, 1)',
+borderRadius: 4
+}
+}
+]
+};
+comparisonChart.setOption(comparisonOption);
+// 月供压力评估图表
+const pressureChart = echarts.init(document.getElementById('pressure-chart'));
+const pressureOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+series: [
+{
+name: '月收入分配',
+type: 'pie',
+radius: ['40%', '70%'],
+center: ['50%', '50%'],
+avoidLabelOverlap: false,
+itemStyle: {
+borderRadius: 8,
+borderColor: '#fff',
+borderWidth: 2
+},
+label: {
+show: false
+},
+emphasis: {
+label: {
+show: true,
+fontSize: 14,
+fontWeight: 'bold'
+}
+},
+labelLine: {
+show: false
+},
+data: [
+{ value: 13, name: '分期月供', itemStyle: { color: 'rgba(252, 141, 98, 1)' } },
+{ value: 30, name: '房租', itemStyle: { color: 'rgba(141, 211, 199, 1)' } },
+{ value: 25, name: '日常开销', itemStyle: { color: 'rgba(251, 191, 114, 1)' } },
+{ value: 32, name: '剩余可支配', itemStyle: { color: 'rgba(87, 181, 231, 1)' } }
+]
+}
+]
+};
+pressureChart.setOption(pressureOption);
+// 时空消费预测地图交互
+document.addEventListener('DOMContentLoaded', function() {
+// 图层控制交互
+const layerCheckboxes = document.querySelectorAll('#spatial-prediction input[type="checkbox"]');
+layerCheckboxes.forEach(checkbox => {
+checkbox.addEventListener('change', function() {
+// 这里可以添加图层显示/隐藏的逻辑
+console.log(`图层 ${this.nextElementSibling.textContent.trim()} 已${this.checked ? '显示' : '隐藏'}`);
+});
+});
+// 时间轴交互
+const timeSlider = document.querySelector('#spatial-prediction input[type="range"]');
+if (timeSlider) {
+timeSlider.addEventListener('input', function() {
+const months = ['4月', '5月', '6月'];
+const monthDisplay = document.querySelector('#spatial-prediction .text-purple-600');
+if (monthDisplay) {
+monthDisplay.textContent = `2025年${months[this.value - 1]}`;
+}
+});
+}
+// 地图缩放按钮交互
+const zoomInBtn = document.querySelector('#spatial-prediction .ri-zoom-in-line').closest('button');
+const zoomOutBtn = document.querySelector('#spatial-prediction .ri-zoom-out-line').closest('button');
+if (zoomInBtn && zoomOutBtn) {
+zoomInBtn.addEventListener('click', function() {
+console.log('放大地图');
+});
+zoomOutBtn.addEventListener('click', function() {
+console.log('缩小地图');
+});
+}
+// 模拟地图点击事件
+const mapContainer = document.querySelector('#spatial-prediction .relative[style*="background-image"]');
+if (mapContainer) {
+mapContainer.addEventListener('click', function(e) {
+// 避免点击控件时触发
+if (e.target === this || e.target.classList.contains('bg-black/10')) {
+// 创建并显示区域详情弹窗
+const popup = document.createElement('div');
+popup.className = 'absolute bg-white/95 p-4 rounded-lg shadow-lg z-10';
+popup.style.top = '50%';
+popup.style.left = '50%';
+popup.style.transform = 'translate(-50%, -50%)';
+popup.style.maxWidth = '300px';
+popup.innerHTML = `
+<div class="flex justify-between items-center mb-3">
+<h6 class="font-semibold text-gray-800">网格区域详情</h6>
+<button class="text-gray-500 hover:text-gray-700">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-close-line"></i>
+</div>
+</button>
+</div>
+<div class="mb-3">
+<div class="text-sm font-medium text-gray-700 mb-1">Top3 增长品类</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center p-2 bg-purple-50 rounded">
+<span class="text-sm">3C电子</span>
+<span class="text-sm font-medium text-red-500">+23%</span>
+</div>
+<div class="flex justify-between items-center p-2 bg-purple-50 rounded">
+<span class="text-sm">餐饮消费</span>
+<span class="text-sm font-medium text-red-500">+18%</span>
+</div>
+<div class="flex justify-between items-center p-2 bg-purple-50 rounded">
+<span class="text-sm">服装鞋帽</span>
+<span class="text-sm font-medium text-red-500">+12%</span>
+</div>
+</div>
+</div>
+<div class="text-xs text-gray-500">点击区域: 西湖商圈 (ID: 330106)</div>
+`;
+this.appendChild(popup);
+// 关闭按钮功能
+const closeBtn = popup.querySelector('button');
+closeBtn.addEventListener('click', function() {
+popup.remove();
+});
+// 点击其他区域关闭
+document.addEventListener('click', function closePopup(event) {
+if (!popup.contains(event.target) && event.target !== mapContainer) {
+popup.remove();
+document.removeEventListener('click', closePopup);
+}
+});
+}
+});
+}
+});
+// 响应式调整
+window.addEventListener('resize', function() {
+priceChart.resize();
+comparisonChart.resize();
+pressureChart.resize();
+});
+</script>
+</body>
+</html>

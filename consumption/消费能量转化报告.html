@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>消费能量转化报告 - 智财青春</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Noto Sans SC', sans-serif;
+background-color: #f9fafb;
+}
+.chart-container {
+width: 100%;
+height: 300px;
+}
+.progress-ring {
+transform: rotate(-90deg);
+transform-origin: center;
+}
+</style>
+</head>
+<body>
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+<span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+<span class="text-xl font-semibold text-gray-800">智财青春</span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">返回</a>
+<a href="#" class="text-primary font-medium">消费报告</a>
+<a href="#" class="text-gray-600 hover:text-primary">消费评估</a>
+<a href="#" class="text-gray-600 hover:text-primary">教育赋能</a>
+<a href="#" class="text-gray-600 hover:text-primary">决策干预</a>
+<a href="#" class="text-gray-600 hover:text-primary">生态协同</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-notification-3-line ri-lg"></i>
+</button>
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=young%20asian%20professional%20student%20portrait%2C%20neutral%20expression%2C%20looking%20at%20camera%2C%20high%20quality%2C%20studio%20lighting%2C%20clean%20background&width=40&height=40&seq=1&orientation=squarish" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+</div>
+</div>
+</div>
+</header>
+<main class="container mx-auto px-4 py-8">
+<div class="flex items-center mb-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center text-gray-600 hover:text-primary mr-4">
+<i class="ri-arrow-left-line ri-lg mr-1"></i>
+<span>返回</span>
+</a>
+<h1 class="text-3xl font-bold text-gray-900">消费能量转化报告</h1>
+</div>
+<!-- 报告总览 -->
+<section class="bg-white rounded-lg shadow-md p-6 mb-8">
+<div class="flex flex-col md:flex-row items-center justify-between">
+<div class="w-full md:w-1/2 mb-6 md:mb-0">
+<h2 class="text-2xl font-bold text-gray-900 mb-2">消费能量转化总览</h2>
+<p class="text-gray-600 mb-6">基于您的消费数据，我们分析了您的消费如何转化为个人价值和成长</p>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="text-gray-600">月收入</span>
+<span class="text-xl font-semibold text-gray-900">¥8,000</span>
+</div>
+<div class="text-sm text-gray-500">较上月 <span class="text-green-500">+5%</span></div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="text-gray-600">消费总额</span>
+<span class="text-xl font-semibold text-gray-900">¥6,200</span>
+</div>
+<div class="text-sm text-gray-500">较上月 <span class="text-red-500">-3%</span></div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="text-gray-600">能量转化率</span>
+<span class="text-xl font-semibold text-primary">78%</span>
+</div>
+<div class="text-sm text-gray-500">较上月 <span class="text-green-500">+12%</span></div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-1">
+<span class="text-gray-600">价值增长指数</span>
+<span class="text-xl font-semibold text-secondary">4.2</span>
+</div>
+<div class="text-sm text-gray-500">较同龄人 <span class="text-green-500">+15%</span></div>
+</div>
+</div>
+<div class="bg-primary bg-opacity-5 p-4 rounded-lg">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3 flex-shrink-0">
+<i class="ri-lightbulb-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="font-medium text-gray-900 mb-1">消费能量转化评价</h3>
+<p class="text-gray-600 text-sm">您的消费能量转化率处于<span class="text-primary font-medium">优秀</span>水平，发展型消费占比较高，对个人成长贡献显著。建议适当增加技能提升类消费，进一步提高能量转化效率。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-2/5 flex flex-col items-center">
+<div class="relative w-64 h-64">
+<svg class="w-full h-full" viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="54" fill="none" stroke="#e5e7eb" stroke-width="12" />
+<circle cx="60" cy="60" r="54" fill="none" stroke="#297CBB" stroke-width="12" stroke-dasharray="339.3" stroke-dashoffset="74.6" class="progress-ring" />
+<text x="60" y="55" font-size="22" text-anchor="middle" fill="#1f2937" font-weight="bold">78%</text>
+<text x="60" y="75" font-size="12" text-anchor="middle" fill="#6b7280">能量转化率</text>
+</svg>
+<div class="absolute top-0 right-0 bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">A级</div>
+</div>
+<div class="mt-4 text-center">
+<span class="inline-block px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">优于 82% 的同龄人</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 消费分类分析 -->
+<section class="bg-white rounded-lg shadow-md p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">消费分类详细分析</h2>
+<div class="flex flex-col lg:flex-row">
+<div class="w-full lg:w-1/3 mb-6 lg:mb-0">
+<div class="chart-container" id="categoryPieChart"></div>
+</div>
+<div class="w-full lg:w-2/3 pl-0 lg:pl-8">
+<div class="space-y-6">
+<!-- 生存型消费 -->
+<div class="bg-green-50 p-4 rounded-lg border border-green-100">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center rounded-full bg-green-500 text-white mr-2">
+<i class="ri-home-line"></i>
+</div>
+<span class="font-medium text-gray-800">生存型消费</span>
+</div>
+<div>
+<span class="text-xl font-semibold text-gray-900">¥2,480</span>
+<span class="ml-2 text-sm text-gray-600">(40%)</span>
+</div>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full mb-3">
+<div class="absolute top-0 left-0 h-full bg-green-500 rounded-full" style="width: 40%"></div>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">较上月: <span class="text-green-600">-2%</span></span>
+<span class="text-gray-600">同龄人均: <span class="text-gray-600">45%</span></span>
+</div>
+<div class="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2">
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">住房</div>
+<div class="font-medium">¥1,200</div>
+</div>
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">食品</div>
+<div class="font-medium">¥800</div>
+</div>
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">交通</div>
+<div class="font-medium">¥300</div>
+</div>
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">水电</div>
+<div class="font-medium">¥180</div>
+</div>
+</div>
+</div>
+<!-- 发展型消费 -->
+<div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center rounded-full bg-blue-500 text-white mr-2">
+<i class="ri-arrow-up-line"></i>
+</div>
+<span class="font-medium text-gray-800">发展型消费</span>
+</div>
+<div>
+<span class="text-xl font-semibold text-gray-900">¥2,170</span>
+<span class="ml-2 text-sm text-gray-600">(35%)</span>
+</div>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full mb-3">
+<div class="absolute top-0 left-0 h-full bg-blue-500 rounded-full" style="width: 35%"></div>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">较上月: <span class="text-green-600">+8%</span></span>
+<span class="text-gray-600">同龄人均: <span class="text-gray-600">25%</span></span>
+</div>
+<div class="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2">
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">教育</div>
+<div class="font-medium">¥980</div>
+</div>
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">健康</div>
+<div class="font-medium">¥420</div>
+</div>
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">技能培训</div>
+<div class="font-medium">¥650</div>
+</div>
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">投资</div>
+<div class="font-medium">¥120</div>
+</div>
+</div>
+</div>
+<!-- 享乐型消费 -->
+<div class="bg-orange-50 p-4 rounded-lg border border-orange-100">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center rounded-full bg-orange-500 text-white mr-2">
+<i class="ri-emotion-happy-line"></i>
+</div>
+<span class="font-medium text-gray-800">享乐型消费</span>
+</div>
+<div>
+<span class="text-xl font-semibold text-gray-900">¥1,550</span>
+<span class="ml-2 text-sm text-gray-600">(25%)</span>
+</div>
+</div>
+<div class="relative h-2 bg-gray-200 rounded-full mb-3">
+<div class="absolute top-0 left-0 h-full bg-orange-500 rounded-full" style="width: 25%"></div>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-600">较上月: <span class="text-red-600">-5%</span></span>
+<span class="text-gray-600">同龄人均: <span class="text-gray-600">30%</span></span>
+</div>
+<div class="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2">
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">娱乐</div>
+<div class="font-medium">¥520</div>
+</div>
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">餐饮</div>
+<div class="font-medium">¥680</div>
+</div>
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">购物</div>
+<div class="font-medium">¥250</div>
+</div>
+<div class="bg-white p-2 rounded shadow-sm">
+<div class="text-xs text-gray-500">其他</div>
+<div class="font-medium">¥100</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 消费价值可视化 -->
+<section class="bg-white rounded-lg shadow-md p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-2">消费价值可视化</h2>
+<p class="text-gray-600 mb-6">展示您的消费如何转化为个人价值和成长</p>
+<div class="chart-container" id="valueChart"></div>
+<div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#57B5E7] mr-2"></div>
+<h3 class="font-medium text-gray-800">技能成长</h3>
+</div>
+<p class="text-sm text-gray-600">您在技能培训上的投入正在稳步提升您的职业竞争力，预计半年内可提升收入8%。</p>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#8DD3C7] mr-2"></div>
+<h3 class="font-medium text-gray-800">健康价值</h3>
+</div>
+<p class="text-sm text-gray-600">您在健康方面的投入处于合理水平，有效预防了潜在健康风险，降低了未来医疗支出。</p>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#FBBF72] mr-2"></div>
+<h3 class="font-medium text-gray-800">心理满足</h3>
+</div>
+<p class="text-sm text-gray-600">您的享乐型消费比例适中，有效平衡了生活压力，但可适当提高高质量休闲活动占比。</p>
+</div>
+</div>
+</section>
+<!-- 个性化建议 -->
+<section class="bg-white rounded-lg shadow-md p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">个性化消费建议</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-primary bg-opacity-5 p-5 rounded-lg">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-funds-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">优化消费结构</h3>
+<p class="text-gray-600 mb-4">建议将享乐型消费控制在25%以内，每增加5%的发展型消费，预计一年后收入可提升8%。</p>
+<div class="flex items-center text-sm text-primary">
+<span class="font-medium">建议行动</span>
+<i class="ri-arrow-right-line ml-1"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-secondary bg-opacity-5 p-5 rounded-lg">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mr-4 flex-shrink-0">
+<i class="ri-book-open-line ri-lg text-secondary"></i>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">增加技能投资</h3>
+<p class="text-gray-600 mb-4">您在技能培训上的投入（650元）低于同行业平均水平。建议每月增加200元用于专业技能提升。</p>
+<div class="flex items-center text-sm text-secondary">
+<span class="font-medium">推荐课程</span>
+<i class="ri-arrow-right-line ml-1"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-blue-50 p-5 rounded-lg">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 mr-4 flex-shrink-0">
+<i class="ri-heart-pulse-line ri-lg text-blue-600"></i>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">健康消费优化</h3>
+<p class="text-gray-600 mb-4">您的健康类消费比例适中，但建议增加预防性健康检查和运动相关支出，减少不必要的医疗开支。</p>
+<div class="flex items-center text-sm text-blue-600">
+<span class="font-medium">健康服务</span>
+<i class="ri-arrow-right-line ml-1"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-purple-50 p-5 rounded-lg">
+<div class="flex items-start">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-purple-100 mr-4 flex-shrink-0">
+<i class="ri-coin-line ri-lg text-purple-600"></i>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-gray-900 mb-2">提高投资占比</h3>
+<p class="text-gray-600 mb-4">您的投资类支出仅占总支出的1.9%，远低于建议水平。建议每月至少将收入的10%用于长期投资。</p>
+<div class="flex items-center text-sm text-purple-600">
+<span class="font-medium">投资指南</span>
+<i class="ri-arrow-right-line ml-1"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 bg-gray-50 p-5 rounded-lg">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">长期价值转化预测</h3>
+<div class="chart-container" id="predictionChart"></div>
+<p class="text-sm text-gray-600 mt-4">根据您当前的消费模式，预测未来12个月内各项能力的增长趋势。若按建议优化消费结构，预计可额外提升15%的综合能力增长。</p>
+</div>
+</section>
+<!-- 同龄人对比 -->
+<section class="bg-white rounded-lg shadow-md p-6 mb-8">
+<h2 class="text-2xl font-bold text-gray-900 mb-2">同龄人消费对比</h2>
+<p class="text-gray-600 mb-6">您与同龄群体的消费模式对比分析</p>
+<div class="chart-container" id="comparisonChart"></div>
+<div class="mt-6 bg-gray-50 p-4 rounded-lg">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3 flex-shrink-0">
+<i class="ri-group-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="font-medium text-gray-900 mb-1">对比分析</h3>
+<p class="text-gray-600 text-sm">与同龄人相比，您的发展型消费占比<span class="text-primary font-medium">高出10%</span>，享乐型消费<span class="text-primary font-medium">低5%</span>。这种消费模式更有利于长期成长，但也需注意适当放松，保持生活平衡。</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- 底部操作栏 -->
+<div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 px-4 py-3">
+<div class="container mx-auto flex justify-between items-center">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 mr-3">
+<i class="ri-file-chart-line ri-lg text-gray-600"></i>
+</div>
+<div>
+<h3 class="font-medium text-gray-900">消费能量转化报告</h3>
+<p class="text-xs text-gray-500">生成于 2025-04-12</p>
+</div>
+</div>
+<div class="flex space-x-3">
+<div class="relative group">
+<button class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap flex items-center">
+<i class="ri-download-line mr-1"></i>
+<span>下载</span>
+<i class="ri-arrow-down-s-line ml-1"></i>
+</button>
+<div class="absolute right-0 bottom-full mb-2 hidden group-hover:block">
+<div class="bg-white rounded-lg shadow-lg overflow-hidden w-40">
+<button class="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 flex items-center">
+<i class="ri-file-pdf-line mr-2 text-red-500"></i>
+<span>PDF 格式</span>
+</button>
+<button class="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 flex items-center">
+<i class="ri-image-line mr-2 text-blue-500"></i>
+<span>图片格式</span>
+</button>
+</div>
+</div>
+</div>
+<div class="relative group">
+<button class="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap flex items-center">
+<i class="ri-share-line mr-1"></i>
+<span>分享</span>
+<i class="ri-arrow-down-s-line ml-1"></i>
+</button>
+<div class="absolute right-0 bottom-full mb-2 hidden group-hover:block">
+<div class="bg-white rounded-lg shadow-lg overflow-hidden w-40">
+<button class="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 flex items-center">
+<i class="ri-wechat-fill mr-2 text-green-500"></i>
+<span>微信</span>
+</button>
+<button class="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 flex items-center">
+<i class="ri-weibo-fill mr-2 text-red-500"></i>
+<span>微博</span>
+</button>
+<button class="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 flex items-center">
+<i class="ri-link mr-2 text-blue-500"></i>
+<span>复制链接</span>
+</button>
+</div>
+</div>
+</div>
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/75b30d87-5ad0-4a20-84f6-7573ba0bc4e4" data-readdy="true" class="bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap flex items-center">
+<i class="ri-file-list-3-line mr-1"></i>
+<span>生成行动计划</span>
+</a>
+</div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// 消费分类饼图
+const categoryPieChart = echarts.init(document.getElementById('categoryPieChart'));
+const categoryPieOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+formatter: '{b}: {c} ({d}%)',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+orient: 'vertical',
+right: 10,
+top: 'center',
+data: ['生存型消费', '发展型消费', '享乐型消费'],
+textStyle: {
+color: '#1f2937'
+}
+},
+series: [{
+name: '消费分类',
+type: 'pie',
+radius: ['40%', '70%'],
+avoidLabelOverlap: false,
+itemStyle: {
+borderRadius: 8,
+borderColor: '#fff',
+borderWidth: 2
+},
+label: {
+show: false
+},
+emphasis: {
+label: {
+show: false
+}
+},
+labelLine: {
+show: false
+},
+data: [
+{ value: 2480, name: '生存型消费', itemStyle: { color: '#4ade80' } },
+{ value: 2170, name: '发展型消费', itemStyle: { color: '#60a5fa' } },
+{ value: 1550, name: '享乐型消费', itemStyle: { color: '#fb923c' } }
+]
+}]
+};
+categoryPieChart.setOption(categoryPieOption);
+// 消费价值可视化图表
+const valueChart = echarts.init(document.getElementById('valueChart'));
+const valueOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+data: ['技能成长', '健康价值', '心理满足', '社交资本'],
+bottom: 0,
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+top: 10,
+right: 10,
+bottom: 60,
+left: 40
+},
+xAxis: {
+type: 'category',
+data: ['1月', '2月', '3月', '4月', '5月', '6月'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+name: '价值贡献度',
+nameTextStyle: {
+color: '#1f2937'
+},
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#eee'
+}
+}
+},
+series: [
+{
+name: '技能成长',
+type: 'line',
+stack: '总量',
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(87, 181, 231, 0.3)'
+}, {
+offset: 1, color: 'rgba(87, 181, 231, 0.1)'
+}]
+}
+},
+emphasis: { focus: 'series' },
+data: [120, 132, 145, 160, 172, 190],
+lineStyle: { color: '#57B5E7' },
+itemStyle: { color: '#57B5E7' }
+},
+{
+name: '健康价值',
+type: 'line',
+stack: '总量',
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(141, 211, 199, 0.3)'
+}, {
+offset: 1, color: 'rgba(141, 211, 199, 0.1)'
+}]
+}
+},
+emphasis: { focus: 'series' },
+data: [80, 85, 90, 95, 100, 110],
+lineStyle: { color: '#8DD3C7' },
+itemStyle: { color: '#8DD3C7' }
+},
+{
+name: '心理满足',
+type: 'line',
+stack: '总量',
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(251, 191, 114, 0.3)'
+}, {
+offset: 1, color: 'rgba(251, 191, 114, 0.1)'
+}]
+}
+},
+emphasis: { focus: 'series' },
+data: [60, 62, 65, 68, 70, 75],
+lineStyle: { color: '#FBBF72' },
+itemStyle: { color: '#FBBF72' }
+},
+{
+name: '社交资本',
+type: 'line',
+stack: '总量',
+areaStyle: {
+color: {
+type: 'linear',
+x: 0,
+y: 0,
+x2: 0,
+y2: 1,
+colorStops: [{
+offset: 0, color: 'rgba(252, 141, 98, 0.3)'
+}, {
+offset: 1, color: 'rgba(252, 141, 98, 0.1)'
+}]
+}
+},
+emphasis: { focus: 'series' },
+data: [40, 42, 45, 48, 52, 55],
+lineStyle: { color: '#FC8D62' },
+itemStyle: { color: '#FC8D62' }
+}
+]
+};
+valueChart.setOption(valueOption);
+// 长期价值转化预测图表
+const predictionChart = echarts.init(document.getElementById('predictionChart'));
+const predictionOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+data: ['当前趋势', '优化后趋势'],
+right: 10,
+top: 0,
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+top: 40,
+right: 20,
+bottom: 20,
+left: 50
+},
+xAxis: {
+type: 'category',
+data: ['当前', '3个月', '6个月', '9个月', '12个月'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+yAxis: {
+type: 'value',
+name: '能力增长指数',
+nameTextStyle: {
+color: '#1f2937'
+},
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+},
+splitLine: {
+lineStyle: {
+color: '#eee'
+}
+}
+},
+series: [
+{
+name: '当前趋势',
+type: 'line',
+data: [100, 108, 115, 122, 130],
+symbol: 'circle',
+symbolSize: 8,
+lineStyle: {
+width: 3,
+color: '#60a5fa'
+},
+itemStyle: {
+color: '#60a5fa'
+}
+},
+{
+name: '优化后趋势',
+type: 'line',
+data: [100, 112, 125, 138, 150],
+symbol: 'circle',
+symbolSize: 8,
+lineStyle: {
+width: 3,
+color: '#297CBB',
+type: 'dashed'
+},
+itemStyle: {
+color: '#297CBB'
+}
+}
+]
+};
+predictionChart.setOption(predictionOption);
+// 同龄人对比图表
+const comparisonChart = echarts.init(document.getElementById('comparisonChart'));
+const comparisonOption = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+axisPointer: {
+type: 'shadow'
+},
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+legend: {
+data: ['您的消费', '同龄人平均'],
+right: 10,
+top: 0,
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+top: 40,
+right: 20,
+bottom: 20,
+left: 50
+},
+xAxis: {
+type: 'value',
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937',
+formatter: '{value}%'
+},
+splitLine: {
+lineStyle: {
+color: '#eee'
+}
+}
+},
+yAxis: {
+type: 'category',
+data: ['生存型消费', '发展型消费', '享乐型消费', '投资理财', '社交消费'],
+axisLine: {
+lineStyle: {
+color: '#ddd'
+}
+},
+axisLabel: {
+color: '#1f2937'
+}
+},
+series: [
+{
+name: '您的消费',
+type: 'bar',
+data: [40, 35, 25, 5, 8],
+barWidth: 20,
+itemStyle: {
+color: '#297CBB',
+borderRadius: 4
+}
+},
+{
+name: '同龄人平均',
+type: 'bar',
+data: [45, 25, 30, 3, 12],
+barWidth: 20,
+itemStyle: {
+color: '#8DD3C7',
+borderRadius: 4
+}
+}
+]
+};
+comparisonChart.setOption(comparisonOption);
+// 响应式调整
+window.addEventListener('resize', function() {
+categoryPieChart.resize();
+valueChart.resize();
+predictionChart.resize();
+comparisonChart.resize();
+});
+});
+</script>
+</body>
+</html>

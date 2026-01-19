@@ -1,0 +1,130 @@
+<!--pages/consumption/add/add.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">添加消费记录</text>
+  </view>
+  
+  <form bindsubmit="onSubmit" bindreset="onReset">
+    <!-- 消费金额 -->
+    <view class="form-section">
+      <text class="section-label">消费金额</text>
+      <view class="amount-input-container">
+        <text class="currency-symbol">¥</text>
+        <input 
+          class="amount-input" 
+          type="number" 
+          placeholder="请输入消费金额" 
+          name="amount" 
+          bindinput="onAmountInput"
+          value="{{amount}}"
+        />
+      </view>
+    </view>
+    
+    <!-- 消费类别 -->
+    <view class="form-section">
+      <text class="section-label">消费类别</text>
+      <view class="category-grid">
+        <view 
+          class="category-item {{selectedCategory === '餐饮' ? 'active' : ''}}" 
+          bindtap="selectCategory" 
+          data-category="餐饮"
+        >
+          <text class="category-icon">🍲</text>
+          <text class="category-name">餐饮</text>
+        </view>
+        
+        <view 
+          class="category-item {{selectedCategory === '购物' ? 'active' : ''}}" 
+          bindtap="selectCategory" 
+          data-category="购物"
+        >
+          <text class="category-icon">🛒</text>
+          <text class="category-name">购物</text>
+        </view>
+        
+        <view 
+          class="category-item {{selectedCategory === '交通' ? 'active' : ''}}" 
+          bindtap="selectCategory" 
+          data-category="交通"
+        >
+          <text class="category-icon">🚖</text>
+          <text class="category-name">交通</text>
+        </view>
+        
+        <view 
+          class="category-item {{selectedCategory === '娱乐' ? 'active' : ''}}" 
+          bindtap="selectCategory" 
+          data-category="娱乐"
+        >
+          <text class="category-icon">🎬</text>
+          <text class="category-name">娱乐</text>
+        </view>
+        
+        <view 
+          class="category-item {{selectedCategory === '日用品' ? 'active' : ''}}" 
+          bindtap="selectCategory" 
+          data-category="日用品"
+        >
+          <text class="category-icon">🧻</text>
+          <text class="category-name">日用品</text>
+        </view>
+        
+        <view 
+          class="category-item {{selectedCategory === '其他' ? 'active' : ''}}" 
+          bindtap="selectCategory" 
+          data-category="其他"
+        >
+          <text class="category-icon">📦</text>
+          <text class="category-name">其他</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 消费商家 -->
+    <view class="form-section">
+      <text class="section-label">消费商家</text>
+      <input 
+        class="form-input" 
+        type="text" 
+        placeholder="请输入消费商家" 
+        name="merchant" 
+        value="{{merchant}}"
+      />
+    </view>
+    
+    <!-- 消费日期 -->
+    <view class="form-section">
+      <text class="section-label">消费日期</text>
+      <picker 
+        mode="date" 
+        value="{{date}}" 
+        start="2020-01-01" 
+        end="{{currentDate}}" 
+        bindchange="onDateChange"
+      >
+        <view class="date-picker">
+          <text class="picker-text">{{date}}</text>
+        </view>
+      </picker>
+    </view>
+    
+    <!-- 消费备注 -->
+    <view class="form-section">
+      <text class="section-label">消费备注</text>
+      <textarea 
+        class="form-textarea" 
+        placeholder="请输入消费备注" 
+        name="remark" 
+        value="{{remark}}"
+        auto-height
+      ></textarea>
+    </view>
+    
+    <!-- 提交按钮 -->
+    <view class="form-actions">
+      <button class="btn-secondary" form-type="reset">重置</button>
+      <button class="btn-primary" form-type="submit">提交</button>
+    </view>
+  </form>
+</view>

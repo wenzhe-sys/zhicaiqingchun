@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>注册 - 智财青春</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background-color: #f8fafc;
+}
+.password-strength {
+  height: 4px;
+  transition: all 0.3s ease;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
+</head>
+<body>
+<div class="min-h-screen flex flex-col">
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex items-center">
+      <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="flex items-center text-gray-600 hover:text-primary">
+        <i class="ri-arrow-left-line ri-lg mr-2"></i>
+        <span>返回首页</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="flex-grow flex items-center justify-center py-12 px-4">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="p-8">
+        <div class="flex items-center justify-center mb-8">
+          <div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+            <span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+          </div>
+          <span class="text-2xl font-semibold text-gray-800">智财青春</span>
+        </div>
+        
+        <h1 class="text-2xl font-bold text-center text-gray-900 mb-6">创建您的账号</h1>
+        
+        <form id="registerForm" class="space-y-5">
+          <!-- 用户名 -->
+          <div>
+            <label for="username" class="block text-sm font-medium text-gray-700 mb-1">用户名</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="ri-user-line text-gray-400"></i>
+              </div>
+              <input type="text" id="username" name="username" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900" placeholder="请输入用户名" required>
+            </div>
+            <p id="usernameError" class="mt-1 text-xs text-red-500 hidden">用户名不能为空</p>
+          </div>
+          
+          <!-- 手机号码 -->
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">手机号码</label>
+            <div class="relative flex">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="ri-smartphone-line text-gray-400"></i>
+              </div>
+              <input type="number" id="phone" name="phone" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-l focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900" placeholder="请输入手机号码" required>
+              <button type="button" id="getCode" class="bg-primary text-white px-4 py-2 rounded-r-button font-medium hover:bg-opacity-90 transition whitespace-nowrap min-w-[120px]">
+                获取验证码
+              </button>
+            </div>
+            <p id="phoneError" class="mt-1 text-xs text-red-500 hidden">请输入有效的手机号码</p>
+          </div>
+          
+          <!-- 验证码 -->
+          <div>
+            <label for="verificationCode" class="block text-sm font-medium text-gray-700 mb-1">验证码</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="ri-shield-keyhole-line text-gray-400"></i>
+              </div>
+              <input type="text" id="verificationCode" name="verificationCode" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900" placeholder="请输入验证码" required>
+            </div>
+            <p id="codeError" class="mt-1 text-xs text-red-500 hidden">验证码不正确</p>
+          </div>
+          
+          <!-- 邮箱 -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="ri-mail-line text-gray-400"></i>
+              </div>
+              <input type="email" id="email" name="email" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900" placeholder="请输入邮箱地址" required>
+            </div>
+            <p id="emailError" class="mt-1 text-xs text-red-500 hidden">请输入有效的邮箱地址</p>
+          </div>
+          
+          <!-- 密码 -->
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">密码</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="ri-lock-line text-gray-400"></i>
+              </div>
+              <input type="password" id="password" name="password" class="w-full pl-10 pr-10 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900" placeholder="请设置密码" required>
+              <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                <i class="ri-eye-off-line text-gray-400"></i>
+              </button>
+            </div>
+            <div class="mt-1 flex space-x-1">
+              <div class="flex-1 password-strength bg-gray-200 rounded"></div>
+              <div class="flex-1 password-strength bg-gray-200 rounded"></div>
+              <div class="flex-1 password-strength bg-gray-200 rounded"></div>
+            </div>
+            <p id="passwordStrength" class="mt-1 text-xs text-gray-500">密码至少包含8个字符，包括字母、数字和特殊符号</p>
+            <p id="passwordError" class="mt-1 text-xs text-red-500 hidden">密码强度不足</p>
+          </div>
+          
+          <!-- 确认密码 -->
+          <div>
+            <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">确认密码</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <i class="ri-lock-line text-gray-400"></i>
+              </div>
+              <input type="password" id="confirmPassword" name="confirmPassword" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-transparent text-gray-900" placeholder="请再次输入密码" required>
+            </div>
+            <p id="confirmPasswordError" class="mt-1 text-xs text-red-500 hidden">两次输入的密码不一致</p>
+          </div>
+          
+          <!-- 同意条款 -->
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <input id="terms" name="terms" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" required>
+            </div>
+            <div class="ml-3 text-sm">
+              <label for="terms" class="font-medium text-gray-700">我已阅读并同意</label>
+              <a href="#" class="text-primary hover:text-primary-dark">《用户协议》</a>
+              <span>和</span>
+              <a href="#" class="text-primary hover:text-primary-dark">《隐私政策》</a>
+            </div>
+          </div>
+          <p id="termsError" class="mt-1 text-xs text-red-500 hidden">请阅读并同意用户协议和隐私政策</p>
+          
+          <!-- 提交按钮 -->
+          <div>
+            <button type="submit" class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+              立即注册
+            </button>
+          </div>
+        </form>
+        
+        <div class="mt-6 text-center text-sm">
+          <span class="text-gray-600">已有账号？</span>
+          <a href="#" class="text-primary font-medium hover:text-primary-dark">立即登录</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white py-6">
+    <div class="container mx-auto px-4">
+      <div class="text-center text-sm text-gray-500">
+        <p>© 2025 智财青春. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取验证码倒计时
+  const getCodeBtn = document.getElementById('getCode');
+  getCodeBtn.addEventListener('click', function() {
+    const phone = document.getElementById('phone').value;
+    const phoneRegex = /^1[3-9]\d{9}$/;
+    
+    if (!phoneRegex.test(phone)) {
+      document.getElementById('phoneError').classList.remove('hidden');
+      return;
+    }
+    
+    document.getElementById('phoneError').classList.add('hidden');
+    
+    let countdown = 60;
+    getCodeBtn.disabled = true;
+    getCodeBtn.innerText = `${countdown}秒后重新获取`;
+    
+    const timer = setInterval(() => {
+      countdown--;
+      getCodeBtn.innerText = `${countdown}秒后重新获取`;
+      
+      if (countdown <= 0) {
+        clearInterval(timer);
+        getCodeBtn.disabled = false;
+        getCodeBtn.innerText = '获取验证码';
+      }
+    }, 1000);
+    
+    // 模拟发送验证码
+    showToast('验证码已发送至您的手机');
+  });
+  
+  // 密码强度检测
+  const password = document.getElementById('password');
+  const strengthBars = document.querySelectorAll('.password-strength');
+  const strengthText = document.getElementById('passwordStrength');
+  
+  password.addEventListener('input', function() {
+    const value = this.value;
+    let strength = 0;
+    
+    // 检查长度
+    if (value.length >= 8) strength++;
+    
+    // 检查字母和数字组合
+    if (/[a-zA-Z]/.test(value) && /[0-9]/.test(value)) strength++;
+    
+    // 检查特殊字符
+    if (/[^a-zA-Z0-9]/.test(value)) strength++;
+    
+    // 更新强度条
+    strengthBars.forEach((bar, index) => {
+      if (index < strength) {
+        bar.classList.remove('bg-gray-200');
+        if (strength === 1) bar.classList.add('bg-red-500');
+        else if (strength === 2) bar.classList.add('bg-yellow-500');
+        else bar.classList.add('bg-green-500');
+      } else {
+        bar.className = 'flex-1 password-strength bg-gray-200 rounded';
+      }
+    });
+    
+    // 更新提示文字
+    if (strength === 0) {
+      strengthText.textContent = '密码至少包含8个字符，包括字母、数字和特殊符号';
+      strengthText.className = 'mt-1 text-xs text-gray-500';
+    } else if (strength === 1) {
+      strengthText.textContent = '密码强度：弱';
+      strengthText.className = 'mt-1 text-xs text-red-500';
+    } else if (strength === 2) {
+      strengthText.textContent = '密码强度：中';
+      strengthText.className = 'mt-1 text-xs text-yellow-500';
+    } else {
+      strengthText.textContent = '密码强度：强';
+      strengthText.className = 'mt-1 text-xs text-green-500';
+    }
+  });
+  
+  // 切换密码可见性
+  const togglePassword = document.getElementById('togglePassword');
+  togglePassword.addEventListener('click', function() {
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    
+    // 切换图标
+    const icon = this.querySelector('i');
+    if (type === 'password') {
+      icon.className = 'ri-eye-off-line text-gray-400';
+    } else {
+      icon.className = 'ri-eye-line text-gray-400';
+    }
+  });
+  
+  // 表单验证
+  const registerForm = document.getElementById('registerForm');
+  registerForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    let isValid = true;
+    
+    // 验证用户名
+    const username = document.getElementById('username').value;
+    if (!username) {
+      document.getElementById('usernameError').classList.remove('hidden');
+      isValid = false;
+    } else {
+      document.getElementById('usernameError').classList.add('hidden');
+    }
+    
+    // 验证手机号
+    const phone = document.getElementById('phone').value;
+    const phoneRegex = /^1[3-9]\d{9}$/;
+    if (!phoneRegex.test(phone)) {
+      document.getElementById('phoneError').classList.remove('hidden');
+      isValid = false;
+    } else {
+      document.getElementById('phoneError').classList.add('hidden');
+    }
+    
+    // 验证验证码
+    const code = document.getElementById('verificationCode').value;
+    if (!code || code.length !== 6) {
+      document.getElementById('codeError').classList.remove('hidden');
+      isValid = false;
+    } else {
+      document.getElementById('codeError').classList.add('hidden');
+    }
+    
+    // 验证邮箱
+    const email = document.getElementById('email').value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      document.getElementById('emailError').classList.remove('hidden');
+      isValid = false;
+    } else {
+      document.getElementById('emailError').classList.add('hidden');
+    }
+    
+    // 验证密码
+    const passwordValue = password.value;
+    let passwordStrength = 0;
+    if (passwordValue.length >= 8) passwordStrength++;
+    if (/[a-zA-Z]/.test(passwordValue) && /[0-9]/.test(passwordValue)) passwordStrength++;
+    if (/[^a-zA-Z0-9]/.test(passwordValue)) passwordStrength++;
+    
+    if (passwordStrength < 2) {
+      document.getElementById('passwordError').classList.remove('hidden');
+      isValid = false;
+    } else {
+      document.getElementById('passwordError').classList.add('hidden');
+    }
+    
+    // 验证确认密码
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    if (confirmPassword !== passwordValue) {
+      document.getElementById('confirmPasswordError').classList.remove('hidden');
+      isValid = false;
+    } else {
+      document.getElementById('confirmPasswordError').classList.add('hidden');
+    }
+    
+    // 验证条款
+    const terms = document.getElementById('terms').checked;
+    if (!terms) {
+      document.getElementById('termsError').classList.remove('hidden');
+      isValid = false;
+    } else {
+      document.getElementById('termsError').classList.add('hidden');
+    }
+    
+    // 如果验证通过，提交表单
+    if (isValid) {
+      showSuccessModal();
+    }
+  });
+  
+  // 显示成功弹窗
+  function showSuccessModal() {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+    modal.innerHTML = `
+      <div class="bg-white rounded-lg shadow-md p-6 max-w-md w-full">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-green-100">
+            <i class="ri-check-line ri-3x text-green-500"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">注册成功</h3>
+          <p class="text-gray-600 mb-6">恭喜您成功注册智财青春平台！</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true">
+              <button class="bg-primary text-white px-6 py-2 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap w-full">
+                返回首页
+              </button>
+            </a>
+            <button id="goToLogin" class="bg-white text-primary border border-primary px-6 py-2 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap w-full">
+              立即登录
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
+    // 点击登录按钮
+    document.getElementById('goToLogin').addEventListener('click', function() {
+      document.body.removeChild(modal);
+      // 这里可以跳转到登录页面
+    });
+  }
+  
+  // 显示提示信息
+  function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'fixed top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded shadow-lg z-50';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+      setTimeout(() => {
+        document.body.removeChild(toast);
+      }, 500);
+    }, 3000);
+  }
+});
+</script>
+</body>
+</html>

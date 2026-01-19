@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生态协同网络 - 智财青春</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#297CBB',secondary:'#6DAF4E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Noto Sans SC', sans-serif;
+}
+.hero-gradient {
+background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0) 100%);
+}
+.chart-container {
+width: 100%;
+height: 300px;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: #297CBB;
+cursor: pointer;
+}
+.custom-checkbox:checked + label:before {
+background-color: #297CBB;
+border-color: #297CBB;
+}
+.custom-switch:checked + label {
+background-color: #297CBB;
+}
+.custom-switch:checked + label:after {
+transform: translateX(20px);
+}
+.credit-score-progress {
+transition: width 1s ease-in-out;
+}
+.tab-button.active {
+background-color: #297CBB;
+color: white;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<div class="flex items-center">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-2 rounded-lg mr-2">
+<span class="text-3xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+<span class="text-xl font-semibold text-gray-800">智财青春</span>
+</div>
+<nav class="hidden md:flex space-x-8">
+<a href="https://readdy.ai/home/ae342a79-81ea-4147-a6b8-8c77dabcf0cd/3545c580-6118-4954-aab1-b56c5411082a" data-readdy="true" class="text-gray-600 hover:text-primary">首页</a>
+<a href="#" class="text-gray-600 hover:text-primary">消费评估</a>
+<a href="#" class="text-gray-600 hover:text-primary">教育赋能</a>
+<a href="#" class="text-gray-600 hover:text-primary">决策干预</a>
+<a href="#" class="text-primary font-medium">生态协同</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-search-line ri-lg"></i>
+</button>
+<button class="text-gray-600 hover:text-primary w-10 h-10 flex items-center justify-center">
+<i class="ri-notification-3-line ri-lg"></i>
+</button>
+<div class="relative">
+<img src="https://public.readdy.ai/ai/img_res/1b82bd4a42973383179f53d2455f8318.jpg" class="w-10 h-10 rounded-full object-cover" alt="用户头像">
+</div>
+</div>
+</div>
+</header>
+<section class="relative overflow-hidden" style="min-height: 500px;">
+<div style="background-image: url('https://public.readdy.ai/ai/img_res/810c0b90cc66662c986642775a7e99eb.jpg'); background-size: cover; background-position: center right;" class="absolute inset-0"></div>
+<div class="relative z-10 container mx-auto px-4 py-20">
+<div class="hero-gradient max-w-2xl p-12 rounded-xl">
+<h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">生态协同网络</h1>
+<p class="text-lg text-gray-700 mb-8">基于区块链技术构建的多方协作生态系统，连接商家、政府、高校和用户，打造透明可信的消费环境，实现资源优化配置与价值共创。</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+查看信用榜单
+</button>
+<button class="bg-white text-primary border border-primary px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition whitespace-nowrap">
+申请成为合作伙伴
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">区块链商家信用评分系统</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">基于多维度数据分析，为商家建立透明可信的信用档案，帮助消费者做出明智选择</p>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden mb-12">
+<div class="p-6 border-b">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<h3 class="text-xl font-semibold text-gray-900 mb-4 md:mb-0">商家信用榜单 Top 10</h3>
+<div class="flex items-center space-x-2">
+<div class="relative">
+<select class="appearance-none bg-white border border-gray-300 rounded-lg py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-700">
+<option>全部类别</option>
+<option>餐饮美食</option>
+<option>服装鞋帽</option>
+<option>数码电器</option>
+<option>日用百货</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-500"></i>
+</div>
+</div>
+<div class="relative">
+<select class="appearance-none bg-white border border-gray-300 rounded-lg py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-700">
+<option>综合评分</option>
+<option>履约率</option>
+<option>用户评价</option>
+<option>环保贡献</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-500"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">排名</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">商家名称</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">类别</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">信用评分</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">履约率</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">用户评价</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">环保贡献</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200">
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full text-sm font-medium">1</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+<i class="ri-store-2-line text-primary"></i>
+</div>
+<div>
+<div class="text-sm font-medium text-gray-900">绿源有机食品</div>
+<div class="text-xs text-gray-500">已认证 · 区块链溯源</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+餐饮美食
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg font-medium text-primary mr-2">98</span>
+<div class="w-24 h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full credit-score-progress" style="width: 98%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+99.7%
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<span class="text-gray-700 ml-1">5.0</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">A+</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+<button class="text-primary hover:text-primary-dark">详情</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full text-sm font-medium">2</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+<i class="ri-t-shirt-line text-primary"></i>
+</div>
+<div>
+<div class="text-sm font-medium text-gray-900">环保衣橱</div>
+<div class="text-xs text-gray-500">已认证 · 碳中和品牌</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+服装鞋帽
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg font-medium text-primary mr-2">96</span>
+<div class="w-24 h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full credit-score-progress" style="width: 96%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+98.5%
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+<span class="text-gray-700 ml-1">4.8</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">A+</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+<button class="text-primary hover:text-primary-dark">详情</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full text-sm font-medium">3</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+<i class="ri-smartphone-line text-primary"></i>
+</div>
+<div>
+<div class="text-sm font-medium text-gray-900">科技优品</div>
+<div class="text-xs text-gray-500">已认证 · 循环回收计划</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+数码电器
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg font-medium text-primary mr-2">95</span>
+<div class="w-24 h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full credit-score-progress" style="width: 95%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+99.2%
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+<span class="text-gray-700 ml-1">4.7</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">A</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+<button class="text-primary hover:text-primary-dark">详情</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-700 rounded-full text-sm font-medium">4</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+<i class="ri-book-open-line text-primary"></i>
+</div>
+<div>
+<div class="text-sm font-medium text-gray-900">知识书店</div>
+<div class="text-xs text-gray-500">已认证 · 公益阅读</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+教育文化
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg font-medium text-primary mr-2">93</span>
+<div class="w-24 h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full credit-score-progress" style="width: 93%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+97.8%
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+<span class="text-gray-700 ml-1">4.6</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">A</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+<button class="text-primary hover:text-primary-dark">详情</button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center justify-center w-8 h-8 bg-gray-200 text-gray-700 rounded-full text-sm font-medium">5</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mr-3">
+<i class="ri-home-4-line text-primary"></i>
+</div>
+<div>
+<div class="text-sm font-medium text-gray-900">居家良品</div>
+<div class="text-xs text-gray-500">已认证 · 可持续材料</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+日用百货
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg font-medium text-primary mr-2">92</span>
+<div class="w-24 h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full credit-score-progress" style="width: 92%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+98.1%
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-line"></i>
+<span class="text-gray-700 ml-1">4.5</span>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">A</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+<button class="text-primary hover:text-primary-dark">详情</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t flex justify-between items-center">
+<div class="text-sm text-gray-500">显示 1-5 条，共 158 条</div>
+<div class="flex space-x-2">
+<button class="px-3 py-1 border border-gray-300 rounded text-gray-500 hover:bg-gray-50">上一页</button>
+<button class="px-3 py-1 bg-primary text-white rounded">1</button>
+<button class="px-3 py-1 border border-gray-300 rounded text-gray-700 hover:bg-gray-50">2</button>
+<button class="px-3 py-1 border border-gray-300 rounded text-gray-700 hover:bg-gray-50">3</button>
+<button class="px-3 py-1 border border-gray-300 rounded text-gray-700 hover:bg-gray-50">...</button>
+<button class="px-3 py-1 border border-gray-300 rounded text-gray-700 hover:bg-gray-50">32</button>
+<button class="px-3 py-1 border border-gray-300 rounded text-gray-700 hover:bg-gray-50">下一页</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="p-6 border-b">
+<h3 class="text-xl font-semibold text-gray-900">评分维度解析</h3>
+</div>
+<div class="p-6">
+<div class="chart-container" id="dimensionChart"></div>
+<div class="grid grid-cols-2 gap-4 mt-6">
+<div class="bg-gray-50 p-4 rounded">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#57B5E7] mr-2"></div>
+<span class="text-gray-900 font-medium">交易履约率 (30%)</span>
+</div>
+<p class="text-sm text-gray-600">衡量商家订单按时交付、产品质量符合描述等履约情况</p>
+</div>
+<div class="bg-gray-50 p-4 rounded">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#8DD3C7] mr-2"></div>
+<span class="text-gray-900 font-medium">用户评价 (25%)</span>
+</div>
+<p class="text-sm text-gray-600">基于用户真实评价和反馈，包括商品质量、服务态度等</p>
+</div>
+<div class="bg-gray-50 p-4 rounded">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#FBBF72] mr-2"></div>
+<span class="text-gray-900 font-medium">环保贡献 (20%)</span>
+</div>
+<p class="text-sm text-gray-600">评估商家在可持续发展、环保包装、碳减排等方面的表现</p>
+</div>
+<div class="bg-gray-50 p-4 rounded">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#FC8D62] mr-2"></div>
+<span class="text-gray-900 font-medium">售后服务 (15%)</span>
+</div>
+<p class="text-sm text-gray-600">包括退换货政策、问题解决速度、客服响应时间等</p>
+</div>
+<div class="bg-gray-50 p-4 rounded col-span-2">
+<div class="flex items-center mb-2">
+<div class="w-4 h-4 rounded-full bg-[#66C2A5] mr-2"></div>
+<span class="text-gray-900 font-medium">信息透明度 (10%)</span>
+</div>
+<p class="text-sm text-gray-600">商品信息披露完整性、价格透明度、营销诚信度等</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="p-6 border-b">
+<h3 class="text-xl font-semibold text-gray-900">区块链信用认证流程</h3>
+</div>
+<div class="p-6">
+<div class="relative">
+<div class="absolute left-8 top-0 bottom-0 w-1 bg-gray-200"></div>
+<div class="space-y-8">
+<div class="relative flex">
+<div class="flex-shrink-0 w-16 h-16 flex items-center justify-center z-10">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+<i class="ri-file-list-3-line"></i>
+</div>
+</div>
+<div class="flex-grow ml-4 pt-1">
+<h4 class="text-lg font-medium text-gray-900 mb-1">商家申请</h4>
+<p class="text-gray-600">商家提交基本信息、营业资质、经营数据等材料，申请加入信用评分系统</p>
+</div>
+</div>
+<div class="relative flex">
+<div class="flex-shrink-0 w-16 h-16 flex items-center justify-center z-10">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+<i class="ri-shield-check-line"></i>
+</div>
+</div>
+<div class="flex-grow ml-4 pt-1">
+<h4 class="text-lg font-medium text-gray-900 mb-1">资质审核</h4>
+<p class="text-gray-600">平台对商家提交的资料进行审核，确认真实性和合规性</p>
+</div>
+</div>
+<div class="relative flex">
+<div class="flex-shrink-0 w-16 h-16 flex items-center justify-center z-10">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+<i class="ri-link-m"></i>
+</div>
+</div>
+<div class="flex-grow ml-4 pt-1">
+<h4 class="text-lg font-medium text-gray-900 mb-1">数据上链</h4>
+<p class="text-gray-600">商家经营数据通过API接口实时上传至区块链，确保数据真实不可篡改</p>
+</div>
+</div>
+<div class="relative flex">
+<div class="flex-shrink-0 w-16 h-16 flex items-center justify-center z-10">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+<i class="ri-bar-chart-box-line"></i>
+</div>
+</div>
+<div class="flex-grow ml-4 pt-1">
+<h4 class="text-lg font-medium text-gray-900 mb-1">评分生成</h4>
+<p class="text-gray-600">系统基于多维度数据分析，生成商家信用评分，并定期更新</p>
+</div>
+</div>
+<div class="relative flex">
+<div class="flex-shrink-0 w-16 h-16 flex items-center justify-center z-10">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+<i class="ri-award-line"></i>
+</div>
+</div>
+<div class="flex-grow ml-4 pt-1">
+<h4 class="text-lg font-medium text-gray-900 mb-1">信用认证</h4>
+<p class="text-gray-600">评分达标的商家获得信用认证标识，展示在平台和商家页面</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">政策补贴对接平台</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">连接政府补贴资源与青年消费者，助力实现精准惠民和消费升级</p>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden mb-12">
+<div class="p-6 border-b">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<h3 class="text-xl font-semibold text-gray-900 mb-4 md:mb-0">可申请补贴政策</h3>
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center px-1 py-1 bg-gray-100 rounded-full">
+<button class="px-4 py-1 rounded-full tab-button active" data-tab="all">全部</button>
+<button class="px-4 py-1 rounded-full tab-button" data-tab="education">教育补贴</button>
+<button class="px-4 py-1 rounded-full tab-button" data-tab="startup">创业扶持</button>
+<button class="px-4 py-1 rounded-full tab-button" data-tab="living">生活补助</button>
+</div>
+<div class="relative">
+<input type="text" placeholder="搜索补贴政策" class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+<i class="ri-search-line text-gray-400"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="border rounded-lg overflow-hidden hover:shadow-md transition">
+<div class="p-4 bg-primary bg-opacity-5 border-b">
+<div class="flex justify-between items-center">
+<span class="px-2 py-1 bg-primary text-white text-xs rounded">教育补贴</span>
+<span class="text-sm text-gray-500">发布日期: 2025-03-15</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="text-lg font-medium text-gray-900 mb-2">青年技能提升计划</h4>
+<p class="text-gray-600 text-sm mb-4">为18-35岁青年提供职业技能培训补贴，最高可获得5000元培训费用报销</p>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-500">发放机构: 北京市人力资源和社会保障局</span>
+<span class="text-primary font-medium">剩余名额: 2580</span>
+</div>
+<div class="mt-4 pt-4 border-t flex justify-between items-center">
+<div class="flex items-center text-sm text-gray-500">
+<i class="ri-time-line mr-1"></i>
+<span>截止日期: 2025-06-30</span>
+</div>
+<button class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition whitespace-nowrap text-sm">立即申请</button>
+</div>
+</div>
+</div>
+<div class="border rounded-lg overflow-hidden hover:shadow-md transition">
+<div class="p-4 bg-primary bg-opacity-5 border-b">
+<div class="flex justify-between items-center">
+<span class="px-2 py-1 bg-green-600 text-white text-xs rounded">创业扶持</span>
+<span class="text-sm text-gray-500">发布日期: 2025-03-20</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="text-lg font-medium text-gray-900 mb-2">大学生创业贷款贴息</h4>
+<p class="text-gray-600 text-sm mb-4">应届毕业生和在校大学生创业可申请最高50万元贷款，并享受3年贴息政策</p>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-500">发放机构: 国家开发银行</span>
+<span class="text-primary font-medium">剩余名额: 1200</span>
+</div>
+<div class="mt-4 pt-4 border-t flex justify-between items-center">
+<div class="flex items-center text-sm text-gray-500">
+<i class="ri-time-line mr-1"></i>
+<span>截止日期: 2025-12-31</span>
+</div>
+<button class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition whitespace-nowrap text-sm">立即申请</button>
+</div>
+</div>
+</div>
+<div class="border rounded-lg overflow-hidden hover:shadow-md transition">
+<div class="p-4 bg-primary bg-opacity-5 border-b">
+<div class="flex justify-between items-center">
+<span class="px-2 py-1 bg-yellow-500 text-white text-xs rounded">生活补助</span>
+<span class="text-sm text-gray-500">发布日期: 2025-04-01</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="text-lg font-medium text-gray-900 mb-2">青年安居工程</h4>
+<p class="text-gray-600 text-sm mb-4">35岁以下无房青年可申请租房补贴，根据城市和收入情况每月补贴300-1000元</p>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-500">发放机构: 上海市住房和城乡建设委员会</span>
+<span class="text-primary font-medium">剩余名额: 5000</span>
+</div>
+<div class="mt-4 pt-4 border-t flex justify-between items-center">
+<div class="flex items-center text-sm text-gray-500">
+<i class="ri-time-line mr-1"></i>
+<span>截止日期: 2025-09-30</span>
+</div>
+<button class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition whitespace-nowrap text-sm">立即申请</button>
+</div>
+</div>
+</div>
+<div class="border rounded-lg overflow-hidden hover:shadow-md transition">
+<div class="p-4 bg-primary bg-opacity-5 border-b">
+<div class="flex justify-between items-center">
+<span class="px-2 py-1 bg-primary text-white text-xs rounded">教育补贴</span>
+<span class="text-sm text-gray-500">发布日期: 2025-03-25</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="text-lg font-medium text-gray-900 mb-2">研究生学术创新资助</h4>
+<p class="text-gray-600 text-sm mb-4">支持在读研究生开展创新性学术研究，单项资助金额5000-20000元</p>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-500">发放机构: 教育部研究生教育司</span>
+<span class="text-primary font-medium">剩余名额: 800</span>
+</div>
+<div class="mt-4 pt-4 border-t flex justify-between items-center">
+<div class="flex items-center text-sm text-gray-500">
+<i class="ri-time-line mr-1"></i>
+<span>截止日期: 2025-05-31</span>
+</div>
+<button class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition whitespace-nowrap text-sm">立即申请</button>
+</div>
+</div>
+</div>
+<div class="border rounded-lg overflow-hidden hover:shadow-md transition">
+<div class="p-4 bg-primary bg-opacity-5 border-b">
+<div class="flex justify-between items-center">
+<span class="px-2 py-1 bg-green-600 text-white text-xs rounded">创业扶持</span>
+<span class="text-sm text-gray-500">发布日期: 2025-02-18</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="text-lg font-medium text-gray-900 mb-2">科技创新创业补贴</h4>
+<p class="text-gray-600 text-sm mb-4">面向科技领域创业青年，提供最高30万元启动资金和3年办公场地租金减免</p>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-500">发放机构: 广州市科技创新委员会</span>
+<span class="text-primary font-medium">剩余名额: 320</span>
+</div>
+<div class="mt-4 pt-4 border-t flex justify-between items-center">
+<div class="flex items-center text-sm text-gray-500">
+<i class="ri-time-line mr-1"></i>
+<span>截止日期: 2025-08-31</span>
+</div>
+<button class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition whitespace-nowrap text-sm">立即申请</button>
+</div>
+</div>
+</div>
+<div class="border rounded-lg overflow-hidden hover:shadow-md transition">
+<div class="p-4 bg-primary bg-opacity-5 border-b">
+<div class="flex justify-between items-center">
+<span class="px-2 py-1 bg-yellow-500 text-white text-xs rounded">生活补助</span>
+<span class="text-sm text-gray-500">发布日期: 2025-03-10</span>
+</div>
+</div>
+<div class="p-4">
+<h4 class="text-lg font-medium text-gray-900 mb-2">青年绿色消费券</h4>
+<p class="text-gray-600 text-sm mb-4">购买节能环保产品可获得最高20%的消费补贴，单人每年最高可领3000元</p>
+<div class="flex items-center justify-between text-sm">
+<span class="text-gray-500">发放机构: 深圳市发展和改革委员会</span>
+<span class="text-primary font-medium">剩余名额: 10000</span>
+</div>
+<div class="mt-4 pt-4 border-t flex justify-between items-center">
+<div class="flex items-center text-sm text-gray-500">
+<i class="ri-time-line mr-1"></i>
+<span>截止日期: 2025-12-31</span>
+</div>
+<button class="px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition whitespace-nowrap text-sm">立即申请</button>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t flex justify-center">
+<button class="flex items-center text-primary hover:text-primary-dark">
+查看更多政策
+<i class="ri-arrow-down-s-line ml-1"></i>
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="p-6 border-b">
+<h3 class="text-xl font-semibold text-gray-900">补贴申请流程</h3>
+</div>
+<div class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-gray-50 p-4 rounded-lg text-center">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mx-auto mb-4">
+<i class="ri-user-search-line ri-2x text-primary"></i>
+</div>
+<h4 class="text-lg font-medium text-gray-900 mb-2">资格审核</h4>
+<p class="text-sm text-gray-600">系统自动匹配您的个人信息与补贴政策要求，确认申请资格</p>
+<div class="mt-4 flex justify-center">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+<span>1</span>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg text-center">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mx-auto mb-4">
+<i class="ri-file-upload-line ri-2x text-primary"></i>
+</div>
+<h4 class="text-lg font-medium text-gray-900 mb-2">材料提交</h4>
+<p class="text-sm text-gray-600">根据政策要求上传相关证明材料，系统支持电子签名和区块链存证</p>
+<div class="mt-4 flex justify-center">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+<span>2</span>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg text-center">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mx-auto mb-4">
+<i class="ri-government-line ri-2x text-primary"></i>
+</div>
+<h4 class="text-lg font-medium text-gray-900 mb-2">部门审批</h4>
+<p class="text-sm text-gray-600">相关政府部门进行审批，您可实时查看审批进度和状态</p>
+<div class="mt-4 flex justify-center">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+<span>3</span>
+</div>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg text-center">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mx-auto mb-4">
+<i class="ri-bank-card-line ri-2x text-primary"></i>
+</div>
+<h4 class="text-lg font-medium text-gray-900 mb-2">资金发放</h4>
+<p class="text-sm text-gray-600">审批通过后，补贴资金将直接发放至您绑定的银行账户或电子钱包</p>
+<div class="mt-4 flex justify-center">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">
+<span>4</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 bg-primary bg-opacity-5 p-4 rounded-lg">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white mr-4 flex-shrink-0">
+<i class="ri-lightbulb-line"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-900 mb-2">智能推荐</h4>
+<p class="text-gray-600">基于您的个人信息和消费行为，我们将自动匹配适合您的补贴政策，并通过站内消息和邮件提醒您申请。您也可以设置订阅偏好，接收定制化的政策推送。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">高校消费教育课程对接</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">与高校合作开发消费教育课程，提升用户消费知识水平，促进理性消费</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 bg-gray-100 relative">
+<img src="https://public.readdy.ai/ai/img_res/0389b5064b71810484ee155be69fc757.jpg" class="w-full h-full object-cover object-top" alt="消费教育课程">
+<div class="absolute top-4 left-4">
+<span class="px-2 py-1 bg-blue-500 text-white text-xs rounded">线下课程</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 mr-3 flex-shrink-0">
+<i class="ri-building-4-line text-blue-600"></i>
+</div>
+<span class="text-gray-700">北京大学</span>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">青年消费心理与决策</h3>
+<p class="text-gray-600 text-sm mb-4">探索消费心理学原理，帮助青年了解自身消费行为模式，培养理性消费习惯</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">消费心理</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">决策分析</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">行为经济学</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t">
+<div class="text-sm text-gray-500">
+<span>开课日期: 2025-05-15</span>
+</div>
+<button class="text-primary hover:text-primary-dark font-medium">立即报名</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 bg-gray-100 relative">
+<img src="https://public.readdy.ai/ai/img_res/cbffa972f87b628f9551dbb170e03030.jpg" class="w-full h-full object-cover object-top" alt="在线金融课程">
+<div class="absolute top-4 left-4">
+<span class="px-2 py-1 bg-green-500 text-white text-xs rounded">在线课程</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-green-100 mr-3 flex-shrink-0">
+<i class="ri-building-line text-green-600"></i>
+</div>
+<span class="text-gray-700">清华大学</span>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">个人财务规划与管理</h3>
+<p class="text-gray-600 text-sm mb-4">系统学习个人财务管理知识，掌握预算制定、债务管理和投资规划等实用技能</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">财务规划</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">预算管理</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">投资入门</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t">
+<div class="text-sm text-gray-500">
+<span>随时开课</span>
+</div>
+<button class="text-primary hover:text-primary-dark font-medium">免费学习</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+<div class="h-48 bg-gray-100 relative">
+<img src="https://public.readdy.ai/ai/img_res/b9e045753b89b2428ab8ec75b913feda.jpg" class="w-full h-full object-cover object-top" alt="可持续消费工作坊">
+<div class="absolute top-4 left-4">
+<span class="px-2 py-1 bg-purple-500 text-white text-xs rounded">工作坊</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center mb-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-purple-100 mr-3 flex-shrink-0">
+<i class="ri-building-2-line text-purple-600"></i>
+</div>
+<span class="text-gray-700">复旦大学</span>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-2">可持续消费与绿色生活</h3>
+<p class="text-gray-600 text-sm mb-4">探讨环保消费理念，学习如何通过消费选择减少环境影响，践行可持续生活方式</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">可持续发展</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">绿色消费</span>
+<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">环保生活</span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t">
+<div class="text-sm text-gray-500">
+<span>开课日期: 2025-06-05</span>
+</div>
+<button class="text-primary hover:text-primary-dark font-medium">立即报名</button>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="p-6 border-b">
+<h3 class="text-xl font-semibold text-gray-900">社交媒体舆情监控</h3>
+</div>
+<div class="p-6">
+<div class="mb-6">
+<h4 class="text-lg font-medium text-gray-900 mb-3">热门消费话题</h4>
+<div class="space-y-4">
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-red-100 mr-3 flex-shrink-0">
+<i class="ri-fire-line text-red-500"></i>
+</div>
+<span class="font-medium text-gray-900">#可持续时尚消费</span>
+</div>
+<span class="text-sm text-gray-500">热度: 98.5</span>
+</div>
+<p class="text-sm text-gray-600">环保材料制成的服装受到年轻消费者追捧，多家品牌推出可回收系列</p>
+<div class="mt-2 flex items-center text-xs text-gray-500">
+<span>相关商家: 环保衣橱、绿色时尚、循环服饰</span>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-orange-100 mr-3 flex-shrink-0">
+<i class="ri-chat-3-line text-orange-500"></i>
+</div>
+<span class="font-medium text-gray-900">#数字人民币消费体验</span>
+</div>
+<span class="text-sm text-gray-500">热度: 92.3</span>
+</div>
+<p class="text-sm text-gray-600">数字人民币试点城市用户分享使用体验，便捷性和安全性获得普遍好评</p>
+<div class="mt-2 flex items-center text-xs text-gray-500">
+<span>相关政策: 数字货币推广计划、电子支付安全规范</span>
+</div>
+</div>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 mr-3 flex-shrink-0">
+<i class="ri-discuss-line text-blue-500"></i>
+</div>
+<span class="font-medium text-gray-900">#大学生消费贷款风险</span>
+</div>
+<span class="text-sm text-gray-500">热度: 87.6</span>
+</div>
+<p class="text-sm text-gray-600">高校学生过度使用消费贷款引发关注，专家呼吁加强金融教育和风险防范</p>
+<div class="mt-2 flex items-center text-xs text-gray-500">
+<span>相关课程: 个人信用管理、理性消费指南</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 bg-primary bg-opacity-5 p-4 rounded-lg">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white mr-4 flex-shrink-0">
+<i class="ri-radar-line"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-900 mb-2">舆情监控系统</h4>
+<p class="text-gray-600 text-sm">平台实时监测社交媒体上的消费相关话题，分析情感倾向和传播趋势，为用户提供消费决策参考，同时帮助商家了解市场动态和消费者反馈。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="p-6 border-b">
+<h3 class="text-xl font-semibold text-gray-900">消费行为打卡社区</h3>
+</div>
+<div class="p-6">
+<div class="mb-6">
+<div class="flex justify-between items-center mb-4">
+<h4 class="text-lg font-medium text-gray-900">热门打卡挑战</h4>
+<button class="text-primary hover:text-primary-dark text-sm font-medium">查看全部</button>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="border rounded-lg overflow-hidden">
+<div class="p-3 bg-green-50 border-b flex justify-between items-center">
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-green-100 mr-2">
+<i class="ri-plant-line text-green-600"></i>
+</div>
+<span class="font-medium text-gray-900">30天零塑料挑战</span>
+</div>
+<span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">进行中</span>
+</div>
+<div class="p-3">
+<p class="text-sm text-gray-600 mb-3">30天内减少使用一次性塑料制品，培养环保消费习惯</p>
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-500">参与人数: 2,856</span>
+<button class="text-primary hover:text-primary-dark font-medium">加入挑战</button>
+</div>
+</div>
+</div>
+<div class="border rounded-lg overflow-hidden">
+<div class="p-3 bg-blue-50 border-b flex justify-between items-center">
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 mr-2">
+<i class="ri-money-dollar-box-line text-blue-600"></i>
+</div>
+<span class="font-medium text-gray-900">智慧预算21天养成</span>
+</div>
+<span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">热门</span>
+</div>
+<div class="p-3">
+<p class="text-sm text-gray-600 mb-3">21天坚持记账并控制预算，养成健康财务管理习惯</p>
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-500">参与人数: 5,127</span>
+<button class="text-primary hover:text-primary-dark font-medium">加入挑战</button>
+</div>
+</div>
+</div>
+<div class="border rounded-lg overflow-hidden">
+<div class="p-3 bg-purple-50 border-b flex justify-between items-center">
+<div class="flex items-center">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-purple-100 mr-2">
+<i class="ri-shopping-bag-line text-purple-600"></i>
+</div>
+<span class="font-medium text-gray-900">本地商家消费周</span>
+</div>
+<span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">即将开始</span>
+</div>
+<div class="p-3">
+<p class="text-sm text-gray-600 mb-3">一周内优先选择本地小商家消费，支持社区经济发展</p>
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-500">参与人数: 1,893</span>
+<button class="text-primary hover:text-primary-dark font-medium">预约提醒</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<div class="flex justify-between items-center mb-4">
+<h4 class="text-lg font-medium text-gray-900">最新打卡动态</h4>
+<div class="flex items-center text-sm text-primary">
+<span>实时更新</span>
+<div class="w-2 h-2 bg-green-500 rounded-full ml-2 animate-pulse"></div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-start p-3 border rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/5f3370b606f564784a0238b31973bf23.jpg" class="w-10 h-10 rounded-full object-cover mr-3" alt="用户头像">
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-medium text-gray-900">林小雨</span>
+<span class="text-xs text-gray-500 ml-2">5分钟前</span>
+</div>
+<span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">智慧预算</span>
+</div>
+<p class="text-sm text-gray-600 my-2">今天是第15天坚持记账，发现自己在外卖上的花费比想象中多，决定下周减少50%的外卖支出 💪</p>
+<div class="flex items-center text-sm text-gray-500 space-x-4">
+<button class="flex items-center hover:text-primary">
+<i class="ri-thumb-up-line mr-1"></i>
+<span>45</span>
+</button>
+<button class="flex items-center hover:text-primary">
+<i class="ri-chat-1-line mr-1"></i>
+<span>8</span>
+</button>
+<button class="flex items-center hover:text-primary">
+<i class="ri-share-line mr-1"></i>
+<span>分享</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex items-start p-3 border rounded-lg">
+<img src="https://public.readdy.ai/ai/img_res/a111e88b4153f0fcd793c3744ce748e3.jpg" class="w-10 h-10 rounded-full object-cover mr-3" alt="用户头像">
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-medium text-gray-900">张明宇</span>
+<span class="text-xs text-gray-500 ml-2">20分钟前</span>
+</div>
+<span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">零塑料</span>
+</div>
+<p class="text-sm text-gray-600 my-2">第25天！今天购物自带了布袋，拒绝了3个塑料袋，感觉很有成就感 🌱 #环保生活</p>
+<div class="flex items-center text-sm text-gray-500 space-x-4">
+<button class="flex items-center hover:text-primary">
+<i class="ri-thumb-up-line mr-1"></i>
+<span>32</span>
+</button>
+<button class="flex items-center hover:text-primary">
+<i class="ri-chat-1-line mr-1"></i>
+<span>5</span>
+</button>
+<button class="flex items-center hover:text-primary">
+<i class="ri-share-line mr-1"></i>
+<span>分享</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">用户参与机制</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">通过贡献数据和参与评价，共同维护生态系统健康发展</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-6">
+<i class="ri-star-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">真实评价</h3>
+<p class="text-gray-600 mb-6">提交真实、客观的商家评价，帮助其他用户做出明智选择。系统采用AI识别技术，过滤虚假评价，确保评价生态健康。</p>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="text-gray-700 font-medium">您的评价贡献</span>
+<span class="text-primary font-medium">32 条</span>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<span>有效率</span>
+<span>98%</span>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<span>被采纳</span>
+<span>25 条</span>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<span>获得感谢</span>
+<span>47 次</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mb-6">
+<i class="ri-database-2-line ri-2x text-secondary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">数据贡献</h3>
+<p class="text-gray-600 mb-6">分享您的消费数据，帮助系统优化算法和服务。所有数据均经过匿名化处理，确保个人隐私安全。您可以随时查看和管理数据授权。</p>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="text-gray-700 font-medium">您的数据贡献</span>
+<span class="text-secondary font-medium">高级贡献者</span>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<span>消费记录</span>
+<span>已授权</span>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<span>浏览历史</span>
+<span>已授权</span>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<span>位置信息</span>
+<span>未授权</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-6">
+<i class="ri-group-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">社区参与</h3>
+<p class="text-gray-600 mb-6">参与平台讨论、分享消费心得、回答其他用户问题，共同建设健康消费社区。优质内容创作者将获得更高社区声望和额外奖励。</p>
+<div class="bg-gray-50 p-4 rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="text-gray-700 font-medium">您的社区贡献</span>
+<span class="text-primary font-medium">活跃成员</span>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<span>发布内容</span>
+<span>8 篇</span>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<span>回答问题</span>
+<span>23 条</span>
+</div>
+<div class="flex items-center justify-between text-sm text-gray-500">
+<span>获得点赞</span>
+<span>156 次</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+<div class="p-6 border-b">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<h3 class="text-xl font-semibold text-gray-900 mb-4 md:mb-0">用户贡献排行榜</h3>
+<div class="flex items-center space-x-2">
+<div class="relative">
+<select class="appearance-none bg-white border border-gray-300 rounded-lg py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-700">
+<option>本月</option>
+<option>本季度</option>
+<option>今年</option>
+<option>全部</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-500"></i>
+</div>
+</div>
+<div class="relative">
+<select class="appearance-none bg-white border border-gray-300 rounded-lg py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-gray-700">
+<option>综合贡献</option>
+<option>评价贡献</option>
+<option>数据贡献</option>
+<option>社区贡献</option>
+</select>
+<div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+<i class="ri-arrow-down-s-line text-gray-500"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="bg-gray-50">
+<tr>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">排名</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">用户</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">等级</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">评价贡献</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">数据贡献</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">社区贡献</th>
+<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">综合积分</th>
+</tr>
+</thead>
+<tbody class="bg-white divide-y divide-gray-200">
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center justify-center w-8 h-8 bg-yellow-500 text-white rounded-full text-sm font-medium">1</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<img src="https://public.readdy.ai/ai/img_res/550f010b1d1a524b73943e1f880fe2fe.jpg" class="w-10 h-10 rounded-full object-cover mr-3" alt="用户头像">
+<div>
+<div class="text-sm font-medium text-gray-900">王佳怡</div>
+<div class="text-xs text-gray-500">广州 · 研究生</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-medium bg-primary bg-opacity-10 text-primary rounded-full">金牌贡献者</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+86 条
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+高级授权
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+42 篇
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg font-medium text-primary mr-2">9860</span>
+<i class="ri-arrow-up-s-fill text-green-500"></i>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center justify-center w-8 h-8 bg-gray-300 text-white rounded-full text-sm font-medium">2</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<img src="https://public.readdy.ai/ai/img_res/e8dc98e22bb7c16b20791c9cb9683bff.jpg" class="w-10 h-10 rounded-full object-cover mr-3" alt="用户头像">
+<div>
+<div class="text-sm font-medium text-gray-900">张明宇</div>
+<div class="text-xs text-gray-500">北京 · 职场新人</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-medium bg-primary bg-opacity-10 text-primary rounded-full">金牌贡献者</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+72 条
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+高级授权
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+38 篇
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg font-medium text-primary mr-2">9240</span>
+<i class="ri-arrow-up-s-fill text-green-500"></i>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center justify-center w-8 h-8 bg-yellow-700 text-white rounded-full text-sm font-medium">3</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<img src="https://public.readdy.ai/ai/img_res/c77a9344a92466f68317f6acd3366f51.jpg" class="w-10 h-10 rounded-full object-cover mr-3" alt="用户头像">
+<div>
+<div class="text-sm font-medium text-gray-900">林小雨</div>
+<div class="text-xs text-gray-500">上海 · 大学生</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-medium bg-primary bg-opacity-10 text-primary rounded-full">金牌贡献者</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+65 条
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+高级授权
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+51 篇
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg font-medium text-primary mr-2">8970</span>
+<i class="ri-arrow-down-s-fill text-red-500"></i>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-gray-50 bg-gray-50">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full text-sm font-medium">8</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<img src="https://public.readdy.ai/ai/img_res/1b82bd4a42973383179f53d2455f8318.jpg" class="w-10 h-10 rounded-full object-cover mr-3" alt="用户头像">
+<div>
+<div class="text-sm font-medium text-gray-900">您的账号</div>
+<div class="text-xs text-gray-500">北京 · 学生</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="px-2 py-1 text-xs font-medium bg-secondary bg-opacity-10 text-secondary rounded-full">银牌贡献者</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+32 条
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+中级授权
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+8 篇
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center">
+<span class="text-lg font-medium text-primary mr-2">5680</span>
+<i class="ri-arrow-up-s-fill text-green-500"></i>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 border-t">
+<div class="bg-primary bg-opacity-5 p-4 rounded-lg">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white mr-4 flex-shrink-0">
+<i class="ri-gift-line"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-gray-900 mb-2">贡献激励机制</h4>
+<p class="text-gray-600 mb-4">根据您的贡献积分，可获得以下权益：</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-white p-3 rounded shadow-sm">
+<div class="text-sm font-medium text-gray-900 mb-1">专属优惠券</div>
+<p class="text-xs text-gray-500">高级贡献者可获得平台合作商家提供的专属优惠</p>
+</div>
+<div class="bg-white p-3 rounded shadow-sm">
+<div class="text-sm font-medium text-gray-900 mb-1">积分兑换</div>
+<p class="text-xs text-gray-500">积分可兑换实物礼品、会员服务或公益捐赠</p>
+</div>
+<div class="bg-white p-3 rounded shadow-sm">
+<div class="text-sm font-medium text-gray-900 mb-1">专家认证</div>
+<p class="text-xs text-gray-500">达到金牌贡献者可申请成为平台认证消费专家</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900 mb-4">成为合作伙伴</h2>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">加入智财青春生态协同网络，共创健康消费新生态</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
+<div class="h-2 bg-primary"></div>
+<div class="p-6">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-primary bg-opacity-10 mb-6">
+<i class="ri-store-2-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">商家入驻</h3>
+<p class="text-gray-600 mb-6">加入区块链信用评分系统，提升品牌信誉度和透明度，获取更多优质客户资源。</p>
+<div class="space-y-3 mb-6">
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">区块链信用认证标识</span>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">精准用户匹配推荐</span>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">优先获取政策补贴资源</span>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">消费者行为分析报告</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+申请入驻
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
+<div class="h-2 bg-secondary"></div>
+<div class="p-6">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-secondary bg-opacity-10 mb-6">
+<i class="ri-government-line ri-2x text-secondary"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">政府机构合作</h3>
+<p class="text-gray-600 mb-6">对接政策补贴资源，提高政策落地效率，精准服务青年群体，促进消费升级。</p>
+<div class="space-y-3 mb-6">
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">政策精准推送渠道</span>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">政策效果评估分析</span>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">青年消费大数据报告</span>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">区块链存证服务</span>
+</div>
+</div>
+<button class="w-full bg-secondary text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+洽谈合作
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition border border-gray-100">
+<div class="h-2 bg-blue-500"></div>
+<div class="p-6">
+<div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 mb-6">
+<i class="ri-building-4-line ri-2x text-blue-600"></i>
+</div>
+<h3 class="text-xl font-semibold text-gray-900 mb-4">高校研究合作</h3>
+<p class="text-gray-600 mb-6">对接科研成果转化渠道，获取真实应用场景和数据支持，促进产学研深度融合。</p>
+<div class="space-y-3 mb-6">
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">成果转化专属通道</span>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">匿名化消费数据集</span>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">联合实验室建设</span>
+</div>
+<div class="flex items-start">
+<i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+<span class="text-gray-700">学生实习就业机会</span>
+</div>
+</div>
+<button class="w-full bg-blue-500 text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+建立合作
+</button>
+</div>
+</div>
+</div>
+<div class="bg-primary bg-opacity-5 rounded-lg p-8 text-center">
+<h3 class="text-2xl font-bold text-gray-900 mb-4">共建共赢的生态协同网络</h3>
+<p class="text-gray-600 mb-8 max-w-3xl mx-auto">智财青春平台致力于打造开放、透明、共赢的消费生态系统，欢迎各类组织和个人加入我们，共同推动健康消费理念，创造更大的社会价值。</p>
+<button class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+联系我们
+</button>
+</div>
+</div>
+</section>
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<div class="flex items-center mb-4">
+<div class="flex items-center justify-center bg-gradient-to-r from-primary to-secondary p-1.5 rounded-lg mr-2">
+<span class="text-2xl font-['Pacifico'] text-white">ZCQ</span>
+</div>
+<span class="text-lg font-semibold">智财青春</span>
+</div>
+<p class="text-gray-400 mb-4">数据驱动的青年消费智慧平台</p>
+<div class="flex space-x-4">
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-weibo-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-wechat-fill"></i>
+</a>
+<a href="#" class="text-gray-400 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+<i class="ri-douban-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">产品服务</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">消费评估</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">VR 体验课程</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">AR 购物助手</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">预算规划工具</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">关于我们</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">平台介绍</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">团队成员</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">合作伙伴</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">联系我们</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">帮助中心</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">常见问题</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">用户手册</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">隐私政策</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">服务条款</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 智财青春. 保留所有权利.</p>
+<div class="flex items-center space-x-4">
+<div class="flex items-center text-gray-400">
+<i class="ri-visa-fill ri-lg mr-2"></i>
+<i class="ri-mastercard-fill ri-lg mr-2"></i>
+<i class="ri-paypal-fill ri-lg mr-2"></i>
+<i class="ri-alipay-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+// 评分维度解析图表
+const dimensionChart = echarts.init(document.getElementById('dimensionChart'));
+const dimensionOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+formatter: '{b}: {c}%',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+borderColor: '#eee',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+}
+},
+series: [
+{
+name: '评分维度',
+type: 'pie',
+radius: ['40%', '70%'],
+avoidLabelOverlap: false,
+itemStyle: {
+borderRadius: 8,
+borderColor: '#fff',
+borderWidth: 2
+},
+label: {
+show: false
+},
+emphasis: {
+label: {
+show: false
+}
+},
+labelLine: {
+show: false
+},
+data: [
+{ value: 30, name: '交易履约率', itemStyle: { color: '#57B5E7' } },
+{ value: 25, name: '用户评价', itemStyle: { color: '#8DD3C7' } },
+{ value: 20, name: '环保贡献', itemStyle: { color: '#FBBF72' } },
+{ value: 15, name: '售后服务', itemStyle: { color: '#FC8D62' } },
+{ value: 10, name: '信息透明度', itemStyle: { color: '#66C2A5' } }
+]
+}
+]
+};
+dimensionChart.setOption(dimensionOption);
+// 响应式调整
+window.addEventListener('resize', function() {
+dimensionChart.resize();
+});
+// 标签切换
+document.querySelectorAll('.tab-button').forEach(button => {
+button.addEventListener('click', function() {
+document.querySelectorAll('.tab-button').forEach(btn => {
+btn.classList.remove('active');
+});
+this.classList.add('active');
+});
+});
+// 信用评分动画
+document.addEventListener('DOMContentLoaded', function() {
+const progressBars = document.querySelectorAll('.credit-score-progress');
+progressBars.forEach(bar => {
+const width = bar.style.width;
+bar.style.width = '0';
+setTimeout(() => {
+bar.style.width = width;
+}, 300);
+});
+});
+</script>
+</body>
+</html>
